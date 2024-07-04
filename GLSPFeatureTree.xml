@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="autolayoutconstraints" value="false"/>
+		<graphics key="legendautolayout" value="true"/>
+		<graphics key="showconstraints" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="vertical"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="4"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="glspFeatures">
+			<and abstract="true" mandatory="true" name="Server">
+				<and abstract="true" mandatory="true" name="SourceModel">
+					<graphics key="collapsed" value="false"/>
+					<feature name="EMF / Java classes"/>
+					<feature name="GModel extension"/>
+					<feature name="other SourceModel"/>
+				</and>
+				<alt abstract="true" mandatory="true" name="Source Model extends GModel">
+					<graphics key="collapsed" value="false"/>
+					<and abstract="true" name="not extending GModel">
+						<feature mandatory="true" name="transform Source Model to GModel"/>
+					</and>
+					<feature abstract="true" name="extending GModel">
+						<graphics key="collapsed" value="false"/>
+					</feature>
+				</alt>
+				<feature abstract="true" mandatory="true" name="create elements"/>
+				<feature abstract="true" mandatory="true" name="remove elements"/>
+				<feature abstract="true" name="load file"/>
+			</and>
+			<and abstract="true" mandatory="true" name="Client">
+				<feature abstract="true" name="custom Source Model"/>
+				<and abstract="true" name="Shape Model">
+					<feature name="mapping from Source Model and GModel"/>
+				</and>
+			</and>
+		</and>
+	</struct>
+</featureModel>

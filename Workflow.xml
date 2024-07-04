@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="autolayoutconstraints" value="false"/>
+		<graphics key="legendautolayout" value="true"/>
+		<graphics key="showconstraints" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="horizontal"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="1"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="Workflow Features">
+			<and abstract="true" name="Server">
+				<graphics key="collapsed" value="false"/>
+				<and abstract="true" name="extend GLSP on M1">
+					<graphics key="collapsed" value="false"/>
+					<feature name="type mappings"/>
+				</and>
+				<and abstract="true" name="edit diagram">
+					<graphics key="collapsed" value="false"/>
+					<and abstract="true" name="edit elements">
+						<graphics key="collapsed" value="false"/>
+						<and abstract="true" name="edit task">
+							<graphics key="collapsed" value="false"/>
+							<feature name="editing"/>
+							<feature name="validating"/>
+						</and>
+						<feature name="create nodes"/>
+						<feature name="create edges"/>
+						<feature name="create category"/>
+					</and>
+					<feature name="navigation"/>
+					<feature name="documentation"/>
+					<and abstract="true" name="validator">
+						<graphics key="collapsed" value="false"/>
+						<feature name="nodes"/>
+						<feature name="uniqueness of names"/>
+						<feature name="edges"/>
+					</and>
+				</and>
+				<and abstract="true" name="diagram options">
+					<graphics key="collapsed" value="false"/>
+					<feature name="nodes moveable, deletable, resizable"/>
+				</and>
+				<feature name="logging"/>
+				<feature name="popup model"/>
+				<feature name="layout"/>
+				<and abstract="true" name="contexts">
+					<graphics key="collapsed" value="false"/>
+					<feature name="context menu"/>
+					<feature name="command palette"/>
+				</and>
+			</and>
+			<and abstract="true" name="Client">
+				<graphics key="collapsed" value="false"/>
+				<feature name="extend GLSP GModel"/>
+				<feature name="shapeM"/>
+				<feature name="client: edit task"/>
+			</and>
+		</and>
+	</struct>
+	<constraints>
+		<rule>
+			<imp>
+				<var>edit diagram</var>
+				<var>extend GLSP on M1</var>
+			</imp>
+		</rule>
+	</constraints>
+</featureModel>
