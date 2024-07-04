@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="autolayoutconstraints" value="false"/>
+		<graphics key="legendautolayout" value="true"/>
+		<graphics key="showconstraints" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="vertical"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="4"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="glspFeatures">
+			<and abstract="true" mandatory="true" name="Server">
+				<and abstract="true" mandatory="true" name="map ModelTypes to">
+					<graphics key="collapsed" value="false"/>
+					<feature name="DefaultTypes"/>
+					<feature name="GraphPackage.literals"/>
+				</and>
+				<and abstract="true" mandatory="true" name="SourceModel">
+					<and mandatory="true" name="generate from ecore file">
+						<feature mandatory="true" name="ModelPackage"/>
+						<feature mandatory="true" name="ModelFactory"/>
+					</and>
+				</and>
+				<alt abstract="true" mandatory="true" name="Source Model extension on M1">
+					<graphics key="collapsed" value="false"/>
+					<and name="java classes">
+						<feature mandatory="true" name="load ModelPackage"/>
+					</and>
+					<and name="extend GModel">
+						<feature mandatory="true" name="implement GraphExtension"/>
+					</and>
+				</alt>
+				<alt abstract="true" mandatory="true" name="load diagram from file into modelstate on M0">
+					<and name="EMFNotationSourceModelStorage">
+						<feature mandatory="true" name="load diagram elements"/>
+						<feature mandatory="true" name="load position and size"/>
+					</and>
+					<and name="GModelStorage">
+						<feature mandatory="true" name="load JSON file with Gson"/>
+					</and>
+				</alt>
+				<and abstract="true" name="transform Source Model to GModel on M0">
+					<and name="extend EMFNotationGModelFactory">
+						<and name="build GModel from Source Model">
+							<feature mandatory="true" name="add Shape Model to GNodes"/>
+						</and>
+					</and>
+				</and>
+				<and abstract="true" mandatory="true" name="create elements">
+					<alt mandatory="true" name="create element">
+						<feature name="create with ModelFactory"/>
+						<feature name="builder creates from ModelFactory"/>
+					</alt>
+					<alt mandatory="true" name="create shape">
+						<feature name="load shape from file"/>
+						<feature name="builder adds shape"/>
+					</alt>
+				</and>
+				<and abstract="true" name="remove elements">
+					<feature mandatory="true" name="remove element"/>
+					<feature mandatory="true" name="remove shape"/>
+				</and>
+			</and>
+			<and abstract="true" mandatory="true" name="Client">
+				<and abstract="true" name="mapping to Shape Model">
+					<feature mandatory="true" name="ModelTypes"/>
+					<feature mandatory="true" name="custom SourceModel and GModel elements"/>
+					<feature mandatory="true" name="Shape Model = Views"/>
+				</and>
+				<feature name="taskeditor"/>
+			</and>
+		</and>
+	</struct>
+</featureModel>

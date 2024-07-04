@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="autolayoutconstraints" value="false"/>
+		<graphics key="legendautolayout" value="true"/>
+		<graphics key="showconstraints" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="horizontal"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="1"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="Tasklist Features">
+			<and abstract="true" name="Server">
+				<and abstract="true" name="extend GLSP on M1">
+					<feature name="source model"/>
+					<feature name="source model 2 GModel"/>
+				</and>
+				<and abstract="true" name="edit diagram">
+					<and abstract="true" name="load diagram">
+						<and name="load tasks">
+							<feature name="set position + size"/>
+						</and>
+					</and>
+					<and abstract="true" name="edit elements">
+						<feature name="create task"/>
+						<feature name="delete task"/>
+					</and>
+					<and abstract="true" name="update diagram">
+						<and name="tasklist to GModelRoot">
+							<feature name="create GNode"/>
+						</and>
+					</and>
+				</and>
+				<and abstract="true" name="diagram options">
+					<feature name="tasks moveable, deletable, resizable"/>
+				</and>
+			</and>
+		</and>
+	</struct>
+</featureModel>

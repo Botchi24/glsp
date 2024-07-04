@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+	<feature name="glspFeatures"/>
+	<feature name="Server"/>
+	<feature name="SM"/>
+	<feature name="SourceModelStorage"/>
+	<feature name="EMFSourceModelStorage"/>
+	<feature name="GModelStorage"/>
+	<feature name="load SM on M1"/>
+	<feature name="load ModelPackage into EMF resourceSet"/>
+	<feature name="implement glsp.graph.GraphExtension"/>
+	<feature name="load ModelPackage"/>
+	<feature name="load ModelFactory"/>
+	<feature name="SM2GM on M1"/>
+	<feature name="GM extension"/>
+	<feature name="not extending GM"/>
+	<feature name="extending GM"/>
+	<feature name="map ModelTypes"/>
+	<feature name="to glsp.graph.DefaultTypes"/>
+	<feature name="to literals"/>
+	<feature name="to glsp.graph.GraphPackage.Literals"/>
+	<feature name="to custom GraphPackage.Literals"/>
+	<feature name="Client"/>
+</configuration>
