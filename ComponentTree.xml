@@ -13,65 +13,158 @@
 	<struct>
 		<and abstract="true" mandatory="true" name="glspFeatures">
 			<and abstract="true" mandatory="true" name="Server">
-				<and abstract="true" mandatory="true" name="map ModelTypes to">
+				<and abstract="true" mandatory="true" name="Metamodel Extension">
 					<graphics key="collapsed" value="false"/>
-					<feature name="DefaultTypes"/>
-					<feature name="GraphPackage.literals"/>
-				</and>
-				<and abstract="true" mandatory="true" name="SourceModel">
-					<and mandatory="true" name="generate from ecore file">
-						<feature mandatory="true" name="ModelPackage"/>
-						<feature mandatory="true" name="ModelFactory"/>
+					<alt abstract="true" mandatory="true" name="SourceModel">
+						<and abstract="true" name="EMF">
+							<and abstract="true" mandatory="true" name="SourceModel Generation">
+								<feature mandatory="true" name="ModelPackage"/>
+								<feature mandatory="true" name="ModelFactory"/>
+							</and>
+							<alt abstract="true" mandatory="true" name="with / without GModel Extension">
+							<and abstract="true" name="Java Classes">
+								<and abstract="true" mandatory="true" name="load ModelPackage">
+									<feature name="glsp.server.emf.notation.EMFNotationSourceModelStorage.setupResourceSet"/>
+								</and>
+							</and>
+							<and abstract="true" name="extend GModel">
+								<feature mandatory="true" name="implement glsp.graph.GraphExtension"/>
+							</and>
+						</alt>
 					</and>
-				</and>
-				<alt abstract="true" mandatory="true" name="Source Model extension on M1">
+					<feature abstract="true" name="other SourceModel"/>
+				</alt>
+				<and abstract="true" mandatory="true" name="ModelTypes">
 					<graphics key="collapsed" value="false"/>
-					<and name="java classes">
-						<feature mandatory="true" name="load ModelPackage"/>
+					<feature abstract="true" mandatory="true" name="ModelTypes Definition"/>
+					<alt abstract="true" mandatory="true" name="ModelTypes Mapping">
+						<and abstract="true" name="to DefaultTypes">
+							<feature mandatory="true" name="glsp.graph.DefaultTypes"/>
+						</and>
+						<and abstract="true" name="to Literals">
+							<graphics key="collapsed" value="false"/>
+							<and mandatory="true" name="glsp.graph.GraphPackage.literals">
+								<feature mandatory="true" name="implement glsp.server.diagram.BaseDiagramConfiguration.getTypeMappings"/>
+							</and>
+						</and>
+					</alt>
+				</and>
+				<alt abstract="true" mandatory="true" name="GModel Creation">
+					<and abstract="true" name="transform SourceModel">
+						<and mandatory="true" name="extend EMFNotationGModelFactory.fillRootElement">
+							<feature abstract="true" mandatory="true" name="add Shape Model to GNodes"/>
+						</and>
 					</and>
-					<and name="extend GModel">
-						<feature mandatory="true" name="implement GraphExtension"/>
-					</and>
+					<feature abstract="true" name="SourceModel extends GModel"/>
 				</alt>
-				<alt abstract="true" mandatory="true" name="load diagram from file into modelstate on M0">
-					<and name="EMFNotationSourceModelStorage">
-						<feature mandatory="true" name="load diagram elements"/>
-						<feature mandatory="true" name="load position and size"/>
-					</and>
-					<and name="GModelStorage">
-						<feature mandatory="true" name="load JSON file with Gson"/>
-					</and>
-				</alt>
-				<and abstract="true" name="transform Source Model to GModel on M0">
-					<and name="extend EMFNotationGModelFactory">
-						<and name="build GModel from Source Model">
-							<feature mandatory="true" name="add Shape Model to GNodes"/>
+			</and>
+			<alt abstract="true" mandatory="true" name="load Input File">
+				<and abstract="true" name="XMI">
+					<and mandatory="true" name="glsp.server.emf.notation.EMFNotationSourceModelStorage">
+						<and abstract="true" mandatory="true" name="load elements">
+							<feature mandatory="true" name="EMFNotationSourceModelStorage.loadSemanticModel"/>
+						</and>
+						<and abstract="true" mandatory="true" name="load position and size">
+							<feature mandatory="true" name="EMFNotationSourceModelStorage.loadNotationModel"/>
 						</and>
 					</and>
 				</and>
-				<and abstract="true" mandatory="true" name="create elements">
-					<alt mandatory="true" name="create element">
-						<feature name="create with ModelFactory"/>
-						<feature name="builder creates from ModelFactory"/>
-					</alt>
-					<alt mandatory="true" name="create shape">
-						<feature name="load shape from file"/>
-						<feature name="builder adds shape"/>
-					</alt>
+				<and abstract="true" name="JSON">
+					<and mandatory="true" name="glsp.server.gmodel.GModelStorage">
+						<and abstract="true" mandatory="true" name="load JSON file with Gson">
+							<feature mandatory="true" name="GModelStorage.loadSourceModel"/>
+						</and>
+					</and>
 				</and>
-				<and abstract="true" name="remove elements">
-					<feature mandatory="true" name="remove element"/>
-					<feature mandatory="true" name="remove shape"/>
-				</and>
+			</alt>
+			<and abstract="true" mandatory="true" name="Element Creation">
+				<graphics key="collapsed" value="false"/>
+				<alt abstract="true" mandatory="true" name="create element">
+					<feature name="create with ModelFactory"/>
+					<feature name="builder creates from ModelFactory"/>
+				</alt>
+				<alt abstract="true" mandatory="true" name="create shape">
+					<feature name="load shape"/>
+					<feature name="builder adds shape"/>
+				</alt>
 			</and>
-			<and abstract="true" mandatory="true" name="Client">
-				<and abstract="true" name="mapping to Shape Model">
-					<feature mandatory="true" name="ModelTypes"/>
-					<feature mandatory="true" name="custom SourceModel and GModel elements"/>
-					<feature mandatory="true" name="Shape Model = Views"/>
-				</and>
-				<feature name="taskeditor"/>
+			<and abstract="true" name="Element Deletion">
+				<graphics key="collapsed" value="false"/>
+				<feature abstract="true" mandatory="true" name="remove element"/>
+				<feature abstract="true" mandatory="true" name="remove shape"/>
 			</and>
 		</and>
-	</struct>
+		<and abstract="true" mandatory="true" name="Client">
+			<graphics key="collapsed" value="false"/>
+			<and abstract="true" mandatory="true" name="Metamodel Extension for Client">
+				<and abstract="true" mandatory="true" name="SourceModel for Client">
+					<feature mandatory="true" name="Model.ts"/>
+					<and abstract="true" mandatory="true" name="extend ShapeModel Nodes">
+						<feature mandatory="true" name="eclipse-glsp/client"/>
+					</and>
+				</and>
+				<and abstract="true" mandatory="true" name="ModelTypes for Client">
+					<feature mandatory="true" name="diagram-module.ts"/>
+					<feature abstract="true" mandatory="true" name="map to SourceModel Elements"/>
+					<and abstract="true" mandatory="true" name="map to ShapeModel Views">
+						<feature mandatory="true" name="eclipse-glsp/client/views"/>
+					</and>
+				</and>
+			</and>
+			<alt abstract="true" name="Client View Port">
+				<feature abstract="true" name="Center"/>
+				<feature abstract="true" name="Fit to Screen"/>
+			</alt>
+			<feature abstract="true" name="Client Status Notification"/>
+		</and>
+		<and abstract="true" mandatory="true" name="both">
+			<graphics key="collapsed" value="false"/>
+			<feature abstract="true" name="Element Editing"/>
+			<feature abstract="true" name="Element Validation"/>
+			<feature abstract="true" name="Model Layout"/>
+			<and abstract="true" name="Contexts">
+				<feature abstract="true" name="Context Menu"/>
+				<feature abstract="true" name="Command Palette"/>
+				<feature abstract="true" name="Tool Palette"/>
+			</and>
+		</and>
+		<and abstract="true" name="?">
+			<graphics key="collapsed" value="false"/>
+			<feature abstract="true" name="Model Saving"/>
+			<feature abstract="true" name="Model SVG Export"/>
+			<alt abstract="true" name="Model Edit Modes">
+				<feature abstract="true" name="Edit"/>
+				<feature abstract="true" name="Read-only"/>
+			</alt>
+			<feature abstract="true" name="Element Selection"/>
+			<feature abstract="true" name="Element Hover"/>
+			<feature abstract="true" name="Element Type Hints"/>
+			<and abstract="true" name="Node Change Bounds">
+				<feature abstract="true" name="Move"/>
+				<feature abstract="true" name="Resize"/>
+			</and>
+			<feature abstract="true" name="Node Change Container"/>
+			<feature abstract="true" name="Edge Reconnect"/>
+			<feature abstract="true" name="Edge Routing Points"/>
+			<feature abstract="true" name="Ghost Elements ???"/>
+			<feature abstract="true" name="Element Text Editing"/>
+			<feature abstract="true" name="Clipboard"/>
+			<feature abstract="true" name="Undo / Redo"/>
+		</and>
+	</and>
+</struct>
+<constraints>
+	<rule>
+		<imp>
+			<var>create with ModelFactory</var>
+			<var>load shape</var>
+		</imp>
+	</rule>
+	<rule>
+		<imp>
+			<var>builder creates from ModelFactory</var>
+			<var>builder adds shape</var>
+		</imp>
+	</rule>
+</constraints>
 </featureModel>
