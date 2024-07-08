@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <configuration>
-	<feature name="glspFeatures"/>
-	<feature name="Server"/>
-	<feature name="SM"/>
-	<feature name="SourceModelStorage"/>
-	<feature name="EMFSourceModelStorage"/>
-	<feature name="GModelStorage"/>
-	<feature name="load SM on M1"/>
-	<feature name="load ModelPackage into EMF resourceSet"/>
-	<feature name="implement glsp.graph.GraphExtension"/>
-	<feature name="load ModelPackage"/>
-	<feature name="load ModelFactory"/>
-	<feature name="SM2GM on M1"/>
-	<feature name="GM extension"/>
-	<feature name="not extending GM"/>
-	<feature name="extending GM"/>
-	<feature name="map ModelTypes"/>
-	<feature name="to glsp.graph.DefaultTypes"/>
-	<feature name="to literals"/>
-	<feature name="to glsp.graph.GraphPackage.Literals"/>
-	<feature name="to custom GraphPackage.Literals"/>
-	<feature name="Client"/>
+	<feature automatic="selected" name="glspFeatures"/>
+	<feature automatic="selected" name="Server"/>
+	<feature automatic="selected" name="SM"/>
+	<feature automatic="selected" name="SourceModelStorage"/>
+	<feature manual="selected" name="EMFSourceModelStorage"/>
+	<feature automatic="unselected" name="GModelStorage"/>
+	<feature automatic="selected" name="load SM on M1"/>
+	<feature automatic="selected" name="load ModelPackage into EMF resourceSet"/>
+	<feature automatic="unselected" name="implement glsp.graph.GraphExtension"/>
+	<feature automatic="unselected" name="load ModelPackage"/>
+	<feature automatic="unselected" name="load ModelFactory"/>
+	<feature automatic="selected" name="SM2GM on M1"/>
+	<feature automatic="selected" name="GM extension"/>
+	<feature automatic="selected" name="not extending GM"/>
+	<feature automatic="unselected" name="extending GM"/>
+	<feature automatic="selected" name="map ModelTypes"/>
+	<feature manual="selected" name="to glsp.graph.DefaultTypes"/>
+	<feature automatic="unselected" name="to literals"/>
+	<feature automatic="unselected" name="to glsp.graph.GraphPackage.Literals"/>
+	<feature automatic="unselected" name="to custom GraphPackage.Literals"/>
+	<feature automatic="selected" name="Client"/>
 </configuration>
