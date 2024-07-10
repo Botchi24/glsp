@@ -12,117 +12,104 @@
 	</properties>
 	<struct>
 		<and abstract="true" mandatory="true" name="glspFeatures">
-			<and abstract="true" mandatory="true" name="Server">
-				<and abstract="true" mandatory="true" name="Metamodel Extension">
-					<alt abstract="true" mandatory="true" name="SourceModel">
+			<and abstract="true" mandatory="true" name="S">
+				<and abstract="true" mandatory="true" name="S1 Metamodel Extension">
+					<graphics key="collapsed" value="true"/>
+					<and abstract="true" mandatory="true" name="S11 SourceModel">
 						<graphics key="collapsed" value="false"/>
-						<and abstract="true" name="EMF">
-							<feature abstract="true" mandatory="true" name="SourceModel Generation"/>
-							<alt abstract="true" mandatory="true" name="with / without GModel Extension ">
-							<feature abstract="true" name="Java Classes"/>
-							<feature abstract="true" name="extend GModel"/>
+						<alt abstract="true" mandatory="true" name="S111 Types">
+							<feature abstract="true" name="S1111 Java Classes / EMF"/>
+							<feature abstract="true" name="S1112 GModel Extension / EMF"/>
+							<feature abstract="true" name="S1113 other SourceModel"/>
+						</alt>
+						<feature abstract="true" mandatory="true" name="S112 Generation"/>
+						<alt abstract="true" mandatory="true" name="S113 Integration">
+							<feature abstract="true" name="S11121 Java Classes"/>
+							<feature abstract="true" name="S11122 extend GModel"/>
 						</alt>
 					</and>
-					<feature abstract="true" name="other SourceModel"/>
-				</alt>
-				<and abstract="true" mandatory="true" name="ModelTypes">
-					<feature abstract="true" mandatory="true" name="ModelTypes Definition"/>
-					<alt abstract="true" mandatory="true" name="ModelTypes Mapping">
-						<feature abstract="true" name="to DefaultTypes"/>
-						<feature abstract="true" name="to Literals"/>
+					<alt abstract="true" mandatory="true" name="S12 ModelTypes">
+						<feature abstract="true" name="S121 DefaultTypes"/>
+						<and abstract="true" name="S122 extended Types">
+							<feature abstract="true" mandatory="true" name="S1221 Definition"/>
+							<feature abstract="true" mandatory="true" name="S1222 Mapping"/>
+						</and>
+					</alt>
+					<alt abstract="true" mandatory="true" name="S13 GModel Creation">
+						<feature abstract="true" name="S131 transform SourceModel"/>
+						<feature abstract="true" name="S132 SourceModel extends GModel"/>
 					</alt>
 				</and>
-				<alt abstract="true" mandatory="true" name="GModel Creation">
-					<feature abstract="true" name="transform SourceModel"/>
-					<feature abstract="true" name="SourceModel extends GModel"/>
+				<alt abstract="true" mandatory="true" name="S2 load Input File">
+					<graphics key="collapsed" value="true"/>
+					<feature abstract="true" name="S21 XMI"/>
+					<feature abstract="true" name="S22 JSON"/>
 				</alt>
-			</and>
-			<alt abstract="true" mandatory="true" name="load Input File">
-				<feature abstract="true" name="XMI"/>
-				<feature abstract="true" name="JSON"/>
-			</alt>
-			<feature abstract="true" mandatory="true" name="Element Creation"/>
-			<feature abstract="true" name="Element Deletion"/>
-		</and>
-		<and abstract="true" mandatory="true" name="Client">
-			<and abstract="true" mandatory="true" name="Metamodel Extension for Client">
-				<and abstract="true" mandatory="true" name="SourceModel for Client">
-					<feature abstract="true" mandatory="true" name="extend ShapeModel Nodes"/>
+				<alt abstract="true" mandatory="true" name="S3 Element Creation">
+					<graphics key="collapsed" value="false"/>
+					<feature abstract="true" name="create SourceModel Element"/>
+					<and abstract="true" name="create GModel Element">
+						<feature abstract="true" mandatory="true" name="add ShapeModel"/>
+					</and>
+				</alt>
+				<feature abstract="true" name="S4 Element Deletion"/>
+				<feature abstract="true" name="S5 Element Editing"/>
+				<feature abstract="true" name="S6 Element Validation"/>
+				<feature abstract="true" name="S7 Model Layout"/>
+				<and abstract="true" name="S8 Contexts">
+					<graphics key="collapsed" value="true"/>
+					<feature abstract="true" name="Context Menu"/>
+					<feature abstract="true" name="Command Palette"/>
+					<feature abstract="true" name="Tool Palette"/>
 				</and>
-				<and abstract="true" mandatory="true" name="ModelTypes for Client">
-					<feature abstract="true" mandatory="true" name="map to SourceModel Elements"/>
-					<feature abstract="true" mandatory="true" name="map to ShapeModel Views"/>
+			</and>
+			<and abstract="true" mandatory="true" name="C">
+				<graphics key="collapsed" value="true"/>
+				<and abstract="true" mandatory="true" name="C1 Metamodel Extension">
+					<and abstract="true" mandatory="true" name="C11 SourceModel">
+						<feature abstract="true" mandatory="true" name="extend ShapeModel Nodes"/>
+					</and>
+					<and abstract="true" mandatory="true" name="C12 ModelTypes">
+						<feature abstract="true" mandatory="true" name="map to SourceModel Elements"/>
+						<feature abstract="true" mandatory="true" name="map to ShapeModel Views"/>
+					</and>
 				</and>
+				<alt abstract="true" name="C2 Client View Port">
+					<graphics key="collapsed" value="false"/>
+					<feature abstract="true" name="Center"/>
+					<feature abstract="true" name="Fit to Screen"/>
+				</alt>
+				<feature abstract="true" name="C3 Client Status Notification"/>
+				<feature abstract="true" name="C4 Element Editing"/>
+				<feature abstract="true" name="C5 Element Validation"/>
+				<feature abstract="true" name="C6 Model Layout"/>
+				<feature abstract="true" name="C7 Contexts"/>
 			</and>
-			<alt abstract="true" name="Client View Port">
-				<graphics key="collapsed" value="false"/>
-				<feature abstract="true" name="Center"/>
-				<feature abstract="true" name="Fit to Screen"/>
-			</alt>
-			<feature abstract="true" name="Client Status Notification"/>
-		</and>
-		<and abstract="true" mandatory="true" name="both">
-			<graphics key="collapsed" value="false"/>
-			<feature abstract="true" name="Element Editing"/>
-			<feature abstract="true" name="Element Validation"/>
-			<feature abstract="true" name="Model Layout"/>
-			<and abstract="true" name="Contexts">
-				<feature abstract="true" name="Context Menu"/>
-				<feature abstract="true" name="Command Palette"/>
-				<feature abstract="true" name="Tool Palette"/>
+			<and abstract="true" name="?">
+				<graphics key="collapsed" value="true"/>
+				<feature abstract="true" name="Model Saving"/>
+				<feature abstract="true" name="Model SVG Export"/>
+				<alt abstract="true" name="Model Edit Modes">
+					<graphics key="collapsed" value="false"/>
+					<feature abstract="true" name="Edit"/>
+					<feature abstract="true" name="Read-only"/>
+				</alt>
+				<feature abstract="true" name="Element Selection"/>
+				<feature abstract="true" name="Element Hover"/>
+				<feature abstract="true" name="Element Type Hints"/>
+				<and abstract="true" name="Node Change Bounds">
+					<graphics key="collapsed" value="false"/>
+					<feature abstract="true" name="Move"/>
+					<feature abstract="true" name="Resize"/>
+				</and>
+				<feature abstract="true" name="Node Change Container"/>
+				<feature abstract="true" name="Edge Reconnect"/>
+				<feature abstract="true" name="Edge Routing Points"/>
+				<feature abstract="true" name="Ghost Elements ???"/>
+				<feature abstract="true" name="Element Text Editing"/>
+				<feature abstract="true" name="Clipboard"/>
+				<feature abstract="true" name="Undo / Redo"/>
 			</and>
 		</and>
-		<and abstract="true" name="?">
-			<graphics key="collapsed" value="false"/>
-			<feature abstract="true" name="Model Saving"/>
-			<feature abstract="true" name="Model SVG Export"/>
-			<alt abstract="true" name="Model Edit Modes">
-				<graphics key="collapsed" value="false"/>
-				<feature abstract="true" name="Edit"/>
-				<feature abstract="true" name="Read-only"/>
-			</alt>
-			<feature abstract="true" name="Element Selection"/>
-			<feature abstract="true" name="Element Hover"/>
-			<feature abstract="true" name="Element Type Hints"/>
-			<and abstract="true" name="Node Change Bounds">
-				<graphics key="collapsed" value="false"/>
-				<feature abstract="true" name="Move"/>
-				<feature abstract="true" name="Resize"/>
-			</and>
-			<feature abstract="true" name="Node Change Container"/>
-			<feature abstract="true" name="Edge Reconnect"/>
-			<feature abstract="true" name="Edge Routing Points"/>
-			<feature abstract="true" name="Ghost Elements ???"/>
-			<feature abstract="true" name="Element Text Editing"/>
-			<feature abstract="true" name="Clipboard"/>
-			<feature abstract="true" name="Undo / Redo"/>
-		</and>
-	</and>
-</struct>
-<constraints>
-	<rule>
-		<imp>
-			<var>Java Classes</var>
-			<conj>
-				<var>to DefaultTypes</var>
-				<conj>
-					<var>transform SourceModel</var>
-					<var>XMI</var>
-				</conj>
-			</conj>
-		</imp>
-	</rule>
-	<rule>
-		<imp>
-			<var>extend GModel</var>
-			<conj>
-				<var>to Literals</var>
-				<conj>
-					<var>SourceModel extends GModel</var>
-					<var>JSON</var>
-				</conj>
-			</conj>
-		</imp>
-	</rule>
-</constraints>
+	</struct>
 </featureModel>
