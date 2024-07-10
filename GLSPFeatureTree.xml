@@ -47,10 +47,8 @@
 				</alt>
 				<alt abstract="true" mandatory="true" name="S3 Element Creation">
 					<graphics key="collapsed" value="false"/>
-					<feature abstract="true" name="create SourceModel Element"/>
-					<and abstract="true" name="create GModel Element">
-						<feature abstract="true" mandatory="true" name="add ShapeModel"/>
-					</and>
+					<feature abstract="true" name="S31 use Command"/>
+					<feature abstract="true" name="S32 use Builder"/>
 				</alt>
 				<feature abstract="true" name="S4 Element Deletion"/>
 				<feature abstract="true" name="S5 Element Editing"/>
