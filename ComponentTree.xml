@@ -58,17 +58,11 @@
 					</feature>
 					<feature name="S22 glsp.server.gmodel.GModelStorage.loadSourceModel"/>
 				</alt>
-				<and abstract="true" mandatory="true" name="Element Creation">
+				<alt abstract="true" mandatory="true" name="S3 Element Creation">
 					<graphics key="collapsed" value="false"/>
-					<alt abstract="true" mandatory="true" name="create element">
-						<feature name="create with ModelFactory"/>
-						<feature name="builder creates from ModelFactory"/>
-					</alt>
-					<alt abstract="true" mandatory="true" name="create shape">
-						<feature name="load shape"/>
-						<feature name="builder adds shape"/>
-					</alt>
-				</and>
+					<feature abstract="true" name="S31 override glsp.server.operations.OperationHandler.createCommand"/>
+					<feature abstract="true" name="S32 implement utils.Builder"/>
+				</alt>
 				<and abstract="true" name="Element Deletion">
 					<graphics key="collapsed" value="false"/>
 					<feature abstract="true" mandatory="true" name="remove element"/>
