@@ -14,7 +14,7 @@
 		<and abstract="true" mandatory="true" name="glspFeatures">
 			<and abstract="true" mandatory="true" name="S">
 				<and abstract="true" mandatory="true" name="S1 Metamodel Extension">
-					<graphics key="collapsed" value="true"/>
+					<graphics key="collapsed" value="false"/>
 					<and abstract="true" mandatory="true" name="S11 SourceModel">
 						<graphics key="collapsed" value="false"/>
 						<alt abstract="true" mandatory="true" name="S111 Types">
@@ -41,7 +41,7 @@
 					</alt>
 				</and>
 				<alt abstract="true" mandatory="true" name="S2 load Input File">
-					<graphics key="collapsed" value="true"/>
+					<graphics key="collapsed" value="false"/>
 					<feature abstract="true" name="S21 XMI"/>
 					<feature abstract="true" name="S22 JSON"/>
 				</alt>
@@ -55,21 +55,29 @@
 				<feature abstract="true" name="S6 Element Validation"/>
 				<feature abstract="true" name="S7 Model Layout"/>
 				<and abstract="true" name="S8 Contexts">
-					<graphics key="collapsed" value="true"/>
+					<graphics key="collapsed" value="false"/>
 					<feature abstract="true" name="Context Menu"/>
 					<feature abstract="true" name="Command Palette"/>
 					<feature abstract="true" name="Tool Palette"/>
 				</and>
 			</and>
 			<and abstract="true" mandatory="true" name="C">
-				<graphics key="collapsed" value="true"/>
-				<and abstract="true" mandatory="true" name="C1 Metamodel Extension">
+				<graphics key="collapsed" value="false"/>
+				<and abstract="true" name="C1 Metamodel Extension">
 					<and abstract="true" mandatory="true" name="C11 SourceModel">
-						<feature abstract="true" mandatory="true" name="extend ShapeModel Nodes"/>
+						<feature abstract="true" mandatory="true" name="C111 Definition"/>
+						<feature abstract="true" mandatory="true" name="C112 Mapping to ShapeModel Nodes"/>
 					</and>
 					<and abstract="true" mandatory="true" name="C12 ModelTypes">
-						<feature abstract="true" mandatory="true" name="map to SourceModel Elements"/>
-						<feature abstract="true" mandatory="true" name="map to ShapeModel Views"/>
+						<feature abstract="true" mandatory="true" name="C121 Definition"/>
+						<and abstract="true" mandatory="true" name="C122 Mapping to SourceModel Elements">
+							<feature abstract="true" name="C1221 GModel Elements"/>
+							<feature abstract="true" name="C1222 extended Elements"/>
+						</and>
+						<and abstract="true" mandatory="true" name="C123 Mapping to ShapeModel Views">
+							<feature abstract="true" name="C1231 Default Views"/>
+							<feature abstract="true" name="C1232 extended Views"/>
+						</and>
 					</and>
 				</and>
 				<alt abstract="true" name="C2 Client View Port">
