@@ -118,4 +118,60 @@
 			</and>
 		</and>
 	</struct>
+	<constraints>
+		<rule>
+			<eq>
+				<var>S1111 Java Classes / EMF</var>
+				<var>S11121 Java Classes</var>
+			</eq>
+		</rule>
+		<rule>
+			<eq>
+				<var>S1111 Java Classes / EMF</var>
+				<var>S121 DefaultTypes</var>
+			</eq>
+		</rule>
+		<rule>
+			<eq>
+				<var>S1111 Java Classes / EMF</var>
+				<var>S131 transform SourceModel</var>
+			</eq>
+		</rule>
+		<rule>
+			<eq>
+				<var>S1111 Java Classes / EMF</var>
+				<var>S21 XMI</var>
+			</eq>
+		</rule>
+		<rule>
+			<eq>
+				<var>S1112 GModel Extension / EMF</var>
+				<var>S11122 extend GModel</var>
+			</eq>
+		</rule>
+		<rule>
+			<eq>
+				<var>S1112 GModel Extension / EMF</var>
+				<var>S122 extended Types</var>
+			</eq>
+		</rule>
+		<rule>
+			<eq>
+				<var>S1112 GModel Extension / EMF</var>
+				<var>S132 SourceModel extends GModel</var>
+			</eq>
+		</rule>
+		<rule>
+			<eq>
+				<var>S1112 GModel Extension / EMF</var>
+				<var>S22 JSON</var>
+			</eq>
+		</rule>
+		<rule>
+			<eq>
+				<var>S1112 GModel Extension / EMF</var>
+				<var>C1 Metamodel Extension</var>
+			</eq>
+		</rule>
+	</constraints>
 </featureModel>
