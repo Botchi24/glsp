@@ -14,7 +14,7 @@
 		<and abstract="true" mandatory="true" name="glspFeatures">
 			<and abstract="true" mandatory="true" name="S">
 				<and abstract="true" mandatory="true" name="S1 Metamodel Extension">
-					<graphics key="collapsed" value="true"/>
+					<graphics key="collapsed" value="false"/>
 					<alt abstract="true" mandatory="true" name="S11 SourceModel">
 						<alt abstract="true" name="S111 Types">
 							<feature abstract="true" name="S1111 Java Classes / EMF"/>
@@ -49,10 +49,10 @@
 					</alt>
 				</and>
 				<alt abstract="true" mandatory="true" name="S2 load Input File">
-					<graphics key="collapsed" value="true"/>
+					<graphics key="collapsed" value="false"/>
 					<feature name="S21 glsp.server.emf.notation.EMFNotationSourceModelStorage">
 						<description>
-							load elements with EMFNotationSourceModelStorage.loadSemanticModel&#13;
+							load elements with EMFNotationSourceModelStorage.loadSemanticModel
 							load position and size with EMFNotationSourceModelStorage.loadNotationModel
 						</description>
 					</feature>
@@ -60,46 +60,52 @@
 				</alt>
 				<alt abstract="true" mandatory="true" name="S3 Element Creation">
 					<graphics key="collapsed" value="false"/>
-					<feature abstract="true" name="S31 override glsp.server.operations.OperationHandler.createCommand"/>
-					<feature abstract="true" name="S32 implement utils.Builder"/>
+					<feature name="S31 override glsp.server.operations.OperationHandler.createCommand"/>
+					<feature name="S32 implement utils.Builder"/>
 				</alt>
-				<and abstract="true" name="Element Deletion">
+				<and abstract="true" name="S4 Element Deletion">
 					<graphics key="collapsed" value="false"/>
 					<feature abstract="true" mandatory="true" name="remove element"/>
 					<feature abstract="true" mandatory="true" name="remove shape"/>
 				</and>
-				<feature abstract="true" name="Element Editing"/>
-				<feature abstract="true" name="Element Validation"/>
-				<feature abstract="true" name="Model Layout"/>
-				<and abstract="true" name="Contexts">
-					<graphics key="collapsed" value="true"/>
+				<feature abstract="true" name="S5 Element Editing"/>
+				<feature abstract="true" name="S6 Element Validation"/>
+				<feature abstract="true" name="S7 Model Layout"/>
+				<and abstract="true" name="S8 Contexts">
+					<graphics key="collapsed" value="false"/>
 					<feature abstract="true" name="Context Menu"/>
 					<feature abstract="true" name="Command Palette"/>
 					<feature abstract="true" name="Tool Palette"/>
 				</and>
 			</and>
 			<and abstract="true" mandatory="true" name="C">
-				<graphics key="collapsed" value="true"/>
-				<and abstract="true" mandatory="true" name="Metamodel Extension for Client">
-					<and abstract="true" mandatory="true" name="SourceModel for Client">
-						<feature mandatory="true" name="Model.ts"/>
-						<and abstract="true" mandatory="true" name="extend ShapeModel Nodes">
-							<feature mandatory="true" name="eclipse-glsp/client"/>
-						</and>
+				<graphics key="collapsed" value="false"/>
+				<and abstract="true" name="C1 Metamodel Extension">
+					<and abstract="true" mandatory="true" name="C11 SourceModel">
+						<feature mandatory="true" name="C111 Model.ts"/>
+						<feature mandatory="true" name="C112 eclipse-glsp/client"/>
 					</and>
-					<and abstract="true" mandatory="true" name="ModelTypes for Client">
-						<feature mandatory="true" name="diagram-module.ts"/>
-						<feature abstract="true" mandatory="true" name="map to SourceModel Elements"/>
-						<and abstract="true" mandatory="true" name="map to ShapeModel Views">
-							<feature mandatory="true" name="eclipse-glsp/client/views"/>
+					<and abstract="true" mandatory="true" name="C12 ModelTypes">
+						<feature mandatory="true" name="C121 diagram-module.ts"/>
+						<and abstract="true" mandatory="true" name="C122 Mapping to SourceModel Elements">
+							<feature name="C1221 eclipse-glsp/client"/>
+							<feature name="C1222 Model.ts"/>
+						</and>
+						<and abstract="true" mandatory="true" name="C123 Mapping to ShapeModel Views">
+							<feature name="C1231 eclipse-glsp/client/views"/>
+							<feature name="C1232 views.tsx"/>
 						</and>
 					</and>
 				</and>
-				<alt abstract="true" name="Client View Port">
+				<alt abstract="true" name="C2 Client View Port">
 					<feature abstract="true" name="Center"/>
 					<feature abstract="true" name="Fit to Screen"/>
 				</alt>
-				<feature abstract="true" name="Client Status Notification"/>
+				<feature abstract="true" name="C3 Client Status Notification"/>
+				<feature abstract="true" name="C4 Element Editing"/>
+				<feature abstract="true" name="C5 Element Validation"/>
+				<feature abstract="true" name="C6 Model Layout"/>
+				<feature abstract="true" name="C7 Contexts"/>
 			</and>
 			<and abstract="true" name="?">
 				<graphics key="collapsed" value="true"/>
