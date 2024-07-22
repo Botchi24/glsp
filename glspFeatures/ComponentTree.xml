@@ -16,10 +16,10 @@
 				<and abstract="true" mandatory="true" name="S1 Metamodel Extension">
 					<graphics key="collapsed" value="false"/>
 					<alt abstract="true" mandatory="true" name="S11 SourceModel">
-						<alt abstract="true" name="S111 Types">
-							<feature abstract="true" name="S1111 Java Classes / EMF"/>
-							<feature abstract="true" name="S1112 GModel Extension / EMF"/>
-							<feature abstract="true" name="S1113 other SourceModel"/>
+						<alt abstract="true" name="S111 SourceModelStorage">
+							<feature name="S1111 glsp.server.emf.notation.EMFNotationSourceModelStorage"/>
+							<feature name="S1112 glsp.server.gmodel.GModelStorage"/>
+							<feature name="S1113 other SourceModel"/>
 						</alt>
 						<feature name="S112 ModelPackage + ModelFactory"/>
 						<alt abstract="true" name="S113 Integration">

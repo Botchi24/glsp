@@ -17,9 +17,9 @@
 					<graphics key="collapsed" value="false"/>
 					<and abstract="true" mandatory="true" name="S11 SourceModel">
 						<graphics key="collapsed" value="false"/>
-						<alt abstract="true" mandatory="true" name="S111 Types">
-							<feature abstract="true" name="S1111 Java Classes / EMF"/>
-							<feature abstract="true" name="S1112 GModel Extension / EMF"/>
+						<alt abstract="true" mandatory="true" name="S111 SourceModelStorage">
+							<feature abstract="true" name="S1111 EMFNotationSourceModelStorage"/>
+							<feature abstract="true" name="S1112 GModelStorage"/>
 							<feature abstract="true" name="S1113 other SourceModel"/>
 						</alt>
 						<feature abstract="true" mandatory="true" name="S112 Generation"/>
@@ -121,55 +121,55 @@
 	<constraints>
 		<rule>
 			<eq>
-				<var>S1111 Java Classes / EMF</var>
+				<var>S1111 EMFNotationSourceModelStorage</var>
 				<var>S11121 Java Classes</var>
 			</eq>
 		</rule>
 		<rule>
 			<eq>
-				<var>S1111 Java Classes / EMF</var>
+				<var>S1111 EMFNotationSourceModelStorage</var>
 				<var>S121 DefaultTypes</var>
 			</eq>
 		</rule>
 		<rule>
 			<eq>
-				<var>S1111 Java Classes / EMF</var>
+				<var>S1111 EMFNotationSourceModelStorage</var>
 				<var>S131 transform SourceModel</var>
 			</eq>
 		</rule>
 		<rule>
 			<eq>
-				<var>S1111 Java Classes / EMF</var>
+				<var>S1111 EMFNotationSourceModelStorage</var>
 				<var>S21 XMI</var>
 			</eq>
 		</rule>
 		<rule>
 			<eq>
-				<var>S1112 GModel Extension / EMF</var>
+				<var>S1112 GModelStorage</var>
 				<var>S11122 extend GModel</var>
 			</eq>
 		</rule>
 		<rule>
 			<eq>
-				<var>S1112 GModel Extension / EMF</var>
+				<var>S1112 GModelStorage</var>
 				<var>S122 extended Types</var>
 			</eq>
 		</rule>
 		<rule>
 			<eq>
-				<var>S1112 GModel Extension / EMF</var>
+				<var>S1112 GModelStorage</var>
 				<var>S132 SourceModel extends GModel</var>
 			</eq>
 		</rule>
 		<rule>
 			<eq>
-				<var>S1112 GModel Extension / EMF</var>
+				<var>S1112 GModelStorage</var>
 				<var>S22 JSON</var>
 			</eq>
 		</rule>
 		<rule>
 			<eq>
-				<var>S1112 GModel Extension / EMF</var>
+				<var>S1112 GModelStorage</var>
 				<var>C1 Metamodel Extension</var>
 			</eq>
 		</rule>
