@@ -1,0 +1,10 @@
+StateMachine
+State
+Transition
+Trigger
+Guard
+Action
+Expression
+InitialState
+FinalState
+NormalState
