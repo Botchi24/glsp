@@ -1,0 +1,15 @@
+pre{
+	"Start creating Metamodel Specific Feature Tree!".println();
+}
+
+post {
+	"Finished creating Metamodel Specific Feature Tree!".println();
+}
+
+rule FeatureTreeToMetamodelSpecificFeatureTree
+	transform aStateMachine : source!StateMachine {
+
+	template : "template-statemachine.egl"
+
+	target : "../src-gen/" + aStateMachine.name.normalize(true) + ".txt"
+}

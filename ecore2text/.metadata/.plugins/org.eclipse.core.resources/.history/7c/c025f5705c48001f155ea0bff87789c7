@@ -1,0 +1,8 @@
+pre{
+	"Start creating Metamodel Specific Feature Tree!".println();
+}
+
+post {
+	"Finished creating Metamodel Specific Feature Tree!".println();
+}
+
