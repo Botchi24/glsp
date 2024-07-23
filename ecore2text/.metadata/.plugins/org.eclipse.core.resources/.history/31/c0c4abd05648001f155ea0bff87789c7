@@ -1,0 +1,8 @@
+pre{
+	"Start creating Java code!".println();
+}
+
+post {
+	"Finished creating Java code!".println();
+}
+

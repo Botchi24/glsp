@@ -1,0 +1,15 @@
+pre{
+	"Start!".println();
+}
+
+post {
+	"Finished!".println();
+}
+
+rule FeatureTreeToMetamodelSpecificFeatureTree
+	transform ecore : source!EPackage {
+
+	template : "template-ecore.egl"
+
+	target : "../src-gen/output.txt"
+}
