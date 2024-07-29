@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="autolayoutconstraints" value="false"/>
+		<graphics key="legendautolayout" value="true"/>
+		<graphics key="showconstraints" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="vertical"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="4"/>
+	</properties>
+	<struct>
+
+		<feature name="S31 use Command_StateMachine"/>
+		<feature name="S31 use Command_Transition"/>
+		<feature name="S31 use Command_Trigger"/>
+		<feature name="S31 use Command_Guard"/>
+		<feature name="S31 use Command_Action"/>
+		<feature name="S31 use Command_InitialState"/>
+		<feature name="S31 use Command_FinalState"/>
+		<feature name="S31 use Command_NormalState"/>
+		<feature name="S32 use Builder_StateMachine"/>
+		<feature name="S32 use Builder_Transition"/>
+		<feature name="S32 use Builder_Trigger"/>
+		<feature name="S32 use Builder_Guard"/>
+		<feature name="S32 use Builder_Action"/>
+		<feature name="S32 use Builder_InitialState"/>
+		<feature name="S32 use Builder_FinalState"/>
+		<feature name="S32 use Builder_NormalState"/>
+		<feature name="S4 Element Deletion_StateMachine"/>
+		<feature name="S4 Element Deletion_Transition"/>
+		<feature name="S4 Element Deletion_Trigger"/>
+		<feature name="S4 Element Deletion_Guard"/>
+		<feature name="S4 Element Deletion_Action"/>
+		<feature name="S4 Element Deletion_InitialState"/>
+		<feature name="S4 Element Deletion_FinalState"/>
+		<feature name="S4 Element Deletion_NormalState"/>
+		<feature name="S5 Element Editing_StateMachine"/>
+		<feature name="S5 Element Editing_Transition"/>
+		<feature name="S5 Element Editing_Trigger"/>
+		<feature name="S5 Element Editing_Guard"/>
+		<feature name="S5 Element Editing_Action"/>
+		<feature name="S5 Element Editing_InitialState"/>
+		<feature name="S5 Element Editing_FinalState"/>
+		<feature name="S5 Element Editing_NormalState"/>
+		<feature name="C1232 extended Views_StateMachine"/>
+		<feature name="C1232 extended Views_Transition"/>
+		<feature name="C1232 extended Views_Trigger"/>
+		<feature name="C1232 extended Views_Guard"/>
+		<feature name="C1232 extended Views_Action"/>
+		<feature name="C1232 extended Views_InitialState"/>
+		<feature name="C1232 extended Views_FinalState"/>
+		<feature name="C1232 extended Views_NormalState"/>
+		<feature name="C4 Element Editing_StateMachine"/>
+		<feature name="C4 Element Editing_Transition"/>
+		<feature name="C4 Element Editing_Trigger"/>
+		<feature name="C4 Element Editing_Guard"/>
+		<feature name="C4 Element Editing_Action"/>
+		<feature name="C4 Element Editing_InitialState"/>
+		<feature name="C4 Element Editing_FinalState"/>
+		<feature name="C4 Element Editing_NormalState"/>
+
+	</struct>
+</featureModel>
