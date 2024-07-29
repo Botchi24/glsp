@@ -1,3 +1,13 @@
 [%for (c : EClassifier in ecore.eClassifiers){%]
+	[%if(not c.abstract){%]
 [%=c.name%]
+	[%}%]
+[%}%]
+
+[%for ( f in _featureTree.children){%]
+[%=f.name%]
+[%}%]
+
+[%for ( f in featureTree!t_feature.all()){%]
+[%=f.c_feature%]
 [%}%]

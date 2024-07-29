@@ -1,15 +1,65 @@
 pre{
 	"Start!".println();
+	var ft = featureTree.root;
+	var e = ecoreModel!EClassifier.all.select(c|not c.abstract).collect(c|c.name).println();
+	//var p = featureTree!t_feature.all.collect(c|c.getParentNode().a_name).println();
+	var firstParent = featureTree!t_feature.all.first.getParentNode().a_name.println();
+	var parentTest = ft.children.collect(c|c.getParentNode().name).println();
 }
 
 post {
 	"Finished!".println();
 }
 
-rule FeatureTreeToMetamodelSpecificFeatureTree
-	transform ecore : source!EPackage {
+rule MetamodelTest
+	transform ecore : ecoreModel!EPackage {
+
+	parameters : Map {
+	"_featureTree" = ft
+	}
 
 	template : "template-ecore.egl"
 
-	target : "../src-gen/output.txt"
+	target : "../src-gen/modelElements.txt"
+}
+
+rule FeatureTest
+	transform feature : featureTree!t_feature {
+	
+	guard : feature.getParentNode().a_hidden != "true" and feature.a_hidden != "true"
+	
+	template : "template-feature.egl"
+
+	target : "../src-gen/_S_"+ feature.a_name +".txt"
+}
+
+/*rule SourceXMLToMetamodelSpecificXML
+	transform f1 : featureTree!t_feature 
+	
+	to f2 : feature {
+	
+	if(f1.name[0] == "E") {
+		for (element : e) {
+			
+		}
+	} else {
+		f2.name = f1.name;
+	}
+		
+}*/
+	
+
+rule FeatureTreeToMetamodelSpecificFeatureTree
+	transform feature : featureTree!t_feature {
+
+	parameters : Map {
+		"_featureTree" = ft,
+		"_ecore" = e
+		}
+
+	//guard : feature.getParentNode().a_hidden != "true" and feature.a_hidden != "true" and feature.a_name.startsWith("E")
+	
+	template : "template-metamodelSpecificFeatureTree.egl"
+	
+	target : "../src-gen/MetamodelSpecificFeatureTree.xml"
 }
