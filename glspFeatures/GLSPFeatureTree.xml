@@ -91,8 +91,8 @@
 				<feature abstract="true" name="C6 Model Layout"/>
 				<feature abstract="true" name="C7 Contexts"/>
 			</and>
-			<and abstract="true" name="?">
-				<graphics key="collapsed" value="true"/>
+			<and abstract="true" hidden="true" name="Unknown">
+				<graphics key="collapsed" value="false"/>
 				<feature abstract="true" name="Model Saving"/>
 				<feature abstract="true" name="Model SVG Export"/>
 				<alt abstract="true" name="Model Edit Modes">
@@ -111,10 +111,10 @@
 				<feature abstract="true" name="Node Change Container"/>
 				<feature abstract="true" name="Edge Reconnect"/>
 				<feature abstract="true" name="Edge Routing Points"/>
-				<feature abstract="true" name="Ghost Elements ???"/>
+				<feature abstract="true" name="Ghost Elements"/>
 				<feature abstract="true" name="Element Text Editing"/>
 				<feature abstract="true" name="Clipboard"/>
-				<feature abstract="true" name="Undo / Redo"/>
+				<feature abstract="true" name="Undo Redo"/>
 			</and>
 		</and>
 	</struct>
