@@ -1,0 +1,25 @@
+pre {
+	//var metamodelelements = ecoreModel!EClassifier.all.select(c|not c.abstract).collect(c|c.name).println();
+}
+
+rule GLSPFeatureTreeToMetamodelSpecificFeatureTree
+	transform s : source!t_featureModel
+	to t : target!t_featureModel {
+	
+		("Start transforming GLSPFeatureTree into a metamodel specific feature tree!").println();
+		
+		// build properties, struct, constraints
+		
+		//for (c in s.children) {
+		//	t.appendChild(c);
+		//}
+		
+		//s.println();
+		
+		//t = s;
+		
+		//t.root = s.root;
+		
+		"Transformation finished!".println();
+	
+}
