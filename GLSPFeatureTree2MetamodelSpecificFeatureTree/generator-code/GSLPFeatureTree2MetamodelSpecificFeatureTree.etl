@@ -1,5 +1,5 @@
 pre {
-	//var metamodelelements = ecoreModel!EClassifier.all.select(c|not c.abstract).collect(c|c.name).println();
+	var metamodelelements = ecoreModel!EClassifier.all.select(c|not c.abstract).collect(c|c.name).println();
 }
 
 rule GLSPFeatureTreeToMetamodelSpecificFeatureTree
@@ -10,15 +10,19 @@ rule GLSPFeatureTreeToMetamodelSpecificFeatureTree
 		
 		// build properties, struct, constraints
 		
-		//for (c in s.children) {
-		//	t.appendChild(c);
-		//}
+		/*for (c1 in s.children) {
+			var c2 = new Node;
+			c2.name = c1.name;
+			//t.appendChild(c2);
+			c1.name.println();
+			c2.name.println();
+		}*/
 		
-		//s.println();
+		s.name.println();
 		
-		//t = s;
+		t.name.println();
 		
-		//t.root = s.root;
+		//t.name = s.name; //new source!t_featureModel;
 		
 		"Transformation finished!".println();
 	
