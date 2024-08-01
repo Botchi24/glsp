@@ -1,2 +1,132 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-
+<featureModel>
+  <properties>
+    <graphics key="autolayoutconstraints" value="false"/>
+    <graphics key="legendautolayout" value="true"/>
+    <graphics key="showconstraints" value="true"/>
+    <graphics key="showshortnames" value="false"/>
+    <graphics key="layout" value="vertical"/>
+    <graphics key="showcollapsedconstraints" value="true"/>
+    <graphics key="legendhidden" value="false"/>
+    <graphics key="layoutalgorithm" value="4"/>
+  </properties>
+  <struct>
+    <and abstract="true" hidden="" mandatory="true" name="glspFeatures">
+      <and abstract="true" hidden="" mandatory="true" name="S">
+        <and abstract="true" hidden="" mandatory="true" name="S1 Metamodel Extension">
+          <graphics key="collapsed" value="false"/>
+          <and abstract="true" hidden="" mandatory="true" name="S11 SourceModel">
+            <graphics key="collapsed" value="false"/>
+            <alt abstract="true" hidden="" mandatory="true" name="S111 SourceModelStorage">
+              <feature abstract="true" hidden="" mandatory="" name="S1111 EMFNotationSourceModelStorage"/>
+              <feature abstract="true" hidden="" mandatory="" name="S1112 GModelStorage"/>
+              <feature abstract="true" hidden="" mandatory="" name="S1113 other SourceModel"/>
+            </alt>
+            <feature abstract="true" hidden="" mandatory="true" name="S112 Generation"/>
+            <alt abstract="true" hidden="" mandatory="true" name="S113 Integration">
+              <feature abstract="true" hidden="" mandatory="" name="S11121 Java Classes"/>
+              <feature abstract="true" hidden="" mandatory="" name="S11122 extend GModel"/>
+            </alt>
+          </and>
+          <alt abstract="true" hidden="" mandatory="true" name="S12 ModelTypes">
+            <feature abstract="true" hidden="" mandatory="" name="S121 DefaultTypes"/>
+            <and abstract="true" hidden="" mandatory="" name="S122 extended Types">
+              <feature abstract="true" hidden="" mandatory="true" name="S1221 Definition"/>
+              <feature abstract="true" hidden="" mandatory="true" name="S1222 Mapping"/>
+            </and>
+          </alt>
+          <alt abstract="true" hidden="" mandatory="true" name="S13 GModel Creation">
+            <feature abstract="true" hidden="" mandatory="" name="S131 transform SourceModel"/>
+            <feature abstract="true" hidden="" mandatory="" name="S132 SourceModel extends GModel"/>
+          </alt>
+        </and>
+        <alt abstract="true" hidden="" mandatory="true" name="S2 load Input File">
+          <graphics key="collapsed" value="false"/>
+          <feature abstract="true" hidden="" mandatory="" name="S21 XMI"/>
+          <feature abstract="true" hidden="" mandatory="" name="S22 JSON"/>
+        </alt>
+        <alt abstract="true" hidden="" mandatory="true" name="S3 Element Creation">
+          <graphics key="collapsed" value="false"/>
+          <feature abstract="true" hidden="" mandatory="" name="S31 use Command"/>
+          <feature abstract="true" hidden="" mandatory="" name="S32 use Builder"/>
+        </alt>
+        <feature abstract="true" hidden="" mandatory="" name="S4 Element Deletion"/>
+        <feature abstract="true" hidden="" mandatory="" name="S5 Element Editing"/>
+        <feature abstract="true" hidden="" mandatory="" name="S6 Element Validation"/>
+        <feature abstract="true" hidden="" mandatory="" name="S7 Model Layout"/>
+        <and abstract="true" hidden="" mandatory="" name="S8 Contexts">
+          <graphics key="collapsed" value="false"/>
+          <feature abstract="true" hidden="" mandatory="" name="Context Menu"/>
+          <feature abstract="true" hidden="" mandatory="" name="Command Palette"/>
+          <feature abstract="true" hidden="" mandatory="" name="Tool Palette"/>
+        </and>
+      </and>
+      <and abstract="true" hidden="" mandatory="true" name="C">
+        <graphics key="collapsed" value="false"/>
+        <and abstract="true" hidden="" mandatory="" name="C1 Metamodel Extension">
+          <and abstract="true" hidden="" mandatory="true" name="C11 SourceModel">
+            <feature abstract="true" hidden="" mandatory="true" name="C111 Definition"/>
+            <feature abstract="true" hidden="" mandatory="true" name="C112 Mapping to ShapeModel Nodes"/>
+          </and>
+          <and abstract="true" hidden="" mandatory="true" name="C12 ModelTypes">
+            <feature abstract="true" hidden="" mandatory="true" name="C121 Definition"/>
+            <and abstract="true" hidden="" mandatory="true" name="C122 Mapping to SourceModel Elements">
+              <feature abstract="true" hidden="" mandatory="" name="C1221 GModel Elements"/>
+              <feature abstract="true" hidden="" mandatory="" name="C1222 extended Elements"/>
+            </and>
+            <and abstract="true" hidden="" mandatory="true" name="C123 Mapping to ShapeModel Views">
+              <feature abstract="true" hidden="" mandatory="" name="C1231 Default Views"/>
+              <feature abstract="true" hidden="" mandatory="" name="C1232 extended Views"/>
+            </and>
+          </and>
+        </and>
+        <alt abstract="true" hidden="" mandatory="" name="C2 Client View Port">
+          <graphics key="collapsed" value="false"/>
+          <feature abstract="true" hidden="" mandatory="" name="Center"/>
+          <feature abstract="true" hidden="" mandatory="" name="Fit to Screen"/>
+        </alt>
+        <feature abstract="true" hidden="" mandatory="" name="C3 Client Status Notification"/>
+        <feature abstract="true" hidden="" mandatory="" name="C4 Element Editing"/>
+        <feature abstract="true" hidden="" mandatory="" name="C5 Element Validation"/>
+        <feature abstract="true" hidden="" mandatory="" name="C6 Model Layout"/>
+        <feature abstract="true" hidden="" mandatory="" name="C7 Contexts"/>
+      </and>
+      <and abstract="true" hidden="true" mandatory="" name="Unknown">
+        <graphics key="collapsed" value="false"/>
+        <feature abstract="true" hidden="" mandatory="" name="Model Saving"/>
+        <feature abstract="true" hidden="" mandatory="" name="Model SVG Export"/>
+        <alt abstract="true" hidden="" mandatory="" name="Model Edit Modes">
+          <graphics key="collapsed" value="false"/>
+          <feature abstract="true" hidden="" mandatory="" name="Edit"/>
+          <feature abstract="true" hidden="" mandatory="" name="Read-only"/>
+        </alt>
+        <feature abstract="true" hidden="" mandatory="" name="Element Selection"/>
+        <feature abstract="true" hidden="" mandatory="" name="Element Hover"/>
+        <feature abstract="true" hidden="" mandatory="" name="Element Type Hints"/>
+        <and abstract="true" hidden="" mandatory="" name="Node Change Bounds">
+          <graphics key="collapsed" value="false"/>
+          <feature abstract="true" hidden="" mandatory="" name="Move"/>
+          <feature abstract="true" hidden="" mandatory="" name="Resize"/>
+        </and>
+        <feature abstract="true" hidden="" mandatory="" name="Node Change Container"/>
+        <feature abstract="true" hidden="" mandatory="" name="Edge Reconnect"/>
+        <feature abstract="true" hidden="" mandatory="" name="Edge Routing Points"/>
+        <feature abstract="true" hidden="" mandatory="" name="Ghost Elements"/>
+        <feature abstract="true" hidden="" mandatory="" name="Element Text Editing"/>
+        <feature abstract="true" hidden="" mandatory="" name="Clipboard"/>
+        <feature abstract="true" hidden="" mandatory="" name="Undo Redo"/>
+      </and>
+    </and>
+  </struct>
+  <constraints>
+    <rule/>
+    <rule/>
+    <rule/>
+    <rule/>
+    <rule/>
+    <rule/>
+    <rule/>
+    <rule/>
+    <rule/>
+  </constraints>
+</featureModel>
