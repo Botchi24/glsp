@@ -116,6 +116,30 @@ rule Rule
 	transform s : source!t_rule
 	to t : target!t_rule {
 	
+		for (c in s.children) {
+			//c.equivalent().println();
+			t.appendChild(c.equivalent());
+		}
 		
+}
+
+@lazy
+rule Eq
+	transform s : source!t_eq
+	to t : target!t_eq {
+	
+		for (c in s.children) {
+			//c.equivalent().println();
+			t.appendChild(c.equivalent());
+		}
+		
+}
+
+@lazy
+rule Var
+	transform s : source!t_var
+	to t : target!t_var {
+	
+		t.text = s.text;
 		
 }
