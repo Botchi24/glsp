@@ -47,18 +47,18 @@
         </alt>
         <alt abstract="true" hidden="" mandatory="true" name="S3 Element Creation">
           <graphics key="collapsed" value="false"/>
-          <feature abstract="true" hidden="" mandatory="" name="S31 use Command"/>
-          <feature abstract="true" hidden="" mandatory="" name="S32 use Builder"/>
+          <feature abstract="true" hidden="" mandatory="" name="E_S31 use Command"/>
+          <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder"/>
         </alt>
-        <feature abstract="true" hidden="" mandatory="" name="S4 Element Deletion"/>
-        <feature abstract="true" hidden="" mandatory="" name="S5 Element Editing"/>
-        <feature abstract="true" hidden="" mandatory="" name="S6 Element Validation"/>
+        <feature abstract="true" hidden="" mandatory="" name="E_S4 Element Deletion"/>
+        <feature abstract="true" hidden="" mandatory="" name="E_S5 Element Editing"/>
+        <feature abstract="true" hidden="true" mandatory="" name="E_S6 Element Validation"/>
         <feature abstract="true" hidden="" mandatory="" name="S7 Model Layout"/>
         <and abstract="true" hidden="" mandatory="" name="S8 Contexts">
           <graphics key="collapsed" value="false"/>
-          <feature abstract="true" hidden="" mandatory="" name="Context Menu"/>
-          <feature abstract="true" hidden="" mandatory="" name="Command Palette"/>
-          <feature abstract="true" hidden="" mandatory="" name="Tool Palette"/>
+          <feature abstract="true" hidden="" mandatory="" name="S81 Context Menu"/>
+          <feature abstract="true" hidden="" mandatory="" name="S82 Command Palette"/>
+          <feature abstract="true" hidden="" mandatory="" name="S83 Tool Palette"/>
         </and>
       </and>
       <and abstract="true" hidden="" mandatory="true" name="C">
@@ -76,26 +76,26 @@
             </and>
             <and abstract="true" hidden="" mandatory="true" name="C123 Mapping to ShapeModel Views">
               <feature abstract="true" hidden="" mandatory="" name="C1231 Default Views"/>
-              <feature abstract="true" hidden="" mandatory="" name="C1232 extended Views"/>
+              <feature abstract="true" hidden="" mandatory="" name="E_C1232 extended Views"/>
             </and>
           </and>
         </and>
-        <alt abstract="true" hidden="" mandatory="" name="C2 Client View Port">
+        <alt abstract="true" hidden="true" mandatory="" name="C2 Client View Port">
           <graphics key="collapsed" value="false"/>
           <feature abstract="true" hidden="" mandatory="" name="Center"/>
           <feature abstract="true" hidden="" mandatory="" name="Fit to Screen"/>
         </alt>
-        <feature abstract="true" hidden="" mandatory="" name="C3 Client Status Notification"/>
-        <feature abstract="true" hidden="" mandatory="" name="C4 Element Editing"/>
-        <feature abstract="true" hidden="" mandatory="" name="C5 Element Validation"/>
+        <feature abstract="true" hidden="true" mandatory="" name="C3 Client Status Notification"/>
+        <feature abstract="true" hidden="" mandatory="" name="E_C4 Element Editing"/>
+        <feature abstract="true" hidden="true" mandatory="" name="E_C5 Element Validation"/>
         <feature abstract="true" hidden="" mandatory="" name="C6 Model Layout"/>
-        <feature abstract="true" hidden="" mandatory="" name="C7 Contexts"/>
+        <feature abstract="true" hidden="true" mandatory="" name="C7 Contexts"/>
       </and>
       <and abstract="true" hidden="true" mandatory="" name="Unknown">
         <graphics key="collapsed" value="false"/>
         <feature abstract="true" hidden="" mandatory="" name="Model Saving"/>
         <feature abstract="true" hidden="" mandatory="" name="Model SVG Export"/>
-        <alt abstract="true" hidden="" mandatory="" name="Model Edit Modes">
+        <alt abstract="true" hidden="true" mandatory="" name="Model Edit Modes">
           <graphics key="collapsed" value="false"/>
           <feature abstract="true" hidden="" mandatory="" name="Edit"/>
           <feature abstract="true" hidden="" mandatory="" name="Read-only"/>
@@ -103,7 +103,7 @@
         <feature abstract="true" hidden="" mandatory="" name="Element Selection"/>
         <feature abstract="true" hidden="" mandatory="" name="Element Hover"/>
         <feature abstract="true" hidden="" mandatory="" name="Element Type Hints"/>
-        <and abstract="true" hidden="" mandatory="" name="Node Change Bounds">
+        <and abstract="true" hidden="true" mandatory="" name="Node Change Bounds">
           <graphics key="collapsed" value="false"/>
           <feature abstract="true" hidden="" mandatory="" name="Move"/>
           <feature abstract="true" hidden="" mandatory="" name="Resize"/>
