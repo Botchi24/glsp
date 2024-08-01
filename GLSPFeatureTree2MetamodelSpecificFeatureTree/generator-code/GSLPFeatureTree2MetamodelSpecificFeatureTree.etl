@@ -2,28 +2,120 @@ pre {
 	var metamodelelements = ecoreModel!EClassifier.all.select(c|not c.abstract).collect(c|c.name).println();
 }
 
-rule GLSPFeatureTreeToMetamodelSpecificFeatureTree
+rule FeatureModel
 	transform s : source!t_featureModel
 	to t : target!t_featureModel {
 	
 		("Start transforming GLSPFeatureTree into a metamodel specific feature tree!").println();
 		
-		// build properties, struct, constraints
+		target.root = t;
 		
-		/*for (c1 in s.children) {
-			var c2 = new Node;
-			c2.name = c1.name;
-			//t.appendChild(c2);
-			c1.name.println();
-			c2.name.println();
-		}*/
-		
-		s.name.println();
-		
-		t.name.println();
-		
-		//t.name = s.name; //new source!t_featureModel;
+		for (c in s.children) {
+			//c.equivalent().println();
+			t.appendChild(c.equivalent());
+		}
 		
 		"Transformation finished!".println();
+		
+}
+
+@lazy
+rule Properties
+	transform s : source!t_properties
+	to t : target!t_properties {
+		
+		for (c in s.children) {
+			//c.equivalent().println();
+			t.appendChild(c.equivalent());
+		}
 	
+}
+
+@lazy
+rule Struct
+	transform s : source!t_struct
+	to t : target!t_struct {
+	
+		for (c in s.children) {
+			//c.equivalent().println();
+			t.appendChild(c.equivalent());
+		}
+	
+}
+
+@lazy
+rule Constraints
+	transform s : source!t_constraints
+	to t : target!t_constraints {
+	
+		for (c in s.children) {
+			//c.equivalent().println();
+			t.appendChild(c.equivalent());
+		}
+	
+}
+
+@lazy
+rule Graphics
+	transform s : source!t_graphics
+	to t : target!t_graphics {
+	
+		t.a_key = s.a_key;
+		t.a_value = s.a_value;
+	
+}
+
+@lazy
+rule And
+	transform s : source!t_and
+	to t : target!t_and {
+	
+		t.a_abstract = s.a_abstract;
+		t.a_mandatory = s.a_mandatory;
+		t.a_name = s.a_name;
+		t.a_hidden = s.a_hidden;
+		
+		for (c in s.children) {
+			//c.equivalent().println();
+			t.appendChild(c.equivalent());
+		}
+	
+}
+
+@lazy
+rule Alt
+	transform s : source!t_alt
+	to t : target!t_alt {
+	
+		t.a_abstract = s.a_abstract;
+		t.a_mandatory = s.a_mandatory;
+		t.a_name = s.a_name;
+		t.a_hidden = s.a_hidden;
+		
+		for (c in s.children) {
+			//c.equivalent().println();
+			t.appendChild(c.equivalent());
+		}
+	
+}
+
+@lazy
+rule Feature
+	transform s : source!t_feature
+	to t : target!t_feature {
+	
+		t.a_abstract = s.a_abstract;
+		t.a_mandatory = s.a_mandatory;
+		t.a_name = s.a_name;
+		t.a_hidden = s.a_hidden;
+	
+}
+
+@lazy
+rule Rule
+	transform s : source!t_rule
+	to t : target!t_rule {
+	
+		
+		
 }
