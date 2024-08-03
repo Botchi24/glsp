@@ -77,7 +77,8 @@ rule And
 		
 		for (c in s.children) {
 			//c.equivalent().println();
-			t.appendChild(c.equivalent());
+			//t.appendChild(c.equivalent());
+			t.processAndFeature(c);
 		}
 	
 }
@@ -142,4 +143,17 @@ rule Var
 	
 		t.text = s.text;
 		
+}
+
+function target!t_and processAndFeature(oldFeature : source!t_feature) {
+
+	/*for (e in metamodelelements) {
+		var feature = new t_feature;
+		feature.a_abstract = oldFeature.a_abstract;
+		feature.a_mandatory = oldFeature.a_mandatory;
+		feature.a_name = oldFeature.a_name + "_" + e;
+		feature.a_hidden = oldFeature.a_hidden;
+		self.appendChild(feature);
+	}*/
+
 }
