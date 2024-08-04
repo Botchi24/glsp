@@ -47,8 +47,22 @@
         </alt>
         <alt abstract="true" hidden="" mandatory="true" name="S3 Element Creation">
           <graphics key="collapsed" value="false"/>
-          <feature abstract="true" hidden="" mandatory="" name="E_S31 use Command"/>
-          <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder"/>
+          <feature abstract="true" hidden="" mandatory="" name="E_S31 use Command_StateMachine"/>
+          <feature abstract="true" hidden="" mandatory="" name="E_S31 use Command_Transition"/>
+          <feature abstract="true" hidden="" mandatory="" name="E_S31 use Command_Trigger"/>
+          <feature abstract="true" hidden="" mandatory="" name="E_S31 use Command_Guard"/>
+          <feature abstract="true" hidden="" mandatory="" name="E_S31 use Command_Action"/>
+          <feature abstract="true" hidden="" mandatory="" name="E_S31 use Command_InitialState"/>
+          <feature abstract="true" hidden="" mandatory="" name="E_S31 use Command_FinalState"/>
+          <feature abstract="true" hidden="" mandatory="" name="E_S31 use Command_NormalState"/>
+          <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder_StateMachine"/>
+          <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder_Transition"/>
+          <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder_Trigger"/>
+          <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder_Guard"/>
+          <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder_Action"/>
+          <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder_InitialState"/>
+          <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder_FinalState"/>
+          <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder_NormalState"/>
         </alt>
         <feature abstract="true" hidden="" mandatory="" name="E_S4 Element Deletion_StateMachine"/>
         <feature abstract="true" hidden="" mandatory="" name="E_S4 Element Deletion_Transition"/>
@@ -139,7 +153,14 @@
         <feature abstract="true" hidden="" mandatory="" name="Model SVG Export"/>
         <alt abstract="true" hidden="true" mandatory="" name="Model Edit Modes">
           <graphics key="collapsed" value="false"/>
-          <feature abstract="true" hidden="" mandatory="" name="Edit"/>
+          <feature abstract="true" hidden="" mandatory="" name="Edit_StateMachine"/>
+          <feature abstract="true" hidden="" mandatory="" name="Edit_Transition"/>
+          <feature abstract="true" hidden="" mandatory="" name="Edit_Trigger"/>
+          <feature abstract="true" hidden="" mandatory="" name="Edit_Guard"/>
+          <feature abstract="true" hidden="" mandatory="" name="Edit_Action"/>
+          <feature abstract="true" hidden="" mandatory="" name="Edit_InitialState"/>
+          <feature abstract="true" hidden="" mandatory="" name="Edit_FinalState"/>
+          <feature abstract="true" hidden="" mandatory="" name="Edit_NormalState"/>
           <feature abstract="true" hidden="" mandatory="" name="Read-only"/>
         </alt>
         <feature abstract="true" hidden="" mandatory="" name="Element Selection_StateMachine"/>
