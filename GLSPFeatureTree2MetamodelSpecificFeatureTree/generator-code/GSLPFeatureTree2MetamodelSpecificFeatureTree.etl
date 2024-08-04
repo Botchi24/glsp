@@ -76,9 +76,11 @@ rule And
 		t.a_hidden = s.a_hidden;
 		
 		for (c in s.children) {
-			//c.equivalent().println();
-			//t.appendChild(c.equivalent());
-			t.processAndFeature(c);
+			if (c.isTypeOf(source!t_feature)){
+				t.processAndFeature(c);
+			} else {
+				t.appendChild(c.equivalent());
+			}
 		}
 	
 }
@@ -145,15 +147,19 @@ rule Var
 		
 }
 
-function target!t_and processAndFeature(oldFeature : source!t_feature) {
+function target!t_and processAndFeature(oldFeature : source!t_feature){
 
-	/*for (e in metamodelelements) {
-		var feature = new t_feature;
-		feature.a_abstract = oldFeature.a_abstract;
-		feature.a_mandatory = oldFeature.a_mandatory;
-		feature.a_name = oldFeature.a_name + "_" + e;
-		feature.a_hidden = oldFeature.a_hidden;
-		self.appendChild(feature);
-	}*/
+	if (oldFeature.a_name.startsWith("E")) {
+		for (e in metamodelelements) {
+			var feature = new target!t_feature;
+			feature.a_abstract = oldFeature.a_abstract;
+			feature.a_mandatory = oldFeature.a_mandatory;
+			feature.a_name = oldFeature.a_name + "_" + e;
+			feature.a_hidden = oldFeature.a_hidden;
+			self.appendChild(feature);
+		}
+	} else {
+		self.appendChild(oldFeature.equivalent());
+	}
 
 }
