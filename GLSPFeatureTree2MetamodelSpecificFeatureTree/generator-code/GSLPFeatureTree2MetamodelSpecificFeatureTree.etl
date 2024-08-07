@@ -169,7 +169,7 @@ function target!t_and processAndFeature(oldFeature : source!t_feature){
 
 function target!t_alt processAltFeature(oldFeature : source!t_feature){
 
-	if (oldFeature.a_name.startsWith("E")) {
+	if (oldFeature.a_name.startsWith("E_")) {
 		for (e in metamodelelements) {
 			var feature = new target!t_feature;
 			feature.a_abstract = oldFeature.a_abstract;
