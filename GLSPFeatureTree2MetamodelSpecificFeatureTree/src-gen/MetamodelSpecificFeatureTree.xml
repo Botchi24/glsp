@@ -153,71 +153,22 @@
         <feature abstract="true" hidden="" mandatory="" name="Model SVG Export"/>
         <alt abstract="true" hidden="true" mandatory="" name="Model Edit Modes">
           <graphics key="collapsed" value="false"/>
-          <feature abstract="true" hidden="" mandatory="" name="Edit_StateMachine"/>
-          <feature abstract="true" hidden="" mandatory="" name="Edit_Transition"/>
-          <feature abstract="true" hidden="" mandatory="" name="Edit_Trigger"/>
-          <feature abstract="true" hidden="" mandatory="" name="Edit_Guard"/>
-          <feature abstract="true" hidden="" mandatory="" name="Edit_Action"/>
-          <feature abstract="true" hidden="" mandatory="" name="Edit_InitialState"/>
-          <feature abstract="true" hidden="" mandatory="" name="Edit_FinalState"/>
-          <feature abstract="true" hidden="" mandatory="" name="Edit_NormalState"/>
+          <feature abstract="true" hidden="" mandatory="" name="Edit"/>
           <feature abstract="true" hidden="" mandatory="" name="Read-only"/>
         </alt>
-        <feature abstract="true" hidden="" mandatory="" name="Element Selection_StateMachine"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Selection_Transition"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Selection_Trigger"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Selection_Guard"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Selection_Action"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Selection_InitialState"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Selection_FinalState"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Selection_NormalState"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Hover_StateMachine"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Hover_Transition"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Hover_Trigger"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Hover_Guard"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Hover_Action"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Hover_InitialState"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Hover_FinalState"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Hover_NormalState"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Type Hints_StateMachine"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Type Hints_Transition"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Type Hints_Trigger"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Type Hints_Guard"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Type Hints_Action"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Type Hints_InitialState"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Type Hints_FinalState"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Type Hints_NormalState"/>
+        <feature abstract="true" hidden="" mandatory="" name="Element Selection"/>
+        <feature abstract="true" hidden="" mandatory="" name="Element Hover"/>
+        <feature abstract="true" hidden="" mandatory="" name="Element Type Hints"/>
         <and abstract="true" hidden="true" mandatory="" name="Node Change Bounds">
           <graphics key="collapsed" value="false"/>
           <feature abstract="true" hidden="" mandatory="" name="Move"/>
           <feature abstract="true" hidden="" mandatory="" name="Resize"/>
         </and>
         <feature abstract="true" hidden="" mandatory="" name="Node Change Container"/>
-        <feature abstract="true" hidden="" mandatory="" name="Edge Reconnect_StateMachine"/>
-        <feature abstract="true" hidden="" mandatory="" name="Edge Reconnect_Transition"/>
-        <feature abstract="true" hidden="" mandatory="" name="Edge Reconnect_Trigger"/>
-        <feature abstract="true" hidden="" mandatory="" name="Edge Reconnect_Guard"/>
-        <feature abstract="true" hidden="" mandatory="" name="Edge Reconnect_Action"/>
-        <feature abstract="true" hidden="" mandatory="" name="Edge Reconnect_InitialState"/>
-        <feature abstract="true" hidden="" mandatory="" name="Edge Reconnect_FinalState"/>
-        <feature abstract="true" hidden="" mandatory="" name="Edge Reconnect_NormalState"/>
-        <feature abstract="true" hidden="" mandatory="" name="Edge Routing Points_StateMachine"/>
-        <feature abstract="true" hidden="" mandatory="" name="Edge Routing Points_Transition"/>
-        <feature abstract="true" hidden="" mandatory="" name="Edge Routing Points_Trigger"/>
-        <feature abstract="true" hidden="" mandatory="" name="Edge Routing Points_Guard"/>
-        <feature abstract="true" hidden="" mandatory="" name="Edge Routing Points_Action"/>
-        <feature abstract="true" hidden="" mandatory="" name="Edge Routing Points_InitialState"/>
-        <feature abstract="true" hidden="" mandatory="" name="Edge Routing Points_FinalState"/>
-        <feature abstract="true" hidden="" mandatory="" name="Edge Routing Points_NormalState"/>
+        <feature abstract="true" hidden="" mandatory="" name="Edge Reconnect"/>
+        <feature abstract="true" hidden="" mandatory="" name="Edge Routing Points"/>
         <feature abstract="true" hidden="" mandatory="" name="Ghost Elements"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Text Editing_StateMachine"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Text Editing_Transition"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Text Editing_Trigger"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Text Editing_Guard"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Text Editing_Action"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Text Editing_InitialState"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Text Editing_FinalState"/>
-        <feature abstract="true" hidden="" mandatory="" name="Element Text Editing_NormalState"/>
+        <feature abstract="true" hidden="" mandatory="" name="Element Text Editing"/>
         <feature abstract="true" hidden="" mandatory="" name="Clipboard"/>
         <feature abstract="true" hidden="" mandatory="" name="Undo Redo"/>
       </and>
