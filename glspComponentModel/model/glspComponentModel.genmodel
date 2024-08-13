@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/glspComponentModel/src-gen" creationIcons="false"
+    editDirectory="/glspComponentModel.edit/src-gen" editorDirectory="/glspComponentModel.editor/src-gen"
+    modelPluginID="glspComponentModel" modelName="GlspComponentModel" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="22.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>glspComponentModel.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="GlspComponentModel" disposableProviderFactory="true" ecorePackage="glspComponentModel.ecore#/">
+    <genClasses ecoreClass="glspComponentModel.ecore#//Component"/>
+    <genClasses ecoreClass="glspComponentModel.ecore#//Leaf"/>
+    <genClasses ecoreClass="glspComponentModel.ecore#//Composite">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference glspComponentModel.ecore#//Composite/component"/>
+    </genClasses>
+    <genClasses ecoreClass="glspComponentModel.ecore#//ConcreteComponent"/>
+  </genPackages>
+</genmodel:GenModel>
