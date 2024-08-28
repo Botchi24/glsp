@@ -9,11 +9,23 @@
   <foreignModel>glspComponentModel.ecore</foreignModel>
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="GlspComponentModel" disposableProviderFactory="true" ecorePackage="glspComponentModel.ecore#/">
-    <genClasses ecoreClass="glspComponentModel.ecore#//Component"/>
-    <genClasses ecoreClass="glspComponentModel.ecore#//Leaf"/>
-    <genClasses ecoreClass="glspComponentModel.ecore#//Composite">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference glspComponentModel.ecore#//Composite/component"/>
+    <genClasses ecoreClass="glspComponentModel.ecore#//ServerComponent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute glspComponentModel.ecore#//ServerComponent/name"/>
     </genClasses>
-    <genClasses ecoreClass="glspComponentModel.ecore#//ConcreteComponent"/>
+    <genClasses ecoreClass="glspComponentModel.ecore#//LeafComponent"/>
+    <genClasses ecoreClass="glspComponentModel.ecore#//Package">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference glspComponentModel.ecore#//Package/components"/>
+    </genClasses>
+    <genClasses ecoreClass="glspComponentModel.ecore#//DiagramModule"/>
+    <genClasses ecoreClass="glspComponentModel.ecore#//DiagramConfiguration"/>
+    <genClasses ecoreClass="glspComponentModel.ecore#//ModelTypes"/>
+    <genClasses ecoreClass="glspComponentModel.ecore#//ServerLauncher"/>
+    <genClasses ecoreClass="glspComponentModel.ecore#//CreateHandler"/>
+    <genClasses ecoreClass="glspComponentModel.ecore#//DeleteHandler"/>
+    <genClasses ecoreClass="glspComponentModel.ecore#//ToolPaletteItemProvider"/>
+    <genClasses ecoreClass="glspComponentModel.ecore#//SourceModelStorage"/>
+    <genClasses ecoreClass="glspComponentModel.ecore#//ModelFactory"/>
+    <genClasses ecoreClass="glspComponentModel.ecore#//ClientComponent"/>
+    <genClasses ecoreClass="glspComponentModel.ecore#//Component"/>
   </genPackages>
 </genmodel:GenModel>

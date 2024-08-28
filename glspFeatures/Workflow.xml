@@ -23,18 +23,18 @@
 					<and abstract="true" name="edit elements">
 						<graphics key="collapsed" value="false"/>
 						<and abstract="true" name="edit task">
-							<graphics key="collapsed" value="false"/>
+							<graphics key="collapsed" value="true"/>
 							<feature name="editing"/>
-							<feature name="validating"/>
+							<feature hidden="true" name="validating"/>
 						</and>
 						<feature name="create nodes"/>
 						<feature name="create edges"/>
 						<feature name="create category"/>
 					</and>
-					<feature name="navigation"/>
-					<feature name="documentation"/>
-					<and abstract="true" name="validator">
-						<graphics key="collapsed" value="false"/>
+					<feature hidden="true" name="navigation"/>
+					<feature hidden="true" name="documentation"/>
+					<and abstract="true" hidden="true" name="validator">
+						<graphics key="collapsed" value="true"/>
 						<feature name="nodes"/>
 						<feature name="uniqueness of names"/>
 						<feature name="edges"/>
@@ -44,9 +44,9 @@
 					<graphics key="collapsed" value="false"/>
 					<feature name="nodes moveable, deletable, resizable"/>
 				</and>
-				<feature name="logging"/>
-				<feature name="popup model"/>
-				<feature name="layout"/>
+				<feature hidden="true" name="logging"/>
+				<feature hidden="true" name="popup model"/>
+				<feature hidden="true" name="layout"/>
 				<and abstract="true" name="contexts">
 					<graphics key="collapsed" value="false"/>
 					<feature name="context menu"/>
@@ -54,7 +54,7 @@
 				</and>
 			</and>
 			<and abstract="true" name="Client">
-				<graphics key="collapsed" value="false"/>
+				<graphics key="collapsed" value="true"/>
 				<feature name="extend GLSP GModel"/>
 				<feature name="shapeM"/>
 				<feature name="client: edit task"/>

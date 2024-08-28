@@ -41,12 +41,12 @@
 					</alt>
 				</and>
 				<alt abstract="true" mandatory="true" name="S2 load Input File">
-					<graphics key="collapsed" value="false"/>
+					<graphics key="collapsed" value="true"/>
 					<feature abstract="true" name="S21 XMI"/>
 					<feature abstract="true" name="S22 JSON"/>
 				</alt>
 				<alt abstract="true" mandatory="true" name="S3 Element Creation">
-					<graphics key="collapsed" value="false"/>
+					<graphics key="collapsed" value="true"/>
 					<feature abstract="true" name="E_S31 use Command"/>
 					<feature abstract="true" name="E_S32 use Builder"/>
 				</alt>
@@ -55,14 +55,14 @@
 				<feature abstract="true" hidden="true" name="E_S6 Element Validation"/>
 				<feature abstract="true" name="S7 Model Layout"/>
 				<and abstract="true" name="S8 Contexts">
-					<graphics key="collapsed" value="false"/>
+					<graphics key="collapsed" value="true"/>
 					<feature abstract="true" name="S81 Context Menu"/>
 					<feature abstract="true" name="S82 Command Palette"/>
 					<feature abstract="true" name="S83 Tool Palette"/>
 				</and>
 			</and>
 			<and abstract="true" mandatory="true" name="C">
-				<graphics key="collapsed" value="false"/>
+				<graphics key="collapsed" value="true"/>
 				<and abstract="true" name="C1 Metamodel Extension">
 					<and abstract="true" mandatory="true" name="C11 SourceModel">
 						<feature abstract="true" mandatory="true" name="C111 Definition"/>
@@ -92,7 +92,7 @@
 				<feature abstract="true" hidden="true" name="C7 Contexts"/>
 			</and>
 			<and abstract="true" hidden="true" name="Unknown">
-				<graphics key="collapsed" value="false"/>
+				<graphics key="collapsed" value="true"/>
 				<feature abstract="true" name="Model Saving"/>
 				<feature abstract="true" name="Model SVG Export"/>
 				<alt abstract="true" hidden="true" name="Model Edit Modes">
