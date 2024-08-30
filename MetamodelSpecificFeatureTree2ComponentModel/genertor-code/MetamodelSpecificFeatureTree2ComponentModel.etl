@@ -1,0 +1,27 @@
+rule Root
+	transform s : source!t_configuration
+	to t : target!ComponentModel {
+		
+		"configuration".println();
+		
+		for (feature in s.children) {
+			if (feature.a_name == "S") {
+				t.components.add(feature.equivalent());
+			}
+		}
+	
+}
+
+
+@lazy
+rule ServerToServerComponent
+	transform s : source!t_feature
+	to t : target!ServerComponent {
+	
+		guard : s.a_name == "S"
+		
+		"ServerComponent".println();
+		
+		t.name = "ServerComponent";
+	
+}

@@ -1,0 +1,10 @@
+
+
+rule ServerLauncher
+	transform serverLauncher : source!ServerLauncher {
+	
+	template : "template-serverLauncher.egl"
+
+	target : "../src-gen/ServerLauncher.java"
+	
+}
