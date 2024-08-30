@@ -1,24 +1,77 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <configuration>
 	<feature automatic="selected" name="glspFeatures"/>
-	<feature automatic="selected" name="Server"/>
-	<feature automatic="selected" name="SM"/>
-	<feature automatic="selected" name="SourceModelStorage"/>
-	<feature manual="selected" name="EMFSourceModelStorage"/>
-	<feature automatic="unselected" name="GModelStorage"/>
-	<feature automatic="selected" name="load SM on M1"/>
-	<feature automatic="selected" name="load ModelPackage into EMF resourceSet"/>
-	<feature automatic="unselected" name="implement glsp.graph.GraphExtension"/>
-	<feature automatic="unselected" name="load ModelPackage"/>
-	<feature automatic="unselected" name="load ModelFactory"/>
-	<feature automatic="selected" name="SM2GM on M1"/>
-	<feature automatic="selected" name="GM extension"/>
-	<feature automatic="selected" name="not extending GM"/>
-	<feature automatic="unselected" name="extending GM"/>
-	<feature automatic="selected" name="map ModelTypes"/>
-	<feature manual="selected" name="to glsp.graph.DefaultTypes"/>
-	<feature automatic="unselected" name="to literals"/>
-	<feature automatic="unselected" name="to glsp.graph.GraphPackage.Literals"/>
-	<feature automatic="unselected" name="to custom GraphPackage.Literals"/>
-	<feature automatic="selected" name="Client"/>
+	<feature automatic="selected" name="S"/>
+	<feature automatic="selected" name="S1 Metamodel Extension"/>
+	<feature automatic="selected" name="S11 SourceModel"/>
+	<feature automatic="selected" name="S111 SourceModelStorage"/>
+	<feature manual="selected" name="S1111 EMFNotationSourceModelStorage"/>
+	<feature automatic="unselected" name="S1112 GModelStorage"/>
+	<feature automatic="unselected" name="S1113 other SourceModel"/>
+	<feature automatic="selected" name="S112 Generation"/>
+	<feature automatic="selected" name="S113 Integration"/>
+	<feature automatic="selected" name="S11121 Java Classes"/>
+	<feature automatic="unselected" name="S11122 extend GModel"/>
+	<feature automatic="selected" name="S12 ModelTypes"/>
+	<feature automatic="selected" name="S121 DefaultTypes"/>
+	<feature automatic="unselected" name="S122 extended Types"/>
+	<feature automatic="unselected" name="S1221 Definition"/>
+	<feature automatic="unselected" name="S1222 Mapping"/>
+	<feature automatic="selected" name="S13 GModel Creation"/>
+	<feature automatic="selected" name="S131 transform SourceModel"/>
+	<feature automatic="unselected" name="S132 SourceModel extends GModel"/>
+	<feature automatic="selected" name="S2 load Input File"/>
+	<feature automatic="selected" name="S21 XMI"/>
+	<feature automatic="unselected" name="S22 JSON"/>
+	<feature automatic="selected" name="S3 Element Creation"/>
+	<feature manual="selected" name="E_S31 use Command"/>
+	<feature automatic="unselected" name="E_S32 use Builder"/>
+	<feature name="E_S4 Element Deletion"/>
+	<feature name="E_S5 Element Editing"/>
+	<feature name="E_S6 Element Validation"/>
+	<feature name="S7 Model Layout"/>
+	<feature name="S8 Contexts"/>
+	<feature name="S81 Context Menu"/>
+	<feature name="S82 Command Palette"/>
+	<feature name="S83 Tool Palette"/>
+	<feature automatic="selected" name="C"/>
+	<feature automatic="unselected" name="C1 Metamodel Extension"/>
+	<feature automatic="unselected" name="C11 SourceModel"/>
+	<feature automatic="unselected" name="C111 Definition"/>
+	<feature automatic="unselected" name="C112 Mapping to ShapeModel Nodes"/>
+	<feature automatic="unselected" name="C12 ModelTypes"/>
+	<feature automatic="unselected" name="C121 Definition"/>
+	<feature automatic="unselected" name="C122 Mapping to SourceModel Elements"/>
+	<feature automatic="unselected" name="C1221 GModel Elements"/>
+	<feature automatic="unselected" name="C1222 extended Elements"/>
+	<feature automatic="unselected" name="C123 Mapping to ShapeModel Views"/>
+	<feature automatic="unselected" name="C1231 Default Views"/>
+	<feature automatic="unselected" name="E_C1232 extended Views"/>
+	<feature name="C2 Client View Port"/>
+	<feature name="Center"/>
+	<feature name="Fit to Screen"/>
+	<feature name="C3 Client Status Notification"/>
+	<feature name="E_C4 Element Editing"/>
+	<feature name="E_C5 Element Validation"/>
+	<feature name="C6 Model Layout"/>
+	<feature name="C7 Contexts"/>
+	<feature name="Unknown"/>
+	<feature name="Model Saving"/>
+	<feature name="Model SVG Export"/>
+	<feature name="Model Edit Modes"/>
+	<feature name="Edit"/>
+	<feature name="Read-only"/>
+	<feature name="Element Selection"/>
+	<feature name="Element Hover"/>
+	<feature name="Element Type Hints"/>
+	<feature name="Node Change Bounds"/>
+	<feature name="Move"/>
+	<feature name="Resize"/>
+	<feature name="Node Change Container"/>
+	<feature name="Edge Reconnect"/>
+	<feature name="Edge Routing Points"/>
+	<feature name="Ghost Elements"/>
+	<feature name="Element Text Editing"/>
+	<feature name="Clipboard"/>
+	<feature name="Undo Redo"/>
 </configuration>

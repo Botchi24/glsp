@@ -2,12 +2,10 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="glspComponentModel" nsURI="http://www.example.org/glspComponentModel"
     nsPrefix="glspComponentModel">
-  <eClassifiers xsi:type="ecore:EClass" name="ServerComponent" eSuperTypes="#//Component">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ServerComponent" eSuperTypes="#//Component"/>
   <eClassifiers xsi:type="ecore:EClass" name="LeafComponent" eSuperTypes="#//ServerComponent"/>
   <eClassifiers xsi:type="ecore:EClass" name="Package" eSuperTypes="#//ServerComponent">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="components" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="serverComponents" upperBound="-1"
         eType="#//ServerComponent" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DiagramModule" eSuperTypes="#//LeafComponent"/>
@@ -20,5 +18,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="SourceModelStorage" eSuperTypes="#//LeafComponent"/>
   <eClassifiers xsi:type="ecore:EClass" name="ModelFactory" eSuperTypes="#//LeafComponent"/>
   <eClassifiers xsi:type="ecore:EClass" name="ClientComponent" eSuperTypes="#//Component"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Component"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Component">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ComponentModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="components" upperBound="-1"
+        eType="#//Component" containment="true"/>
+  </eClassifiers>
 </ecore:EPackage>

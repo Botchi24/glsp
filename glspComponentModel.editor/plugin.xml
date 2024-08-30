@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated glspComponentModel -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="glspComponentModel.presentation.GlspComponentModelModelWizardID"
+            name="%_UI_GlspComponentModelModelWizard_label"
+            class="glspComponentModel.presentation.GlspComponentModelModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/GlspComponentModelModelFile.gif">
+         <description>%_UI_GlspComponentModelModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated glspComponentModel -->
+      <editor
+            id="glspComponentModel.presentation.GlspComponentModelEditorID"
+            name="%_UI_GlspComponentModelEditor_label"
+            icon="icons/full/obj16/GlspComponentModelModelFile.gif"
+            extensions="glspcomponentmodel"
+            class="glspComponentModel.presentation.GlspComponentModelEditor"
+            contributorClass="glspComponentModel.presentation.GlspComponentModelActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>
