@@ -5,7 +5,8 @@ rule Root
 		"configuration".println();
 		
 		for (feature in s.children) {
-			if (feature.a_name == "S") {
+			//if (feature.a_name == "S") {
+			if (feature.equivalent() != null) {
 				t.components.add(feature.equivalent());
 			}
 		}
@@ -14,14 +15,133 @@ rule Root
 
 
 @lazy
-rule ServerToServerComponent
+rule ServerLauncher
 	transform s : source!t_feature
-	to t : target!ServerComponent {
+	to t1 : target!ServerLauncher,
+	t2 : target!DiagramModule,
+	t3 : target!DiagramConfiguration {
 	
 		guard : s.a_name == "S"
 		
-		"ServerComponent".println();
+		"ServerLauncher".println();
+		"DiagramModule".println();
+		"DiagramConfiguration".println();
 		
-		t.name = "ServerComponent";
+		t1.name = "ServerLauncher";
+		t2.name = "DiagramModule";
+		t3.name = "DiagramConfiguration";
+	
+}
+
+
+/*@lazy
+rule DiagramModule
+	transform s : source!t_feature
+	to t : target!DiagramModule {
+	
+		guard : s.a_name == "S"
+		
+		"DiagramModule".println();
+		
+		t.name = "DiagramModule";
+	
+}
+
+
+@lazy
+rule DiagramConfiguration
+	transform s : source!t_feature
+	to t : target!DiagramConfiguration {
+	
+		guard : s.a_name == "S"
+		
+		"DiagramConfiguration".println();
+		
+		t.name = "DiagramConfiguration";
+	
+}*/
+
+
+@lazy
+rule ModelTypes
+	transform s : source!t_feature
+	to t : target!ModelTypes {
+	
+		guard : s.a_name == "S121 DefaultTypes"
+		
+		"ModelTypes".println();
+		
+		t.name = "ModelTypes";
+	
+}
+
+
+@lazy
+rule CreateHandler
+	transform s : source!t_feature
+	to t : target!CreateHandler {
+	
+		guard : s.a_name.startsWith("E_S31 use Command_")
+		
+		("CreateHandler_" + s.a_name.substring("E_S31 use Command_".length(), s.a_name.length())).println();
+		
+		t.name = "CreateHandler";
+		t.elementName = s.a_name.substring("E_S31 use Command_".length(), s.a_name.length());
+	
+}
+
+
+@lazy
+rule DeleteHandler
+	transform s : source!t_feature
+	to t : target!DeleteHandler {
+	
+		guard : s.a_name == "S4 Element Deletion"
+		
+		"DeleteHandler".println();
+		
+		t.name = "DeleteHandler";
+	
+}
+
+
+@lazy
+rule ToolPaletteItemProvider
+	transform s : source!t_feature
+	to t : target!ToolPaletteItemProvider {
+	
+		guard : s.a_name == "S83 Tool Palette"
+		
+		"ToolPaletteItemProvider".println();
+		
+		t.name = "ToolPaletteItemProvider";
+	
+}
+
+
+@lazy
+rule SourceModelStorage
+	transform s : source!t_feature
+	to t : target!SourceModelStorage {
+	
+		guard : s.a_name == "S1111 EMFNotationSourceModelStorage"
+		
+		"SourceModelStorage".println();
+		
+		t.name = "SourceModelStorage";
+	
+}
+
+
+@lazy
+rule ModelFactory
+	transform s : source!t_feature
+	to t : target!ModelFactory {
+	
+		guard : s.a_name == "S112 Generation"
+		
+		"ModelFactory".println();
+		
+		t.name = "ModelFactory";
 	
 }

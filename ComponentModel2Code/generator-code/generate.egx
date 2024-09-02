@@ -8,3 +8,83 @@ rule ServerLauncher
 	target : "../src-gen/ServerLauncher.java"
 	
 }
+
+
+rule DiagramModule
+	transform diagramModule : source!DiagramModule {
+	
+	template : "template-diagramModule.egl"
+
+	target : "../src-gen/DiagramModule.java"
+	
+}
+
+
+rule DiagramConfiguration
+	transform diagramConfiguration : source!DiagramConfiguration {
+	
+	template : "template-diagramConfiguration.egl"
+
+	target : "../src-gen/DiagramConfiguration.java"
+	
+}
+
+
+rule ModelTypes
+	transform modelTypes : source!ModelTypes {
+	
+	template : "template-modelTypes.egl"
+
+	target : "../src-gen/ModelTypes.java"
+	
+}
+
+
+rule CreateHandler
+	transform createHandler : source!CreateHandler {
+	
+	template : "template-createHandler.egl"
+
+	target : "../src-gen/Create" + createHandler.elementName + "NodeHandler.java"
+	
+}
+
+
+rule DeleteHandler
+	transform deleteHandler : source!DeleteHandler {
+	
+	template : "template-deleteHandler.egl"
+
+	target : "../src-gen/DeleteNodeHandler.java"
+	
+}
+
+
+rule ToolPaletteItemProvider
+	transform toolPaletteItemProvider : source!ToolPaletteItemProvider {
+	
+	template : "template-toolPaletteItemProvider.egl"
+
+	target : "../src-gen/ToolPaletteItemProvider.java"
+	
+}
+
+
+rule SourceModelStorage
+	transform sourceModelStorage : source!SourceModelStorage {
+	
+	template : "template-sourceModelStorage.egl"
+
+	target : "../src-gen/SourceModelStorage.java"
+	
+}
+
+
+rule ModelFactory
+	transform modelFactory : source!ModelFactory {
+	
+	template : "template-modelFactory.egl"
+
+	target : "../src-gen/ModelFactory.java"
+	
+}
