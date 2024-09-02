@@ -46,11 +46,11 @@
 					<feature abstract="true" name="S22 JSON"/>
 				</alt>
 				<alt abstract="true" mandatory="true" name="S3 Element Creation">
-					<graphics key="collapsed" value="true"/>
+					<graphics key="collapsed" value="false"/>
 					<feature abstract="true" name="E_S31 use Command"/>
 					<feature abstract="true" name="E_S32 use Builder"/>
 				</alt>
-				<feature abstract="true" name="E_S4 Element Deletion"/>
+				<feature abstract="true" name="S4 Element Deletion"/>
 				<feature abstract="true" name="E_S5 Element Editing"/>
 				<feature abstract="true" hidden="true" name="E_S6 Element Validation"/>
 				<feature abstract="true" name="S7 Model Layout"/>

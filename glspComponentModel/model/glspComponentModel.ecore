@@ -12,7 +12,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="DiagramConfiguration" eSuperTypes="#//LeafComponent"/>
   <eClassifiers xsi:type="ecore:EClass" name="ModelTypes" eSuperTypes="#//LeafComponent"/>
   <eClassifiers xsi:type="ecore:EClass" name="ServerLauncher" eSuperTypes="#//LeafComponent"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CreateHandler" eSuperTypes="#//LeafComponent"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CreateHandler" eSuperTypes="#//LeafComponent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="elementName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DeleteHandler" eSuperTypes="#//LeafComponent"/>
   <eClassifiers xsi:type="ecore:EClass" name="ToolPaletteItemProvider" eSuperTypes="#//LeafComponent"/>
   <eClassifiers xsi:type="ecore:EClass" name="SourceModelStorage" eSuperTypes="#//LeafComponent"/>

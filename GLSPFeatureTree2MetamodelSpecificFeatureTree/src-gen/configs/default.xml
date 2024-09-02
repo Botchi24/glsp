@@ -40,14 +40,7 @@
 	<feature automatic="unselected" name="E_S32 use Builder_InitialState"/>
 	<feature automatic="unselected" name="E_S32 use Builder_FinalState"/>
 	<feature automatic="unselected" name="E_S32 use Builder_NormalState"/>
-	<feature manual="selected" name="E_S4 Element Deletion_StateMachine"/>
-	<feature name="E_S4 Element Deletion_Transition"/>
-	<feature name="E_S4 Element Deletion_Trigger"/>
-	<feature name="E_S4 Element Deletion_Guard"/>
-	<feature name="E_S4 Element Deletion_Action"/>
-	<feature name="E_S4 Element Deletion_InitialState"/>
-	<feature name="E_S4 Element Deletion_FinalState"/>
-	<feature name="E_S4 Element Deletion_NormalState"/>
+	<feature manual="selected" name="S4 Element Deletion"/>
 	<feature name="E_S5 Element Editing_StateMachine"/>
 	<feature name="E_S5 Element Editing_Transition"/>
 	<feature name="E_S5 Element Editing_Trigger"/>
@@ -65,10 +58,10 @@
 	<feature name="E_S6 Element Validation_FinalState"/>
 	<feature name="E_S6 Element Validation_NormalState"/>
 	<feature name="S7 Model Layout"/>
-	<feature name="S8 Contexts"/>
+	<feature automatic="selected" name="S8 Contexts"/>
 	<feature name="S81 Context Menu"/>
 	<feature name="S82 Command Palette"/>
-	<feature name="S83 Tool Palette"/>
+	<feature manual="selected" name="S83 Tool Palette"/>
 	<feature automatic="selected" name="C"/>
 	<feature automatic="unselected" name="C1 Metamodel Extension"/>
 	<feature automatic="unselected" name="C11 SourceModel"/>

@@ -26,7 +26,7 @@
 	<feature automatic="selected" name="S3 Element Creation"/>
 	<feature manual="selected" name="E_S31 use Command"/>
 	<feature automatic="unselected" name="E_S32 use Builder"/>
-	<feature name="E_S4 Element Deletion"/>
+	<feature name="S4 Element Deletion"/>
 	<feature name="E_S5 Element Editing"/>
 	<feature name="E_S6 Element Validation"/>
 	<feature name="S7 Model Layout"/>

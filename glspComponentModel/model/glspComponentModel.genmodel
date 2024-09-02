@@ -18,7 +18,9 @@
     <genClasses ecoreClass="glspComponentModel.ecore#//DiagramConfiguration"/>
     <genClasses ecoreClass="glspComponentModel.ecore#//ModelTypes"/>
     <genClasses ecoreClass="glspComponentModel.ecore#//ServerLauncher"/>
-    <genClasses ecoreClass="glspComponentModel.ecore#//CreateHandler"/>
+    <genClasses ecoreClass="glspComponentModel.ecore#//CreateHandler">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute glspComponentModel.ecore#//CreateHandler/elementName"/>
+    </genClasses>
     <genClasses ecoreClass="glspComponentModel.ecore#//DeleteHandler"/>
     <genClasses ecoreClass="glspComponentModel.ecore#//ToolPaletteItemProvider"/>
     <genClasses ecoreClass="glspComponentModel.ecore#//SourceModelStorage"/>

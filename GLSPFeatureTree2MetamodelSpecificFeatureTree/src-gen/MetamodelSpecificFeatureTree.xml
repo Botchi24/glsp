@@ -41,7 +41,7 @@
           </alt>
         </and>
         <alt abstract="true" hidden="" mandatory="true" name="S2 load Input File">
-          <graphics key="collapsed" value="false"/>
+          <graphics key="collapsed" value="true"/>
           <feature abstract="true" hidden="" mandatory="" name="S21 XMI"/>
           <feature abstract="true" hidden="" mandatory="" name="S22 JSON"/>
         </alt>
@@ -64,14 +64,7 @@
           <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder_FinalState"/>
           <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder_NormalState"/>
         </alt>
-        <feature abstract="true" hidden="" mandatory="" name="E_S4 Element Deletion_StateMachine"/>
-        <feature abstract="true" hidden="" mandatory="" name="E_S4 Element Deletion_Transition"/>
-        <feature abstract="true" hidden="" mandatory="" name="E_S4 Element Deletion_Trigger"/>
-        <feature abstract="true" hidden="" mandatory="" name="E_S4 Element Deletion_Guard"/>
-        <feature abstract="true" hidden="" mandatory="" name="E_S4 Element Deletion_Action"/>
-        <feature abstract="true" hidden="" mandatory="" name="E_S4 Element Deletion_InitialState"/>
-        <feature abstract="true" hidden="" mandatory="" name="E_S4 Element Deletion_FinalState"/>
-        <feature abstract="true" hidden="" mandatory="" name="E_S4 Element Deletion_NormalState"/>
+        <feature abstract="true" hidden="" mandatory="" name="S4 Element Deletion"/>
         <feature abstract="true" hidden="" mandatory="" name="E_S5 Element Editing_StateMachine"/>
         <feature abstract="true" hidden="" mandatory="" name="E_S5 Element Editing_Transition"/>
         <feature abstract="true" hidden="" mandatory="" name="E_S5 Element Editing_Trigger"/>
@@ -90,14 +83,14 @@
         <feature abstract="true" hidden="true" mandatory="" name="E_S6 Element Validation_NormalState"/>
         <feature abstract="true" hidden="" mandatory="" name="S7 Model Layout"/>
         <and abstract="true" hidden="" mandatory="" name="S8 Contexts">
-          <graphics key="collapsed" value="false"/>
+          <graphics key="collapsed" value="true"/>
           <feature abstract="true" hidden="" mandatory="" name="S81 Context Menu"/>
           <feature abstract="true" hidden="" mandatory="" name="S82 Command Palette"/>
           <feature abstract="true" hidden="" mandatory="" name="S83 Tool Palette"/>
         </and>
       </and>
       <and abstract="true" hidden="" mandatory="true" name="C">
-        <graphics key="collapsed" value="false"/>
+        <graphics key="collapsed" value="true"/>
         <and abstract="true" hidden="" mandatory="" name="C1 Metamodel Extension">
           <and abstract="true" hidden="" mandatory="true" name="C11 SourceModel">
             <feature abstract="true" hidden="" mandatory="true" name="C111 Definition"/>
@@ -148,7 +141,7 @@
         <feature abstract="true" hidden="true" mandatory="" name="C7 Contexts"/>
       </and>
       <and abstract="true" hidden="true" mandatory="" name="Unknown">
-        <graphics key="collapsed" value="false"/>
+        <graphics key="collapsed" value="true"/>
         <feature abstract="true" hidden="" mandatory="" name="Model Saving"/>
         <feature abstract="true" hidden="" mandatory="" name="Model SVG Export"/>
         <alt abstract="true" hidden="true" mandatory="" name="Model Edit Modes">
