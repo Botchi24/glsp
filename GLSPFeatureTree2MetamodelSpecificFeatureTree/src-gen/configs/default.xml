@@ -2,7 +2,7 @@
 <configuration>
 	<feature automatic="selected" name="glspFeatures"/>
 	<feature automatic="selected" name="S"/>
-	<feature automatic="selected" name="S1 Metamodel Extension"/>
+	<feature automatic="selected" name="S1 Metamodel Extension_statemachine"/>
 	<feature automatic="selected" name="S11 SourceModel"/>
 	<feature automatic="selected" name="S111 SourceModelStorage"/>
 	<feature manual="selected" name="S1111 EMFNotationSourceModelStorage"/>

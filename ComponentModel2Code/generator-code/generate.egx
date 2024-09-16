@@ -70,21 +70,21 @@ rule ToolPaletteItemProvider
 }
 
 
-rule SourceModelStorage
-	transform sourceModelStorage : source!SourceModelStorage {
+rule EMFSourceModelStorage
+	transform emfSourceModelStorage : source!EMFSourceModelStorage {
 	
-	template : "template-sourceModelStorage.egl"
+	template : "template-emfSourceModelStorage.egl"
 
 	target : "../src-gen/SourceModelStorage.java"
 	
 }
 
 
-rule ModelFactory
-	transform modelFactory : source!ModelFactory {
+rule GModelFactory
+	transform gModelFactory : source!GModelFactory {
 	
-	template : "template-modelFactory.egl"
+	template : "template-gModelFactory.egl"
 
-	target : "../src-gen/ModelFactory.java"
+	target : "../src-gen/GModelFactory.java"
 	
 }
