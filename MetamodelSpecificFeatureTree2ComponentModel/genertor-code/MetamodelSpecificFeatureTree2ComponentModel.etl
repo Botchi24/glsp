@@ -1,21 +1,30 @@
+pre {
+	var metamodelName = source!t_feature.all.select(f|f.a_name.startsWith("S1 Metamodel Extension_")).first.a_name.replace("S1 Metamodel Extension_", "").println();
+}
+
 rule Root
 	transform s : source!t_configuration
 	to t : target!ComponentModel {
 		
-		"configuration".println();
+		//"configuration".println();
 		
-		for (feature in s.children) {
+		/*for (feature in s.children) {
 			//if (feature.a_name == "S") {
 			if (feature.equivalent() != null) {
+				//t.components.addAll(feature.equivalents());
 				t.components.add(feature.equivalent());
 			}
-		}
+		}*/
+		
+		//t.components.addAll(s.children.equivalents());
+		
+		//s.children.first().equivalents().getClass().println();
 	
 }
 
 
-@lazy
-rule ServerLauncher
+//@lazy
+rule MinimumComponents
 	transform s : source!t_feature
 	to t1 : target!ServerLauncher,
 	t2 : target!DiagramModule,
@@ -27,42 +36,17 @@ rule ServerLauncher
 		"DiagramModule".println();
 		"DiagramConfiguration".println();
 		
-		t1.name = "ServerLauncher";
-		t2.name = "DiagramModule";
-		t3.name = "DiagramConfiguration";
+		t1.metamodelName = metamodelName;
+		
+		var root = target!ComponentModel.all.first;
+		root.components.add(t1);
+		root.components.add(t2);
+		root.components.add(t3);
 	
 }
 
 
-/*@lazy
-rule DiagramModule
-	transform s : source!t_feature
-	to t : target!DiagramModule {
-	
-		guard : s.a_name == "S"
-		
-		"DiagramModule".println();
-		
-		t.name = "DiagramModule";
-	
-}
-
-
-@lazy
-rule DiagramConfiguration
-	transform s : source!t_feature
-	to t : target!DiagramConfiguration {
-	
-		guard : s.a_name == "S"
-		
-		"DiagramConfiguration".println();
-		
-		t.name = "DiagramConfiguration";
-	
-}*/
-
-
-@lazy
+//@lazy
 rule ModelTypes
 	transform s : source!t_feature
 	to t : target!ModelTypes {
@@ -71,7 +55,7 @@ rule ModelTypes
 		
 		"ModelTypes".println();
 		
-		t.name = "ModelTypes";
+		target!ComponentModel.all.first.components.add(t);
 	
 }
 
@@ -85,7 +69,6 @@ rule CreateHandler
 		
 		("CreateHandler_" + s.a_name.substring("E_S31 use Command_".length(), s.a_name.length())).println();
 		
-		t.name = "CreateHandler";
 		t.elementName = s.a_name.substring("E_S31 use Command_".length(), s.a_name.length());
 	
 }
@@ -100,7 +83,7 @@ rule DeleteHandler
 		
 		"DeleteHandler".println();
 		
-		t.name = "DeleteHandler";
+
 	
 }
 
@@ -114,34 +97,38 @@ rule ToolPaletteItemProvider
 		
 		"ToolPaletteItemProvider".println();
 		
-		t.name = "ToolPaletteItemProvider";
+
 	
 }
 
 
-@lazy
-rule SourceModelStorage
+//@lazy
+rule EMFSourceModelStorage
 	transform s : source!t_feature
-	to t : target!SourceModelStorage {
+	to t : target!EMFSourceModelStorage {
 	
 		guard : s.a_name == "S1111 EMFNotationSourceModelStorage"
 		
-		"SourceModelStorage".println();
+		"EMFSourceModelStorage".println();
 		
-		t.name = "SourceModelStorage";
+		t.metamodelName = metamodelName;
+		
+		target!ComponentModel.all.first.components.add(t);
 	
 }
 
 
-@lazy
-rule ModelFactory
+//@lazy
+rule GModelFactory
 	transform s : source!t_feature
-	to t : target!ModelFactory {
+	to t : target!GModelFactory {
 	
-		guard : s.a_name == "S112 Generation"
+		guard : s.a_name == "S131 transform SourceModel"
 		
-		"ModelFactory".println();
+		"GModelFactory".println();
 		
-		t.name = "ModelFactory";
+		t.metamodelName = metamodelName;
+		
+		target!ComponentModel.all.first.components.add(t);
 	
 }

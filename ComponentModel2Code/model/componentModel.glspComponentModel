@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:glspComponentModel="http://www.example.org/glspComponentModel" xsi:schemaLocation="http://www.example.org/glspComponentModel ../../glspComponentModel/model/glspComponentModel.ecore">
-  <glspComponentModel:ComponentModel>
-    <components xsi:type="glspComponentModel:ServerLauncher" name="ServerLauncher"/>
-    <components xsi:type="glspComponentModel:SourceModelStorage" name="SourceModelStorage"/>
-    <components xsi:type="glspComponentModel:ModelFactory" name="ModelFactory"/>
-    <components xsi:type="glspComponentModel:ModelTypes" name="ModelTypes"/>
-    <components xsi:type="glspComponentModel:CreateHandler" name="CreateHandler" elementName="StateMachine"/>
-    <components xsi:type="glspComponentModel:CreateHandler" name="CreateHandler" elementName="Transition"/>
-    <components xsi:type="glspComponentModel:CreateHandler" name="CreateHandler" elementName="Trigger"/>
-    <components xsi:type="glspComponentModel:CreateHandler" name="CreateHandler" elementName="Guard"/>
-    <components xsi:type="glspComponentModel:CreateHandler" name="CreateHandler" elementName="Action"/>
-    <components xsi:type="glspComponentModel:CreateHandler" name="CreateHandler" elementName="InitialState"/>
-    <components xsi:type="glspComponentModel:CreateHandler" name="CreateHandler" elementName="FinalState"/>
-    <components xsi:type="glspComponentModel:CreateHandler" name="CreateHandler" elementName="NormalState"/>
-    <components xsi:type="glspComponentModel:DeleteHandler" name="DeleteHandler"/>
-    <components xsi:type="glspComponentModel:ToolPaletteItemProvider" name="ToolPaletteItemProvider"/>
-  </glspComponentModel:ComponentModel>
-  <glspComponentModel:DiagramModule name="DiagramModule"/>
-  <glspComponentModel:DiagramConfiguration name="DiagramConfiguration"/>
-</xmi:XMI>
+<glspComponentModel:ComponentModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:glspComponentModel="http://www.example.org/glspComponentModel" xsi:schemaLocation="http://www.example.org/glspComponentModel ../../glspComponentModel/model/glspComponentModel.ecore">
+  <components xsi:type="glspComponentModel:ServerLauncher" metamodelName="statemachine"/>
+  <components xsi:type="glspComponentModel:DiagramModule"/>
+  <components xsi:type="glspComponentModel:DiagramConfiguration"/>
+  <components xsi:type="glspComponentModel:ModelTypes"/>
+  <components xsi:type="glspComponentModel:EMFSourceModelStorage" metamodelName="statemachine"/>
+  <components xsi:type="glspComponentModel:GModelFactory" metamodelName="statemachine"/>
+</glspComponentModel:ComponentModel>

@@ -14,31 +14,31 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
-package org.eclipse.glsp.example.javaemf.launch;
+package org.eclipse.glsp.example;
 
 import org.apache.commons.cli.ParseException;
-import org.eclipse.glsp.example.javaemf.TaskListDiagramModule;
+import org.eclipse.glsp.example.StatemachineDiagramModule;
 import org.eclipse.glsp.server.di.ServerModule;
 import org.eclipse.glsp.server.launch.DefaultCLIParser;
 import org.eclipse.glsp.server.launch.GLSPServerLauncher;
 import org.eclipse.glsp.server.launch.SocketGLSPServerLauncher;
 import org.eclipse.glsp.server.utils.LaunchUtil;
 
-public final class TaskListServerLauncher {
-   private TaskListServerLauncher() {}
+public final class StatemachineServerLauncher {
+   private StatemachineServerLauncher() {}
 
    @SuppressWarnings("uncommentedmain")
    public static void main(final String[] args) {
-      String processName = "TaskListExampleGlspServer";
+      String processName = "StatemachineGlspServer";
       try {
          DefaultCLIParser parser = new DefaultCLIParser(args, processName);
 
          int port = parser.parsePort();
          String host = parser.parseHostname();
-         ServerModule tasklistServerModule = new ServerModule()
-            .configureDiagramModule(new TaskListDiagramModule());
+         ServerModule statemachineServerModule = new ServerModule()
+            .configureDiagramModule(new StatemachineDiagramModule());
 
-         GLSPServerLauncher launcher = new SocketGLSPServerLauncher(tasklistServerModule);
+         GLSPServerLauncher launcher = new SocketGLSPServerLauncher(statemachineServerModule);
          launcher.start(host, port, parser);
       } catch (ParseException ex) {
          ex.printStackTrace();

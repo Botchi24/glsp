@@ -14,16 +14,16 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
-package org.eclipse.glsp.example.javaemf.model;
+package org.eclipse.glsp.example;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.glsp.example.tasklist.model.ModelPackage;
+import org.eclipse.glsp.example.model.StatemachinePackage;
 import org.eclipse.glsp.server.emf.notation.EMFNotationSourceModelStorage;
 
-public class TaskListSourceModelStorage extends EMFNotationSourceModelStorage {
+public class SourceModelStorage extends EMFNotationSourceModelStorage {
    @Override
    protected ResourceSet setupResourceSet(final ResourceSet resourceSet) {
-      resourceSet.getPackageRegistry().put(ModelPackage.eINSTANCE.getNsURI(), ModelPackage.eINSTANCE);
+      resourceSet.getPackageRegistry().put(StatemachinePackage.eINSTANCE.getNsURI(), StatemachinePackage.eINSTANCE);
       return super.setupResourceSet(resourceSet);
    }
 }
