@@ -1,7 +1,13 @@
-
+pre {
+	var metamodelName = metamodel!EPackage.all.first.name.println();
+}
 
 rule ServerLauncher
 	transform serverLauncher : source!ServerLauncher {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
 	
 	template : "template-serverLauncher.egl"
 
@@ -72,6 +78,10 @@ rule ToolPaletteItemProvider
 
 rule EMFSourceModelStorage
 	transform emfSourceModelStorage : source!EMFSourceModelStorage {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
 	
 	template : "template-emfSourceModelStorage.egl"
 

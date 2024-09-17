@@ -13,7 +13,7 @@
   <struct>
     <and abstract="true" hidden="" mandatory="true" name="glspFeatures">
       <and abstract="true" hidden="" mandatory="true" name="S">
-        <and abstract="true" hidden="" mandatory="true" name="S1 Metamodel Extension_statemachine">
+        <and abstract="true" hidden="" mandatory="true" name="S1 Metamodel Extension">
           <graphics key="collapsed" value="false"/>
           <and abstract="true" hidden="" mandatory="true" name="S11 SourceModel">
             <graphics key="collapsed" value="false"/>
