@@ -1,6 +1,6 @@
 pre {
 	var metamodelelements = ecoreModel!EClassifier.all.select(c|not c.abstract).collect(c|c.name).println();
-	var metamodelName = ecoreModel!EPackage.all.first.name.println();
+	//var metamodelName = ecoreModel!EPackage.all.first.name.println();
 }
 
 rule FeatureModel
@@ -75,11 +75,6 @@ rule And
 		t.a_mandatory = s.a_mandatory;
 		t.a_name = s.a_name;
 		t.a_hidden = s.a_hidden;
-		
-		// save metamodelName
-		if (s.a_name.startsWith("S1 Metamodel Extension")) {
-			t.a_name = s.a_name + "_" + metamodelName;
-		}	
 		
 		for (c in s.children) {
 			if (c.isTypeOf(source!t_feature)){

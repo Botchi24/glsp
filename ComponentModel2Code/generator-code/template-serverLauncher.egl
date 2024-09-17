@@ -17,28 +17,28 @@
 package org.eclipse.glsp.example;
 
 import org.apache.commons.cli.ParseException;
-import org.eclipse.glsp.example.[%=serverLauncher.metamodelName.firstToUpperCase()%]DiagramModule;
+import org.eclipse.glsp.example.[%=_metamodelName.firstToUpperCase()%]DiagramModule;
 import org.eclipse.glsp.server.di.ServerModule;
 import org.eclipse.glsp.server.launch.DefaultCLIParser;
 import org.eclipse.glsp.server.launch.GLSPServerLauncher;
 import org.eclipse.glsp.server.launch.SocketGLSPServerLauncher;
 import org.eclipse.glsp.server.utils.LaunchUtil;
 
-public final class [%=serverLauncher.metamodelName.firstToUpperCase()%]ServerLauncher {
-   private [%=serverLauncher.metamodelName.firstToUpperCase()%]ServerLauncher() {}
+public final class [%=_metamodelName.firstToUpperCase()%]ServerLauncher {
+   private [%=_metamodelName.firstToUpperCase()%]ServerLauncher() {}
 
    @SuppressWarnings("uncommentedmain")
    public static void main(final String[] args) {
-      String processName = "[%=serverLauncher.metamodelName.firstToUpperCase()%]GlspServer";
+      String processName = "[%=_metamodelName.firstToUpperCase()%]GlspServer";
       try {
          DefaultCLIParser parser = new DefaultCLIParser(args, processName);
 
          int port = parser.parsePort();
          String host = parser.parseHostname();
-         ServerModule [%=serverLauncher.metamodelName%]ServerModule = new ServerModule()
-            .configureDiagramModule(new [%=serverLauncher.metamodelName.firstToUpperCase()%]DiagramModule());
+         ServerModule [%=_metamodelName%]ServerModule = new ServerModule()
+            .configureDiagramModule(new [%=_metamodelName.firstToUpperCase()%]DiagramModule());
 
-         GLSPServerLauncher launcher = new SocketGLSPServerLauncher([%=serverLauncher.metamodelName%]ServerModule);
+         GLSPServerLauncher launcher = new SocketGLSPServerLauncher([%=_metamodelName%]ServerModule);
          launcher.start(host, port, parser);
       } catch (ParseException ex) {
          ex.printStackTrace();
