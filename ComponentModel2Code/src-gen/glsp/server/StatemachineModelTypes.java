@@ -16,21 +16,14 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.javaemf;
 
-import java.util.List;
+import org.eclipse.glsp.graph.DefaultTypes;
 
-import org.eclipse.glsp.server.diagram.BaseDiagramConfiguration;
-import org.eclipse.glsp.server.types.EdgeTypeHint;
-import org.eclipse.glsp.server.types.ShapeTypeHint;
+public final class StatemachineModelTypes {
+   private StatemachineModelTypes() {}
 
-public class TaskListDiagramConfiguration extends BaseDiagramConfiguration {
-
-   @Override
-   public List<ShapeTypeHint> getShapeTypeHints() {
-      // tasks can be moved, deleted and resized
-      return List.of(new ShapeTypeHint(TaskListModelTypes.TASK, true, true, true, false));
-   }
-
-   @Override
-   public List<EdgeTypeHint> getEdgeTypeHints() { return List.of(); }
+   public static final String INITIALSTATE = DefaultTypes.NODE;
+   public static final String NORMALSTATE = DefaultTypes.NODE;
+   public static final String FINALSTATE = DefaultTypes.NODE;
+   public static final String TRANSITION = DefaultTypes.EDGE;
 
 }

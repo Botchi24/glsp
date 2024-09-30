@@ -14,7 +14,7 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
-package org.eclipse.glsp.example.javaemf.handler;
+package [%=_packageName%].handler;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -24,11 +24,11 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.glsp.example.javaemf.TaskListModelTypes;
-import org.eclipse.glsp.example.tasklist.model.ModelFactory;
-import org.eclipse.glsp.example.tasklist.model.ModelPackage;
-import org.eclipse.glsp.example.tasklist.model.Task;
-import org.eclipse.glsp.example.tasklist.model.TaskList;
+import [%=_packageName%].[%=_metamodelName.firstToUpperCase()%]ModelTypes;
+import [%=_metamodelPackageName%].model.ModelFactory;
+import [%=_metamodelPackageName%].model.ModelPackage;
+import [%=_metamodelPackageName%].model.[%=createHandler.elementName%];
+import [%=_metamodelPackageName%].model.[%=_root%];
 import org.eclipse.glsp.graph.GModelElement;
 import org.eclipse.glsp.graph.GPoint;
 import org.eclipse.glsp.graph.GraphPackage;
@@ -55,7 +55,7 @@ public class Create[%=createHandler.elementName%]NodeHandler extends EMFCreateOp
    protected EMFIdGenerator idGenerator;
 
    public Create[%=createHandler.elementName%]NodeHandler() {
-      super(TaskListModelTypes.TASK);
+      super([%=_metamodelName.firstToUpperCase()%]ModelTypes.[%=createHandler.elementName.toUpperCase()%]);
    }
 
    @Override
@@ -64,51 +64,51 @@ public class Create[%=createHandler.elementName%]NodeHandler extends EMFCreateOp
       Optional<GPoint> absoluteLocation = operation.getLocation();
       Optional<GPoint> relativeLocation = absoluteLocation.map(location->LayoutUtil.getRelativeLocation(location, container));
 
-      return Optional.of(createTaskAndShape(relativeLocation));
+      return Optional.of(create[%=createHandler.elementName%]AndShape(relativeLocation));
    }
 
    @Override
    public String getLabel() { return "[%=createHandler.elementName%]"; }
 
-   protected Command createTaskAndShape(final Optional<GPoint> relativeLocation) {
-      TaskList taskList = modelState.getSemanticModel(TaskList.class).orElseThrow();
+   protected Command create[%=createHandler.elementName%]AndShape(final Optional<GPoint> relativeLocation) {
+      [%=_root%] [%=_root.firstToLowerCase()%] = modelState.getSemanticModel([%=_root%].class).orElseThrow();
       Diagram diagram = modelState.getNotationModel();
       EditingDomain editingDomain = modelState.getEditingDomain();
 
-      Task newTask = createTask();
-      Command taskCommand = AddCommand.create(editingDomain, taskList,
-         ModelPackage.Literals.TASK_LIST__TASKS, newTask);
+      [%=createHandler.elementName%] new[%=createHandler.elementName%] = create[%=createHandler.elementName%]();
+      Command [%=createHandler.elementName.firstToLowerCase()%]Command = AddCommand.create(editingDomain, [%=_root.firstToLowerCase()%],
+         ModelPackage.Literals.[%=_root.charAt(0)%][%for (i in Sequence{1.._root.length()-1}){%][%if(_root.substring(i,i+1).matches("[A-Z]")){%]_[%}%][%=_root.substring(i,i+1).toUpperCase()%][%}%]__[%=createHandler.referenceName.toUpperCase()%], new[%=createHandler.elementName%]);
 
-      Shape shape = createShape(idGenerator.getOrCreateId(newTask), relativeLocation);
+      Shape shape = createShape(idGenerator.getOrCreateId(new[%=createHandler.elementName%]), relativeLocation);
       Command shapeCommand = AddCommand.create(editingDomain, diagram,
          NotationPackage.Literals.DIAGRAM__ELEMENTS, shape);
 
       CompoundCommand compoundCommand = new CompoundCommand();
-      compoundCommand.append(taskCommand);
+      compoundCommand.append([%=createHandler.elementName.firstToLowerCase()%]Command);
       compoundCommand.append(shapeCommand);
       return compoundCommand;
    }
 
-   protected Task createTask() {
-      Task newTask = ModelFactory.eINSTANCE.createTask();
-      newTask.setId(UUID.randomUUID().toString());
-      setInitialName(newTask);
-      return newTask;
+   protected [%=createHandler.elementName%] create[%=createHandler.elementName%]() {
+      [%=createHandler.elementName%] new[%=createHandler.elementName%] = ModelFactory.eINSTANCE.create[%=createHandler.elementName%]();
+      new[%=createHandler.elementName%].setId(UUID.randomUUID().toString());
+      setInitialName(new[%=createHandler.elementName%]);
+      return new[%=createHandler.elementName%];
    }
 
-   protected void setInitialName(final Task task) {
-      Function<Integer, String> nameProvider = i -> "New" + task.eClass().getName() + i;
+   protected void setInitialName(final [%=createHandler.elementName%] [%=createHandler.elementName.firstToLowerCase()%]) {
+      Function<Integer, String> nameProvider = i -> "New" + [%=createHandler.elementName.firstToLowerCase()%].eClass().getName() + i;
       int nodeCounter = modelState.getIndex().getCounter(GraphPackage.Literals.GNODE, nameProvider);
-      task.setName(nameProvider.apply(nodeCounter));
+      [%=createHandler.elementName.firstToLowerCase()%].setName(nameProvider.apply(nodeCounter));
    }
 
    protected Shape createShape(final String elementId, final Optional<GPoint> relativeLocation) {
-      Shape newTask = NotationFactory.eINSTANCE.createShape();
-      newTask.setPosition(relativeLocation.orElse(GraphUtil.point(0, 0)));
-      newTask.setSize(GraphUtil.dimension(60, 25));
+      Shape new[%=createHandler.elementName%] = NotationFactory.eINSTANCE.createShape();
+      new[%=createHandler.elementName%].setPosition(relativeLocation.orElse(GraphUtil.point(0, 0)));
+      new[%=createHandler.elementName%].setSize(GraphUtil.dimension(60, 25));
       SemanticElementReference reference = NotationFactory.eINSTANCE.createSemanticElementReference();
       reference.setElementId(elementId);
-      newTask.setSemanticElement(reference);
-      return newTask;
+      new[%=createHandler.elementName%].setSemanticElement(reference);
+      return new[%=createHandler.elementName%];
    }
 }

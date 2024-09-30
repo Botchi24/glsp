@@ -21,12 +21,12 @@ import java.util.Map;
 
 import com.google.common.collect.Lists;
 
-import org.eclipse.glsp.example.javaemf.TaskListModelTypes;
+import org.eclipse.glsp.example.javaemf.StatemachineModelTypes;
 import org.eclipse.glsp.server.actions.TriggerNodeCreationAction;
 import org.eclipse.glsp.server.features.toolpalette.PaletteItem;
 import org.eclipse.glsp.server.features.toolpalette.ToolPaletteItemProvider;
 
-public class TaskListToolPaletteItemProvider implements ToolPaletteItemProvider {
+public class StatemachineToolPaletteItemProvider implements ToolPaletteItemProvider {
 
     @Override
     public List<PaletteItem> getItems(Map<String, String> args) {
@@ -34,8 +34,14 @@ public class TaskListToolPaletteItemProvider implements ToolPaletteItemProvider 
     }
 
     private PaletteItem nodes() {
-        PaletteItem createTask = node(TaskListModelTypes.TASK, "Task");
-        List<PaletteItem> nodes = Lists.newArrayList(createTask);
+    	List<PaletteItem> nodes = Lists.newArrayList();
+        PaletteItem createInitialState = node(StatemachineModelTypes.INITIALSTATE, "InitialState");
+        nodes.add(createInitialState);
+        PaletteItem createNormalState = node(StatemachineModelTypes.NORMALSTATE, "NormalState");
+        nodes.add(createNormalState);
+        PaletteItem createFinalState = node(StatemachineModelTypes.FINALSTATE, "FinalState");
+        nodes.add(createFinalState);
+        
         return PaletteItem.createPaletteGroup("nodes", "Nodes", nodes, "symbol-property");
     }
 

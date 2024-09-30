@@ -14,14 +14,16 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
-package org.eclipse.glsp.example;
+package [%=_packageName%].model;
 
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.glsp.example.javaemf.TaskListModelTypes;
-import org.eclipse.glsp.example.tasklist.model.Task;
-import org.eclipse.glsp.example.tasklist.model.TaskList;
+import [%=_packageName%].[%=_metamodelName.firstToUpperCase()%]ModelTypes;
+[%for ( n in _nodes){%]
+import [%=_metamodelPackageName%].model.[%=n%];
+[%}%]
+import [%=_metamodelPackageName%].model.[%=_root%];
 import org.eclipse.glsp.graph.DefaultTypes;
 import org.eclipse.glsp.graph.GGraph;
 import org.eclipse.glsp.graph.GModelRoot;
@@ -33,29 +35,34 @@ import org.eclipse.glsp.graph.util.GConstants;
 import org.eclipse.glsp.server.emf.model.notation.Diagram;
 import org.eclipse.glsp.server.emf.notation.EMFNotationGModelFactory;
 
-public class TaskListGModelFactory extends EMFNotationGModelFactory {
+public class [%=_metamodelName.firstToUpperCase()%]GModelFactory extends EMFNotationGModelFactory {
 
    @Override
    protected void fillRootElement(final EObject semanticModel, final Diagram notationModel, final GModelRoot newRoot) {
-      TaskList taskList = TaskList.class.cast(semanticModel);
+      [%=_root%] [%=_root.firstToLowerCase()%] = [%=_root%].class.cast(semanticModel);
       GGraph graph = GGraph.class.cast(newRoot);
       if (notationModel.getSemanticElement() != null
          && notationModel.getSemanticElement().getResolvedSemanticElement() != null) {
-         taskList.getTasks().stream()
-            .map(this::createTaskNode)
+         [%for ( n in _nodes){%]
+         [%=_root.firstToLowerCase()%].get[%=metamodelSpecificSettings!t_root.all.first.children.select(c|c.a_name == n).first.a_referenceName.firstToUpperCase()%]().stream()
+            .map(this::create[%=n%]Node)
             .forEachOrdered(graph.getChildren()::add);
+         [%}%]
       }
    }
 
-   protected GNode createTaskNode(final Task task) {
-      GNodeBuilder taskNodeBuilder = new GNodeBuilder(TaskListModelTypes.TASK)
-         .id(idGenerator.getOrCreateId(task))
-         .addCssClass("tasklist-node")
-         .add(new GLabelBuilder(DefaultTypes.LABEL).text(task.getName()).id(task.getId() + "_label").build())
+   [%for ( n in _nodes){%]
+   protected GNode create[%=n%]Node(final [%=n%] [%=n.firstToLowerCase()%]) {
+      GNodeBuilder [%=n.firstToLowerCase()%]NodeBuilder = new GNodeBuilder([%=_metamodelName.firstToUpperCase()%]ModelTypes.[%=n.toUpperCase()%])
+         .id(idGenerator.getOrCreateId([%=n.firstToLowerCase()%]))
+         .addCssClass("[%=_root.firstToLowerCase()%]-node")
+         .add(new GLabelBuilder(DefaultTypes.LABEL).text([%=n.firstToLowerCase()%].getName()).id([%=n.firstToLowerCase()%].getId() + "_label").build())
          .layout(GConstants.Layout.HBOX, Map.of(GLayoutOptions.KEY_PADDING_LEFT, 5));
 
-      applyShapeData(task, taskNodeBuilder);
-      return taskNodeBuilder.build();
+      applyShapeData([%=n.firstToLowerCase()%], [%=n.firstToLowerCase()%]NodeBuilder);
+      return [%=n.firstToLowerCase()%]NodeBuilder.build();
    }
+   
+   [%}%]
 
 }

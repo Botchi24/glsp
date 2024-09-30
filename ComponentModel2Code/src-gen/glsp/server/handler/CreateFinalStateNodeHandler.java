@@ -24,11 +24,11 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.glsp.example.javaemf.TaskListModelTypes;
-import org.eclipse.glsp.example.tasklist.model.ModelFactory;
-import org.eclipse.glsp.example.tasklist.model.ModelPackage;
-import org.eclipse.glsp.example.tasklist.model.Task;
-import org.eclipse.glsp.example.tasklist.model.TaskList;
+import org.eclipse.glsp.example.javaemf.StatemachineModelTypes;
+import org.eclipse.glsp.example.tasklist.model.model.ModelFactory;
+import org.eclipse.glsp.example.tasklist.model.model.ModelPackage;
+import org.eclipse.glsp.example.tasklist.model.model.FinalState;
+import org.eclipse.glsp.example.tasklist.model.model.StateMachine;
 import org.eclipse.glsp.graph.GModelElement;
 import org.eclipse.glsp.graph.GPoint;
 import org.eclipse.glsp.graph.GraphPackage;
@@ -46,7 +46,7 @@ import org.eclipse.glsp.server.utils.LayoutUtil;
 
 import com.google.inject.Inject;
 
-public class CreateTriggerNodeHandler extends EMFCreateOperationHandler<CreateNodeOperation> {
+public class CreateFinalStateNodeHandler extends EMFCreateOperationHandler<CreateNodeOperation> {
 
    @Inject
    protected EMFNotationModelState modelState;
@@ -54,8 +54,8 @@ public class CreateTriggerNodeHandler extends EMFCreateOperationHandler<CreateNo
    @Inject
    protected EMFIdGenerator idGenerator;
 
-   public CreateTriggerNodeHandler() {
-      super(TaskListModelTypes.TASK);
+   public CreateFinalStateNodeHandler() {
+      super(StatemachineModelTypes.FINALSTATE);
    }
 
    @Override
@@ -64,51 +64,51 @@ public class CreateTriggerNodeHandler extends EMFCreateOperationHandler<CreateNo
       Optional<GPoint> absoluteLocation = operation.getLocation();
       Optional<GPoint> relativeLocation = absoluteLocation.map(location->LayoutUtil.getRelativeLocation(location, container));
 
-      return Optional.of(createTaskAndShape(relativeLocation));
+      return Optional.of(createFinalStateAndShape(relativeLocation));
    }
 
    @Override
-   public String getLabel() { return "Trigger"; }
+   public String getLabel() { return "FinalState"; }
 
-   protected Command createTaskAndShape(final Optional<GPoint> relativeLocation) {
-      TaskList taskList = modelState.getSemanticModel(TaskList.class).orElseThrow();
+   protected Command createFinalStateAndShape(final Optional<GPoint> relativeLocation) {
+      StateMachine stateMachine = modelState.getSemanticModel(StateMachine.class).orElseThrow();
       Diagram diagram = modelState.getNotationModel();
       EditingDomain editingDomain = modelState.getEditingDomain();
 
-      Task newTask = createTask();
-      Command taskCommand = AddCommand.create(editingDomain, taskList,
-         ModelPackage.Literals.TASK_LIST__TASKS, newTask);
+      FinalState newFinalState = createFinalState();
+      Command finalStateCommand = AddCommand.create(editingDomain, stateMachine,
+         ModelPackage.Literals.STATE_MACHINE__FINALSTATES, newFinalState);
 
-      Shape shape = createShape(idGenerator.getOrCreateId(newTask), relativeLocation);
+      Shape shape = createShape(idGenerator.getOrCreateId(newFinalState), relativeLocation);
       Command shapeCommand = AddCommand.create(editingDomain, diagram,
          NotationPackage.Literals.DIAGRAM__ELEMENTS, shape);
 
       CompoundCommand compoundCommand = new CompoundCommand();
-      compoundCommand.append(taskCommand);
+      compoundCommand.append(finalStateCommand);
       compoundCommand.append(shapeCommand);
       return compoundCommand;
    }
 
-   protected Task createTask() {
-      Task newTask = ModelFactory.eINSTANCE.createTask();
-      newTask.setId(UUID.randomUUID().toString());
-      setInitialName(newTask);
-      return newTask;
+   protected FinalState createFinalState() {
+      FinalState newFinalState = ModelFactory.eINSTANCE.createFinalState();
+      newFinalState.setId(UUID.randomUUID().toString());
+      setInitialName(newFinalState);
+      return newFinalState;
    }
 
-   protected void setInitialName(final Task task) {
-      Function<Integer, String> nameProvider = i -> "New" + task.eClass().getName() + i;
+   protected void setInitialName(final FinalState finalState) {
+      Function<Integer, String> nameProvider = i -> "New" + finalState.eClass().getName() + i;
       int nodeCounter = modelState.getIndex().getCounter(GraphPackage.Literals.GNODE, nameProvider);
-      task.setName(nameProvider.apply(nodeCounter));
+      finalState.setName(nameProvider.apply(nodeCounter));
    }
 
    protected Shape createShape(final String elementId, final Optional<GPoint> relativeLocation) {
-      Shape newTask = NotationFactory.eINSTANCE.createShape();
-      newTask.setPosition(relativeLocation.orElse(GraphUtil.point(0, 0)));
-      newTask.setSize(GraphUtil.dimension(60, 25));
+      Shape newFinalState = NotationFactory.eINSTANCE.createShape();
+      newFinalState.setPosition(relativeLocation.orElse(GraphUtil.point(0, 0)));
+      newFinalState.setSize(GraphUtil.dimension(60, 25));
       SemanticElementReference reference = NotationFactory.eINSTANCE.createSemanticElementReference();
       reference.setElementId(elementId);
-      newTask.setSemanticElement(reference);
-      return newTask;
+      newFinalState.setSemanticElement(reference);
+      return newFinalState;
    }
 }

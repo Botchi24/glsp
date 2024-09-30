@@ -47,40 +47,24 @@
         </alt>
         <alt abstract="true" hidden="" mandatory="true" name="S3 Element Creation">
           <graphics key="collapsed" value="false"/>
-          <feature abstract="true" hidden="" mandatory="" name="E_S31 use Command_StateMachine"/>
-          <feature abstract="true" hidden="" mandatory="" name="E_S31 use Command_Transition"/>
-          <feature abstract="true" hidden="" mandatory="" name="E_S31 use Command_Trigger"/>
-          <feature abstract="true" hidden="" mandatory="" name="E_S31 use Command_Guard"/>
-          <feature abstract="true" hidden="" mandatory="" name="E_S31 use Command_Action"/>
           <feature abstract="true" hidden="" mandatory="" name="E_S31 use Command_InitialState"/>
-          <feature abstract="true" hidden="" mandatory="" name="E_S31 use Command_FinalState"/>
           <feature abstract="true" hidden="" mandatory="" name="E_S31 use Command_NormalState"/>
-          <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder_StateMachine"/>
-          <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder_Transition"/>
-          <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder_Trigger"/>
-          <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder_Guard"/>
-          <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder_Action"/>
+          <feature abstract="true" hidden="" mandatory="" name="E_S31 use Command_FinalState"/>
+          <feature abstract="true" hidden="" mandatory="" name="E_S31 use Command_Transition"/>
           <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder_InitialState"/>
-          <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder_FinalState"/>
           <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder_NormalState"/>
+          <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder_FinalState"/>
+          <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder_Transition"/>
         </alt>
         <feature abstract="true" hidden="" mandatory="" name="S4 Element Deletion"/>
-        <feature abstract="true" hidden="" mandatory="" name="E_S5 Element Editing_StateMachine"/>
-        <feature abstract="true" hidden="" mandatory="" name="E_S5 Element Editing_Transition"/>
-        <feature abstract="true" hidden="" mandatory="" name="E_S5 Element Editing_Trigger"/>
-        <feature abstract="true" hidden="" mandatory="" name="E_S5 Element Editing_Guard"/>
-        <feature abstract="true" hidden="" mandatory="" name="E_S5 Element Editing_Action"/>
         <feature abstract="true" hidden="" mandatory="" name="E_S5 Element Editing_InitialState"/>
-        <feature abstract="true" hidden="" mandatory="" name="E_S5 Element Editing_FinalState"/>
         <feature abstract="true" hidden="" mandatory="" name="E_S5 Element Editing_NormalState"/>
-        <feature abstract="true" hidden="true" mandatory="" name="E_S6 Element Validation_StateMachine"/>
-        <feature abstract="true" hidden="true" mandatory="" name="E_S6 Element Validation_Transition"/>
-        <feature abstract="true" hidden="true" mandatory="" name="E_S6 Element Validation_Trigger"/>
-        <feature abstract="true" hidden="true" mandatory="" name="E_S6 Element Validation_Guard"/>
-        <feature abstract="true" hidden="true" mandatory="" name="E_S6 Element Validation_Action"/>
+        <feature abstract="true" hidden="" mandatory="" name="E_S5 Element Editing_FinalState"/>
+        <feature abstract="true" hidden="" mandatory="" name="E_S5 Element Editing_Transition"/>
         <feature abstract="true" hidden="true" mandatory="" name="E_S6 Element Validation_InitialState"/>
-        <feature abstract="true" hidden="true" mandatory="" name="E_S6 Element Validation_FinalState"/>
         <feature abstract="true" hidden="true" mandatory="" name="E_S6 Element Validation_NormalState"/>
+        <feature abstract="true" hidden="true" mandatory="" name="E_S6 Element Validation_FinalState"/>
+        <feature abstract="true" hidden="true" mandatory="" name="E_S6 Element Validation_Transition"/>
         <feature abstract="true" hidden="" mandatory="" name="S7 Model Layout"/>
         <and abstract="true" hidden="" mandatory="" name="S8 Contexts">
           <graphics key="collapsed" value="true"/>
@@ -104,14 +88,10 @@
             </and>
             <and abstract="true" hidden="" mandatory="true" name="C123 Mapping to ShapeModel Views">
               <feature abstract="true" hidden="" mandatory="" name="C1231 Default Views"/>
-              <feature abstract="true" hidden="" mandatory="" name="E_C1232 extended Views_StateMachine"/>
-              <feature abstract="true" hidden="" mandatory="" name="E_C1232 extended Views_Transition"/>
-              <feature abstract="true" hidden="" mandatory="" name="E_C1232 extended Views_Trigger"/>
-              <feature abstract="true" hidden="" mandatory="" name="E_C1232 extended Views_Guard"/>
-              <feature abstract="true" hidden="" mandatory="" name="E_C1232 extended Views_Action"/>
               <feature abstract="true" hidden="" mandatory="" name="E_C1232 extended Views_InitialState"/>
-              <feature abstract="true" hidden="" mandatory="" name="E_C1232 extended Views_FinalState"/>
               <feature abstract="true" hidden="" mandatory="" name="E_C1232 extended Views_NormalState"/>
+              <feature abstract="true" hidden="" mandatory="" name="E_C1232 extended Views_FinalState"/>
+              <feature abstract="true" hidden="" mandatory="" name="E_C1232 extended Views_Transition"/>
             </and>
           </and>
         </and>
@@ -121,22 +101,14 @@
           <feature abstract="true" hidden="" mandatory="" name="Fit to Screen"/>
         </alt>
         <feature abstract="true" hidden="true" mandatory="" name="C3 Client Status Notification"/>
-        <feature abstract="true" hidden="" mandatory="" name="E_C4 Element Editing_StateMachine"/>
-        <feature abstract="true" hidden="" mandatory="" name="E_C4 Element Editing_Transition"/>
-        <feature abstract="true" hidden="" mandatory="" name="E_C4 Element Editing_Trigger"/>
-        <feature abstract="true" hidden="" mandatory="" name="E_C4 Element Editing_Guard"/>
-        <feature abstract="true" hidden="" mandatory="" name="E_C4 Element Editing_Action"/>
         <feature abstract="true" hidden="" mandatory="" name="E_C4 Element Editing_InitialState"/>
-        <feature abstract="true" hidden="" mandatory="" name="E_C4 Element Editing_FinalState"/>
         <feature abstract="true" hidden="" mandatory="" name="E_C4 Element Editing_NormalState"/>
-        <feature abstract="true" hidden="true" mandatory="" name="E_C5 Element Validation_StateMachine"/>
-        <feature abstract="true" hidden="true" mandatory="" name="E_C5 Element Validation_Transition"/>
-        <feature abstract="true" hidden="true" mandatory="" name="E_C5 Element Validation_Trigger"/>
-        <feature abstract="true" hidden="true" mandatory="" name="E_C5 Element Validation_Guard"/>
-        <feature abstract="true" hidden="true" mandatory="" name="E_C5 Element Validation_Action"/>
+        <feature abstract="true" hidden="" mandatory="" name="E_C4 Element Editing_FinalState"/>
+        <feature abstract="true" hidden="" mandatory="" name="E_C4 Element Editing_Transition"/>
         <feature abstract="true" hidden="true" mandatory="" name="E_C5 Element Validation_InitialState"/>
-        <feature abstract="true" hidden="true" mandatory="" name="E_C5 Element Validation_FinalState"/>
         <feature abstract="true" hidden="true" mandatory="" name="E_C5 Element Validation_NormalState"/>
+        <feature abstract="true" hidden="true" mandatory="" name="E_C5 Element Validation_FinalState"/>
+        <feature abstract="true" hidden="true" mandatory="" name="E_C5 Element Validation_Transition"/>
         <feature abstract="true" hidden="" mandatory="" name="C6 Model Layout"/>
         <feature abstract="true" hidden="true" mandatory="" name="C7 Contexts"/>
       </and>

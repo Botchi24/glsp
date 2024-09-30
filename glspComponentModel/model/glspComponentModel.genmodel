@@ -20,15 +20,14 @@
     <genClasses ecoreClass="glspComponentModel.ecore#//ServerLauncher"/>
     <genClasses ecoreClass="glspComponentModel.ecore#//CreateHandler">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute glspComponentModel.ecore#//CreateHandler/elementName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute glspComponentModel.ecore#//CreateHandler/referenceName"/>
     </genClasses>
     <genClasses ecoreClass="glspComponentModel.ecore#//DeleteHandler"/>
     <genClasses ecoreClass="glspComponentModel.ecore#//ToolPaletteItemProvider"/>
     <genClasses ecoreClass="glspComponentModel.ecore#//SourceModelStorage"/>
     <genClasses ecoreClass="glspComponentModel.ecore#//GModelFactory"/>
     <genClasses ecoreClass="glspComponentModel.ecore#//ClientComponent"/>
-    <genClasses ecoreClass="glspComponentModel.ecore#//Component">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute glspComponentModel.ecore#//Component/metamodelName"/>
-    </genClasses>
+    <genClasses ecoreClass="glspComponentModel.ecore#//Component"/>
     <genClasses ecoreClass="glspComponentModel.ecore#//ComponentModel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference glspComponentModel.ecore#//ComponentModel/components"/>
     </genClasses>

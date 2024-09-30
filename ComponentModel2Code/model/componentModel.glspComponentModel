@@ -4,6 +4,12 @@
   <components xsi:type="glspComponentModel:DiagramModule"/>
   <components xsi:type="glspComponentModel:DiagramConfiguration"/>
   <components xsi:type="glspComponentModel:ModelTypes"/>
+  <components xsi:type="glspComponentModel:CreateHandler" elementName="InitialState" referenceName="initialstate"/>
+  <components xsi:type="glspComponentModel:CreateHandler" elementName="NormalState" referenceName="states"/>
+  <components xsi:type="glspComponentModel:CreateHandler" elementName="FinalState" referenceName="finalstates"/>
+  <components xsi:type="glspComponentModel:CreateHandler" elementName="Transition" referenceName="transitions"/>
+  <components xsi:type="glspComponentModel:DeleteHandler"/>
+  <components xsi:type="glspComponentModel:ToolPaletteItemProvider"/>
   <components xsi:type="glspComponentModel:EMFSourceModelStorage"/>
   <components xsi:type="glspComponentModel:GModelFactory"/>
 </glspComponentModel:ComponentModel>

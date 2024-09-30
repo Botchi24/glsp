@@ -5,7 +5,9 @@
 [%}%]
 
 [%for ( f in _featureTree.children){%]
+	[%if(f.name.charAt(0) >= 65 and f.name.charAt(0) <= 90){%]
 [%=f.name%]
+	[%}%]
 [%}%]
 
 [%for ( f in featureTree!t_feature.all()){%]

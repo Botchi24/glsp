@@ -16,11 +16,13 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.javaemf;
 
-import org.eclipse.glsp.example.javaemf.handler.CreateTaskNodeHandler;
-import org.eclipse.glsp.example.javaemf.handler.DeleteTaskNodeHandler;
-import org.eclipse.glsp.example.javaemf.model.TaskListGModelFactory;
-import org.eclipse.glsp.example.javaemf.model.TaskListSourceModelStorage;
-import org.eclipse.glsp.example.javaemf.palette.TaskListToolPaletteItemProvider;
+import org.eclipse.glsp.example.javaemf.handler.CreateInitialStateNodeHandler;
+import org.eclipse.glsp.example.javaemf.handler.CreateNormalStateNodeHandler;
+import org.eclipse.glsp.example.javaemf.handler.CreateFinalStateNodeHandler;
+import org.eclipse.glsp.example.javaemf.handler.DeleteNodeHandler;
+import org.eclipse.glsp.example.javaemf.model.StatemachineGModelFactory;
+import org.eclipse.glsp.example.javaemf.model.StatemachineSourceModelStorage;
+import org.eclipse.glsp.example.javaemf.palette.StatemachineToolPaletteItemProvider;
 import org.eclipse.glsp.server.di.MultiBinding;
 import org.eclipse.glsp.server.diagram.DiagramConfiguration;
 import org.eclipse.glsp.server.emf.EMFIdGenerator;
@@ -31,24 +33,24 @@ import org.eclipse.glsp.server.features.core.model.GModelFactory;
 import org.eclipse.glsp.server.features.toolpalette.ToolPaletteItemProvider;
 import org.eclipse.glsp.server.operations.OperationHandler;
 
-public class TaskListDiagramModule extends EMFNotationDiagramModule {
+public class StatemachineDiagramModule extends EMFNotationDiagramModule {
 
    @Override
    protected Class<? extends DiagramConfiguration> bindDiagramConfiguration() {
       // define what operations are allowed with our elements
-      return TaskListDiagramConfiguration.class;
+      return StatemachineDiagramConfiguration.class;
    }
 
    @Override
    protected Class<? extends EMFSourceModelStorage> bindSourceModelStorage() {
       // ensure our custom package is registered when loading our models
-      return TaskListSourceModelStorage.class;
+      return StatemachineSourceModelStorage.class;
    }
 
    @Override
    public Class<? extends GModelFactory> bindGModelFactory() {
       // custom factory to convert tasks into nodes
-      return TaskListGModelFactory.class;
+      return StatemachineGModelFactory.class;
    }
 
    @Override
@@ -59,17 +61,19 @@ public class TaskListDiagramModule extends EMFNotationDiagramModule {
 
    @Override
    protected Class<? extends ToolPaletteItemProvider> bindToolPaletteItemProvider() {
-      return TaskListToolPaletteItemProvider.class;
+      return StatemachineToolPaletteItemProvider.class;
    }
 
    @Override
    protected void configureOperationHandlers(final MultiBinding<OperationHandler<?>> binding) {
       super.configureOperationHandlers(binding);
-      binding.add(CreateTaskNodeHandler.class);
-      binding.add(DeleteTaskNodeHandler.class);
+      binding.add(CreateInitialStateNodeHandler.class);
+      binding.add(CreateNormalStateNodeHandler.class);
+      binding.add(CreateFinalStateNodeHandler.class);
+      binding.add(DeleteNodeHandler.class);
    }
 
    @Override
-   public String getDiagramType() { return "tasklist-diagram"; }
+   public String getDiagramType() { return "statemachine-diagram"; }
 
 }
