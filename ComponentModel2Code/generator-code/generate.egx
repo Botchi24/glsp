@@ -1,17 +1,25 @@
 pre {
 	var metamodelName = metamodel!EPackage.all.first.name.println();
+	var packageName = "org.eclipse.glsp.example.javaemf";
+	var metamodelPackageName = "org.eclipse.glsp.example.tasklist.model";
+	var metamodelElements = metamodel!EClassifier.all.select(c|not c.abstract).collect(c|c.name).println();
+	var root = metamodelSpecificSettings!t_root.all.first.a_name.println();
+	var nodes = metamodelSpecificSettings!t_node.all.collect(n|n.a_name).println();
+	var edges = metamodelSpecificSettings!t_edge.all.collect(n|n.a_name).println();
+	var components = source!ComponentModel.all.first.components.collect(c|c.eClass().getName()).println();
 }
 
 rule ServerLauncher
 	transform serverLauncher : source!ServerLauncher {
 	
 	parameters : Map {
-		"_metamodelName" = metamodelName
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName
 	}
 	
 	template : "template-serverLauncher.egl"
 
-	target : "../src-gen/ServerLauncher.java"
+	target : "../src-gen/glsp/server/launch/" + metamodelName.firstToUpperCase() + "ServerLauncher.java"
 	
 }
 
@@ -19,9 +27,17 @@ rule ServerLauncher
 rule DiagramModule
 	transform diagramModule : source!DiagramModule {
 	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName,
+		"_nodes" = nodes,
+		"_edges" = edges,
+		"_components" = components
+	}
+	
 	template : "template-diagramModule.egl"
 
-	target : "../src-gen/DiagramModule.java"
+	target : "../src-gen/glsp/server/" + metamodelName.firstToUpperCase() + "DiagramModule.java"
 	
 }
 
@@ -29,9 +45,16 @@ rule DiagramModule
 rule DiagramConfiguration
 	transform diagramConfiguration : source!DiagramConfiguration {
 	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName,
+		"_nodes" = nodes,
+		"_edges" = edges
+	}
+	
 	template : "template-diagramConfiguration.egl"
 
-	target : "../src-gen/DiagramConfiguration.java"
+	target : "../src-gen/glsp/server/" + metamodelName.firstToUpperCase() + "DiagramConfiguration.java"
 	
 }
 
@@ -39,9 +62,16 @@ rule DiagramConfiguration
 rule ModelTypes
 	transform modelTypes : source!ModelTypes {
 	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName,
+		"_nodes" = nodes,
+		"_edges" = edges
+	}
+	
 	template : "template-modelTypes.egl"
 
-	target : "../src-gen/ModelTypes.java"
+	target : "../src-gen/glsp/server/" + metamodelName.firstToUpperCase() + "ModelTypes.java"
 	
 }
 
@@ -49,9 +79,18 @@ rule ModelTypes
 rule CreateHandler
 	transform createHandler : source!CreateHandler {
 	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName,
+		"_metamodelPackageName" = metamodelPackageName,
+		"_root" = root,
+		"_nodes" = nodes,
+		"_edges" = edges
+	}
+	
 	template : "template-createHandler.egl"
 
-	target : "../src-gen/Create" + createHandler.elementName + "NodeHandler.java"
+	target : "../src-gen/glsp/server/handler/Create" + createHandler.elementName + "NodeHandler.java"
 	
 }
 
@@ -59,9 +98,13 @@ rule CreateHandler
 rule DeleteHandler
 	transform deleteHandler : source!DeleteHandler {
 	
+	parameters : Map {
+		"_packageName" = packageName
+	}
+	
 	template : "template-deleteHandler.egl"
 
-	target : "../src-gen/DeleteNodeHandler.java"
+	target : "../src-gen/glsp/server/handler/DeleteNodeHandler.java"
 	
 }
 
@@ -69,9 +112,16 @@ rule DeleteHandler
 rule ToolPaletteItemProvider
 	transform toolPaletteItemProvider : source!ToolPaletteItemProvider {
 	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName,
+		"_nodes" = nodes,
+		"_edges" = edges
+	}
+	
 	template : "template-toolPaletteItemProvider.egl"
 
-	target : "../src-gen/ToolPaletteItemProvider.java"
+	target : "../src-gen/glsp/server/palette/" + metamodelName.firstToUpperCase() + "ToolPaletteItemProvider.java"
 	
 }
 
@@ -80,12 +130,14 @@ rule EMFSourceModelStorage
 	transform emfSourceModelStorage : source!EMFSourceModelStorage {
 	
 	parameters : Map {
-		"_metamodelName" = metamodelName
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName,
+		"_metamodelPackageName" = metamodelPackageName
 	}
 	
 	template : "template-emfSourceModelStorage.egl"
 
-	target : "../src-gen/SourceModelStorage.java"
+	target : "../src-gen/glsp/server/model/" + metamodelName.firstToUpperCase() + "SourceModelStorage.java"
 	
 }
 
@@ -93,8 +145,17 @@ rule EMFSourceModelStorage
 rule GModelFactory
 	transform gModelFactory : source!GModelFactory {
 	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName,
+		"_metamodelPackageName" = metamodelPackageName,
+		"_root" = root,
+		"_nodes" = nodes,
+		"_edges" = edges
+	}
+	
 	template : "template-gModelFactory.egl"
 
-	target : "../src-gen/GModelFactory.java"
+	target : "../src-gen/glsp/server/model/" + metamodelName.firstToUpperCase() + "GModelFactory.java"
 	
 }

@@ -14,10 +14,10 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
-package org.eclipse.glsp.example;
+package [%=_packageName%].launcher;
 
 import org.apache.commons.cli.ParseException;
-import org.eclipse.glsp.example.[%=_metamodelName.firstToUpperCase()%]DiagramModule;
+import [%=_packageName%].[%=_metamodelName.firstToUpperCase()%]DiagramModule;
 import org.eclipse.glsp.server.di.ServerModule;
 import org.eclipse.glsp.server.launch.DefaultCLIParser;
 import org.eclipse.glsp.server.launch.GLSPServerLauncher;

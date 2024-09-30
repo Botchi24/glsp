@@ -14,7 +14,7 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
-package org.eclipse.glsp.example.javaemf;
+package [%=_packageName%];
 
 import java.util.List;
 
@@ -22,12 +22,14 @@ import org.eclipse.glsp.server.diagram.BaseDiagramConfiguration;
 import org.eclipse.glsp.server.types.EdgeTypeHint;
 import org.eclipse.glsp.server.types.ShapeTypeHint;
 
-public class TaskListDiagramConfiguration extends BaseDiagramConfiguration {
+public class [%=_metamodelName.firstToUpperCase()%]DiagramConfiguration extends BaseDiagramConfiguration {
 
    @Override
    public List<ShapeTypeHint> getShapeTypeHints() {
       // tasks can be moved, deleted and resized
-      return List.of(new ShapeTypeHint(TaskListModelTypes.TASK, true, true, true, false));
+      [%for ( n in _nodes){%]
+      return List.of(new ShapeTypeHint([%=_metamodelName.firstToUpperCase()%]ModelTypes.[%=n.toUpperCase()%], true, true, true, false));
+      [%}%]
    }
 
    @Override

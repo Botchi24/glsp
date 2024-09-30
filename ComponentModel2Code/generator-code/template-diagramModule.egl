@@ -14,13 +14,15 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
-package org.eclipse.glsp.example.javaemf;
+package [%=_packageName%];
 
-import org.eclipse.glsp.example.javaemf.handler.CreateTaskNodeHandler;
-import org.eclipse.glsp.example.javaemf.handler.DeleteTaskNodeHandler;
-import org.eclipse.glsp.example.javaemf.model.TaskListGModelFactory;
-import org.eclipse.glsp.example.javaemf.model.TaskListSourceModelStorage;
-import org.eclipse.glsp.example.javaemf.palette.TaskListToolPaletteItemProvider;
+[%for ( n in _nodes){%]
+import [%=_packageName%].handler.Create[%=n%]NodeHandler;
+[%}%]
+import [%=_packageName%].handler.DeleteNodeHandler;
+import [%=_packageName%].model.[%=_metamodelName.firstToUpperCase()%]GModelFactory;
+import [%=_packageName%].model.[%=_metamodelName.firstToUpperCase()%]SourceModelStorage;
+import [%=_packageName%].palette.[%=_metamodelName.firstToUpperCase()%]ToolPaletteItemProvider;
 import org.eclipse.glsp.server.di.MultiBinding;
 import org.eclipse.glsp.server.diagram.DiagramConfiguration;
 import org.eclipse.glsp.server.emf.EMFIdGenerator;
@@ -31,45 +33,59 @@ import org.eclipse.glsp.server.features.core.model.GModelFactory;
 import org.eclipse.glsp.server.features.toolpalette.ToolPaletteItemProvider;
 import org.eclipse.glsp.server.operations.OperationHandler;
 
-public class TaskListDiagramModule extends EMFNotationDiagramModule {
+public class [%=_metamodelName.firstToUpperCase()%]DiagramModule extends EMFNotationDiagramModule {
 
+   [%if (_components.contains("DiagramConfiguration")) {%]
    @Override
    protected Class<? extends DiagramConfiguration> bindDiagramConfiguration() {
       // define what operations are allowed with our elements
-      return TaskListDiagramConfiguration.class;
+      return [%=_metamodelName.firstToUpperCase()%]DiagramConfiguration.class;
    }
+   [%}%]
 
+   [%if (_components.contains("EMFSourceModelStorage")) {%]
    @Override
    protected Class<? extends EMFSourceModelStorage> bindSourceModelStorage() {
       // ensure our custom package is registered when loading our models
-      return TaskListSourceModelStorage.class;
+      return [%=_metamodelName.firstToUpperCase()%]SourceModelStorage.class;
    }
+   [%}%]
 
+   [%if (_components.contains("GModelFactory")) {%]
    @Override
    public Class<? extends GModelFactory> bindGModelFactory() {
       // custom factory to convert tasks into nodes
-      return TaskListGModelFactory.class;
+      return [%=_metamodelName.firstToUpperCase()%]GModelFactory.class;
    }
+   [%}%]
 
+   [%if (_components.contains("EMFSourceModelStorage")) {%]
    @Override
    protected Class<? extends EMFIdGenerator> bindEMFIdGenerator() {
       // all our elements inherit from Identifiable and have an ID attribute set
       return AttributeIdGenerator.class;
    }
+   [%}%]
 
+   [%if (_components.contains("ToolPaletteItemProvider")) {%]
    @Override
    protected Class<? extends ToolPaletteItemProvider> bindToolPaletteItemProvider() {
-      return TaskListToolPaletteItemProvider.class;
+      return [%=_metamodelName.firstToUpperCase()%]ToolPaletteItemProvider.class;
    }
+   [%}%]
 
    @Override
    protected void configureOperationHandlers(final MultiBinding<OperationHandler<?>> binding) {
       super.configureOperationHandlers(binding);
-      binding.add(CreateTaskNodeHandler.class);
-      binding.add(DeleteTaskNodeHandler.class);
+      [%for ( n in _nodes){%]
+      binding.add(Create[%=n%]NodeHandler.class);
+      [%}%]
+      [%if (_components.contains("DeleteHandler")) {%]
+      binding.add(DeleteNodeHandler.class);
+      [%}%]
    }
 
    @Override
-   public String getDiagramType() { return "tasklist-diagram"; }
+   public String getDiagramType() { return "[%=_metamodelName%]-diagram"; }
 
 }

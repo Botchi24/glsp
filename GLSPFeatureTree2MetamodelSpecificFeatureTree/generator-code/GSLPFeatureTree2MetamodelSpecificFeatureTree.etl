@@ -1,6 +1,8 @@
 pre {
 	var metamodelelements = ecoreModel!EClassifier.all.select(c|not c.abstract).collect(c|c.name).println();
 	//var metamodelName = ecoreModel!EPackage.all.first.name.println();
+	var nodes = metamodelSpecificSettings!t_node.all.collect(n|n.a_name).println();
+	var edges = metamodelSpecificSettings!t_edge.all.collect(n|n.a_name).println();
 }
 
 rule FeatureModel
@@ -154,7 +156,15 @@ rule Var
 function target!t_and processAndFeature(oldFeature : source!t_feature){
 
 	if (oldFeature.a_name.startsWith("E_")) {
-		for (e in metamodelelements) {
+		for (e in nodes) { //metamodelelements
+			var feature = new target!t_feature;
+			feature.a_abstract = oldFeature.a_abstract;
+			feature.a_mandatory = oldFeature.a_mandatory;
+			feature.a_name = oldFeature.a_name + "_" + e;
+			feature.a_hidden = oldFeature.a_hidden;
+			self.appendChild(feature);
+		}
+		for (e in edges) { //metamodelelements
 			var feature = new target!t_feature;
 			feature.a_abstract = oldFeature.a_abstract;
 			feature.a_mandatory = oldFeature.a_mandatory;
@@ -171,7 +181,15 @@ function target!t_and processAndFeature(oldFeature : source!t_feature){
 function target!t_alt processAltFeature(oldFeature : source!t_feature){
 
 	if (oldFeature.a_name.startsWith("E_")) {
-		for (e in metamodelelements) {
+		for (e in nodes) { //metamodelelements
+			var feature = new target!t_feature;
+			feature.a_abstract = oldFeature.a_abstract;
+			feature.a_mandatory = oldFeature.a_mandatory;
+			feature.a_name = oldFeature.a_name + "_" + e;
+			feature.a_hidden = oldFeature.a_hidden;
+			self.appendChild(feature);
+		}
+		for (e in edges) { //metamodelelements
 			var feature = new target!t_feature;
 			feature.a_abstract = oldFeature.a_abstract;
 			feature.a_mandatory = oldFeature.a_mandatory;

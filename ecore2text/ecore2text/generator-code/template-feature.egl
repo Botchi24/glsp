@@ -1,1 +1,1 @@
-[%=feature.a_name%]
+[%=feature.a_name.charAt(0)%]

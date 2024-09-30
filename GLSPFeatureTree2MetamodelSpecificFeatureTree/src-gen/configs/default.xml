@@ -5,12 +5,12 @@
 	<feature automatic="selected" name="S1 Metamodel Extension"/>
 	<feature automatic="selected" name="S11 SourceModel"/>
 	<feature automatic="selected" name="S111 SourceModelStorage"/>
-	<feature manual="selected" name="S1111 EMFNotationSourceModelStorage"/>
+	<feature automatic="selected" manual="selected" name="S1111 EMFNotationSourceModelStorage"/>
 	<feature automatic="unselected" name="S1112 GModelStorage"/>
 	<feature automatic="unselected" name="S1113 other SourceModel"/>
 	<feature automatic="selected" name="S112 Generation"/>
 	<feature automatic="selected" name="S113 Integration"/>
-	<feature automatic="selected" name="S11121 Java Classes"/>
+	<feature manual="selected" name="S11121 Java Classes"/>
 	<feature automatic="unselected" name="S11122 extend GModel"/>
 	<feature automatic="selected" name="S12 ModelTypes"/>
 	<feature automatic="selected" name="S121 DefaultTypes"/>
@@ -24,39 +24,23 @@
 	<feature automatic="selected" name="S21 XMI"/>
 	<feature automatic="unselected" name="S22 JSON"/>
 	<feature automatic="selected" name="S3 Element Creation"/>
-	<feature manual="selected" name="E_S31 use Command_StateMachine"/>
-	<feature automatic="unselected" name="E_S31 use Command_Transition"/>
-	<feature automatic="unselected" name="E_S31 use Command_Trigger"/>
-	<feature automatic="unselected" name="E_S31 use Command_Guard"/>
-	<feature automatic="unselected" name="E_S31 use Command_Action"/>
-	<feature automatic="unselected" name="E_S31 use Command_InitialState"/>
-	<feature automatic="unselected" name="E_S31 use Command_FinalState"/>
+	<feature manual="selected" name="E_S31 use Command_InitialState"/>
 	<feature automatic="unselected" name="E_S31 use Command_NormalState"/>
-	<feature automatic="unselected" name="E_S32 use Builder_StateMachine"/>
-	<feature automatic="unselected" name="E_S32 use Builder_Transition"/>
-	<feature automatic="unselected" name="E_S32 use Builder_Trigger"/>
-	<feature automatic="unselected" name="E_S32 use Builder_Guard"/>
-	<feature automatic="unselected" name="E_S32 use Builder_Action"/>
+	<feature automatic="unselected" name="E_S31 use Command_FinalState"/>
+	<feature automatic="unselected" name="E_S31 use Command_Transition"/>
 	<feature automatic="unselected" name="E_S32 use Builder_InitialState"/>
-	<feature automatic="unselected" name="E_S32 use Builder_FinalState"/>
 	<feature automatic="unselected" name="E_S32 use Builder_NormalState"/>
+	<feature automatic="unselected" name="E_S32 use Builder_FinalState"/>
+	<feature automatic="unselected" name="E_S32 use Builder_Transition"/>
 	<feature manual="selected" name="S4 Element Deletion"/>
-	<feature name="E_S5 Element Editing_StateMachine"/>
-	<feature name="E_S5 Element Editing_Transition"/>
-	<feature name="E_S5 Element Editing_Trigger"/>
-	<feature name="E_S5 Element Editing_Guard"/>
-	<feature name="E_S5 Element Editing_Action"/>
 	<feature name="E_S5 Element Editing_InitialState"/>
-	<feature name="E_S5 Element Editing_FinalState"/>
 	<feature name="E_S5 Element Editing_NormalState"/>
-	<feature name="E_S6 Element Validation_StateMachine"/>
-	<feature name="E_S6 Element Validation_Transition"/>
-	<feature name="E_S6 Element Validation_Trigger"/>
-	<feature name="E_S6 Element Validation_Guard"/>
-	<feature name="E_S6 Element Validation_Action"/>
+	<feature name="E_S5 Element Editing_FinalState"/>
+	<feature name="E_S5 Element Editing_Transition"/>
 	<feature name="E_S6 Element Validation_InitialState"/>
-	<feature name="E_S6 Element Validation_FinalState"/>
 	<feature name="E_S6 Element Validation_NormalState"/>
+	<feature name="E_S6 Element Validation_FinalState"/>
+	<feature name="E_S6 Element Validation_Transition"/>
 	<feature name="S7 Model Layout"/>
 	<feature automatic="selected" name="S8 Contexts"/>
 	<feature name="S81 Context Menu"/>
@@ -74,34 +58,22 @@
 	<feature automatic="unselected" name="C1222 extended Elements"/>
 	<feature automatic="unselected" name="C123 Mapping to ShapeModel Views"/>
 	<feature automatic="unselected" name="C1231 Default Views"/>
-	<feature automatic="unselected" name="E_C1232 extended Views_StateMachine"/>
-	<feature automatic="unselected" name="E_C1232 extended Views_Transition"/>
-	<feature automatic="unselected" name="E_C1232 extended Views_Trigger"/>
-	<feature automatic="unselected" name="E_C1232 extended Views_Guard"/>
-	<feature automatic="unselected" name="E_C1232 extended Views_Action"/>
 	<feature automatic="unselected" name="E_C1232 extended Views_InitialState"/>
-	<feature automatic="unselected" name="E_C1232 extended Views_FinalState"/>
 	<feature automatic="unselected" name="E_C1232 extended Views_NormalState"/>
+	<feature automatic="unselected" name="E_C1232 extended Views_FinalState"/>
+	<feature automatic="unselected" name="E_C1232 extended Views_Transition"/>
 	<feature name="C2 Client View Port"/>
 	<feature name="Center"/>
 	<feature name="Fit to Screen"/>
 	<feature name="C3 Client Status Notification"/>
-	<feature name="E_C4 Element Editing_StateMachine"/>
-	<feature name="E_C4 Element Editing_Transition"/>
-	<feature name="E_C4 Element Editing_Trigger"/>
-	<feature name="E_C4 Element Editing_Guard"/>
-	<feature name="E_C4 Element Editing_Action"/>
 	<feature name="E_C4 Element Editing_InitialState"/>
-	<feature name="E_C4 Element Editing_FinalState"/>
 	<feature name="E_C4 Element Editing_NormalState"/>
-	<feature name="E_C5 Element Validation_StateMachine"/>
-	<feature name="E_C5 Element Validation_Transition"/>
-	<feature name="E_C5 Element Validation_Trigger"/>
-	<feature name="E_C5 Element Validation_Guard"/>
-	<feature name="E_C5 Element Validation_Action"/>
+	<feature name="E_C4 Element Editing_FinalState"/>
+	<feature name="E_C4 Element Editing_Transition"/>
 	<feature name="E_C5 Element Validation_InitialState"/>
-	<feature name="E_C5 Element Validation_FinalState"/>
 	<feature name="E_C5 Element Validation_NormalState"/>
+	<feature name="E_C5 Element Validation_FinalState"/>
+	<feature name="E_C5 Element Validation_Transition"/>
 	<feature name="C6 Model Layout"/>
 	<feature name="C7 Contexts"/>
 	<feature name="Unknown"/>

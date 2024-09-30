@@ -61,7 +61,7 @@ rule ModelTypes
 }
 
 
-@lazy
+//@lazy
 rule CreateHandler
 	transform s : source!t_feature
 	to t : target!CreateHandler {
@@ -71,11 +71,15 @@ rule CreateHandler
 		("CreateHandler_" + s.a_name.substring("E_S31 use Command_".length(), s.a_name.length())).println();
 		
 		t.elementName = s.a_name.substring("E_S31 use Command_".length(), s.a_name.length());
+		
+		t.referenceName = metamodelSpecificSettings!t_root.all.first.children.select(c|c.a_name == t.elementName).first.a_referenceName;
+		
+		target!ComponentModel.all.first.components.add(t);
 	
 }
 
 
-@lazy
+//@lazy
 rule DeleteHandler
 	transform s : source!t_feature
 	to t : target!DeleteHandler {
@@ -84,12 +88,12 @@ rule DeleteHandler
 		
 		"DeleteHandler".println();
 		
-
+		target!ComponentModel.all.first.components.add(t);
 	
 }
 
 
-@lazy
+//@lazy
 rule ToolPaletteItemProvider
 	transform s : source!t_feature
 	to t : target!ToolPaletteItemProvider {
@@ -98,7 +102,7 @@ rule ToolPaletteItemProvider
 		
 		"ToolPaletteItemProvider".println();
 		
-
+		target!ComponentModel.all.first.components.add(t);
 	
 }
 

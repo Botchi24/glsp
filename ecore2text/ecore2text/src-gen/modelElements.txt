@@ -7,9 +7,6 @@ InitialState
 FinalState
 NormalState
 
-properties
-struct
-constraints
 
 []
 []
