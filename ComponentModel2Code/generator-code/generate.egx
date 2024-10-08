@@ -1,13 +1,17 @@
 pre {
 	var metamodelName = metamodel!EPackage.all.first.name.println();
 	var packageName = "org.eclipse.glsp.example.javaemf";
-	var metamodelPackageName = "org.eclipse.glsp.example.tasklist.model";
+	var metamodelPackageName = "swt.most";
+	var metamodelPrefix = "Statemachine";
 	var metamodelElements = metamodel!EClassifier.all.select(c|not c.abstract).collect(c|c.name).println();
 	var root = metamodelSpecificSettings!t_root.all.first.a_name.println();
 	var nodes = metamodelSpecificSettings!t_node.all.collect(n|n.a_name).println();
 	var edges = metamodelSpecificSettings!t_edge.all.collect(n|n.a_name).println();
 	var components = source!ComponentModel.all.first.components.collect(c|c.eClass().getName()).println();
+	var serverPath = "glsp-server";
+	var clientPath = "glsp-client";
 }
+
 
 rule ServerLauncher
 	transform serverLauncher : source!ServerLauncher {
@@ -17,9 +21,9 @@ rule ServerLauncher
 		"_packageName" = packageName
 	}
 	
-	template : "template-serverLauncher.egl"
+	template : "./server/src/template-serverLauncher.egl"
 
-	target : "../src-gen/glsp/server/launch/" + metamodelName.firstToUpperCase() + "ServerLauncher.java"
+	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/launch/" + metamodelName.firstToUpperCase() + "ServerLauncher.java"
 	
 }
 
@@ -35,9 +39,9 @@ rule DiagramModule
 		"_components" = components
 	}
 	
-	template : "template-diagramModule.egl"
+	template : "./server/src/template-diagramModule.egl"
 
-	target : "../src-gen/glsp/server/" + metamodelName.firstToUpperCase() + "DiagramModule.java"
+	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/" + metamodelName.firstToUpperCase() + "DiagramModule.java"
 	
 }
 
@@ -52,9 +56,9 @@ rule DiagramConfiguration
 		"_edges" = edges
 	}
 	
-	template : "template-diagramConfiguration.egl"
+	template : "./server/src/template-diagramConfiguration.egl"
 
-	target : "../src-gen/glsp/server/" + metamodelName.firstToUpperCase() + "DiagramConfiguration.java"
+	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/" + metamodelName.firstToUpperCase() + "DiagramConfiguration.java"
 	
 }
 
@@ -69,9 +73,9 @@ rule ModelTypes
 		"_edges" = edges
 	}
 	
-	template : "template-modelTypes.egl"
+	template : "./server/src/template-modelTypes.egl"
 
-	target : "../src-gen/glsp/server/" + metamodelName.firstToUpperCase() + "ModelTypes.java"
+	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/" + metamodelName.firstToUpperCase() + "ModelTypes.java"
 	
 }
 
@@ -83,14 +87,15 @@ rule CreateHandler
 		"_metamodelName" = metamodelName,
 		"_packageName" = packageName,
 		"_metamodelPackageName" = metamodelPackageName,
+		"_metamodelPrefix" = metamodelPrefix,
 		"_root" = root,
 		"_nodes" = nodes,
 		"_edges" = edges
 	}
 	
-	template : "template-createHandler.egl"
+	template : "./server/src/template-createHandler.egl"
 
-	target : "../src-gen/glsp/server/handler/Create" + createHandler.elementName + "NodeHandler.java"
+	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/handler/Create" + createHandler.elementName + "NodeHandler.java"
 	
 }
 
@@ -102,9 +107,9 @@ rule DeleteHandler
 		"_packageName" = packageName
 	}
 	
-	template : "template-deleteHandler.egl"
+	template : "./server/src/template-deleteHandler.egl"
 
-	target : "../src-gen/glsp/server/handler/DeleteNodeHandler.java"
+	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/handler/DeleteNodeHandler.java"
 	
 }
 
@@ -119,9 +124,9 @@ rule ToolPaletteItemProvider
 		"_edges" = edges
 	}
 	
-	template : "template-toolPaletteItemProvider.egl"
+	template : "./server/src/template-toolPaletteItemProvider.egl"
 
-	target : "../src-gen/glsp/server/palette/" + metamodelName.firstToUpperCase() + "ToolPaletteItemProvider.java"
+	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/palette/" + metamodelName.firstToUpperCase() + "ToolPaletteItemProvider.java"
 	
 }
 
@@ -132,12 +137,13 @@ rule EMFSourceModelStorage
 	parameters : Map {
 		"_metamodelName" = metamodelName,
 		"_packageName" = packageName,
-		"_metamodelPackageName" = metamodelPackageName
+		"_metamodelPackageName" = metamodelPackageName,
+		"_metamodelPrefix" = metamodelPrefix
 	}
 	
-	template : "template-emfSourceModelStorage.egl"
+	template : "./server/src/template-emfSourceModelStorage.egl"
 
-	target : "../src-gen/glsp/server/model/" + metamodelName.firstToUpperCase() + "SourceModelStorage.java"
+	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/model/" + metamodelName.firstToUpperCase() + "SourceModelStorage.java"
 	
 }
 
@@ -149,13 +155,653 @@ rule GModelFactory
 		"_metamodelName" = metamodelName,
 		"_packageName" = packageName,
 		"_metamodelPackageName" = metamodelPackageName,
+		"_metamodelPrefix" = metamodelPrefix,
 		"_root" = root,
 		"_nodes" = nodes,
 		"_edges" = edges
 	}
 	
-	template : "template-gModelFactory.egl"
+	template : "./server/src/template-gModelFactory.egl"
 
-	target : "../src-gen/glsp/server/model/" + metamodelName.firstToUpperCase() + "GModelFactory.java"
+	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/model/" + metamodelName.firstToUpperCase() + "GModelFactory.java"
+	
+}
+
+//----------------------------------------------------------
+
+rule JavaEmfTheiaExampleCodeWorkspace
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_serverPath" = serverPath,
+		"_clientPath" = clientPath
+	}
+	
+	template : "./project/template-java-emf-theia-example.code-workspace.egl"
+	
+	target : "../src-gen/glsp/java-emf-theia-example.code-workspace"
+	
+}
+
+
+rule PackageJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_serverPath" = serverPath,
+		"_clientPath" = clientPath
+	}
+	
+	template : "./project/template-package.json.egl"
+	
+	target : "../src-gen/glsp/package.json"
+	
+}
+
+
+rule YarnLock
+	transform file : source!ProjectComponent {
+	
+	template : "./project/template-yarn.lock.egl"
+	
+	target : "../src-gen/glsp/yarn.lock"
+	
+}
+
+
+rule ReadmeMd
+	transform file : source!ProjectComponent {
+	
+	template : "./project/template-README.md.egl"
+	
+	target : "../src-gen/glsp/README.md"
+	
+}
+
+//----------------------------------------------------------
+
+rule ServerOrgEclipseCoreResourcesPrefs
+	transform file : source!ProjectComponent {
+	
+	template : "./server/settings/template-org.eclipse.core.resources.prefs.egl"
+	
+	target : "../src-gen/glsp/glsp-server/.settings/org.eclipse.core.resources.prefs"
+	
+}
+
+
+rule ServerOrgEclipseJdtAptCorePrefs
+	transform file : source!ProjectComponent {
+	
+	template : "./server/settings/template-org.eclipse.jdt.apt.core.prefs.egl"
+	
+	target : "../src-gen/glsp/glsp-server/.settings/org.eclipse.jdt.apt.core.prefs"
+	
+}
+
+
+rule ServerOrgEclipseJdtCorePrefs
+	transform file : source!ProjectComponent {
+	
+	template : "./server/settings/template-org.eclipse.jdt.core.prefs.egl"
+	
+	target : "../src-gen/glsp/glsp-server/.settings/org.eclipse.jdt.core.prefs"
+	
+}
+
+
+rule ServerOrgEclipseJdtLaunchingPrefs
+	transform file : source!ProjectComponent {
+	
+	template : "./server/settings/template-org.eclipse.jdt.launching.prefs.egl"
+	
+	target : "../src-gen/glsp/glsp-server/.settings/org.eclipse.jdt.launching.prefs"
+	
+}
+
+
+rule ServerOrgEclipseJdtUiPrefs
+	transform file : source!ProjectComponent {
+	
+	template : "./server/settings/template-org.eclipse.jdt.ui.prefs.egl"
+	
+	target : "../src-gen/glsp/glsp-server/.settings/org.eclipse.jdt.ui.prefs"
+	
+}
+
+
+rule ServerOrgEclipseM2eCorePrefs
+	transform file : source!ProjectComponent {
+	
+	template : "./server/settings/template-org.eclipse.m2e.core.prefs.egl"
+	
+	target : "../src-gen/glsp/glsp-server/.settings/org.eclipse.m2e.core.prefs"
+	
+}
+
+
+rule ServerExtensionsJson
+	transform file : source!ProjectComponent {
+	
+	template : "./server/vscode/template-extensions.json.egl"
+	
+	target : "../src-gen/glsp/glsp-server/.vscode/extensions.json"
+	
+}
+
+
+rule ServerLaunchJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName
+	}
+	
+	template : "./server/vscode/template-launch.json.egl"
+	
+	target : "../src-gen/glsp/glsp-server/.vscode/launch.json"
+	
+}
+
+
+rule ServerSettingsJson
+	transform file : source!ProjectComponent {
+	
+	template : "./server/vscode/template-settings.json.egl"
+	
+	target : "../src-gen/glsp/glsp-server/.vscode/settings.json"
+	
+}
+
+
+rule ServerTasksJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName
+	}
+	
+	template : "./server/vscode/template-tasks.json.egl"
+	
+	target : "../src-gen/glsp/glsp-server/.vscode/tasks.json"
+	
+}
+
+
+rule ServerBuildProperties
+	transform file : source!ProjectComponent {
+	
+	template : "./server/project/template-build.properties.egl"
+	
+	target : "../src-gen/glsp/glsp-server/build.properties"
+	
+}
+
+
+rule ServerCheckstyle
+	transform file : source!ProjectComponent {
+	
+	template : "./server/project/template-checkstyle.egl"
+	
+	target : "../src-gen/glsp/glsp-server/.checkstyle"
+	
+}
+
+
+rule ServerClasspath
+	transform file : source!ProjectComponent {
+	
+	template : "./server/project/template-classpath.egl"
+	
+	target : "../src-gen/glsp/glsp-server/.classpath"
+	
+}
+
+
+rule ServerPluginProperties
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./server/project/template-plugin.properties.egl"
+	
+	target : "../src-gen/glsp/glsp-server/plugin.properties"
+	
+}
+
+
+rule ServerPluginXml
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./server/project/template-plugin.xml.egl"
+	
+	target : "../src-gen/glsp/glsp-server/plugin.xml"
+	
+}
+
+
+rule ServerPomXml
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName
+	}
+	
+	template : "./server/project/template-pom.xml.egl"
+	
+	target : "../src-gen/glsp/glsp-server/pom.xml"
+	
+}
+
+
+rule ServerProject
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_packageName" = packageName
+	}
+	
+	template : "./server/project/template-project.egl"
+	
+	target : "../src-gen/glsp/glsp-server/.project"
+	
+}
+
+
+rule ServerReadmeMd
+	transform file : source!ProjectComponent {
+	
+	template : "./server/project/template-README.md.egl"
+	
+	target : "../src-gen/glsp/glsp-server/README.md"
+	
+}
+
+
+rule ServerServerLauncherLaunch
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName
+	}
+	
+	template : "./server/project/template-ServerLauncher.launch.egl"
+	
+	target : "../src-gen/glsp/glsp-server/ServerLauncher.launch"
+	
+}
+
+//----------------------------------------------------------
+
+rule ClientExtensionsJson
+	transform file : source!ProjectComponent {
+	
+	template : "./client/vscode/template-extensions.json.egl"
+	
+	target : "../src-gen/glsp/glsp-client/.vscode/extensions.json"
+	
+}
+
+
+rule ClientLaunchJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/vscode/template-launch.json.egl"
+	
+	target : "../src-gen/glsp/glsp-client/.vscode/launch.json"
+	
+}
+
+
+rule ClientSettingsJson
+	transform file : source!ProjectComponent {
+	
+	template : "./client/vscode/template-settings.json.egl"
+	
+	target : "../src-gen/glsp/glsp-client/.vscode/settings.json"
+	
+}
+
+
+rule ClientTasksJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/vscode/template-tasks.json.egl"
+	
+	target : "../src-gen/glsp/glsp-client/.vscode/tasks.json"
+	
+}
+
+
+rule ClientPackageJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/browser-app/template-package.json.egl"
+	
+	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-browser-app/package.json"
+	
+}
+
+
+rule ClientDiagrammCss
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/glsp/css/template-diagram.css.egl"
+	
+	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-glsp/css/diagram.css"
+	
+}
+
+
+rule ClientDiagrammModuleTs
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/glsp/src/template-diagram-module.ts.egl"
+	
+	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-glsp/src/diagram-module.ts"
+	
+}
+
+
+rule ClientIndexTs
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/glsp/src/template-index.ts.egl"
+	
+	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-glsp/src/index.ts"
+	
+}
+
+
+rule ClientGlspPackageJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/glsp/template-package.json.egl"
+	
+	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-glsp/package.json"
+	
+}
+
+
+rule ClientGlspTsconfigJson
+	transform file : source!ProjectComponent {
+	
+	template : "./client/glsp/template-tsconfig.json.egl"
+	
+	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-glsp/tsconfig.json"
+	
+}
+
+
+rule ClientGitkeep
+	transform file : source!ProjectComponent {
+	
+	template : "./client/theia/logs/template-gitkeep.egl"
+	
+	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-theia/logs/.gitkeep"
+	
+}
+
+
+rule ClientDiagramConfigurationTs
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/theia/src/browser/diagram/template-diagram-configuration.ts.egl"
+	
+	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-theia/src/browser/diagram/diagram-configuration.ts"
+	
+}
+
+
+rule ClientFrontendModuleTs
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/theia/src/browser/template-frontend-module.ts.egl"
+	
+	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-theia/src/browser/frontend-module.ts"
+	
+}
+
+
+rule ClientLanguageTs
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/theia/src/common/template-language.ts.egl"
+	
+	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-theia/src/common/language.ts"
+	
+}
+
+
+rule ClientBackendModuleTs
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/theia/src/node/template-backend-module.ts.egl"
+	
+	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-theia/src/node/backend-module.ts"
+	
+}
+
+
+rule ClientGlspServerContribution
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName
+	}
+	
+	template : "./client/theia/src/node/template-glsp-server-contribution.ts.egl"
+	
+	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-theia/src/node/glsp-server-contribution.ts"
+	
+}
+
+
+rule ClientTheiaPackageJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/theia/template-package.json.egl"
+	
+	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-theia/package.json"
+	
+}
+
+
+rule ClientTheiaTsconfigJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/theia/template-tsconfig.json.egl"
+	
+	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-theia/tsconfig.json"
+	
+}
+
+
+rule ClientWorkspaceSettingsJson
+	transform file : source!ProjectComponent {
+	
+	template : "./client/workspace/theia/template-settings.json.egl"
+	
+	target : "../src-gen/glsp/glsp-client/workspace/theia/settings.json"
+	
+}
+
+
+rule ClientExample
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/workspace/template-example.egl"
+	
+	target : "../src-gen/glsp/glsp-client/workspace/example." + metamodelName
+	
+}
+
+
+rule ClientExampleNotation
+	transform file : source!ProjectComponent {
+	
+	template : "./client/workspace/template-example.notation.egl"
+	
+	target : "../src-gen/glsp/glsp-client/workspace/example.notation"
+	
+}
+
+
+rule ClientEslintrcJs
+	transform file : source!ProjectComponent {
+	
+	template : "./client/project/template-eslintrc.js.egl"
+	
+	target : "../src-gen/glsp/glsp-client/.eslintrc.js"
+	
+}
+
+
+rule ClientLernaJson
+	transform file : source!ProjectComponent {
+	
+	template : "./client/project/template-lerna.json.egl"
+	
+	target : "../src-gen/glsp/glsp-client/lerna.json"
+	
+}
+
+
+rule ClientProjectPackageJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/project/template-package.json.egl"
+	
+	target : "../src-gen/glsp/glsp-client/package.json"
+	
+}
+
+
+rule ClientPrettierrc
+	transform file : source!ProjectComponent {
+	
+	template : "./client/project/template-prettierrc.egl"
+	
+	target : "../src-gen/glsp/glsp-client/.prettierrc"
+	
+}
+
+
+rule ClientReadmeMd
+	transform file : source!ProjectComponent {
+	
+	template : "./client/project/template-README.md.egl"
+	
+	target : "../src-gen/glsp/glsp-client/README.md"
+	
+}
+
+
+rule ClientTsconfigEslintJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/project/template-tsconfig.eslint.json.egl"
+	
+	target : "../src-gen/glsp/glsp-client/tsconfig.eslint.json"
+	
+}
+
+
+rule ClientProjectTsconfigJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/project/template-tsconfig.json.egl"
+	
+	target : "../src-gen/glsp/glsp-client/tsconfig.json"
+	
+}
+
+
+rule ClientProjectYarnLock
+	transform file : source!ProjectComponent {
+	
+	template : "./client/project/template-yarn.lock.egl"
+	
+	target : "../src-gen/glsp/glsp-client/yarn.lock"
 	
 }

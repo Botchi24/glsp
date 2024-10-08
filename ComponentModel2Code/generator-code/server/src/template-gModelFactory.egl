@@ -21,9 +21,9 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import [%=_packageName%].[%=_metamodelName.firstToUpperCase()%]ModelTypes;
 [%for ( n in _nodes){%]
-import [%=_metamodelPackageName%].model.[%=n%];
+import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=n%];
 [%}%]
-import [%=_metamodelPackageName%].model.[%=_root%];
+import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=_root%];
 import org.eclipse.glsp.graph.DefaultTypes;
 import org.eclipse.glsp.graph.GGraph;
 import org.eclipse.glsp.graph.GModelRoot;

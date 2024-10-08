@@ -33,5 +33,6 @@
     </genClasses>
     <genClasses ecoreClass="glspComponentModel.ecore#//EMFSourceModelStorage"/>
     <genClasses ecoreClass="glspComponentModel.ecore#//GModelStorage"/>
+    <genClasses ecoreClass="glspComponentModel.ecore#//ProjectComponent"/>
   </genPackages>
 </genmodel:GenModel>

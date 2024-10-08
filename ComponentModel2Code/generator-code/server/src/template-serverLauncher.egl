@@ -14,7 +14,7 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
-package [%=_packageName%].launcher;
+package [%=_packageName%].launch;
 
 import org.apache.commons.cli.ParseException;
 import [%=_packageName%].[%=_metamodelName.firstToUpperCase()%]DiagramModule;
