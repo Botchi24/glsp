@@ -1,4 +1,4 @@
-<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.8 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.8" pages="3">
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17" pages="3">
   <diagram name="Seite-1" id="_6wG36E1XGiq7voDwoOF">
     <mxGraphModel dx="11014" dy="725" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="10000" pageHeight="10000" math="0" shadow="0">
       <root>
@@ -310,7 +310,7 @@
             <mxPoint x="-27" y="7" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="uSsdu1jCdP4wSq9yANCI-1" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Project&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;+ MetamodelName: String&lt;br&gt;&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;whiteSpace=wrap;" parent="dNwkaqyg3lNLv9NLOPZP-4" vertex="1">
+        <mxCell id="uSsdu1jCdP4wSq9yANCI-1" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Clientproject&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;+ MetamodelName: String&lt;br&gt;&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;whiteSpace=wrap;" parent="dNwkaqyg3lNLv9NLOPZP-4" vertex="1">
           <mxGeometry x="20" y="40.00000000000001" width="180" height="90" as="geometry" />
         </mxCell>
         <mxCell id="uSsdu1jCdP4wSq9yANCI-2" value="" style="shape=component;jettyWidth=8;jettyHeight=4;" parent="uSsdu1jCdP4wSq9yANCI-1" vertex="1">
@@ -374,7 +374,7 @@
             <mxPoint x="990" y="-360" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="uSsdu1jCdP4wSq9yANCI-3" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Project&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;+ metamodelName: String&lt;br&gt;&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;whiteSpace=wrap;" parent="1" vertex="1">
+        <mxCell id="uSsdu1jCdP4wSq9yANCI-3" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Serverproject&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;+ metamodelName: String&lt;br&gt;&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="300" y="-820" width="180" height="90" as="geometry" />
         </mxCell>
         <mxCell id="uSsdu1jCdP4wSq9yANCI-4" value="" style="shape=component;jettyWidth=8;jettyHeight=4;" parent="uSsdu1jCdP4wSq9yANCI-3" vertex="1">
@@ -686,6 +686,14 @@
           <mxGeometry width="160" relative="1" as="geometry">
             <mxPoint x="1280.0000000000014" y="-189.99366336633648" as="sourcePoint" />
             <mxPoint x="1300" y="-711" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YfuM4BtUsbZvuVOptYFS-1" value="&lt;p style=&quot;margin:0px;margin-top:6px;text-align:center;&quot;&gt;&lt;b&gt;Project&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;+ metamodelName: String&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;+ serverPath: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:8px;&quot;&gt;+ clientPath: String&lt;/p&gt;" style="align=left;overflow=fill;html=1;dropTarget=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="290" y="-1070" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="YfuM4BtUsbZvuVOptYFS-2" value="" style="shape=component;jettyWidth=8;jettyHeight=4;" vertex="1" parent="YfuM4BtUsbZvuVOptYFS-1">
+          <mxGeometry x="1" width="20" height="20" relative="1" as="geometry">
+            <mxPoint x="-24" y="4" as="offset" />
           </mxGeometry>
         </mxCell>
       </root>

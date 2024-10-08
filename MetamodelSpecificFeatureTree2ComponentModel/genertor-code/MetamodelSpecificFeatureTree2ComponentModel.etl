@@ -20,6 +20,8 @@ rule Root
 		//t.components.addAll(s.children.equivalents());
 		
 		//s.children.first().equivalents().getClass().println();
+		
+		t.components.add(new target!ProjectComponent());
 	
 }
 

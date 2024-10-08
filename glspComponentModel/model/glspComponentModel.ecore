@@ -28,4 +28,5 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EMFSourceModelStorage" eSuperTypes="#//SourceModelStorage"/>
   <eClassifiers xsi:type="ecore:EClass" name="GModelStorage" eSuperTypes="#//SourceModelStorage"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProjectComponent" eSuperTypes="#//Component"/>
 </ecore:EPackage>
