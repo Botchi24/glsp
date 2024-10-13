@@ -68,11 +68,11 @@ rule CreateHandler
 	transform s : source!t_feature
 	to t : target!CreateHandler {
 	
-		guard : s.a_name.startsWith("E_S31 use Command_")
+		guard : s.a_name.startsWith("N_S31 use Command_")
 		
-		("CreateHandler_" + s.a_name.substring("E_S31 use Command_".length(), s.a_name.length())).println();
+		("CreateHandler_" + s.a_name.substring("N_S31 use Command_".length(), s.a_name.length())).println();
 		
-		t.elementName = s.a_name.substring("E_S31 use Command_".length(), s.a_name.length());
+		t.elementName = s.a_name.substring("N_S31 use Command_".length(), s.a_name.length());
 		
 		t.referenceName = metamodelSpecificSettings!t_root.all.first.children.select(c|c.a_name == t.elementName).first.a_referenceName;
 		

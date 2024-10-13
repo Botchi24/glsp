@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=_metamodelPrefix%]Package;
 import org.eclipse.glsp.server.emf.notation.EMFNotationSourceModelStorage;
 
-public class SourceModelStorage extends EMFNotationSourceModelStorage {
+public class [%=_metamodelName.firstToUpperCase()%]SourceModelStorage extends EMFNotationSourceModelStorage {
    @Override
    protected ResourceSet setupResourceSet(final ResourceSet resourceSet) {
       resourceSet.getPackageRegistry().put([%=_metamodelPrefix%]Package.eINSTANCE.getNsURI(), [%=_metamodelPrefix%]Package.eINSTANCE);
