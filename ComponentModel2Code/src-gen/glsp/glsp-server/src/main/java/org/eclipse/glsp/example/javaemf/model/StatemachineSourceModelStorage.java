@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import swt.most.statemachine.StatemachinePackage;
 import org.eclipse.glsp.server.emf.notation.EMFNotationSourceModelStorage;
 
-public class SourceModelStorage extends EMFNotationSourceModelStorage {
+public class StatemachineSourceModelStorage extends EMFNotationSourceModelStorage {
    @Override
    protected ResourceSet setupResourceSet(final ResourceSet resourceSet) {
       resourceSet.getPackageRegistry().put(StatemachinePackage.eINSTANCE.getNsURI(), StatemachinePackage.eINSTANCE);

@@ -160,7 +160,7 @@ function target!t_and processAndFeature(oldFeature : source!t_feature){
 			var feature = new target!t_feature;
 			feature.a_abstract = oldFeature.a_abstract;
 			feature.a_mandatory = oldFeature.a_mandatory;
-			feature.a_name = oldFeature.a_name + "_" + e;
+			feature.a_name = oldFeature.a_name.replaceFirst("E", "N") + "_" + e;
 			feature.a_hidden = oldFeature.a_hidden;
 			self.appendChild(feature);
 		}
@@ -185,7 +185,7 @@ function target!t_alt processAltFeature(oldFeature : source!t_feature){
 			var feature = new target!t_feature;
 			feature.a_abstract = oldFeature.a_abstract;
 			feature.a_mandatory = oldFeature.a_mandatory;
-			feature.a_name = oldFeature.a_name + "_" + e;
+			feature.a_name = oldFeature.a_name.replaceFirst("E", "N") + "_" + e;
 			feature.a_hidden = oldFeature.a_hidden;
 			self.appendChild(feature);
 		}

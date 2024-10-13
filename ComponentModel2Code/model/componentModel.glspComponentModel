@@ -8,7 +8,6 @@
   <components xsi:type="glspComponentModel:CreateHandler" elementName="InitialState" referenceName="initialstate"/>
   <components xsi:type="glspComponentModel:CreateHandler" elementName="NormalState" referenceName="states"/>
   <components xsi:type="glspComponentModel:CreateHandler" elementName="FinalState" referenceName="finalstates"/>
-  <components xsi:type="glspComponentModel:CreateHandler" elementName="Transition" referenceName="transitions"/>
   <components xsi:type="glspComponentModel:DeleteHandler"/>
   <components xsi:type="glspComponentModel:ToolPaletteItemProvider"/>
   <components xsi:type="glspComponentModel:EMFSourceModelStorage"/>
