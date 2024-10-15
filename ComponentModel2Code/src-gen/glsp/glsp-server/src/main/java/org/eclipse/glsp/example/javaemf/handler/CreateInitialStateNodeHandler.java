@@ -91,7 +91,7 @@ public class CreateInitialStateNodeHandler extends EMFCreateOperationHandler<Cre
 
    protected InitialState createInitialState() {
       InitialState newInitialState = StatemachineFactory.eINSTANCE.createInitialState();
-      newInitialState.setId(UUID.randomUUID().toString());
+      //newInitialState.setId(UUID.randomUUID().toString());
       setInitialName(newInitialState);
       return newInitialState;
    }

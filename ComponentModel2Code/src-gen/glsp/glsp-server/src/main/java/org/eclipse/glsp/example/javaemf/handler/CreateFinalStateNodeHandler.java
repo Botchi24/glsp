@@ -91,7 +91,7 @@ public class CreateFinalStateNodeHandler extends EMFCreateOperationHandler<Creat
 
    protected FinalState createFinalState() {
       FinalState newFinalState = StatemachineFactory.eINSTANCE.createFinalState();
-      newFinalState.setId(UUID.randomUUID().toString());
+      //newFinalState.setId(UUID.randomUUID().toString());
       setInitialName(newFinalState);
       return newFinalState;
    }

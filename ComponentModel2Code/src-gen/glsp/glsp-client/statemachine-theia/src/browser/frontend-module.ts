@@ -15,7 +15,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
 import { ContainerContext, DiagramConfiguration, GLSPTheiaFrontendModule } from '@eclipse-glsp/theia-integration';
-import { StatemachineLanguage } from '../common/tasklist-language';
+import { StatemachineLanguage } from '../common/statemachine-language';
 import { StatemachineDiagramConfiguration } from './diagram/statemachine-diagram-configuration';
 
 export class StatemachineTheiaFrontendModule extends GLSPTheiaFrontendModule {

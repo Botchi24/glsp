@@ -17,6 +17,7 @@
 package org.eclipse.glsp.example.javaemf.model;
 
 import java.util.Map;
+import java.util.stream.Stream;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.glsp.example.javaemf.StatemachineModelTypes;
@@ -40,10 +41,12 @@ public class StatemachineGModelFactory extends EMFNotationGModelFactory {
    @Override
    protected void fillRootElement(final EObject semanticModel, final Diagram notationModel, final GModelRoot newRoot) {
       StateMachine stateMachine = StateMachine.class.cast(semanticModel);
+      System.out.println("id: " + idGenerator.getOrCreateId(stateMachine);
       GGraph graph = GGraph.class.cast(newRoot);
       if (notationModel.getSemanticElement() != null
          && notationModel.getSemanticElement().getResolvedSemanticElement() != null) {
-         stateMachine.getInitialstate().stream()
+    	 Stream.of(stateMachine.getInitialstate()) 
+         //stateMachine.getInitialstate().stream()
             .map(this::createInitialStateNode)
             .forEachOrdered(graph.getChildren()::add);
          stateMachine.getStates().stream()
@@ -59,7 +62,7 @@ public class StatemachineGModelFactory extends EMFNotationGModelFactory {
       GNodeBuilder initialStateNodeBuilder = new GNodeBuilder(StatemachineModelTypes.INITIALSTATE)
          .id(idGenerator.getOrCreateId(initialState))
          .addCssClass("stateMachine-node")
-         .add(new GLabelBuilder(DefaultTypes.LABEL).text(initialState.getName()).id(initialState.getId() + "_label").build())
+         .add(new GLabelBuilder(DefaultTypes.LABEL).text(initialState.getName()).id(idGenerator.getOrCreateId(initialState) + "_label").build())
          .layout(GConstants.Layout.HBOX, Map.of(GLayoutOptions.KEY_PADDING_LEFT, 5));
 
       applyShapeData(initialState, initialStateNodeBuilder);
@@ -70,7 +73,7 @@ public class StatemachineGModelFactory extends EMFNotationGModelFactory {
       GNodeBuilder normalStateNodeBuilder = new GNodeBuilder(StatemachineModelTypes.NORMALSTATE)
          .id(idGenerator.getOrCreateId(normalState))
          .addCssClass("stateMachine-node")
-         .add(new GLabelBuilder(DefaultTypes.LABEL).text(normalState.getName()).id(normalState.getId() + "_label").build())
+         .add(new GLabelBuilder(DefaultTypes.LABEL).text(normalState.getName()).id(idGenerator.getOrCreateId(normalState) + "_label").build())
          .layout(GConstants.Layout.HBOX, Map.of(GLayoutOptions.KEY_PADDING_LEFT, 5));
 
       applyShapeData(normalState, normalStateNodeBuilder);
@@ -81,7 +84,7 @@ public class StatemachineGModelFactory extends EMFNotationGModelFactory {
       GNodeBuilder finalStateNodeBuilder = new GNodeBuilder(StatemachineModelTypes.FINALSTATE)
          .id(idGenerator.getOrCreateId(finalState))
          .addCssClass("stateMachine-node")
-         .add(new GLabelBuilder(DefaultTypes.LABEL).text(finalState.getName()).id(finalState.getId() + "_label").build())
+         .add(new GLabelBuilder(DefaultTypes.LABEL).text(finalState.getName()).id(idGenerator.getOrCreateId(finalState) + "_label").build())
          .layout(GConstants.Layout.HBOX, Map.of(GLayoutOptions.KEY_PADDING_LEFT, 5));
 
       applyShapeData(finalState, finalStateNodeBuilder);
