@@ -91,7 +91,7 @@ public class CreateNormalStateNodeHandler extends EMFCreateOperationHandler<Crea
 
    protected NormalState createNormalState() {
       NormalState newNormalState = StatemachineFactory.eINSTANCE.createNormalState();
-      newNormalState.setId(UUID.randomUUID().toString());
+      //newNormalState.setId(UUID.randomUUID().toString());
       setInitialName(newNormalState);
       return newNormalState;
    }

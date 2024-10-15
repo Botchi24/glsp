@@ -27,7 +27,7 @@ import org.eclipse.glsp.server.di.MultiBinding;
 import org.eclipse.glsp.server.diagram.DiagramConfiguration;
 import org.eclipse.glsp.server.emf.EMFIdGenerator;
 import org.eclipse.glsp.server.emf.EMFSourceModelStorage;
-import org.eclipse.glsp.server.emf.idgen.AttributeIdGenerator;
+import org.eclipse.glsp.server.emf.idgen.IdentificationIdGenerator;
 import org.eclipse.glsp.server.emf.notation.EMFNotationDiagramModule;
 import org.eclipse.glsp.server.features.core.model.GModelFactory;
 import org.eclipse.glsp.server.features.toolpalette.ToolPaletteItemProvider;
@@ -56,7 +56,7 @@ public class StatemachineDiagramModule extends EMFNotationDiagramModule {
    @Override
    protected Class<? extends EMFIdGenerator> bindEMFIdGenerator() {
       // all our elements inherit from Identifiable and have an ID attribute set
-      return AttributeIdGenerator.class;
+      return IdentificationIdGenerator.class;
    }
 
    @Override

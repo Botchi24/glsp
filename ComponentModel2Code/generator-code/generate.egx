@@ -529,7 +529,7 @@ rule ClientDiagrammModuleTs
 	
 	template : "./client/glsp/src/template-diagram-module.ts.egl"
 	
-	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-glsp/src/diagram-module.ts"
+	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-glsp/src/" + metamodelName + "-diagram-module.ts"
 	
 }
 
@@ -591,7 +591,7 @@ rule ClientDiagramConfigurationTs
 	
 	template : "./client/theia/src/browser/diagram/template-diagram-configuration.ts.egl"
 	
-	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-theia/src/browser/diagram/diagram-configuration.ts"
+	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-theia/src/browser/diagram/" + metamodelName + "-diagram-configuration.ts"
 	
 }
 
@@ -619,7 +619,7 @@ rule ClientLanguageTs
 	
 	template : "./client/theia/src/common/template-language.ts.egl"
 	
-	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-theia/src/common/language.ts"
+	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-theia/src/common/" + metamodelName + "-language.ts"
 	
 }
 

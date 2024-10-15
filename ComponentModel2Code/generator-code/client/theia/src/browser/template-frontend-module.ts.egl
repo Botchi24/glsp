@@ -15,7 +15,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
 import { ContainerContext, DiagramConfiguration, GLSPTheiaFrontendModule } from '@eclipse-glsp/theia-integration';
-import { [%=_metamodelName.firstToUpperCase()%]Language } from '../common/tasklist-language';
+import { [%=_metamodelName.firstToUpperCase()%]Language } from '../common/[%=_metamodelName%]-language';
 import { [%=_metamodelName.firstToUpperCase()%]DiagramConfiguration } from './diagram/[%=_metamodelName%]-diagram-configuration';
 
 export class [%=_metamodelName.firstToUpperCase()%]TheiaFrontendModule extends GLSPTheiaFrontendModule {
