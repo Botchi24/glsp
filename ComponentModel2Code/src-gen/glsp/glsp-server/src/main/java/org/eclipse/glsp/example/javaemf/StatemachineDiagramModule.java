@@ -22,13 +22,16 @@ import org.eclipse.glsp.example.javaemf.handler.CreateFinalStateNodeHandler;
 import org.eclipse.glsp.example.javaemf.handler.DeleteNodeHandler;
 import org.eclipse.glsp.example.javaemf.model.StatemachineGModelFactory;
 import org.eclipse.glsp.example.javaemf.model.StatemachineSourceModelStorage;
+import org.eclipse.glsp.example.javaemf.model.ExtendedModelState;
+//import org.eclipse.glsp.example.javaemf.model.ExtendedIndex;
 import org.eclipse.glsp.example.javaemf.palette.StatemachineToolPaletteItemProvider;
 import org.eclipse.glsp.server.di.MultiBinding;
 import org.eclipse.glsp.server.diagram.DiagramConfiguration;
 import org.eclipse.glsp.server.emf.EMFIdGenerator;
 import org.eclipse.glsp.server.emf.EMFSourceModelStorage;
-import org.eclipse.glsp.server.emf.idgen.IdentificationIdGenerator;
+import org.eclipse.glsp.server.emf.idgen.FragmentIdGenerator;
 import org.eclipse.glsp.server.emf.notation.EMFNotationDiagramModule;
+import org.eclipse.glsp.server.emf.notation.EMFNotationModelState;
 import org.eclipse.glsp.server.features.core.model.GModelFactory;
 import org.eclipse.glsp.server.features.toolpalette.ToolPaletteItemProvider;
 import org.eclipse.glsp.server.operations.OperationHandler;
@@ -56,7 +59,7 @@ public class StatemachineDiagramModule extends EMFNotationDiagramModule {
    @Override
    protected Class<? extends EMFIdGenerator> bindEMFIdGenerator() {
       // all our elements inherit from Identifiable and have an ID attribute set
-      return IdentificationIdGenerator.class;
+      return FragmentIdGenerator.class;
    }
 
    @Override
@@ -71,6 +74,11 @@ public class StatemachineDiagramModule extends EMFNotationDiagramModule {
       binding.add(CreateNormalStateNodeHandler.class);
       binding.add(CreateFinalStateNodeHandler.class);
       binding.add(DeleteNodeHandler.class);
+   }
+   
+   @Override
+   protected Class<? extends EMFNotationModelState> bindGModelState() {
+      return ExtendedModelState.class;
    }
 
    @Override

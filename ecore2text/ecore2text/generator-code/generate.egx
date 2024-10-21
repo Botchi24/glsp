@@ -5,6 +5,7 @@ pre{
 	//var p = featureTree!t_feature.all.collect(c|c.getParentNode().a_name).println();
 	var firstParent = featureTree!t_feature.all.first.getParentNode().a_name.println();
 	var parentTest = ft.children.collect(c|c.getParentNode().name).println();
+	//var test = featureTree!t_feature.all.first.getParentNode().a_test.println();
 }
 
 post {
