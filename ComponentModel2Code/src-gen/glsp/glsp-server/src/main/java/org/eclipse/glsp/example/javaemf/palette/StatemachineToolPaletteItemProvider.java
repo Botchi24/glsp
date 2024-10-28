@@ -35,8 +35,8 @@ public class StatemachineToolPaletteItemProvider implements ToolPaletteItemProvi
 
     private PaletteItem nodes() {
     	List<PaletteItem> nodes = Lists.newArrayList();
-        PaletteItem createInitialState = node(StatemachineModelTypes.INITIALSTATE, "InitialState");
-        nodes.add(createInitialState);
+        //PaletteItem createInitialState = node(StatemachineModelTypes.INITIALSTATE, "InitialState");
+        //nodes.add(createInitialState);
         PaletteItem createNormalState = node(StatemachineModelTypes.NORMALSTATE, "NormalState");
         nodes.add(createNormalState);
         PaletteItem createFinalState = node(StatemachineModelTypes.FINALSTATE, "FinalState");

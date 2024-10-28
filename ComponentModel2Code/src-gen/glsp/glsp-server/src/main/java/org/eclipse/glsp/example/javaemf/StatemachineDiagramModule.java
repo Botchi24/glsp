@@ -29,6 +29,7 @@ import org.eclipse.glsp.server.di.MultiBinding;
 import org.eclipse.glsp.server.diagram.DiagramConfiguration;
 import org.eclipse.glsp.server.emf.EMFIdGenerator;
 import org.eclipse.glsp.server.emf.EMFSourceModelStorage;
+//import org.eclipse.glsp.server.emf.idgen.UUIDIdGenerator;
 import org.eclipse.glsp.server.emf.idgen.FragmentIdGenerator;
 import org.eclipse.glsp.server.emf.notation.EMFNotationDiagramModule;
 import org.eclipse.glsp.server.emf.notation.EMFNotationModelState;
@@ -60,6 +61,7 @@ public class StatemachineDiagramModule extends EMFNotationDiagramModule {
    protected Class<? extends EMFIdGenerator> bindEMFIdGenerator() {
       // all our elements inherit from Identifiable and have an ID attribute set
       return FragmentIdGenerator.class;
+      //return UUIDIdGenerator.class;
    }
 
    @Override
@@ -70,7 +72,7 @@ public class StatemachineDiagramModule extends EMFNotationDiagramModule {
    @Override
    protected void configureOperationHandlers(final MultiBinding<OperationHandler<?>> binding) {
       super.configureOperationHandlers(binding);
-      binding.add(CreateInitialStateNodeHandler.class);
+      //binding.add(CreateInitialStateNodeHandler.class);
       binding.add(CreateNormalStateNodeHandler.class);
       binding.add(CreateFinalStateNodeHandler.class);
       binding.add(DeleteNodeHandler.class);

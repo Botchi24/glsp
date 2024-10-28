@@ -55,18 +55,18 @@ public class CreateInitialStateNodeHandler extends EMFCreateOperationHandler<Cre
    protected EMFIdGenerator idGenerator;
 
    public CreateInitialStateNodeHandler() {
-      super(StatemachineModelTypes.INITIALSTATE);
+      //super(StatemachineModelTypes.INITIALSTATE);
    }
 
    @Override
    public Optional<Command> createCommand(final CreateNodeOperation operation) {
-      GModelElement container = modelState.getIndex().get(operation.getContainerId()).orElseGet(modelState::getRoot);
-      Optional<GPoint> absoluteLocation = operation.getLocation();
-      Optional<GPoint> relativeLocation = absoluteLocation.map(location->LayoutUtil.getRelativeLocation(location, container));
+      //GModelElement container = modelState.getIndex().get(operation.getContainerId()).orElseGet(modelState::getRoot);
+      //Optional<GPoint> absoluteLocation = operation.getLocation();
+      //Optional<GPoint> relativeLocation = absoluteLocation.map(location->LayoutUtil.getRelativeLocation(location, container));
 
-      return Optional.of(createInitialStateAndShape(relativeLocation));
+      return null; //Optional.of(createInitialStateAndShape(relativeLocation));
    }
-
+/*
    @Override
    public String getLabel() { return "InitialState"; }
 
@@ -110,5 +110,5 @@ public class CreateInitialStateNodeHandler extends EMFCreateOperationHandler<Cre
       reference.setElementId(elementId);
       newInitialState.setSemanticElement(reference);
       return newInitialState;
-   }
+   }*/
 }
