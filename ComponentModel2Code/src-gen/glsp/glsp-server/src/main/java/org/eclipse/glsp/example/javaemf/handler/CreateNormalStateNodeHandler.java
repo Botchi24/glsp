@@ -46,6 +46,9 @@ import org.eclipse.glsp.server.utils.LayoutUtil;
 
 import com.google.inject.Inject;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
 public class CreateNormalStateNodeHandler extends EMFCreateOperationHandler<CreateNodeOperation> {
 
    @Inject
@@ -61,6 +64,17 @@ public class CreateNormalStateNodeHandler extends EMFCreateOperationHandler<Crea
    @Override
    public Optional<Command> createCommand(final CreateNodeOperation operation) {
       GModelElement container = modelState.getIndex().get(operation.getContainerId()).orElseGet(modelState::getRoot);
+      
+      try {
+    	  BufferedWriter writer = new BufferedWriter(new FileWriter("test.txt", true));
+    	  writer.newLine();
+    	  writer.append("root: " + container.toString());
+    	  writer.close();
+      }
+      catch(Exception e) {
+    	  
+      }
+      
       Optional<GPoint> absoluteLocation = operation.getLocation();
       Optional<GPoint> relativeLocation = absoluteLocation.map(location->LayoutUtil.getRelativeLocation(location, container));
 
@@ -72,12 +86,33 @@ public class CreateNormalStateNodeHandler extends EMFCreateOperationHandler<Crea
 
    protected Command createNormalStateAndShape(final Optional<GPoint> relativeLocation) {
       StateMachine stateMachine = modelState.getSemanticModel(StateMachine.class).orElseThrow();
+      
+      try {
+          BufferedWriter writer = new BufferedWriter(new FileWriter("test.txt", true));
+          writer.newLine();
+          writer.append("semantic model root: " + stateMachine.toString());
+          writer.newLine();
+          writer.append("semantic model 1: " + stateMachine.getStates().toString());
+          writer.close();
+       } catch (Exception e) {
+
+       }
+      
       Diagram diagram = modelState.getNotationModel();
       EditingDomain editingDomain = modelState.getEditingDomain();
 
       NormalState newNormalState = createNormalState();
       Command normalStateCommand = AddCommand.create(editingDomain, stateMachine,
          StatemachinePackage.Literals.STATE_MACHINE__STATES, newNormalState);
+      
+      try {
+          BufferedWriter writer = new BufferedWriter(new FileWriter("test.txt", true));
+          writer.newLine();
+          writer.append("semantic model 2: " + stateMachine.getStates().toString());
+          writer.close();
+       } catch (Exception e) {
+
+       }
 
       Shape shape = createShape(idGenerator.getOrCreateId(newNormalState), relativeLocation);
       Command shapeCommand = AddCommand.create(editingDomain, diagram,
