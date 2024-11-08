@@ -4,13 +4,17 @@ package glspComponentModel.provider;
 
 import glspComponentModel.CreateHandler;
 
+import glspComponentModel.GlspComponentModelPackage;
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
  * This is the item provider adapter for a {@link glspComponentModel.CreateHandler} object.
@@ -40,8 +44,42 @@ public class CreateHandlerItemProvider extends LeafComponentItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addElementNamePropertyDescriptor(object);
+			addReferenceNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Element Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addElementNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_CreateHandler_elementName_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_CreateHandler_elementName_feature",
+						"_UI_CreateHandler_type"),
+				GlspComponentModelPackage.Literals.CREATE_HANDLER__ELEMENT_NAME, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Reference Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addReferenceNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_CreateHandler_referenceName_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_CreateHandler_referenceName_feature",
+						"_UI_CreateHandler_type"),
+				GlspComponentModelPackage.Literals.CREATE_HANDLER__REFERENCE_NAME, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -73,7 +111,7 @@ public class CreateHandlerItemProvider extends LeafComponentItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((CreateHandler) object).getName();
+		String label = ((CreateHandler) object).getElementName();
 		return label == null || label.length() == 0 ? getString("_UI_CreateHandler_type")
 				: getString("_UI_CreateHandler_type") + " " + label;
 	}
@@ -88,6 +126,13 @@ public class CreateHandlerItemProvider extends LeafComponentItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(CreateHandler.class)) {
+		case GlspComponentModelPackage.CREATE_HANDLER__ELEMENT_NAME:
+		case GlspComponentModelPackage.CREATE_HANDLER__REFERENCE_NAME:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		}
 		super.notifyChanged(notification);
 	}
 

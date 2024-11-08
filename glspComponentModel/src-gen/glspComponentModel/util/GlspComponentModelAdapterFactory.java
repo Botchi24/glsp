@@ -9,10 +9,13 @@ import glspComponentModel.CreateHandler;
 import glspComponentModel.DeleteHandler;
 import glspComponentModel.DiagramConfiguration;
 import glspComponentModel.DiagramModule;
+import glspComponentModel.EMFSourceModelStorage;
+import glspComponentModel.GModelFactory;
+import glspComponentModel.GModelStorage;
 import glspComponentModel.GlspComponentModelPackage;
 import glspComponentModel.LeafComponent;
-import glspComponentModel.ModelFactory;
 import glspComponentModel.ModelTypes;
+import glspComponentModel.ProjectComponent;
 import glspComponentModel.ServerComponent;
 import glspComponentModel.ServerLauncher;
 import glspComponentModel.SourceModelStorage;
@@ -136,8 +139,8 @@ public class GlspComponentModelAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseModelFactory(ModelFactory object) {
-			return createModelFactoryAdapter();
+		public Adapter caseGModelFactory(GModelFactory object) {
+			return createGModelFactoryAdapter();
 		}
 
 		@Override
@@ -153,6 +156,21 @@ public class GlspComponentModelAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseComponentModel(ComponentModel object) {
 			return createComponentModelAdapter();
+		}
+
+		@Override
+		public Adapter caseEMFSourceModelStorage(EMFSourceModelStorage object) {
+			return createEMFSourceModelStorageAdapter();
+		}
+
+		@Override
+		public Adapter caseGModelStorage(GModelStorage object) {
+			return createGModelStorageAdapter();
+		}
+
+		@Override
+		public Adapter caseProjectComponent(ProjectComponent object) {
+			return createProjectComponentAdapter();
 		}
 
 		@Override
@@ -329,16 +347,16 @@ public class GlspComponentModelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link glspComponentModel.ModelFactory <em>Model Factory</em>}'.
+	 * Creates a new adapter for an object of class '{@link glspComponentModel.GModelFactory <em>GModel Factory</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see glspComponentModel.ModelFactory
+	 * @see glspComponentModel.GModelFactory
 	 * @generated
 	 */
-	public Adapter createModelFactoryAdapter() {
+	public Adapter createGModelFactoryAdapter() {
 		return null;
 	}
 
@@ -381,6 +399,48 @@ public class GlspComponentModelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createComponentModelAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link glspComponentModel.EMFSourceModelStorage <em>EMF Source Model Storage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see glspComponentModel.EMFSourceModelStorage
+	 * @generated
+	 */
+	public Adapter createEMFSourceModelStorageAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link glspComponentModel.GModelStorage <em>GModel Storage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see glspComponentModel.GModelStorage
+	 * @generated
+	 */
+	public Adapter createGModelStorageAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link glspComponentModel.ProjectComponent <em>Project Component</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see glspComponentModel.ProjectComponent
+	 * @generated
+	 */
+	public Adapter createProjectComponentAdapter() {
 		return null;
 	}
 

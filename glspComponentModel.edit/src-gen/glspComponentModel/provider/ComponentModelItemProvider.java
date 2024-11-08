@@ -187,10 +187,19 @@ public class ComponentModelItemProvider extends ItemProviderAdapter implements I
 				GlspComponentModelFactory.eINSTANCE.createSourceModelStorage()));
 
 		newChildDescriptors.add(createChildParameter(GlspComponentModelPackage.Literals.COMPONENT_MODEL__COMPONENTS,
-				GlspComponentModelFactory.eINSTANCE.createModelFactory()));
+				GlspComponentModelFactory.eINSTANCE.createGModelFactory()));
 
 		newChildDescriptors.add(createChildParameter(GlspComponentModelPackage.Literals.COMPONENT_MODEL__COMPONENTS,
 				GlspComponentModelFactory.eINSTANCE.createClientComponent()));
+
+		newChildDescriptors.add(createChildParameter(GlspComponentModelPackage.Literals.COMPONENT_MODEL__COMPONENTS,
+				GlspComponentModelFactory.eINSTANCE.createEMFSourceModelStorage()));
+
+		newChildDescriptors.add(createChildParameter(GlspComponentModelPackage.Literals.COMPONENT_MODEL__COMPONENTS,
+				GlspComponentModelFactory.eINSTANCE.createGModelStorage()));
+
+		newChildDescriptors.add(createChildParameter(GlspComponentModelPackage.Literals.COMPONENT_MODEL__COMPONENTS,
+				GlspComponentModelFactory.eINSTANCE.createProjectComponent()));
 	}
 
 	/**

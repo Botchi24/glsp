@@ -1,5 +1,6 @@
 pre {
 	var metamodelName = metamodel!EPackage.all.first.name.println();
+	var metamodelNsUri = metamodel!EPackage.all.first.nsURI.println();
 	var packageName = "org.eclipse.glsp.example.javaemf";
 	var metamodelPackageName = "swt.most";
 	var metamodelPrefix = "Statemachine";
@@ -11,6 +12,9 @@ pre {
 	var serverPath = "glsp-server";
 	var clientPath = "glsp-client";
 }
+
+
+//--------------------------SERVER--------------------------------
 
 
 rule ServerLauncher
@@ -167,7 +171,44 @@ rule GModelFactory
 	
 }
 
-//----------------------------------------------------------
+//-------------------------CLIENT---------------------------------
+
+
+//rule CLientModelTypes
+//	transform clientModelTypes : source!ClientModelTypes {
+//	
+//	parameters : Map {
+//		"_metamodelName" = metamodelName,
+//		"_packageName" = packageName,
+//		"_nodes" = nodes,
+//		"_edges" = edges
+//	}
+//	
+//	template : "./server/src/template-modelTypes.egl"
+//
+//	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/" + metamodelName.firstToUpperCase() + "ModelTypes.java"
+//	
+//}
+
+
+rule ClientDiagrammModuleTs
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_nodes" = nodes,
+		"_edges" = edges
+	}
+	
+	template : "./client/glsp/src/template-diagram-module.ts.egl"
+	
+	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-glsp/src/" + metamodelName + "-diagram-module.ts"
+	
+}
+
+
+//---------------------PROJECT-FILES--------------------------------
+
 
 rule JavaEmfTheiaExampleCodeWorkspace
 	transform file : source!ProjectComponent {
@@ -219,7 +260,7 @@ rule ReadmeMd
 	
 }
 
-//----------------------------------------------------------
+//------------------------PROJECT-FILES-SERVER---------------------------------
 
 rule ServerOrgEclipseCoreResourcesPrefs
 	transform file : source!ProjectComponent {
@@ -442,7 +483,7 @@ rule ServerServerLauncherLaunch
 	
 }
 
-//----------------------------------------------------------
+//-------------------------PROJECT-FILES-CLIENT--------------------------------
 
 rule ClientExtensionsJson
 	transform file : source!ProjectComponent {
@@ -516,20 +557,6 @@ rule ClientDiagrammCss
 	template : "./client/glsp/css/template-diagram.css.egl"
 	
 	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-glsp/css/diagram.css"
-	
-}
-
-
-rule ClientDiagrammModuleTs
-	transform file : source!ProjectComponent {
-	
-	parameters : Map {
-		"_metamodelName" = metamodelName
-	}
-	
-	template : "./client/glsp/src/template-diagram-module.ts.egl"
-	
-	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-glsp/src/" + metamodelName + "-diagram-module.ts"
 	
 }
 
@@ -695,7 +722,9 @@ rule ClientExample
 	transform file : source!ProjectComponent {
 	
 	parameters : Map {
-		"_metamodelName" = metamodelName
+		"_metamodelName" = metamodelName,
+		"_metamodelNsUri" = metamodelNsUri,
+		"_root" = root
 	}
 	
 	template : "./client/workspace/template-example.egl"
@@ -707,6 +736,10 @@ rule ClientExample
 
 rule ClientExampleNotation
 	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
 	
 	template : "./client/workspace/template-example.notation.egl"
 	

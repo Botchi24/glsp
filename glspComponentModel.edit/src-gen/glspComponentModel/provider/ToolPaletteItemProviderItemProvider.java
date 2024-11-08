@@ -2,8 +2,6 @@
  */
 package glspComponentModel.provider;
 
-import glspComponentModel.ToolPaletteItemProvider;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -73,9 +71,7 @@ public class ToolPaletteItemProviderItemProvider extends LeafComponentItemProvid
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ToolPaletteItemProvider) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_ToolPaletteItemProvider_type")
-				: getString("_UI_ToolPaletteItemProvider_type") + " " + label;
+		return getString("_UI_ToolPaletteItemProvider_type");
 	}
 
 	/**

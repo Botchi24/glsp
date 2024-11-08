@@ -121,13 +121,13 @@ public interface GlspComponentModelFactory extends EFactory {
 	SourceModelStorage createSourceModelStorage();
 
 	/**
-	 * Returns a new object of class '<em>Model Factory</em>'.
+	 * Returns a new object of class '<em>GModel Factory</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Model Factory</em>'.
+	 * @return a new object of class '<em>GModel Factory</em>'.
 	 * @generated
 	 */
-	ModelFactory createModelFactory();
+	GModelFactory createGModelFactory();
 
 	/**
 	 * Returns a new object of class '<em>Client Component</em>'.
@@ -155,6 +155,33 @@ public interface GlspComponentModelFactory extends EFactory {
 	 * @generated
 	 */
 	ComponentModel createComponentModel();
+
+	/**
+	 * Returns a new object of class '<em>EMF Source Model Storage</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>EMF Source Model Storage</em>'.
+	 * @generated
+	 */
+	EMFSourceModelStorage createEMFSourceModelStorage();
+
+	/**
+	 * Returns a new object of class '<em>GModel Storage</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>GModel Storage</em>'.
+	 * @generated
+	 */
+	GModelStorage createGModelStorage();
+
+	/**
+	 * Returns a new object of class '<em>Project Component</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Project Component</em>'.
+	 * @generated
+	 */
+	ProjectComponent createProjectComponent();
 
 	/**
 	 * Returns the package supported by this factory.

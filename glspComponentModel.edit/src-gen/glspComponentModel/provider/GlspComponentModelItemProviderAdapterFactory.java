@@ -326,26 +326,26 @@ public class GlspComponentModelItemProviderAdapterFactory extends GlspComponentM
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link glspComponentModel.ModelFactory} instances.
+	 * This keeps track of the one adapter used for all {@link glspComponentModel.GModelFactory} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ModelFactoryItemProvider modelFactoryItemProvider;
+	protected GModelFactoryItemProvider gModelFactoryItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link glspComponentModel.ModelFactory}.
+	 * This creates an adapter for a {@link glspComponentModel.GModelFactory}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createModelFactoryAdapter() {
-		if (modelFactoryItemProvider == null) {
-			modelFactoryItemProvider = new ModelFactoryItemProvider(this);
+	public Adapter createGModelFactoryAdapter() {
+		if (gModelFactoryItemProvider == null) {
+			gModelFactoryItemProvider = new GModelFactoryItemProvider(this);
 		}
 
-		return modelFactoryItemProvider;
+		return gModelFactoryItemProvider;
 	}
 
 	/**
@@ -415,6 +415,75 @@ public class GlspComponentModelItemProviderAdapterFactory extends GlspComponentM
 		}
 
 		return componentModelItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link glspComponentModel.EMFSourceModelStorage} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EMFSourceModelStorageItemProvider emfSourceModelStorageItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link glspComponentModel.EMFSourceModelStorage}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createEMFSourceModelStorageAdapter() {
+		if (emfSourceModelStorageItemProvider == null) {
+			emfSourceModelStorageItemProvider = new EMFSourceModelStorageItemProvider(this);
+		}
+
+		return emfSourceModelStorageItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link glspComponentModel.GModelStorage} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GModelStorageItemProvider gModelStorageItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link glspComponentModel.GModelStorage}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createGModelStorageAdapter() {
+		if (gModelStorageItemProvider == null) {
+			gModelStorageItemProvider = new GModelStorageItemProvider(this);
+		}
+
+		return gModelStorageItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link glspComponentModel.ProjectComponent} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ProjectComponentItemProvider projectComponentItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link glspComponentModel.ProjectComponent}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createProjectComponentAdapter() {
+		if (projectComponentItemProvider == null) {
+			projectComponentItemProvider = new ProjectComponentItemProvider(this);
+		}
+
+		return projectComponentItemProvider;
 	}
 
 	/**
@@ -544,14 +613,20 @@ public class GlspComponentModelItemProviderAdapterFactory extends GlspComponentM
 			toolPaletteItemProviderItemProvider.dispose();
 		if (sourceModelStorageItemProvider != null)
 			sourceModelStorageItemProvider.dispose();
-		if (modelFactoryItemProvider != null)
-			modelFactoryItemProvider.dispose();
+		if (gModelFactoryItemProvider != null)
+			gModelFactoryItemProvider.dispose();
 		if (clientComponentItemProvider != null)
 			clientComponentItemProvider.dispose();
 		if (componentItemProvider != null)
 			componentItemProvider.dispose();
 		if (componentModelItemProvider != null)
 			componentModelItemProvider.dispose();
+		if (emfSourceModelStorageItemProvider != null)
+			emfSourceModelStorageItemProvider.dispose();
+		if (gModelStorageItemProvider != null)
+			gModelStorageItemProvider.dispose();
+		if (projectComponentItemProvider != null)
+			projectComponentItemProvider.dispose();
 	}
 
 }

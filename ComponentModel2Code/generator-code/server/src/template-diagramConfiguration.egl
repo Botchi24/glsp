@@ -27,9 +27,15 @@ public class [%=_metamodelName.firstToUpperCase()%]DiagramConfiguration extends 
    @Override
    public List<ShapeTypeHint> getShapeTypeHints() {
       // tasks can be moved, deleted and resized
-      [%for ( n in _nodes){%]
-      return List.of(new ShapeTypeHint([%=_metamodelName.firstToUpperCase()%]ModelTypes.[%=n.toUpperCase()%], true, true, true, false));
-      [%}%]
+      return List.of(
+      	[% var i : Integer = 0; %]
+      	[%for ( n in _nodes){%]
+      	[% i++; %]
+      	new ShapeTypeHint([%=_metamodelName.firstToUpperCase()%]ModelTypes.[%=n.toUpperCase()%], true, true, true, false)[%if (i != _nodes.size()) {%],
+      	[%}%]
+      	[%}%]
+      	
+      );
    }
 
    @Override

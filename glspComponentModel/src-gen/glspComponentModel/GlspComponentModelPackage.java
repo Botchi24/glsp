@@ -67,22 +67,13 @@ public interface GlspComponentModelPackage extends EPackage {
 	int COMPONENT = 13;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMPONENT__NAME = 0;
-
-	/**
 	 * The number of structural features of the '<em>Component</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_FEATURE_COUNT = 1;
+	int COMPONENT_FEATURE_COUNT = 0;
 
 	/**
 	 * The number of operations of the '<em>Component</em>' class.
@@ -102,15 +93,6 @@ public interface GlspComponentModelPackage extends EPackage {
 	 * @generated
 	 */
 	int SERVER_COMPONENT = 0;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVER_COMPONENT__NAME = COMPONENT__NAME;
 
 	/**
 	 * The number of structural features of the '<em>Server Component</em>' class.
@@ -141,15 +123,6 @@ public interface GlspComponentModelPackage extends EPackage {
 	int LEAF_COMPONENT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LEAF_COMPONENT__NAME = SERVER_COMPONENT__NAME;
-
-	/**
 	 * The number of structural features of the '<em>Leaf Component</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -176,15 +149,6 @@ public interface GlspComponentModelPackage extends EPackage {
 	 * @generated
 	 */
 	int PACKAGE = 2;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PACKAGE__NAME = SERVER_COMPONENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Server Components</b></em>' containment reference list.
@@ -224,15 +188,6 @@ public interface GlspComponentModelPackage extends EPackage {
 	int DIAGRAM_MODULE = 3;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_MODULE__NAME = LEAF_COMPONENT__NAME;
-
-	/**
 	 * The number of structural features of the '<em>Diagram Module</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -259,15 +214,6 @@ public interface GlspComponentModelPackage extends EPackage {
 	 * @generated
 	 */
 	int DIAGRAM_CONFIGURATION = 4;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DIAGRAM_CONFIGURATION__NAME = LEAF_COMPONENT__NAME;
 
 	/**
 	 * The number of structural features of the '<em>Diagram Configuration</em>' class.
@@ -298,15 +244,6 @@ public interface GlspComponentModelPackage extends EPackage {
 	int MODEL_TYPES = 5;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_TYPES__NAME = LEAF_COMPONENT__NAME;
-
-	/**
 	 * The number of structural features of the '<em>Model Types</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -333,15 +270,6 @@ public interface GlspComponentModelPackage extends EPackage {
 	 * @generated
 	 */
 	int SERVER_LAUNCHER = 6;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SERVER_LAUNCHER__NAME = LEAF_COMPONENT__NAME;
 
 	/**
 	 * The number of structural features of the '<em>Server Launcher</em>' class.
@@ -372,13 +300,22 @@ public interface GlspComponentModelPackage extends EPackage {
 	int CREATE_HANDLER = 7;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Element Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CREATE_HANDLER__NAME = LEAF_COMPONENT__NAME;
+	int CREATE_HANDLER__ELEMENT_NAME = LEAF_COMPONENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CREATE_HANDLER__REFERENCE_NAME = LEAF_COMPONENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Create Handler</em>' class.
@@ -387,7 +324,7 @@ public interface GlspComponentModelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CREATE_HANDLER_FEATURE_COUNT = LEAF_COMPONENT_FEATURE_COUNT + 0;
+	int CREATE_HANDLER_FEATURE_COUNT = LEAF_COMPONENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Create Handler</em>' class.
@@ -407,15 +344,6 @@ public interface GlspComponentModelPackage extends EPackage {
 	 * @generated
 	 */
 	int DELETE_HANDLER = 8;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DELETE_HANDLER__NAME = LEAF_COMPONENT__NAME;
 
 	/**
 	 * The number of structural features of the '<em>Delete Handler</em>' class.
@@ -446,15 +374,6 @@ public interface GlspComponentModelPackage extends EPackage {
 	int TOOL_PALETTE_ITEM_PROVIDER = 9;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TOOL_PALETTE_ITEM_PROVIDER__NAME = LEAF_COMPONENT__NAME;
-
-	/**
 	 * The number of structural features of the '<em>Tool Palette Item Provider</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -483,15 +402,6 @@ public interface GlspComponentModelPackage extends EPackage {
 	int SOURCE_MODEL_STORAGE = 10;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SOURCE_MODEL_STORAGE__NAME = LEAF_COMPONENT__NAME;
-
-	/**
 	 * The number of structural features of the '<em>Source Model Storage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -510,41 +420,32 @@ public interface GlspComponentModelPackage extends EPackage {
 	int SOURCE_MODEL_STORAGE_OPERATION_COUNT = LEAF_COMPONENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link glspComponentModel.impl.ModelFactoryImpl <em>Model Factory</em>}' class.
+	 * The meta object id for the '{@link glspComponentModel.impl.GModelFactoryImpl <em>GModel Factory</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see glspComponentModel.impl.ModelFactoryImpl
-	 * @see glspComponentModel.impl.GlspComponentModelPackageImpl#getModelFactory()
+	 * @see glspComponentModel.impl.GModelFactoryImpl
+	 * @see glspComponentModel.impl.GlspComponentModelPackageImpl#getGModelFactory()
 	 * @generated
 	 */
-	int MODEL_FACTORY = 11;
+	int GMODEL_FACTORY = 11;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The number of structural features of the '<em>GModel Factory</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_FACTORY__NAME = LEAF_COMPONENT__NAME;
+	int GMODEL_FACTORY_FEATURE_COUNT = LEAF_COMPONENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Model Factory</em>' class.
+	 * The number of operations of the '<em>GModel Factory</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_FACTORY_FEATURE_COUNT = LEAF_COMPONENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Model Factory</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_FACTORY_OPERATION_COUNT = LEAF_COMPONENT_OPERATION_COUNT + 0;
+	int GMODEL_FACTORY_OPERATION_COUNT = LEAF_COMPONENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link glspComponentModel.impl.ClientComponentImpl <em>Client Component</em>}' class.
@@ -555,15 +456,6 @@ public interface GlspComponentModelPackage extends EPackage {
 	 * @generated
 	 */
 	int CLIENT_COMPONENT = 12;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLIENT_COMPONENT__NAME = COMPONENT__NAME;
 
 	/**
 	 * The number of structural features of the '<em>Client Component</em>' class.
@@ -619,6 +511,90 @@ public interface GlspComponentModelPackage extends EPackage {
 	 * @ordered
 	 */
 	int COMPONENT_MODEL_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link glspComponentModel.impl.EMFSourceModelStorageImpl <em>EMF Source Model Storage</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see glspComponentModel.impl.EMFSourceModelStorageImpl
+	 * @see glspComponentModel.impl.GlspComponentModelPackageImpl#getEMFSourceModelStorage()
+	 * @generated
+	 */
+	int EMF_SOURCE_MODEL_STORAGE = 15;
+
+	/**
+	 * The number of structural features of the '<em>EMF Source Model Storage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMF_SOURCE_MODEL_STORAGE_FEATURE_COUNT = SOURCE_MODEL_STORAGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>EMF Source Model Storage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EMF_SOURCE_MODEL_STORAGE_OPERATION_COUNT = SOURCE_MODEL_STORAGE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link glspComponentModel.impl.GModelStorageImpl <em>GModel Storage</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see glspComponentModel.impl.GModelStorageImpl
+	 * @see glspComponentModel.impl.GlspComponentModelPackageImpl#getGModelStorage()
+	 * @generated
+	 */
+	int GMODEL_STORAGE = 16;
+
+	/**
+	 * The number of structural features of the '<em>GModel Storage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GMODEL_STORAGE_FEATURE_COUNT = SOURCE_MODEL_STORAGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>GModel Storage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GMODEL_STORAGE_OPERATION_COUNT = SOURCE_MODEL_STORAGE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link glspComponentModel.impl.ProjectComponentImpl <em>Project Component</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see glspComponentModel.impl.ProjectComponentImpl
+	 * @see glspComponentModel.impl.GlspComponentModelPackageImpl#getProjectComponent()
+	 * @generated
+	 */
+	int PROJECT_COMPONENT = 17;
+
+	/**
+	 * The number of structural features of the '<em>Project Component</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_COMPONENT_FEATURE_COUNT = COMPONENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Project Component</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROJECT_COMPONENT_OPERATION_COUNT = COMPONENT_OPERATION_COUNT + 0;
 
 	/**
 	 * Returns the meta object for class '{@link glspComponentModel.ServerComponent <em>Server Component</em>}'.
@@ -712,6 +688,28 @@ public interface GlspComponentModelPackage extends EPackage {
 	EClass getCreateHandler();
 
 	/**
+	 * Returns the meta object for the attribute '{@link glspComponentModel.CreateHandler#getElementName <em>Element Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Element Name</em>'.
+	 * @see glspComponentModel.CreateHandler#getElementName()
+	 * @see #getCreateHandler()
+	 * @generated
+	 */
+	EAttribute getCreateHandler_ElementName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link glspComponentModel.CreateHandler#getReferenceName <em>Reference Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Reference Name</em>'.
+	 * @see glspComponentModel.CreateHandler#getReferenceName()
+	 * @see #getCreateHandler()
+	 * @generated
+	 */
+	EAttribute getCreateHandler_ReferenceName();
+
+	/**
 	 * Returns the meta object for class '{@link glspComponentModel.DeleteHandler <em>Delete Handler</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -742,14 +740,14 @@ public interface GlspComponentModelPackage extends EPackage {
 	EClass getSourceModelStorage();
 
 	/**
-	 * Returns the meta object for class '{@link glspComponentModel.ModelFactory <em>Model Factory</em>}'.
+	 * Returns the meta object for class '{@link glspComponentModel.GModelFactory <em>GModel Factory</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Model Factory</em>'.
-	 * @see glspComponentModel.ModelFactory
+	 * @return the meta object for class '<em>GModel Factory</em>'.
+	 * @see glspComponentModel.GModelFactory
 	 * @generated
 	 */
-	EClass getModelFactory();
+	EClass getGModelFactory();
 
 	/**
 	 * Returns the meta object for class '{@link glspComponentModel.ClientComponent <em>Client Component</em>}'.
@@ -772,17 +770,6 @@ public interface GlspComponentModelPackage extends EPackage {
 	EClass getComponent();
 
 	/**
-	 * Returns the meta object for the attribute '{@link glspComponentModel.Component#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see glspComponentModel.Component#getName()
-	 * @see #getComponent()
-	 * @generated
-	 */
-	EAttribute getComponent_Name();
-
-	/**
 	 * Returns the meta object for class '{@link glspComponentModel.ComponentModel <em>Component Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -802,6 +789,36 @@ public interface GlspComponentModelPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getComponentModel_Components();
+
+	/**
+	 * Returns the meta object for class '{@link glspComponentModel.EMFSourceModelStorage <em>EMF Source Model Storage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>EMF Source Model Storage</em>'.
+	 * @see glspComponentModel.EMFSourceModelStorage
+	 * @generated
+	 */
+	EClass getEMFSourceModelStorage();
+
+	/**
+	 * Returns the meta object for class '{@link glspComponentModel.GModelStorage <em>GModel Storage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>GModel Storage</em>'.
+	 * @see glspComponentModel.GModelStorage
+	 * @generated
+	 */
+	EClass getGModelStorage();
+
+	/**
+	 * Returns the meta object for class '{@link glspComponentModel.ProjectComponent <em>Project Component</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Project Component</em>'.
+	 * @see glspComponentModel.ProjectComponent
+	 * @generated
+	 */
+	EClass getProjectComponent();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -915,6 +932,22 @@ public interface GlspComponentModelPackage extends EPackage {
 		EClass CREATE_HANDLER = eINSTANCE.getCreateHandler();
 
 		/**
+		 * The meta object literal for the '<em><b>Element Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CREATE_HANDLER__ELEMENT_NAME = eINSTANCE.getCreateHandler_ElementName();
+
+		/**
+		 * The meta object literal for the '<em><b>Reference Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CREATE_HANDLER__REFERENCE_NAME = eINSTANCE.getCreateHandler_ReferenceName();
+
+		/**
 		 * The meta object literal for the '{@link glspComponentModel.impl.DeleteHandlerImpl <em>Delete Handler</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -945,14 +978,14 @@ public interface GlspComponentModelPackage extends EPackage {
 		EClass SOURCE_MODEL_STORAGE = eINSTANCE.getSourceModelStorage();
 
 		/**
-		 * The meta object literal for the '{@link glspComponentModel.impl.ModelFactoryImpl <em>Model Factory</em>}' class.
+		 * The meta object literal for the '{@link glspComponentModel.impl.GModelFactoryImpl <em>GModel Factory</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see glspComponentModel.impl.ModelFactoryImpl
-		 * @see glspComponentModel.impl.GlspComponentModelPackageImpl#getModelFactory()
+		 * @see glspComponentModel.impl.GModelFactoryImpl
+		 * @see glspComponentModel.impl.GlspComponentModelPackageImpl#getGModelFactory()
 		 * @generated
 		 */
-		EClass MODEL_FACTORY = eINSTANCE.getModelFactory();
+		EClass GMODEL_FACTORY = eINSTANCE.getGModelFactory();
 
 		/**
 		 * The meta object literal for the '{@link glspComponentModel.impl.ClientComponentImpl <em>Client Component</em>}' class.
@@ -975,14 +1008,6 @@ public interface GlspComponentModelPackage extends EPackage {
 		EClass COMPONENT = eINSTANCE.getComponent();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute COMPONENT__NAME = eINSTANCE.getComponent_Name();
-
-		/**
 		 * The meta object literal for the '{@link glspComponentModel.impl.ComponentModelImpl <em>Component Model</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -999,6 +1024,36 @@ public interface GlspComponentModelPackage extends EPackage {
 		 * @generated
 		 */
 		EReference COMPONENT_MODEL__COMPONENTS = eINSTANCE.getComponentModel_Components();
+
+		/**
+		 * The meta object literal for the '{@link glspComponentModel.impl.EMFSourceModelStorageImpl <em>EMF Source Model Storage</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see glspComponentModel.impl.EMFSourceModelStorageImpl
+		 * @see glspComponentModel.impl.GlspComponentModelPackageImpl#getEMFSourceModelStorage()
+		 * @generated
+		 */
+		EClass EMF_SOURCE_MODEL_STORAGE = eINSTANCE.getEMFSourceModelStorage();
+
+		/**
+		 * The meta object literal for the '{@link glspComponentModel.impl.GModelStorageImpl <em>GModel Storage</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see glspComponentModel.impl.GModelStorageImpl
+		 * @see glspComponentModel.impl.GlspComponentModelPackageImpl#getGModelStorage()
+		 * @generated
+		 */
+		EClass GMODEL_STORAGE = eINSTANCE.getGModelStorage();
+
+		/**
+		 * The meta object literal for the '{@link glspComponentModel.impl.ProjectComponentImpl <em>Project Component</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see glspComponentModel.impl.ProjectComponentImpl
+		 * @see glspComponentModel.impl.GlspComponentModelPackageImpl#getProjectComponent()
+		 * @generated
+		 */
+		EClass PROJECT_COMPONENT = eINSTANCE.getProjectComponent();
 
 	}
 

@@ -139,3 +139,19 @@ rule GModelFactory
 		target!ComponentModel.all.first.components.add(t);
 	
 }
+
+
+//------CLIENT-------
+
+
+rule ClientModelTypes
+	transform s : source!t_feature
+	to t : target!ClientModelTypes {
+	
+		guard : s.a_name == "C121 Definition"
+		
+		"ClientModelTypes".println();
+		
+		target!ComponentModel.all.first.components.add(t);
+	
+}

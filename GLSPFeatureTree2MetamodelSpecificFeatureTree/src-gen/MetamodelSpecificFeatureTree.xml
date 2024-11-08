@@ -47,21 +47,17 @@
         </alt>
         <alt abstract="true" hidden="" mandatory="true" name="S3 Element Creation">
           <graphics key="collapsed" value="false"/>
-          <feature abstract="true" hidden="" mandatory="" name="N_S31 use Command_InitialState"/>
           <feature abstract="true" hidden="" mandatory="" name="N_S31 use Command_NormalState"/>
           <feature abstract="true" hidden="" mandatory="" name="N_S31 use Command_FinalState"/>
           <feature abstract="true" hidden="" mandatory="" name="E_S31 use Command_Transition"/>
-          <feature abstract="true" hidden="" mandatory="" name="N_S32 use Builder_InitialState"/>
           <feature abstract="true" hidden="" mandatory="" name="N_S32 use Builder_NormalState"/>
           <feature abstract="true" hidden="" mandatory="" name="N_S32 use Builder_FinalState"/>
           <feature abstract="true" hidden="" mandatory="" name="E_S32 use Builder_Transition"/>
         </alt>
         <feature abstract="true" hidden="" mandatory="" name="S4 Element Deletion"/>
-        <feature abstract="true" hidden="" mandatory="" name="N_S5 Element Editing_InitialState"/>
         <feature abstract="true" hidden="" mandatory="" name="N_S5 Element Editing_NormalState"/>
         <feature abstract="true" hidden="" mandatory="" name="N_S5 Element Editing_FinalState"/>
         <feature abstract="true" hidden="" mandatory="" name="E_S5 Element Editing_Transition"/>
-        <feature abstract="true" hidden="true" mandatory="" name="N_S6 Element Validation_InitialState"/>
         <feature abstract="true" hidden="true" mandatory="" name="N_S6 Element Validation_NormalState"/>
         <feature abstract="true" hidden="true" mandatory="" name="N_S6 Element Validation_FinalState"/>
         <feature abstract="true" hidden="true" mandatory="" name="E_S6 Element Validation_Transition"/>
@@ -74,21 +70,20 @@
         </and>
       </and>
       <and abstract="true" hidden="" mandatory="true" name="C">
-        <graphics key="collapsed" value="true"/>
-        <and abstract="true" hidden="" mandatory="" name="C1 Metamodel Extension">
-          <and abstract="true" hidden="" mandatory="true" name="C11 SourceModel">
+        <graphics key="collapsed" value="false"/>
+        <and abstract="true" hidden="" mandatory="true" name="C1 Metamodel Extension">
+          <and abstract="true" hidden="" mandatory="" name="C11 SourceModel">
             <feature abstract="true" hidden="" mandatory="true" name="C111 Definition"/>
             <feature abstract="true" hidden="" mandatory="true" name="C112 Mapping to ShapeModel Nodes"/>
           </and>
           <and abstract="true" hidden="" mandatory="true" name="C12 ModelTypes">
             <feature abstract="true" hidden="" mandatory="true" name="C121 Definition"/>
-            <and abstract="true" hidden="" mandatory="true" name="C122 Mapping to SourceModel Elements">
+            <and abstract="true" hidden="" mandatory="" name="C122 Mapping to SourceModel Elements">
               <feature abstract="true" hidden="" mandatory="" name="C1221 GModel Elements"/>
               <feature abstract="true" hidden="" mandatory="" name="C1222 extended Elements"/>
             </and>
-            <and abstract="true" hidden="" mandatory="true" name="C123 Mapping to ShapeModel Views">
+            <and abstract="true" hidden="" mandatory="" name="C123 Mapping to ShapeModel Views">
               <feature abstract="true" hidden="" mandatory="" name="C1231 Default Views"/>
-              <feature abstract="true" hidden="" mandatory="" name="N_C1232 extended Views_InitialState"/>
               <feature abstract="true" hidden="" mandatory="" name="N_C1232 extended Views_NormalState"/>
               <feature abstract="true" hidden="" mandatory="" name="N_C1232 extended Views_FinalState"/>
               <feature abstract="true" hidden="" mandatory="" name="E_C1232 extended Views_Transition"/>
@@ -101,11 +96,9 @@
           <feature abstract="true" hidden="" mandatory="" name="Fit to Screen"/>
         </alt>
         <feature abstract="true" hidden="true" mandatory="" name="C3 Client Status Notification"/>
-        <feature abstract="true" hidden="" mandatory="" name="N_C4 Element Editing_InitialState"/>
         <feature abstract="true" hidden="" mandatory="" name="N_C4 Element Editing_NormalState"/>
         <feature abstract="true" hidden="" mandatory="" name="N_C4 Element Editing_FinalState"/>
         <feature abstract="true" hidden="" mandatory="" name="E_C4 Element Editing_Transition"/>
-        <feature abstract="true" hidden="true" mandatory="" name="N_C5 Element Validation_InitialState"/>
         <feature abstract="true" hidden="true" mandatory="" name="N_C5 Element Validation_NormalState"/>
         <feature abstract="true" hidden="true" mandatory="" name="N_C5 Element Validation_FinalState"/>
         <feature abstract="true" hidden="true" mandatory="" name="E_C5 Element Validation_Transition"/>
@@ -186,12 +179,6 @@
       <eq>
         <var>S1112 GModelStorage</var>
         <var>S22 JSON</var>
-      </eq>
-    </rule>
-    <rule>
-      <eq>
-        <var>S1112 GModelStorage</var>
-        <var>C1 Metamodel Extension</var>
       </eq>
     </rule>
   </constraints>

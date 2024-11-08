@@ -16,13 +16,9 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.javaemf.model;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.EObject;
 import swt.most.statemachine.StatemachinePackage;
 import org.eclipse.glsp.server.emf.notation.EMFNotationSourceModelStorage;
-import org.eclipse.glsp.server.emf.model.notation.Diagram;
-import org.eclipse.glsp.server.features.core.model.RequestModelAction;
 
 public class StatemachineSourceModelStorage extends EMFNotationSourceModelStorage {
    @Override
@@ -30,11 +26,4 @@ public class StatemachineSourceModelStorage extends EMFNotationSourceModelStorag
       resourceSet.getPackageRegistry().put(StatemachinePackage.eINSTANCE.getNsURI(), StatemachinePackage.eINSTANCE);
       return super.setupResourceSet(resourceSet);
    }
-   
-   //@Override
-   //protected void doLoadSourceModel(final ResourceSet resourceSet, final URI sourceURI,
-                                    //final RequestModelAction action) {
-      //loadSemanticModel(resourceSet, sourceURI, action);
-      //modelState.setNotationModel(new Diagram()); //Diagram.cast(new EObject()));
-   //}
 }

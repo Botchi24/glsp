@@ -2,8 +2,6 @@
  */
 package glspComponentModel.provider;
 
-import glspComponentModel.DiagramConfiguration;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -73,9 +71,7 @@ public class DiagramConfigurationItemProvider extends LeafComponentItemProvider 
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((DiagramConfiguration) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_DiagramConfiguration_type")
-				: getString("_UI_DiagramConfiguration_type") + " " + label;
+		return getString("_UI_DiagramConfiguration_type");
 	}
 
 	/**
