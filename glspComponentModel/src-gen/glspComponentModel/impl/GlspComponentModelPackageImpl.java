@@ -9,11 +9,14 @@ import glspComponentModel.CreateHandler;
 import glspComponentModel.DeleteHandler;
 import glspComponentModel.DiagramConfiguration;
 import glspComponentModel.DiagramModule;
+import glspComponentModel.EMFSourceModelStorage;
+import glspComponentModel.GModelFactory;
+import glspComponentModel.GModelStorage;
 import glspComponentModel.GlspComponentModelFactory;
 import glspComponentModel.GlspComponentModelPackage;
 import glspComponentModel.LeafComponent;
-import glspComponentModel.ModelFactory;
 import glspComponentModel.ModelTypes;
+import glspComponentModel.ProjectComponent;
 import glspComponentModel.ServerComponent;
 import glspComponentModel.ServerLauncher;
 import glspComponentModel.SourceModelStorage;
@@ -115,7 +118,7 @@ public class GlspComponentModelPackageImpl extends EPackageImpl implements GlspC
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass modelFactoryEClass = null;
+	private EClass gModelFactoryEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -137,6 +140,27 @@ public class GlspComponentModelPackageImpl extends EPackageImpl implements GlspC
 	 * @generated
 	 */
 	private EClass componentModelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass emfSourceModelStorageEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass gModelStorageEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass projectComponentEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -299,6 +323,26 @@ public class GlspComponentModelPackageImpl extends EPackageImpl implements GlspC
 	 * @generated
 	 */
 	@Override
+	public EAttribute getCreateHandler_ElementName() {
+		return (EAttribute) createHandlerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getCreateHandler_ReferenceName() {
+		return (EAttribute) createHandlerEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getDeleteHandler() {
 		return deleteHandlerEClass;
 	}
@@ -329,8 +373,8 @@ public class GlspComponentModelPackageImpl extends EPackageImpl implements GlspC
 	 * @generated
 	 */
 	@Override
-	public EClass getModelFactory() {
-		return modelFactoryEClass;
+	public EClass getGModelFactory() {
+		return gModelFactoryEClass;
 	}
 
 	/**
@@ -359,16 +403,6 @@ public class GlspComponentModelPackageImpl extends EPackageImpl implements GlspC
 	 * @generated
 	 */
 	@Override
-	public EAttribute getComponent_Name() {
-		return (EAttribute) componentEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getComponentModel() {
 		return componentModelEClass;
 	}
@@ -381,6 +415,36 @@ public class GlspComponentModelPackageImpl extends EPackageImpl implements GlspC
 	@Override
 	public EReference getComponentModel_Components() {
 		return (EReference) componentModelEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getEMFSourceModelStorage() {
+		return emfSourceModelStorageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getGModelStorage() {
+		return gModelStorageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getProjectComponent() {
+		return projectComponentEClass;
 	}
 
 	/**
@@ -429,6 +493,8 @@ public class GlspComponentModelPackageImpl extends EPackageImpl implements GlspC
 		serverLauncherEClass = createEClass(SERVER_LAUNCHER);
 
 		createHandlerEClass = createEClass(CREATE_HANDLER);
+		createEAttribute(createHandlerEClass, CREATE_HANDLER__ELEMENT_NAME);
+		createEAttribute(createHandlerEClass, CREATE_HANDLER__REFERENCE_NAME);
 
 		deleteHandlerEClass = createEClass(DELETE_HANDLER);
 
@@ -436,15 +502,20 @@ public class GlspComponentModelPackageImpl extends EPackageImpl implements GlspC
 
 		sourceModelStorageEClass = createEClass(SOURCE_MODEL_STORAGE);
 
-		modelFactoryEClass = createEClass(MODEL_FACTORY);
+		gModelFactoryEClass = createEClass(GMODEL_FACTORY);
 
 		clientComponentEClass = createEClass(CLIENT_COMPONENT);
 
 		componentEClass = createEClass(COMPONENT);
-		createEAttribute(componentEClass, COMPONENT__NAME);
 
 		componentModelEClass = createEClass(COMPONENT_MODEL);
 		createEReference(componentModelEClass, COMPONENT_MODEL__COMPONENTS);
+
+		emfSourceModelStorageEClass = createEClass(EMF_SOURCE_MODEL_STORAGE);
+
+		gModelStorageEClass = createEClass(GMODEL_STORAGE);
+
+		projectComponentEClass = createEClass(PROJECT_COMPONENT);
 	}
 
 	/**
@@ -487,8 +558,11 @@ public class GlspComponentModelPackageImpl extends EPackageImpl implements GlspC
 		deleteHandlerEClass.getESuperTypes().add(this.getLeafComponent());
 		toolPaletteItemProviderEClass.getESuperTypes().add(this.getLeafComponent());
 		sourceModelStorageEClass.getESuperTypes().add(this.getLeafComponent());
-		modelFactoryEClass.getESuperTypes().add(this.getLeafComponent());
+		gModelFactoryEClass.getESuperTypes().add(this.getLeafComponent());
 		clientComponentEClass.getESuperTypes().add(this.getComponent());
+		emfSourceModelStorageEClass.getESuperTypes().add(this.getSourceModelStorage());
+		gModelStorageEClass.getESuperTypes().add(this.getSourceModelStorage());
+		projectComponentEClass.getESuperTypes().add(this.getComponent());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(serverComponentEClass, ServerComponent.class, "ServerComponent", !IS_ABSTRACT, !IS_INTERFACE,
@@ -517,6 +591,12 @@ public class GlspComponentModelPackageImpl extends EPackageImpl implements GlspC
 
 		initEClass(createHandlerEClass, CreateHandler.class, "CreateHandler", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCreateHandler_ElementName(), ecorePackage.getEString(), "elementName", null, 0, 1,
+				CreateHandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCreateHandler_ReferenceName(), ecorePackage.getEString(), "referenceName", null, 0, 1,
+				CreateHandler.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(deleteHandlerEClass, DeleteHandler.class, "DeleteHandler", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -527,7 +607,7 @@ public class GlspComponentModelPackageImpl extends EPackageImpl implements GlspC
 		initEClass(sourceModelStorageEClass, SourceModelStorage.class, "SourceModelStorage", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(modelFactoryEClass, ModelFactory.class, "ModelFactory", !IS_ABSTRACT, !IS_INTERFACE,
+		initEClass(gModelFactoryEClass, GModelFactory.class, "GModelFactory", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(clientComponentEClass, ClientComponent.class, "ClientComponent", !IS_ABSTRACT, !IS_INTERFACE,
@@ -535,14 +615,21 @@ public class GlspComponentModelPackageImpl extends EPackageImpl implements GlspC
 
 		initEClass(componentEClass, Component.class, "Component", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getComponent_Name(), ecorePackage.getEString(), "name", null, 0, 1, Component.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(componentModelEClass, ComponentModel.class, "ComponentModel", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getComponentModel_Components(), this.getComponent(), null, "components", null, 0, -1,
 				ComponentModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(emfSourceModelStorageEClass, EMFSourceModelStorage.class, "EMFSourceModelStorage", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(gModelStorageEClass, GModelStorage.class, "GModelStorage", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(projectComponentEClass, ProjectComponent.class, "ProjectComponent", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

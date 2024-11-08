@@ -9,11 +9,14 @@ import glspComponentModel.CreateHandler;
 import glspComponentModel.DeleteHandler;
 import glspComponentModel.DiagramConfiguration;
 import glspComponentModel.DiagramModule;
+import glspComponentModel.EMFSourceModelStorage;
+import glspComponentModel.GModelFactory;
+import glspComponentModel.GModelStorage;
 import glspComponentModel.GlspComponentModelFactory;
 import glspComponentModel.GlspComponentModelPackage;
 import glspComponentModel.LeafComponent;
-import glspComponentModel.ModelFactory;
 import glspComponentModel.ModelTypes;
+import glspComponentModel.ProjectComponent;
 import glspComponentModel.ServerComponent;
 import glspComponentModel.ServerLauncher;
 import glspComponentModel.SourceModelStorage;
@@ -93,14 +96,20 @@ public class GlspComponentModelFactoryImpl extends EFactoryImpl implements GlspC
 			return createToolPaletteItemProvider();
 		case GlspComponentModelPackage.SOURCE_MODEL_STORAGE:
 			return createSourceModelStorage();
-		case GlspComponentModelPackage.MODEL_FACTORY:
-			return createModelFactory();
+		case GlspComponentModelPackage.GMODEL_FACTORY:
+			return createGModelFactory();
 		case GlspComponentModelPackage.CLIENT_COMPONENT:
 			return createClientComponent();
 		case GlspComponentModelPackage.COMPONENT:
 			return createComponent();
 		case GlspComponentModelPackage.COMPONENT_MODEL:
 			return createComponentModel();
+		case GlspComponentModelPackage.EMF_SOURCE_MODEL_STORAGE:
+			return createEMFSourceModelStorage();
+		case GlspComponentModelPackage.GMODEL_STORAGE:
+			return createGModelStorage();
+		case GlspComponentModelPackage.PROJECT_COMPONENT:
+			return createProjectComponent();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -233,9 +242,9 @@ public class GlspComponentModelFactoryImpl extends EFactoryImpl implements GlspC
 	 * @generated
 	 */
 	@Override
-	public ModelFactory createModelFactory() {
-		ModelFactoryImpl modelFactory = new ModelFactoryImpl();
-		return modelFactory;
+	public GModelFactory createGModelFactory() {
+		GModelFactoryImpl gModelFactory = new GModelFactoryImpl();
+		return gModelFactory;
 	}
 
 	/**
@@ -269,6 +278,39 @@ public class GlspComponentModelFactoryImpl extends EFactoryImpl implements GlspC
 	public ComponentModel createComponentModel() {
 		ComponentModelImpl componentModel = new ComponentModelImpl();
 		return componentModel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EMFSourceModelStorage createEMFSourceModelStorage() {
+		EMFSourceModelStorageImpl emfSourceModelStorage = new EMFSourceModelStorageImpl();
+		return emfSourceModelStorage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public GModelStorage createGModelStorage() {
+		GModelStorageImpl gModelStorage = new GModelStorageImpl();
+		return gModelStorage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ProjectComponent createProjectComponent() {
+		ProjectComponentImpl projectComponent = new ProjectComponentImpl();
+		return projectComponent;
 	}
 
 	/**

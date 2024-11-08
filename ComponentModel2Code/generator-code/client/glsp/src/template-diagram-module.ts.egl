@@ -16,10 +16,16 @@
  ********************************************************************************/
 import {
     configureDefaultModelElements,
+    configureModelElement,
     ConsoleLogger,
     ContainerConfiguration,
+    DefaultTypes,
+	GEdge,
+	GEdgeView,
+	GNode,
     initializeDiagramContainer,
     LogLevel,
+    RectangularNodeView,
     TYPES
 } from '@eclipse-glsp/client';
 import { Container, ContainerModule } from 'inversify';
@@ -30,6 +36,11 @@ const [%=_metamodelName%]DiagramModule = new ContainerModule((bind, unbind, isBo
     rebind(TYPES.LogLevel).toConstantValue(LogLevel.warn);
     const context = { bind, unbind, isBound, rebind };
     configureDefaultModelElements(context);
+    
+    configureModelElement(context, DefaultTypes.EDGE, GEdge, GEdgeView);
+    [%for ( n in _nodes){%]
+	configureModelElement(context, '[%=n.firstToLowerCase()%]', GNode, RectangularNodeView);
+	[%}%]
 });
 
 export function initialize[%=_metamodelName.firstToUpperCase()%]DiagramContainer(container: Container, ...containerConfiguration: ContainerConfiguration): Container {

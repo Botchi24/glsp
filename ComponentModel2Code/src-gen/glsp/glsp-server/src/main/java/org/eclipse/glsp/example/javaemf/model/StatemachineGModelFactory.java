@@ -17,11 +17,9 @@
 package org.eclipse.glsp.example.javaemf.model;
 
 import java.util.Map;
-import java.util.stream.Stream;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.glsp.example.javaemf.StatemachineModelTypes;
-import swt.most.statemachine.InitialState;
 import swt.most.statemachine.NormalState;
 import swt.most.statemachine.FinalState;
 import swt.most.statemachine.StateMachine;
@@ -36,39 +34,14 @@ import org.eclipse.glsp.graph.util.GConstants;
 import org.eclipse.glsp.server.emf.model.notation.Diagram;
 import org.eclipse.glsp.server.emf.notation.EMFNotationGModelFactory;
 
-import com.google.inject.Inject;
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-
 public class StatemachineGModelFactory extends EMFNotationGModelFactory {
-	
-   @Inject
-   protected ExtendedModelState modelState;
 
    @Override
    protected void fillRootElement(final EObject semanticModel, final Diagram notationModel, final GModelRoot newRoot) {
       StateMachine stateMachine = StateMachine.class.cast(semanticModel);
-      
-      try {
-    	  BufferedWriter writer = new BufferedWriter(new FileWriter("test.txt", true));
-    	  //writer.newLine();
-    	  //writer.append("id: " + idGenerator.getOrCreateId(stateMachine));
-    	  writer.close();
-      }
-      catch(Exception e) {
-    	  
-      }
-      
       GGraph graph = GGraph.class.cast(newRoot);
       //if (notationModel.getSemanticElement() != null
          //&& notationModel.getSemanticElement().getResolvedSemanticElement() != null) {
-      	 //if (stateMachine.getInitialstate() != null) {
-    	 //Stream.of(stateMachine.getInitialstate()) 
-          //stateMachine.getInitialstate().stream()
-            //.map(this::createInitialStateNode)
-            //.forEachOrdered(graph.getChildren()::add);
-      	 //}
          stateMachine.getStates().stream()
             .map(this::createNormalStateNode)
             .forEachOrdered(graph.getChildren()::add);
@@ -76,40 +49,8 @@ public class StatemachineGModelFactory extends EMFNotationGModelFactory {
             .map(this::createFinalStateNode)
             .forEachOrdered(graph.getChildren()::add);
       //}
-         
-         try {
-       	  BufferedWriter writer = new BufferedWriter(new FileWriter("test.txt", true));
-       	  writer.newLine();
-       	  writer.append("graph: " + graph.toString());
-       	  writer.newLine();
-     	  writer.append("states: " + stateMachine.getStates().toString());
-       	  writer.close();
-         }
-         catch(Exception e) {
-       	  
-         }
    }
-   
-   //@Override
-   //protected void fillRootElement(final GModelRoot newRoot) {
-      //Diagram notationModel = modelState.getNotationModel();
-      //EObject semanticModel = modelState.getSemanticModel();
-      //modelState.getIndex().indexAll(notationModel, semanticModel);
-      //modelState.getIndex().indexSemanticModel(semanticModel);
-      //fillRootElement(semanticModel, notationModel, newRoot);
-   //}
 
-   //protected GNode createInitialStateNode(final InitialState initialState) {
-      //GNodeBuilder initialStateNodeBuilder = new GNodeBuilder(StatemachineModelTypes.INITIALSTATE)
-         //.id(idGenerator.getOrCreateId(initialState))
-         //.addCssClass("statemachine-node")
-         //.add(new GLabelBuilder(DefaultTypes.LABEL).text(initialState.getName()).id(idGenerator.getOrCreateId(initialState) + "_label").build())
-         //.layout(GConstants.Layout.HBOX, Map.of(GLayoutOptions.KEY_PADDING_LEFT, 5));
-
-      //applyShapeData(initialState, initialStateNodeBuilder);
-      //return initialStateNodeBuilder.build();
-   //}
-   
    protected GNode createNormalStateNode(final NormalState normalState) {
       GNodeBuilder normalStateNodeBuilder = new GNodeBuilder(StatemachineModelTypes.NORMALSTATE)
          .id(idGenerator.getOrCreateId(normalState))

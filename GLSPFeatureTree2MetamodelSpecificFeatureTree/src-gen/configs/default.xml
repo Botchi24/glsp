@@ -10,10 +10,10 @@
 	<feature automatic="unselected" name="S1113 other SourceModel"/>
 	<feature automatic="selected" name="S112 Generation"/>
 	<feature automatic="selected" name="S113 Integration"/>
-	<feature manual="selected" name="S11121 Java Classes"/>
+	<feature automatic="selected" manual="selected" name="S11121 Java Classes"/>
 	<feature automatic="unselected" name="S11122 extend GModel"/>
 	<feature automatic="selected" name="S12 ModelTypes"/>
-	<feature automatic="selected" name="S121 DefaultTypes"/>
+	<feature manual="selected" name="S121 DefaultTypes"/>
 	<feature automatic="unselected" name="S122 extended Types"/>
 	<feature automatic="unselected" name="S1221 Definition"/>
 	<feature automatic="unselected" name="S1222 Mapping"/>
@@ -24,20 +24,16 @@
 	<feature automatic="selected" name="S21 XMI"/>
 	<feature automatic="unselected" name="S22 JSON"/>
 	<feature automatic="selected" name="S3 Element Creation"/>
-	<feature manual="selected" name="N_S31 use Command_InitialState"/>
-	<feature automatic="unselected" name="N_S31 use Command_NormalState"/>
+	<feature manual="selected" name="N_S31 use Command_NormalState"/>
 	<feature automatic="unselected" name="N_S31 use Command_FinalState"/>
 	<feature automatic="unselected" name="E_S31 use Command_Transition"/>
-	<feature automatic="unselected" name="N_S32 use Builder_InitialState"/>
 	<feature automatic="unselected" name="N_S32 use Builder_NormalState"/>
 	<feature automatic="unselected" name="N_S32 use Builder_FinalState"/>
 	<feature automatic="unselected" name="E_S32 use Builder_Transition"/>
 	<feature manual="selected" name="S4 Element Deletion"/>
-	<feature name="N_S5 Element Editing_InitialState"/>
 	<feature name="N_S5 Element Editing_NormalState"/>
 	<feature name="N_S5 Element Editing_FinalState"/>
 	<feature name="E_S5 Element Editing_Transition"/>
-	<feature name="N_S6 Element Validation_InitialState"/>
 	<feature name="N_S6 Element Validation_NormalState"/>
 	<feature name="N_S6 Element Validation_FinalState"/>
 	<feature name="E_S6 Element Validation_Transition"/>
@@ -47,30 +43,27 @@
 	<feature name="S82 Command Palette"/>
 	<feature manual="selected" name="S83 Tool Palette"/>
 	<feature automatic="selected" name="C"/>
-	<feature automatic="unselected" name="C1 Metamodel Extension"/>
-	<feature automatic="unselected" name="C11 SourceModel"/>
-	<feature automatic="unselected" name="C111 Definition"/>
-	<feature automatic="unselected" name="C112 Mapping to ShapeModel Nodes"/>
-	<feature automatic="unselected" name="C12 ModelTypes"/>
-	<feature automatic="unselected" name="C121 Definition"/>
-	<feature automatic="unselected" name="C122 Mapping to SourceModel Elements"/>
-	<feature automatic="unselected" name="C1221 GModel Elements"/>
-	<feature automatic="unselected" name="C1222 extended Elements"/>
-	<feature automatic="unselected" name="C123 Mapping to ShapeModel Views"/>
-	<feature automatic="unselected" name="C1231 Default Views"/>
-	<feature automatic="unselected" name="N_C1232 extended Views_InitialState"/>
-	<feature automatic="unselected" name="N_C1232 extended Views_NormalState"/>
-	<feature automatic="unselected" name="N_C1232 extended Views_FinalState"/>
-	<feature automatic="unselected" name="E_C1232 extended Views_Transition"/>
+	<feature automatic="selected" name="C1 Metamodel Extension"/>
+	<feature name="C11 SourceModel"/>
+	<feature name="C111 Definition"/>
+	<feature name="C112 Mapping to ShapeModel Nodes"/>
+	<feature automatic="selected" name="C12 ModelTypes"/>
+	<feature automatic="selected" name="C121 Definition"/>
+	<feature name="C122 Mapping to SourceModel Elements"/>
+	<feature name="C1221 GModel Elements"/>
+	<feature name="C1222 extended Elements"/>
+	<feature name="C123 Mapping to ShapeModel Views"/>
+	<feature name="C1231 Default Views"/>
+	<feature name="N_C1232 extended Views_NormalState"/>
+	<feature name="N_C1232 extended Views_FinalState"/>
+	<feature name="E_C1232 extended Views_Transition"/>
 	<feature name="C2 Client View Port"/>
 	<feature name="Center"/>
 	<feature name="Fit to Screen"/>
 	<feature name="C3 Client Status Notification"/>
-	<feature name="N_C4 Element Editing_InitialState"/>
 	<feature name="N_C4 Element Editing_NormalState"/>
 	<feature name="N_C4 Element Editing_FinalState"/>
 	<feature name="E_C4 Element Editing_Transition"/>
-	<feature name="N_C5 Element Validation_InitialState"/>
 	<feature name="N_C5 Element Validation_NormalState"/>
 	<feature name="N_C5 Element Validation_FinalState"/>
 	<feature name="E_C5 Element Validation_Transition"/>

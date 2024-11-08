@@ -107,9 +107,7 @@ public class PackageItemProvider extends ServerComponentItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((glspComponentModel.Package) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_Package_type")
-				: getString("_UI_Package_type") + " " + label;
+		return getString("_UI_Package_type");
 	}
 
 	/**
@@ -176,7 +174,13 @@ public class PackageItemProvider extends ServerComponentItemProvider {
 				GlspComponentModelFactory.eINSTANCE.createSourceModelStorage()));
 
 		newChildDescriptors.add(createChildParameter(GlspComponentModelPackage.Literals.PACKAGE__SERVER_COMPONENTS,
-				GlspComponentModelFactory.eINSTANCE.createModelFactory()));
+				GlspComponentModelFactory.eINSTANCE.createGModelFactory()));
+
+		newChildDescriptors.add(createChildParameter(GlspComponentModelPackage.Literals.PACKAGE__SERVER_COMPONENTS,
+				GlspComponentModelFactory.eINSTANCE.createEMFSourceModelStorage()));
+
+		newChildDescriptors.add(createChildParameter(GlspComponentModelPackage.Literals.PACKAGE__SERVER_COMPONENTS,
+				GlspComponentModelFactory.eINSTANCE.createGModelStorage()));
 	}
 
 }

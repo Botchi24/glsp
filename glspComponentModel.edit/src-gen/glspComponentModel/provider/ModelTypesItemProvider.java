@@ -2,8 +2,6 @@
  */
 package glspComponentModel.provider;
 
-import glspComponentModel.ModelTypes;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -73,9 +71,7 @@ public class ModelTypesItemProvider extends LeafComponentItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ModelTypes) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_ModelTypes_type")
-				: getString("_UI_ModelTypes_type") + " " + label;
+		return getString("_UI_ModelTypes_type");
 	}
 
 	/**

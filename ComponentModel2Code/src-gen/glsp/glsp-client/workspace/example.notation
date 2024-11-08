@@ -3,37 +3,17 @@
   <semanticElement elementId="Statemachine"/>
   <elements xsi:type="notation:Shape">
     <semanticElement elementId="NewNormalState0"/>
-    <position x="190.0" y="100.0"/>
+    <position x="309.0" y="118.0"/>
     <size width="60.0" height="25.0"/>
   </elements>
   <elements xsi:type="notation:Shape">
-    <semanticElement elementId="NewNormalState1"/>
-    <position x="358.0" y="194.0"/>
+    <semanticElement elementId="NewFinalState1"/>
+    <position x="426.0" y="188.0"/>
     <size width="60.0" height="25.0"/>
   </elements>
   <elements xsi:type="notation:Shape">
     <semanticElement elementId="NewNormalState2"/>
-    <position x="422.0" y="96.0"/>
-    <size width="60.0" height="25.0"/>
-  </elements>
-  <elements xsi:type="notation:Shape">
-    <semanticElement elementId="NewNormalState3"/>
-    <position x="519.0" y="198.0"/>
-    <size width="60.0" height="25.0"/>
-  </elements>
-  <elements xsi:type="notation:Shape">
-    <semanticElement elementId="NewNormalState4"/>
-    <position x="195.0" y="301.0"/>
-    <size width="60.0" height="25.0"/>
-  </elements>
-  <elements xsi:type="notation:Shape">
-    <semanticElement elementId="NewNormalState5"/>
-    <position x="470.0" y="283.0"/>
-    <size width="60.0" height="25.0"/>
-  </elements>
-  <elements xsi:type="notation:Shape">
-    <semanticElement elementId="NewNormalState6"/>
-    <position x="592.0" y="76.0"/>
+    <position x="554.0" y="131.0"/>
     <size width="60.0" height="25.0"/>
   </elements>
 </notation:Diagram>

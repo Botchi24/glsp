@@ -35,18 +35,18 @@
 	<feature name="S82 Command Palette"/>
 	<feature name="S83 Tool Palette"/>
 	<feature automatic="selected" name="C"/>
-	<feature automatic="unselected" name="C1 Metamodel Extension"/>
-	<feature automatic="unselected" name="C11 SourceModel"/>
-	<feature automatic="unselected" name="C111 Definition"/>
-	<feature automatic="unselected" name="C112 Mapping to ShapeModel Nodes"/>
-	<feature automatic="unselected" name="C12 ModelTypes"/>
-	<feature automatic="unselected" name="C121 Definition"/>
-	<feature automatic="unselected" name="C122 Mapping to SourceModel Elements"/>
-	<feature automatic="unselected" name="C1221 GModel Elements"/>
-	<feature automatic="unselected" name="C1222 extended Elements"/>
-	<feature automatic="unselected" name="C123 Mapping to ShapeModel Views"/>
-	<feature automatic="unselected" name="C1231 Default Views"/>
-	<feature automatic="unselected" name="E_C1232 extended Views"/>
+	<feature automatic="selected" name="C1 Metamodel Extension"/>
+	<feature name="C11 SourceModel"/>
+	<feature name="C111 Definition"/>
+	<feature name="C112 Mapping to ShapeModel Nodes"/>
+	<feature automatic="selected" name="C12 ModelTypes"/>
+	<feature automatic="selected" name="C121 Definition"/>
+	<feature name="C122 Mapping to SourceModel Elements"/>
+	<feature name="C1221 GModel Elements"/>
+	<feature name="C1222 extended Elements"/>
+	<feature name="C123 Mapping to ShapeModel Views"/>
+	<feature name="C1231 Default Views"/>
+	<feature name="E_C1232 extended Views"/>
 	<feature name="C2 Client View Port"/>
 	<feature name="Center"/>
 	<feature name="Fit to Screen"/>

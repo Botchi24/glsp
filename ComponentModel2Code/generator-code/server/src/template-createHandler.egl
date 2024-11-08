@@ -91,7 +91,7 @@ public class Create[%=createHandler.elementName%]NodeHandler extends EMFCreateOp
 
    protected [%=createHandler.elementName%] create[%=createHandler.elementName%]() {
       [%=createHandler.elementName%] new[%=createHandler.elementName%] = [%=_metamodelPrefix%]Factory.eINSTANCE.create[%=createHandler.elementName%]();
-      new[%=createHandler.elementName%].setId(UUID.randomUUID().toString());
+      //new[%=createHandler.elementName%].setId(UUID.randomUUID().toString());
       setInitialName(new[%=createHandler.elementName%]);
       return new[%=createHandler.elementName%];
    }

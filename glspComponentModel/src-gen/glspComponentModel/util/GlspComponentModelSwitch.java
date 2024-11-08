@@ -9,10 +9,13 @@ import glspComponentModel.CreateHandler;
 import glspComponentModel.DeleteHandler;
 import glspComponentModel.DiagramConfiguration;
 import glspComponentModel.DiagramModule;
+import glspComponentModel.EMFSourceModelStorage;
+import glspComponentModel.GModelFactory;
+import glspComponentModel.GModelStorage;
 import glspComponentModel.GlspComponentModelPackage;
 import glspComponentModel.LeafComponent;
-import glspComponentModel.ModelFactory;
 import glspComponentModel.ModelTypes;
+import glspComponentModel.ProjectComponent;
 import glspComponentModel.ServerComponent;
 import glspComponentModel.ServerLauncher;
 import glspComponentModel.SourceModelStorage;
@@ -215,15 +218,15 @@ public class GlspComponentModelSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case GlspComponentModelPackage.MODEL_FACTORY: {
-			ModelFactory modelFactory = (ModelFactory) theEObject;
-			T result = caseModelFactory(modelFactory);
+		case GlspComponentModelPackage.GMODEL_FACTORY: {
+			GModelFactory gModelFactory = (GModelFactory) theEObject;
+			T result = caseGModelFactory(gModelFactory);
 			if (result == null)
-				result = caseLeafComponent(modelFactory);
+				result = caseLeafComponent(gModelFactory);
 			if (result == null)
-				result = caseServerComponent(modelFactory);
+				result = caseServerComponent(gModelFactory);
 			if (result == null)
-				result = caseComponent(modelFactory);
+				result = caseComponent(gModelFactory);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -247,6 +250,45 @@ public class GlspComponentModelSwitch<T> extends Switch<T> {
 		case GlspComponentModelPackage.COMPONENT_MODEL: {
 			ComponentModel componentModel = (ComponentModel) theEObject;
 			T result = caseComponentModel(componentModel);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case GlspComponentModelPackage.EMF_SOURCE_MODEL_STORAGE: {
+			EMFSourceModelStorage emfSourceModelStorage = (EMFSourceModelStorage) theEObject;
+			T result = caseEMFSourceModelStorage(emfSourceModelStorage);
+			if (result == null)
+				result = caseSourceModelStorage(emfSourceModelStorage);
+			if (result == null)
+				result = caseLeafComponent(emfSourceModelStorage);
+			if (result == null)
+				result = caseServerComponent(emfSourceModelStorage);
+			if (result == null)
+				result = caseComponent(emfSourceModelStorage);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case GlspComponentModelPackage.GMODEL_STORAGE: {
+			GModelStorage gModelStorage = (GModelStorage) theEObject;
+			T result = caseGModelStorage(gModelStorage);
+			if (result == null)
+				result = caseSourceModelStorage(gModelStorage);
+			if (result == null)
+				result = caseLeafComponent(gModelStorage);
+			if (result == null)
+				result = caseServerComponent(gModelStorage);
+			if (result == null)
+				result = caseComponent(gModelStorage);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case GlspComponentModelPackage.PROJECT_COMPONENT: {
+			ProjectComponent projectComponent = (ProjectComponent) theEObject;
+			T result = caseProjectComponent(projectComponent);
+			if (result == null)
+				result = caseComponent(projectComponent);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -422,17 +464,17 @@ public class GlspComponentModelSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Model Factory</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>GModel Factory</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Model Factory</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>GModel Factory</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseModelFactory(ModelFactory object) {
+	public T caseGModelFactory(GModelFactory object) {
 		return null;
 	}
 
@@ -478,6 +520,51 @@ public class GlspComponentModelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseComponentModel(ComponentModel object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>EMF Source Model Storage</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>EMF Source Model Storage</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEMFSourceModelStorage(EMFSourceModelStorage object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>GModel Storage</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>GModel Storage</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGModelStorage(GModelStorage object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Project Component</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Project Component</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseProjectComponent(ProjectComponent object) {
 		return null;
 	}
 

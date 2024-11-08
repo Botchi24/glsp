@@ -2,8 +2,6 @@
  */
 package glspComponentModel.provider;
 
-import glspComponentModel.ServerComponent;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -73,9 +71,7 @@ public class ServerComponentItemProvider extends ComponentItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ServerComponent) object).getName();
-		return label == null || label.length() == 0 ? getString("_UI_ServerComponent_type")
-				: getString("_UI_ServerComponent_type") + " " + label;
+		return getString("_UI_ServerComponent_type");
 	}
 
 	/**
