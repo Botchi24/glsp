@@ -23,14 +23,19 @@ import [%=_packageName%].[%=_metamodelName.firstToUpperCase()%]ModelTypes;
 [%for ( n in _nodes){%]
 import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=n%];
 [%}%]
+[%for ( e in _edges){%]
+import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=e%];
+[%}%]
 import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=_root%];
 import org.eclipse.glsp.graph.DefaultTypes;
 import org.eclipse.glsp.graph.GGraph;
 import org.eclipse.glsp.graph.GModelRoot;
 import org.eclipse.glsp.graph.GNode;
+import org.eclipse.glsp.graph.GEdge;
 import org.eclipse.glsp.graph.builder.impl.GLabelBuilder;
 import org.eclipse.glsp.graph.builder.impl.GLayoutOptions;
 import org.eclipse.glsp.graph.builder.impl.GNodeBuilder;
+import org.eclipse.glsp.graph.builder.impl.GEdgeBuilder;
 import org.eclipse.glsp.graph.util.GConstants;
 import org.eclipse.glsp.server.emf.model.notation.Diagram;
 import org.eclipse.glsp.server.emf.notation.EMFNotationGModelFactory;
@@ -48,6 +53,11 @@ public class [%=_metamodelName.firstToUpperCase()%]GModelFactory extends EMFNota
             .map(this::create[%=n%]Node)
             .forEachOrdered(graph.getChildren()::add);
          [%}%]
+         [%for ( e in _edges){%]
+         [%=_root.firstToLowerCase()%].get[%=metamodelSpecificSettings!t_root.all.first.children.select(c|c.a_name == e).first.a_referenceName.firstToUpperCase()%]().stream()
+            .map(this::create[%=e%]Edge)
+            .forEachOrdered(graph.getChildren()::add);
+         [%}%]
       //}
    }
 
@@ -61,6 +71,21 @@ public class [%=_metamodelName.firstToUpperCase()%]GModelFactory extends EMFNota
 
       applyShapeData([%=n.firstToLowerCase()%], [%=n.firstToLowerCase()%]NodeBuilder);
       return [%=n.firstToLowerCase()%]NodeBuilder.build();
+   }
+   
+   [%}%]
+   
+   [%for ( e in _edges){%]
+   protected GEdge create[%=e%]Edge(final [%=e%] [%=e.firstToLowerCase()%]) {
+      GEdgeBuilder [%=e.firstToLowerCase()%]EdgeBuilder = new GEdgeBuilder([%=_metamodelName.firstToUpperCase()%]ModelTypes.[%=e.toUpperCase()%])
+          .id(idGenerator.getOrCreateId([%=e.firstToLowerCase()%]))
+          //.addCssClass("[%=_metamodelName%]-edge")
+          .sourceId(idGenerator.getOrCreateId([%=e.firstToLowerCase()%].getFrom()))
+          .targetId(idGenerator.getOrCreateId([%=e.firstToLowerCase()%].getTo()))
+          ;
+          
+      applyEdgeData([%=e.firstToLowerCase()%], [%=e.firstToLowerCase()%]EdgeBuilder);
+      return [%=e.firstToLowerCase()%]EdgeBuilder.build();
    }
    
    [%}%]

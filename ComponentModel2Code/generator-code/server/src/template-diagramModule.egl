@@ -19,6 +19,9 @@ package [%=_packageName%];
 [%for ( n in _nodes){%]
 import [%=_packageName%].handler.Create[%=n%]NodeHandler;
 [%}%]
+[%for ( e in _edges){%]
+import [%=_packageName%].handler.Create[%=e%]EdgeHandler;
+[%}%]
 import [%=_packageName%].handler.DeleteNodeHandler;
 import [%=_packageName%].model.[%=_metamodelName.firstToUpperCase()%]GModelFactory;
 import [%=_packageName%].model.[%=_metamodelName.firstToUpperCase()%]SourceModelStorage;
@@ -79,6 +82,9 @@ public class [%=_metamodelName.firstToUpperCase()%]DiagramModule extends EMFNota
       super.configureOperationHandlers(binding);
       [%for ( n in _nodes){%]
       binding.add(Create[%=n%]NodeHandler.class);
+      [%}%]
+      [%for ( e in _edges){%]
+      binding.add(Create[%=e%]EdgeHandler.class);
       [%}%]
       [%if (_components.contains("DeleteHandler")) {%]
       binding.add(DeleteNodeHandler.class);

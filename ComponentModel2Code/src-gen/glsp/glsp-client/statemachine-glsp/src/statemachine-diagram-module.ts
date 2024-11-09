@@ -19,7 +19,7 @@ import {
     configureModelElement,
     ConsoleLogger,
     ContainerConfiguration,
-    DefaultTypes,
+    //DefaultTypes,
 	GEdge,
 	GEdgeView,
 	GNode,
@@ -37,9 +37,10 @@ const statemachineDiagramModule = new ContainerModule((bind, unbind, isBound, re
     const context = { bind, unbind, isBound, rebind };
     configureDefaultModelElements(context);
     
-    configureModelElement(context, DefaultTypes.EDGE, GEdge, GEdgeView);
+    //configureModelElement(context, DefaultTypes.EDGE, GEdge, GEdgeView);
 	configureModelElement(context, 'normalState', GNode, RectangularNodeView);
 	configureModelElement(context, 'finalState', GNode, RectangularNodeView);
+	configureModelElement(context, 'transition', GEdge, GEdgeView);
 });
 
 export function initializeStatemachineDiagramContainer(container: Container, ...containerConfiguration: ContainerConfiguration): Container {

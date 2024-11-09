@@ -19,7 +19,7 @@ import {
     configureModelElement,
     ConsoleLogger,
     ContainerConfiguration,
-    DefaultTypes,
+    //DefaultTypes,
 	GEdge,
 	GEdgeView,
 	GNode,
@@ -37,9 +37,12 @@ const [%=_metamodelName%]DiagramModule = new ContainerModule((bind, unbind, isBo
     const context = { bind, unbind, isBound, rebind };
     configureDefaultModelElements(context);
     
-    configureModelElement(context, DefaultTypes.EDGE, GEdge, GEdgeView);
+    //configureModelElement(context, DefaultTypes.EDGE, GEdge, GEdgeView);
     [%for ( n in _nodes){%]
 	configureModelElement(context, '[%=n.firstToLowerCase()%]', GNode, RectangularNodeView);
+	[%}%]
+	[%for ( e in _edges){%]
+	configureModelElement(context, '[%=e.firstToLowerCase()%]', GEdge, GEdgeView);
 	[%}%]
 });
 
