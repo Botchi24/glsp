@@ -18,6 +18,7 @@ package org.eclipse.glsp.example.javaemf;
 
 import org.eclipse.glsp.example.javaemf.handler.CreateNormalStateNodeHandler;
 import org.eclipse.glsp.example.javaemf.handler.CreateFinalStateNodeHandler;
+import org.eclipse.glsp.example.javaemf.handler.CreateTransitionEdgeHandler;
 import org.eclipse.glsp.example.javaemf.handler.DeleteNodeHandler;
 import org.eclipse.glsp.example.javaemf.model.StatemachineGModelFactory;
 import org.eclipse.glsp.example.javaemf.model.StatemachineSourceModelStorage;
@@ -68,6 +69,7 @@ public class StatemachineDiagramModule extends EMFNotationDiagramModule {
       super.configureOperationHandlers(binding);
       binding.add(CreateNormalStateNodeHandler.class);
       binding.add(CreateFinalStateNodeHandler.class);
+      binding.add(CreateTransitionEdgeHandler.class);
       binding.add(DeleteNodeHandler.class);
    }
 

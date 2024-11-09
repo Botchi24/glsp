@@ -23,6 +23,7 @@ import com.google.common.collect.Lists;
 
 import org.eclipse.glsp.example.javaemf.StatemachineModelTypes;
 import org.eclipse.glsp.server.actions.TriggerNodeCreationAction;
+import org.eclipse.glsp.server.actions.TriggerEdgeCreationAction;
 import org.eclipse.glsp.server.features.toolpalette.PaletteItem;
 import org.eclipse.glsp.server.features.toolpalette.ToolPaletteItemProvider;
 
@@ -30,7 +31,7 @@ public class StatemachineToolPaletteItemProvider implements ToolPaletteItemProvi
 
     @Override
     public List<PaletteItem> getItems(Map<String, String> args) {
-        return Lists.newArrayList(nodes());
+        return Lists.newArrayList(nodes(), edges());
     }
 
     private PaletteItem nodes() {
@@ -42,9 +43,20 @@ public class StatemachineToolPaletteItemProvider implements ToolPaletteItemProvi
         
         return PaletteItem.createPaletteGroup("nodes", "Nodes", nodes, "symbol-property");
     }
+    
+    private PaletteItem edges() {
+        List<PaletteItem> edges = Lists.newArrayList();
+        PaletteItem createTransition = edge(StatemachineModelTypes.TRANSITION, "Transition");
+        edges.add(createTransition);
+        return PaletteItem.createPaletteGroup("edges", "Edges", edges, "symbol-property");
+    }
 
     private PaletteItem node(String elementTypeId, String label) {
         return new PaletteItem(elementTypeId, label, new TriggerNodeCreationAction(elementTypeId));
+    }
+    
+    private PaletteItem edge(String elementTypeId, String label) {
+        return new PaletteItem(elementTypeId, label, new TriggerEdgeCreationAction(elementTypeId));
     }
 
 }

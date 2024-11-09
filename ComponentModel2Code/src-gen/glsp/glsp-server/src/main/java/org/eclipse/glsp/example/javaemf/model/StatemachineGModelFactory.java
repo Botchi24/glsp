@@ -22,14 +22,17 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.glsp.example.javaemf.StatemachineModelTypes;
 import swt.most.statemachine.NormalState;
 import swt.most.statemachine.FinalState;
+import swt.most.statemachine.Transition;
 import swt.most.statemachine.StateMachine;
 import org.eclipse.glsp.graph.DefaultTypes;
 import org.eclipse.glsp.graph.GGraph;
 import org.eclipse.glsp.graph.GModelRoot;
 import org.eclipse.glsp.graph.GNode;
+import org.eclipse.glsp.graph.GEdge;
 import org.eclipse.glsp.graph.builder.impl.GLabelBuilder;
 import org.eclipse.glsp.graph.builder.impl.GLayoutOptions;
 import org.eclipse.glsp.graph.builder.impl.GNodeBuilder;
+import org.eclipse.glsp.graph.builder.impl.GEdgeBuilder;
 import org.eclipse.glsp.graph.util.GConstants;
 import org.eclipse.glsp.server.emf.model.notation.Diagram;
 import org.eclipse.glsp.server.emf.notation.EMFNotationGModelFactory;
@@ -47,6 +50,9 @@ public class StatemachineGModelFactory extends EMFNotationGModelFactory {
             .forEachOrdered(graph.getChildren()::add);
          stateMachine.getFinalstates().stream()
             .map(this::createFinalStateNode)
+            .forEachOrdered(graph.getChildren()::add);
+         stateMachine.getTransitions().stream()
+            .map(this::createTransitionEdge)
             .forEachOrdered(graph.getChildren()::add);
       //}
    }
@@ -71,6 +77,19 @@ public class StatemachineGModelFactory extends EMFNotationGModelFactory {
 
       applyShapeData(finalState, finalStateNodeBuilder);
       return finalStateNodeBuilder.build();
+   }
+   
+   
+   protected GEdge createTransitionEdge(final Transition transition) {
+      GEdgeBuilder transitionEdgeBuilder = new GEdgeBuilder(StatemachineModelTypes.TRANSITION)
+          .id(idGenerator.getOrCreateId(transition))
+          //.addCssClass("statemachine-edge")
+          .sourceId(idGenerator.getOrCreateId(transition.getFrom()))
+          .targetId(idGenerator.getOrCreateId(transition.getTo()))
+          ;
+          
+      applyEdgeData(transition, transitionEdgeBuilder);
+      return transitionEdgeBuilder.build();
    }
    
 
