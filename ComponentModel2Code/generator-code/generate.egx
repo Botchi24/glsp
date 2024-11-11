@@ -84,8 +84,8 @@ rule ModelTypes
 }
 
 
-rule CreateHandler
-	transform createHandler : source!CreateHandler {
+rule CreateNodeHandler
+	transform createNodeHandler : source!CreateNodeHandler {
 	
 	parameters : Map {
 		"_metamodelName" = metamodelName,
@@ -97,9 +97,33 @@ rule CreateHandler
 		"_edges" = edges
 	}
 	
-	template : "./server/src/template-createHandler.egl"
+	template : "./server/src/template-createNodeHandler.egl"
 
-	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/handler/Create" + createHandler.elementName + "NodeHandler.java"
+	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/handler/Create" + createNodeHandler.elementName + "NodeHandler.java"
+	
+}
+
+
+rule CreateEdgeHandler
+	transform createEdgeHandler : source!CreateEdgeHandler {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName,
+		"_metamodelPackageName" = metamodelPackageName,
+		"_metamodelPrefix" = metamodelPrefix,
+		"_root" = root,
+		"_nodes" = nodes,
+		"_edges" = edges,
+		"_sourceType" = metamodelSpecificSettings!t_root.all.first.children.select(c|c.a_name == createEdgeHandler.elementName).first.a_sourceType,
+		"_targetType" = metamodelSpecificSettings!t_root.all.first.children.select(c|c.a_name == createEdgeHandler.elementName).first.a_targetType,
+		"_sourceReference" = metamodelSpecificSettings!t_root.all.first.children.select(c|c.a_name == createEdgeHandler.elementName).first.a_sourceReference,
+		"_targetReference" = metamodelSpecificSettings!t_root.all.first.children.select(c|c.a_name == createEdgeHandler.elementName).first.a_targetReference
+	}
+	
+	template : "./server/src/template-createEdgeHandler.egl"
+
+	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/handler/Create" + createEdgeHandler.elementName + "EdgeHandler.java"
 	
 }
 

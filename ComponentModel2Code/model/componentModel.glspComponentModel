@@ -5,8 +5,9 @@
   <components xsi:type="glspComponentModel:DiagramModule"/>
   <components xsi:type="glspComponentModel:DiagramConfiguration"/>
   <components xsi:type="glspComponentModel:ModelTypes"/>
-  <components xsi:type="glspComponentModel:CreateHandler" elementName="NormalState" referenceName="states"/>
-  <components xsi:type="glspComponentModel:CreateHandler" elementName="FinalState" referenceName="finalstates"/>
+  <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="NormalState" referenceName="states"/>
+  <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="FinalState" referenceName="finalstates"/>
+  <components xsi:type="glspComponentModel:CreateEdgeHandler" elementName="Transition" referenceName="transitions"/>
   <components xsi:type="glspComponentModel:DeleteHandler"/>
   <components xsi:type="glspComponentModel:ToolPaletteItemProvider"/>
   <components xsi:type="glspComponentModel:EMFSourceModelStorage"/>
