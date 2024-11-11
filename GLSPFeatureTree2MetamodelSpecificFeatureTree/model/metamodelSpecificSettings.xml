@@ -2,5 +2,5 @@
 <root name="StateMachine">
   <node name="NormalState" referenceName="states"/>
   <node name="FinalState" referenceName="finalstates"/>
-  <edge name="Transition" referenceName="transitions"/>
+  <edge name="Transition" referenceName="transitions" sourceType="State" targetType="State" sourceReference="from" targetReference="to"/>
 </root>

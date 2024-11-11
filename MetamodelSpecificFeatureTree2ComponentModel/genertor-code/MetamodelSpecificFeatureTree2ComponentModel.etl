@@ -64,15 +64,32 @@ rule ModelTypes
 
 
 //@lazy
-rule CreateHandler
+rule CreateNodeHandler
 	transform s : source!t_feature
-	to t : target!CreateHandler {
+	to t : target!CreateNodeHandler {
 	
 		guard : s.a_name.startsWith("N_S31 use Command_")
 		
-		("CreateHandler_" + s.a_name.substring("N_S31 use Command_".length(), s.a_name.length())).println();
+		("CreateNodeHandler_" + s.a_name.substring("N_S31 use Command_".length(), s.a_name.length())).println();
 		
 		t.elementName = s.a_name.substring("N_S31 use Command_".length(), s.a_name.length());
+		
+		t.referenceName = metamodelSpecificSettings!t_root.all.first.children.select(c|c.a_name == t.elementName).first.a_referenceName;
+		
+		target!ComponentModel.all.first.components.add(t);
+	
+}
+
+
+rule CreateEdgeHandler
+	transform s : source!t_feature
+	to t : target!CreateEdgeHandler {
+	
+		guard : s.a_name.startsWith("E_S31 use Command_")
+		
+		("CreateEdgeHandler_" + s.a_name.substring("E_S31 use Command_".length(), s.a_name.length())).println();
+		
+		t.elementName = s.a_name.substring("E_S31 use Command_".length(), s.a_name.length());
 		
 		t.referenceName = metamodelSpecificSettings!t_root.all.first.children.select(c|c.a_name == t.elementName).first.a_referenceName;
 		

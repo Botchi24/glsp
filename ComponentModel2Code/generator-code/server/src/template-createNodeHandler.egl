@@ -27,7 +27,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import [%=_packageName%].[%=_metamodelName.firstToUpperCase()%]ModelTypes;
 import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=_metamodelPrefix%]Factory;
 import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=_metamodelPrefix%]Package;
-import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=createHandler.elementName%];
+import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=createNodeHandler.elementName%];
 import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=_root%];
 import org.eclipse.glsp.graph.GModelElement;
 import org.eclipse.glsp.graph.GPoint;
@@ -46,7 +46,7 @@ import org.eclipse.glsp.server.utils.LayoutUtil;
 
 import com.google.inject.Inject;
 
-public class Create[%=createHandler.elementName%]NodeHandler extends EMFCreateOperationHandler<CreateNodeOperation> {
+public class Create[%=createNodeHandler.elementName%]NodeHandler extends EMFCreateOperationHandler<CreateNodeOperation> {
 
    @Inject
    protected EMFNotationModelState modelState;
@@ -54,8 +54,8 @@ public class Create[%=createHandler.elementName%]NodeHandler extends EMFCreateOp
    @Inject
    protected EMFIdGenerator idGenerator;
 
-   public Create[%=createHandler.elementName%]NodeHandler() {
-      super([%=_metamodelName.firstToUpperCase()%]ModelTypes.[%=createHandler.elementName.toUpperCase()%]);
+   public Create[%=createNodeHandler.elementName%]NodeHandler() {
+      super([%=_metamodelName.firstToUpperCase()%]ModelTypes.[%=createNodeHandler.elementName.toUpperCase()%]);
    }
 
    @Override
@@ -64,51 +64,51 @@ public class Create[%=createHandler.elementName%]NodeHandler extends EMFCreateOp
       Optional<GPoint> absoluteLocation = operation.getLocation();
       Optional<GPoint> relativeLocation = absoluteLocation.map(location->LayoutUtil.getRelativeLocation(location, container));
 
-      return Optional.of(create[%=createHandler.elementName%]AndShape(relativeLocation));
+      return Optional.of(create[%=createNodeHandler.elementName%]AndShape(relativeLocation));
    }
 
    @Override
-   public String getLabel() { return "[%=createHandler.elementName%]"; }
+   public String getLabel() { return "[%=createNodeHandler.elementName%]"; }
 
-   protected Command create[%=createHandler.elementName%]AndShape(final Optional<GPoint> relativeLocation) {
+   protected Command create[%=createNodeHandler.elementName%]AndShape(final Optional<GPoint> relativeLocation) {
       [%=_root%] [%=_root.firstToLowerCase()%] = modelState.getSemanticModel([%=_root%].class).orElseThrow();
       Diagram diagram = modelState.getNotationModel();
       EditingDomain editingDomain = modelState.getEditingDomain();
 
-      [%=createHandler.elementName%] new[%=createHandler.elementName%] = create[%=createHandler.elementName%]();
-      Command [%=createHandler.elementName.firstToLowerCase()%]Command = AddCommand.create(editingDomain, [%=_root.firstToLowerCase()%],
-         [%=_metamodelPrefix%]Package.Literals.[%=_root.charAt(0)%][%for (i in Sequence{1.._root.length()-1}){%][%if(_root.substring(i,i+1).matches("[A-Z]")){%]_[%}%][%=_root.substring(i,i+1).toUpperCase()%][%}%]__[%=createHandler.referenceName.toUpperCase()%], new[%=createHandler.elementName%]);
+      [%=createNodeHandler.elementName%] new[%=createNodeHandler.elementName%] = create[%=createNodeHandler.elementName%]();
+      Command [%=createNodeHandler.elementName.firstToLowerCase()%]Command = AddCommand.create(editingDomain, [%=_root.firstToLowerCase()%],
+         [%=_metamodelPrefix%]Package.Literals.[%=_root.charAt(0)%][%for (i in Sequence{1.._root.length()-1}){%][%if(_root.substring(i,i+1).matches("[A-Z]")){%]_[%}%][%=_root.substring(i,i+1).toUpperCase()%][%}%]__[%=createNodeHandler.referenceName.toUpperCase()%], new[%=createNodeHandler.elementName%]);
 
-      Shape shape = createShape(idGenerator.getOrCreateId(new[%=createHandler.elementName%]), relativeLocation);
+      Shape shape = createShape(idGenerator.getOrCreateId(new[%=createNodeHandler.elementName%]), relativeLocation);
       Command shapeCommand = AddCommand.create(editingDomain, diagram,
          NotationPackage.Literals.DIAGRAM__ELEMENTS, shape);
 
       CompoundCommand compoundCommand = new CompoundCommand();
-      compoundCommand.append([%=createHandler.elementName.firstToLowerCase()%]Command);
+      compoundCommand.append([%=createNodeHandler.elementName.firstToLowerCase()%]Command);
       compoundCommand.append(shapeCommand);
       return compoundCommand;
    }
 
-   protected [%=createHandler.elementName%] create[%=createHandler.elementName%]() {
-      [%=createHandler.elementName%] new[%=createHandler.elementName%] = [%=_metamodelPrefix%]Factory.eINSTANCE.create[%=createHandler.elementName%]();
-      //new[%=createHandler.elementName%].setId(UUID.randomUUID().toString());
-      setInitialName(new[%=createHandler.elementName%]);
-      return new[%=createHandler.elementName%];
+   protected [%=createNodeHandler.elementName%] create[%=createNodeHandler.elementName%]() {
+      [%=createNodeHandler.elementName%] new[%=createNodeHandler.elementName%] = [%=_metamodelPrefix%]Factory.eINSTANCE.create[%=createNodeHandler.elementName%]();
+      //new[%=createNodeHandler.elementName%].setId(UUID.randomUUID().toString());
+      setInitialName(new[%=createNodeHandler.elementName%]);
+      return new[%=createNodeHandler.elementName%];
    }
 
-   protected void setInitialName(final [%=createHandler.elementName%] [%=createHandler.elementName.firstToLowerCase()%]) {
-      Function<Integer, String> nameProvider = i -> "New" + [%=createHandler.elementName.firstToLowerCase()%].eClass().getName() + i;
+   protected void setInitialName(final [%=createNodeHandler.elementName%] [%=createNodeHandler.elementName.firstToLowerCase()%]) {
+      Function<Integer, String> nameProvider = i -> "New" + [%=createNodeHandler.elementName.firstToLowerCase()%].eClass().getName() + i;
       int nodeCounter = modelState.getIndex().getCounter(GraphPackage.Literals.GNODE, nameProvider);
-      [%=createHandler.elementName.firstToLowerCase()%].setName(nameProvider.apply(nodeCounter));
+      [%=createNodeHandler.elementName.firstToLowerCase()%].setName(nameProvider.apply(nodeCounter));
    }
 
    protected Shape createShape(final String elementId, final Optional<GPoint> relativeLocation) {
-      Shape new[%=createHandler.elementName%] = NotationFactory.eINSTANCE.createShape();
-      new[%=createHandler.elementName%].setPosition(relativeLocation.orElse(GraphUtil.point(0, 0)));
-      new[%=createHandler.elementName%].setSize(GraphUtil.dimension(60, 25));
+      Shape new[%=createNodeHandler.elementName%] = NotationFactory.eINSTANCE.createShape();
+      new[%=createNodeHandler.elementName%].setPosition(relativeLocation.orElse(GraphUtil.point(0, 0)));
+      new[%=createNodeHandler.elementName%].setSize(GraphUtil.dimension(60, 25));
       SemanticElementReference reference = NotationFactory.eINSTANCE.createSemanticElementReference();
       reference.setElementId(elementId);
-      new[%=createHandler.elementName%].setSemanticElement(reference);
-      return new[%=createHandler.elementName%];
+      new[%=createNodeHandler.elementName%].setSemanticElement(reference);
+      return new[%=createNodeHandler.elementName%];
    }
 }

@@ -1,9 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<statemachine:StateMachine xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:statemachine="http://www.swt.org/most/statemachine" name="Statemachine">
-  <states name="NewNormalState0"/>
-  <states name="NewNormalState1"/>
-  <states name="NewNormalState2"/>
-  <transitions from="NewNormalState0" to="NewNormalState1"/>
-  <transitions from="NewNormalState1" to="NewNormalState2"/>
-  <transitions from="NewNormalState2" to="NewNormalState0"/>
-</statemachine:StateMachine>
+<example-model:StateMachine xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:example-model="http://www.swt.org/most/statemachine" name="Statemachine">
+</example-model:StateMachine>

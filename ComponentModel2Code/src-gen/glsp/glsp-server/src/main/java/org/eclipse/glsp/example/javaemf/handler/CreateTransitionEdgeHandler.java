@@ -26,17 +26,16 @@ import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.glsp.example.javaemf.StatemachineModelTypes;
+import swt.most.statemachine.StatemachineFactory;
+import swt.most.statemachine.StatemachinePackage;
+import swt.most.statemachine.Transition;
+import swt.most.statemachine.StateMachine;
+import swt.most.statemachine.State;
 import org.eclipse.glsp.graph.GraphPackage;
 import org.eclipse.glsp.server.emf.EMFCreateOperationHandler;
 import org.eclipse.glsp.server.emf.EMFIdGenerator;
 import org.eclipse.glsp.server.emf.notation.EMFNotationModelState;
 import org.eclipse.glsp.server.operations.CreateEdgeOperation;
-//import org.pnml.emf.ptnet.*;
-import swt.most.statemachine.Transition;
-import swt.most.statemachine.State;
-import swt.most.statemachine.StatemachineFactory;
-import swt.most.statemachine.StatemachinePackage;
-import swt.most.statemachine.StateMachine;
 
 import com.google.inject.Inject;
 
@@ -96,7 +95,7 @@ public class CreateTransitionEdgeHandler extends EMFCreateOperationHandler<Creat
         // and can be undone. Otherwise, the reference would not be removed from the nodes.
 
         Command transitionCommand = AddCommand.create(editingDomain, stateMachine,
-                StatemachinePackage.Literals.STATE_MACHINE__TRANSITIONS, newTransition);
+            StatemachinePackage.Literals.STATE_MACHINE__TRANSITIONS, newTransition);
 
         Command setSource = SetCommand.create(editingDomain, newTransition,
         	StatemachinePackage.Literals.TRANSITION__FROM, source);

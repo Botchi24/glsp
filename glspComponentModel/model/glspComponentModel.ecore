@@ -12,7 +12,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="DiagramConfiguration" eSuperTypes="#//LeafComponent"/>
   <eClassifiers xsi:type="ecore:EClass" name="ModelTypes" eSuperTypes="#//LeafComponent"/>
   <eClassifiers xsi:type="ecore:EClass" name="ServerLauncher" eSuperTypes="#//LeafComponent"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CreateHandler" eSuperTypes="#//LeafComponent">
+  <eClassifiers xsi:type="ecore:EClass" name="CreateNodeHandler" eSuperTypes="#//LeafComponent">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="elementName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="referenceName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -30,4 +30,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="GModelStorage" eSuperTypes="#//SourceModelStorage"/>
   <eClassifiers xsi:type="ecore:EClass" name="ProjectComponent" eSuperTypes="#//Component"/>
   <eClassifiers xsi:type="ecore:EClass" name="ClientModelTypes" eSuperTypes="#//ClientComponent"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CreateEdgeHandler" eSuperTypes="#//LeafComponent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="elementName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="referenceName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
 </ecore:EPackage>
