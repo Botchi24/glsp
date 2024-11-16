@@ -3,9 +3,23 @@
     "name":"root",
     "license": "(EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT)",
     "scripts": {
-        "prepare":"yarn build",
-        "build":"yarn build:server && yarn build:client",
-        "build:client":"yarn --cwd [%=_clientPath%] install",
-        "build:server":"cd [%=_serverPath%] && mvn --batch-mode clean verify"
-    }
+        "prepare": "yarn build",
+        "build": "yarn build:server && yarn build:client",
+        "build:client": "yarn --cwd [%=_clientPath%] install",
+        "build:server": "cd [%=_serverPath%] && mvn -DskipTests=true --batch-mode verify",
+        "build:fast": "yarn build:fast-server && yarn build:fast-client",
+        "build:fast-client": "yarn --offline --cwd glsp-client install --prefer-offline",
+        "build:fast-server": "cd glsp-server && mvn -DskipTests=true --batch-mode verify",
+        "clean": "cd glsp-server && mvn clean && yarn --cwd glsp-client clean",
+        "start:client": "yarn --cwd glsp-client start",
+        "start:server": "cd glsp-server && mvn exec:java",
+        "watch:client": "yarn --cwd glsp-client start --watch",
+		"test-c": "yarn build:fast-client && yarn start:client",
+        "test-s": "yarn build:fast-server && yarn start:server",
+        "test-cs": "yarn build:fast && yarn start:server && yarn start:client"
+    },
+    "dependencies": {
+        "inversify": "^6.0.2"
+    },
+    "_notes": "This project builds both server and client for GLSP. Ensure Maven is installed for the server build."
 }

@@ -39,5 +39,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute glspComponentModel.ecore#//CreateEdgeHandler/elementName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute glspComponentModel.ecore#//CreateEdgeHandler/referenceName"/>
     </genClasses>
+    <genClasses ecoreClass="glspComponentModel.ecore#//NodeView"/>
   </genPackages>
 </genmodel:GenModel>
