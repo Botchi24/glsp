@@ -14,7 +14,7 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
-package [%=_packageName%].handler;
+package org.eclipse.glsp.example.javaemf.handler;
 
 import java.util.ArrayList;
 import java.util.List;

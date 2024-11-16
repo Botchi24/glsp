@@ -137,7 +137,7 @@ rule DeleteHandler
 	
 	template : "./server/src/template-deleteHandler.egl"
 
-	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/handler/DeleteNodeHandler.java"
+	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/handler/DeleteHandler.java"
 	
 }
 
