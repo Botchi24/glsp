@@ -98,7 +98,7 @@ public class CreateNormalStateNodeHandler extends EMFCreateOperationHandler<Crea
 
    protected void setInitialName(final NormalState normalState) {
       Function<Integer, String> nameProvider = i -> "New" + normalState.eClass().getName() + i;
-      int nodeCounter = modelState.getIndex().getCounter(GraphPackage.Literals.GNODE, nameProvider);
+      int nodeCounter = modelState.getIndex().getCounter(StatemachinePackage.Literals.NORMAL_STATE, nameProvider);
       normalState.setName(nameProvider.apply(nodeCounter));
    }
 

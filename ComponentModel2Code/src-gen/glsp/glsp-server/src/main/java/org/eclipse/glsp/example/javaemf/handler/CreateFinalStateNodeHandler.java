@@ -98,7 +98,7 @@ public class CreateFinalStateNodeHandler extends EMFCreateOperationHandler<Creat
 
    protected void setInitialName(final FinalState finalState) {
       Function<Integer, String> nameProvider = i -> "New" + finalState.eClass().getName() + i;
-      int nodeCounter = modelState.getIndex().getCounter(GraphPackage.Literals.GNODE, nameProvider);
+      int nodeCounter = modelState.getIndex().getCounter(StatemachinePackage.Literals.FINAL_STATE, nameProvider);
       finalState.setName(nameProvider.apply(nodeCounter));
    }
 
