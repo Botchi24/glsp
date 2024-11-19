@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<viewpointModel:ViewpointModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:viewpointModel="http://www.example.org/viewpointModel" xsi:schemaLocation="http://www.example.org/viewpointModel ../../viewpointModel/model/viewpointModel.ecore">
+  <modelelement xsi:type="viewpointModel:ModelElement" name="NormalState">
+    <style xsi:type="viewpointModel:Style" name="idReference" value="name"/>
+  </modelelement>
+  <modelelement xsi:type="viewpointModel:ModelElement" name="FinalState">
+    <style xsi:type="viewpointModel:Style" name="idReference" value="name"/>
+  </modelelement>
+  <modelelement xsi:type="viewpointModel:ModelElement" name="Transition">
+    <style xsi:type="viewpointModel:Style" name="idContainer" value="identifier"/>
+  </modelelement>
+</viewpointModel:ViewpointModel>
