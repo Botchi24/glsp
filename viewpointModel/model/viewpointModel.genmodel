@@ -15,10 +15,16 @@
     <genClasses ecoreClass="viewpointModel.ecore#//ModelElement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpointModel.ecore#//ModelElement/style"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpointModel.ecore#//ModelElement/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpointModel.ecore#//ModelElement/id"/>
     </genClasses>
     <genClasses ecoreClass="viewpointModel.ecore#//Style">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpointModel.ecore#//Style/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpointModel.ecore#//Style/value"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpointModel.ecore#//Id">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpointModel.ecore#//Id/container"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpointModel.ecore#//Id/reference"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpointModel.ecore#//Id/static"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
