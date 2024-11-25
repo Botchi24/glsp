@@ -81,7 +81,7 @@ public class DeleteHandler extends EMFOperationHandler<DeleteOperation> {
          if (semanticElement.isEmpty()) {
              System.err.println("[DeleteNodeHandler] Could not find semantic element for ID: " + elementId);
              semanticElement = modelState.getSemanticModel().eContents().stream()
-                     .filter(obj -> obj instanceof Transition)
+                     //.filter(obj -> obj instanceof Transition)
                      .map(obj -> (EObject) obj)
                      .filter(obj -> idGenerator.getOrCreateId(obj).equals(elementId))
                      .findFirst();

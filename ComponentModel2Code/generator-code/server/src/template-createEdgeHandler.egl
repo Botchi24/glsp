@@ -55,11 +55,6 @@ public class Create[%=createEdgeHandler.elementName%]EdgeHandler extends EMFCrea
         super([%=_metamodelName.firstToUpperCase()%]ModelTypes.[%=createEdgeHandler.elementName.toUpperCase()%]);
     }
 
-    public Create[%=createEdgeHandler.elementName%]EdgeHandler(String type) {
-        super(type);
-    }
-
-
     @Override
     public String getLabel() { return "[%=createEdgeHandler.elementName%]"; }
 

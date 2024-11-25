@@ -1,0 +1,7 @@
+operation resolveModelElementNaming(elementName : String) : String {
+	return viewpointModel!ModelElement.all.selectOne(e|e.name.matches(elementName)).id.reference;
+}
+
+operation getStyleValue(elementName : String, styleName : String) : String {
+	return viewpointModel!ModelElement.all.selectOne(e|e.name.matches(elementName)).style.selectOne(s|s.name.matches(styleName)).value;
+}

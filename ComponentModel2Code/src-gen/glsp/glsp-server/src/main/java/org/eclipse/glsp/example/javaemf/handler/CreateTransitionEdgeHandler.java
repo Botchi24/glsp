@@ -52,11 +52,6 @@ public class CreateTransitionEdgeHandler extends EMFCreateOperationHandler<Creat
         super(StatemachineModelTypes.TRANSITION);
     }
 
-    public CreateTransitionEdgeHandler(String type) {
-        super(type);
-    }
-
-
     @Override
     public String getLabel() { return "Transition"; }
 

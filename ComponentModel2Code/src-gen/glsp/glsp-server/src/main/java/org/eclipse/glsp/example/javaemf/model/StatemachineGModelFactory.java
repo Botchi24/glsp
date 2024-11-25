@@ -83,10 +83,9 @@ public class StatemachineGModelFactory extends EMFNotationGModelFactory {
    protected GEdge createTransitionEdge(final Transition transition) {
       GEdgeBuilder transitionEdgeBuilder = new GEdgeBuilder(StatemachineModelTypes.TRANSITION)
           .id(idGenerator.getOrCreateId(transition))
-          //.addCssClass("statemachine-edge")
+          .addCssClass("statemachine-edge")
           .sourceId(idGenerator.getOrCreateId(transition.getFrom()))
-          .targetId(idGenerator.getOrCreateId(transition.getTo()))
-          ;
+          .targetId(idGenerator.getOrCreateId(transition.getTo()));
           
       applyEdgeData(transition, transitionEdgeBuilder);
       return transitionEdgeBuilder.build();
