@@ -105,7 +105,7 @@ public class CreateFinalStateNodeHandler extends EMFCreateOperationHandler<Creat
    protected Shape createShape(final String elementId, final Optional<GPoint> relativeLocation) {
       Shape newFinalState = NotationFactory.eINSTANCE.createShape();
       newFinalState.setPosition(relativeLocation.orElse(GraphUtil.point(0, 0)));
-      newFinalState.setSize(GraphUtil.dimension(60, 25));
+      newFinalState.setSize(GraphUtil.dimension(100, 50));
       SemanticElementReference reference = NotationFactory.eINSTANCE.createSemanticElementReference();
       reference.setElementId(elementId);
       newFinalState.setSemanticElement(reference);

@@ -25,7 +25,7 @@ public final class [%=_metamodelName.firstToUpperCase()%]ModelTypes {
    public static final String [%=n.toUpperCase()%] = "[%=n.firstToLowerCase()%]";
    [%}%]
    [%for ( e in _edges){%]
-   public static final String [%=e.toUpperCase()%] = DefaultTypes.EDGE;
+   public static final String [%=e.toUpperCase()%] = "[%=e.firstToLowerCase()%]";
    [%}%]
 
 }

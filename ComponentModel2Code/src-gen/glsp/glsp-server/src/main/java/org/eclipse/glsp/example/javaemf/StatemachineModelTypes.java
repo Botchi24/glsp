@@ -23,6 +23,6 @@ public final class StatemachineModelTypes {
 
    public static final String NORMALSTATE = "normalState";
    public static final String FINALSTATE = "finalState";
-   public static final String TRANSITION = DefaultTypes.EDGE;
+   public static final String TRANSITION = "transition";
 
 }
