@@ -61,7 +61,7 @@ public class StatemachineGModelFactory extends EMFNotationGModelFactory {
       GNodeBuilder normalStateNodeBuilder = new GNodeBuilder(StatemachineModelTypes.NORMALSTATE)
          .id(idGenerator.getOrCreateId(normalState))
          .addCssClass("statemachine-node")
-         .add(new GLabelBuilder(DefaultTypes.LABEL).text(normalState.getName()).id(idGenerator.getOrCreateId(normalState) + "_label").build())
+         .add(new GLabelBuilder(DefaultTypes.LABEL).text(idGenerator.getOrCreateId(normalState)).id(idGenerator.getOrCreateId(normalState) + "_label").build())
          .layout(GConstants.Layout.HBOX, Map.of(GLayoutOptions.KEY_PADDING_LEFT, 5));
 
       applyShapeData(normalState, normalStateNodeBuilder);
@@ -72,7 +72,7 @@ public class StatemachineGModelFactory extends EMFNotationGModelFactory {
       GNodeBuilder finalStateNodeBuilder = new GNodeBuilder(StatemachineModelTypes.FINALSTATE)
          .id(idGenerator.getOrCreateId(finalState))
          .addCssClass("statemachine-node")
-         .add(new GLabelBuilder(DefaultTypes.LABEL).text(finalState.getName()).id(idGenerator.getOrCreateId(finalState) + "_label").build())
+         .add(new GLabelBuilder(DefaultTypes.LABEL).text(idGenerator.getOrCreateId(finalState)).id(idGenerator.getOrCreateId(finalState) + "_label").build())
          .layout(GConstants.Layout.HBOX, Map.of(GLayoutOptions.KEY_PADDING_LEFT, 5));
 
       applyShapeData(finalState, finalStateNodeBuilder);

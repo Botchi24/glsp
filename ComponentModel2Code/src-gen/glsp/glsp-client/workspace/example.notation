@@ -3,12 +3,22 @@
   <semanticElement elementId="Statemachine"/>
   <elements xsi:type="notation:Shape">
     <semanticElement elementId="NewNormalState0"/>
-    <position x="93.46566936573538" y="-8.703511623428511"/>
+    <position x="-25.806064164021137" y="12.780216776341291"/>
     <size width="60.0" height="25.0"/>
   </elements>
   <elements xsi:type="notation:Shape">
     <semanticElement elementId="NewFinalState0"/>
-    <position x="171.99240075799753" y="62.41503756201644"/>
-    <size width="100.0" height="50.0"/>
+    <position x="29.755302387107662" y="74.26812909292391"/>
+    <size width="100.0" height="60.0"/>
+  </elements>
+  <elements xsi:type="notation:Shape">
+    <semanticElement elementId="NewNormalState1"/>
+    <position x="193.47612915776733" y="31.30067229338426"/>
+    <size width="60.0" height="25.0"/>
+  </elements>
+  <elements xsi:type="notation:Shape">
+    <semanticElement elementId="NewNormalState2"/>
+    <position x="399.42359450728486" y="143.9050418370054"/>
+    <size width="60.0" height="25.0"/>
   </elements>
 </notation:Diagram>

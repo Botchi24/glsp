@@ -35,4 +35,5 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="referenceName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NodeView" eSuperTypes="#//LeafComponent"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IdGenerator" eSuperTypes="#//LeafComponent"/>
 </ecore:EPackage>

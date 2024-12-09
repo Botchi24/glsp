@@ -4,6 +4,7 @@
   <components xsi:type="glspComponentModel:ServerLauncher"/>
   <components xsi:type="glspComponentModel:DiagramModule"/>
   <components xsi:type="glspComponentModel:DiagramConfiguration"/>
+  <components xsi:type="glspComponentModel:IdGenerator"/>
   <components xsi:type="glspComponentModel:ModelTypes"/>
   <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="NormalState" referenceName="states"/>
   <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="FinalState" referenceName="finalstates"/>

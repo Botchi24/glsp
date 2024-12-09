@@ -93,15 +93,19 @@ public class Create[%=createNodeHandler.elementName%]NodeHandler extends EMFCrea
    protected [%=createNodeHandler.elementName%] create[%=createNodeHandler.elementName%]() {
       [%=createNodeHandler.elementName%] new[%=createNodeHandler.elementName%] = [%=_metamodelPrefix%]Factory.eINSTANCE.create[%=createNodeHandler.elementName%]();
       //new[%=createNodeHandler.elementName%].setId(UUID.randomUUID().toString());
+      [%if (isStorable(createNodeHandler.elementName)){%]
       setInitialName(new[%=createNodeHandler.elementName%]);
+      [%}%]
       return new[%=createNodeHandler.elementName%];
    }
 
+   [%if (isStorable(createNodeHandler.elementName)){%]
    protected void setInitialName(final [%=createNodeHandler.elementName%] [%=createNodeHandler.elementName.firstToLowerCase()%]) {
       Function<Integer, String> nameProvider = i -> "New" + [%=createNodeHandler.elementName.firstToLowerCase()%].eClass().getName() + i;
       int nodeCounter = modelState.getIndex().getCounter([%=_metamodelPrefix%]Package.Literals.[%=createNodeHandler.elementName.charAt(0)%][%for (i in Sequence{1..createNodeHandler.elementName.length()-1}){%][%if(createNodeHandler.elementName.substring(i,i+1).matches("[A-Z]")){%]_[%}%][%=createNodeHandler.elementName.substring(i,i+1).toUpperCase()%][%}%], nameProvider);
-      [%=createNodeHandler.elementName.firstToLowerCase()%].set[%=resolveModelElementNaming(createNodeHandler.elementName).firstToUpperCase()%](nameProvider.apply(nodeCounter));
+      [%=createNodeHandler.elementName.firstToLowerCase()%].set[%=getIdAttributeRecursive(createNodeHandler.elementName).firstToUpperCase()%](nameProvider.apply(nodeCounter));
    }
+   [%}%]
 
    protected Shape createShape(final String elementId, final Optional<GPoint> relativeLocation) {
       Shape new[%=createNodeHandler.elementName%] = NotationFactory.eINSTANCE.createShape();

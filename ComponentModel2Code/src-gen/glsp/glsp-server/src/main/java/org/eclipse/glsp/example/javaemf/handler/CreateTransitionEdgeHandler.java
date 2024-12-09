@@ -59,9 +59,6 @@ public class CreateTransitionEdgeHandler extends EMFCreateOperationHandler<Creat
     public Optional<Command> createCommand(CreateEdgeOperation operation) {
         Transition newTransition = StatemachineFactory.eINSTANCE.createTransition();
         //newArc.setId(UUID.randomUUID().toString());
-        //setInitialName(newTransition);
-
-        //setType(newArc);
 
         String sourceId = operation.getSourceElementId();
         String targetId = operation.getTargetElementId();
@@ -69,18 +66,9 @@ public class CreateTransitionEdgeHandler extends EMFCreateOperationHandler<Creat
         State source = modelState.getIndex().getEObject(sourceId, State.class).orElseThrow();
         State target = modelState.getIndex().getEObject(targetId, State.class).orElseThrow();
 
-        //Page page = (Page) (source.eContainer());
-
         return Optional.of(createTransition(newTransition, source, target));
     }
 
-//    protected void setInitialName(final Transition transition) {
-//        Function<Integer, String> nameProvider = i -> "New" + transition.eClass().getName() + i;
-//        int edgeCounter = modelState.getIndex().getCounter(GraphPackage.Literals.GEDGE, nameProvider);
-//        Name newName = PtnetFactory.eINSTANCE.createName();
-//        newName.setText(nameProvider.apply(ArcCounter));
-//        arc.setName(newName);
-//    }
 
     protected Command createTransition(Transition newTransition, State source, State target) {
     	StateMachine stateMachine = modelState.getSemanticModel(StateMachine.class).orElseThrow();
@@ -106,10 +94,5 @@ public class CreateTransitionEdgeHandler extends EMFCreateOperationHandler<Creat
 
         return compoundCommand;
     }
-
-    //protected void setType(Arc arc){
-        //empty because normal arcs do not have a type attribute in DiNeROS
-        //used as template method for subclasses (inhibitor, read)
-    //}
 
 }

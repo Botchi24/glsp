@@ -18,13 +18,26 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpointModel.ecore#//ModelElement/id"/>
     </genClasses>
     <genClasses ecoreClass="viewpointModel.ecore#//Style">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpointModel.ecore#//Style/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpointModel.ecore#//Style/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpointModel.ecore#//Style/styleelement"/>
     </genClasses>
     <genClasses ecoreClass="viewpointModel.ecore#//Id">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpointModel.ecore#//Id/container"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpointModel.ecore#//Id/reference"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpointModel.ecore#//Id/static"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpointModel.ecore#//Id/part"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpointModel.ecore#//Part">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpointModel.ecore#//Part/value"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpointModel.ecore#//StyleElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpointModel.ecore#//StyleElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpointModel.ecore#//StyleElement/value"/>
+    </genClasses>
+    <genClasses ecoreClass="viewpointModel.ecore#//Reference"/>
+    <genClasses ecoreClass="viewpointModel.ecore#//Container"/>
+    <genClasses ecoreClass="viewpointModel.ecore#//Static"/>
+    <genClasses ecoreClass="viewpointModel.ecore#//Order"/>
+    <genClasses ecoreClass="viewpointModel.ecore#//Node"/>
+    <genClasses ecoreClass="viewpointModel.ecore#//Edge">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpointModel.ecore#//Edge/source"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpointModel.ecore#//Edge/target"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
