@@ -1,3 +1,4 @@
+[%import "../../attribute_resolver.eol";%]
 /********************************************************************************
  * Copyright (c) 2022 EclipseSource and others.
  *
@@ -62,9 +63,9 @@ public class Create[%=createEdgeHandler.elementName%]EdgeHandler extends EMFCrea
     public Optional<Command> createCommand(CreateEdgeOperation operation) {
         [%=createEdgeHandler.elementName%] new[%=createEdgeHandler.elementName%] = [%=_metamodelPrefix%]Factory.eINSTANCE.create[%=createEdgeHandler.elementName%]();
         //newArc.setId(UUID.randomUUID().toString());
-        //setInitialName(newTransition);
-
-        //setType(newArc);
+        [%if (isStorable(createEdgeHandler.elementName)){%]
+        setInitialName(newTransition);
+        [%}%]
 
         String sourceId = operation.getSourceElementId();
         String targetId = operation.getTargetElementId();
@@ -72,18 +73,16 @@ public class Create[%=createEdgeHandler.elementName%]EdgeHandler extends EMFCrea
         [%=_sourceType%] source = modelState.getIndex().getEObject(sourceId, [%=_sourceType%].class).orElseThrow();
         [%=_targetType%] target = modelState.getIndex().getEObject(targetId, [%=_targetType%].class).orElseThrow();
 
-        //Page page = (Page) (source.eContainer());
-
         return Optional.of(create[%=createEdgeHandler.elementName%](new[%=createEdgeHandler.elementName%], source, target));
     }
 
-//    protected void setInitialName(final Transition transition) {
-//        Function<Integer, String> nameProvider = i -> "New" + transition.eClass().getName() + i;
-//        int edgeCounter = modelState.getIndex().getCounter(GraphPackage.Literals.GEDGE, nameProvider);
-//        Name newName = PtnetFactory.eINSTANCE.createName();
-//        newName.setText(nameProvider.apply(ArcCounter));
-//        arc.setName(newName);
-//    }
+	[%if (isStorable(createEdgeHandler.elementName)){%]
+    protected void setInitialName(final [%=createEdgeHandler.elementName%] [%=createEdgeHandler.elementName.firstToLowerCase()%]) {
+        Function<Integer, String> nameProvider = i -> "New" + [%=createEdgeHandler.elementName.firstToLowerCase()%].eClass().getName() + i;
+        int edgeCounter = modelState.getIndex().getCounter([%=_metamodelPrefix%]Package.Literals.[%=createEdgeHandler.elementName.charAt(0)%][%for (i in Sequence{1..createEdgeHandler.elementName.length()-1}){%][%if(createEdgeHandler.elementName.substring(i,i+1).matches("[A-Z]")){%]_[%}%][%=createEdgeHandler.elementName.substring(i,i+1).toUpperCase()%][%}%], nameProvider);
+        [%=createEdgeHandler.elementName.firstToLowerCase()%].set[%=getIdAttributeRecursive(createEdgeHandler.elementName).firstToUpperCase()%](nameProvider.apply(nodeCounter));
+    }
+    [%}%]
 
     protected Command create[%=createEdgeHandler.elementName%]([%=createEdgeHandler.elementName%] new[%=createEdgeHandler.elementName%], [%=_sourceType%] source, [%=_targetType%] target) {
     	[%=_root%] [%=_root.firstToLowerCase()%] = modelState.getSemanticModel([%=_root%].class).orElseThrow();
@@ -109,10 +108,5 @@ public class Create[%=createEdgeHandler.elementName%]EdgeHandler extends EMFCrea
 
         return compoundCommand;
     }
-
-    //protected void setType(Arc arc){
-        //empty because normal arcs do not have a type attribute in DiNeROS
-        //used as template method for subclasses (inhibitor, read)
-    //}
 
 }

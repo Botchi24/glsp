@@ -31,13 +31,15 @@ rule MinimumComponents
 	transform s : source!t_feature
 	to t1 : target!ServerLauncher,
 	t2 : target!DiagramModule,
-	t3 : target!DiagramConfiguration {
+	t3 : target!DiagramConfiguration,
+	t4 : target!IdGenerator {
 	
 		guard : s.a_name == "S"
 		
 		"ServerLauncher".println();
 		"DiagramModule".println();
 		"DiagramConfiguration".println();
+		"IdGenerator".println();
 		
 		//t1.metamodelName = metamodelName;
 		
@@ -45,7 +47,7 @@ rule MinimumComponents
 		root.components.add(t1);
 		root.components.add(t2);
 		root.components.add(t3);
-	
+		root.components.add(t4);
 }
 
 
