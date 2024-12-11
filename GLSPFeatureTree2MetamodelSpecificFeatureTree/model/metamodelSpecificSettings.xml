@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<root name="StateMachine">
-  <node name="NormalState" referenceName="states"/>
-  <node name="FinalState" referenceName="finalstates"/>
-  <edge name="Transition" referenceName="transitions" sourceType="State" targetType="State" sourceReference="from" targetReference="to"/>
-</root>

@@ -39,5 +39,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpointModel.ecore#//Edge/source"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpointModel.ecore#//Edge/target"/>
     </genClasses>
+    <genClasses ecoreClass="viewpointModel.ecore#//Root"/>
   </genPackages>
 </genmodel:GenModel>

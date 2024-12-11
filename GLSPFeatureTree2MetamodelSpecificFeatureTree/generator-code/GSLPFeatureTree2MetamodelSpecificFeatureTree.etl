@@ -1,8 +1,8 @@
 pre {
-	var metamodelelements = ecoreModel!EClassifier.all.select(c|not c.abstract).collect(c|c.name).println();
+	var metamodelelements = ecoreModel!EClassifier.all.select(c|not c.abstract).collect(c|c.name);
 	//var metamodelName = ecoreModel!EPackage.all.first.name.println();
-	var nodes = metamodelSpecificSettings!t_node.all.collect(n|n.a_name).println();
-	var edges = metamodelSpecificSettings!t_edge.all.collect(n|n.a_name).println();
+	var nodes = viewpointModel!Node.all.collect(n|n.name);
+	var edges = viewpointModel!Edge.all.collect(e|e.name);
 }
 
 rule FeatureModel

@@ -1,4 +1,5 @@
 [%import "../../attribute_resolver.eol";%]
+[%import "../../metamodel_utils.eol";%]
 /********************************************************************************
  * Copyright (c) 2022 EclipseSource and others.
  *
@@ -50,12 +51,12 @@ public class [%=_metamodelName.firstToUpperCase()%]GModelFactory extends EMFNota
       //if (notationModel.getSemanticElement() != null
          //&& notationModel.getSemanticElement().getResolvedSemanticElement() != null) {
          [%for ( n in _nodes){%]
-         [%=_root.firstToLowerCase()%].get[%=metamodelSpecificSettings!t_root.all.first.children.select(c|c.a_name == n).first.a_referenceName.firstToUpperCase()%]().stream()
+         [%=_root.firstToLowerCase()%].get[%=getReferenceName(n, _root).firstToUpperCase()%]().stream()
             .map(this::create[%=n%]Node)
             .forEachOrdered(graph.getChildren()::add);
          [%}%]
          [%for ( e in _edges){%]
-         [%=_root.firstToLowerCase()%].get[%=metamodelSpecificSettings!t_root.all.first.children.select(c|c.a_name == e).first.a_referenceName.firstToUpperCase()%]().stream()
+         [%=_root.firstToLowerCase()%].get[%=getReferenceName(e, _root).firstToUpperCase()%]().stream()
             .map(this::create[%=e%]Edge)
             .forEachOrdered(graph.getChildren()::add);
          [%}%]
