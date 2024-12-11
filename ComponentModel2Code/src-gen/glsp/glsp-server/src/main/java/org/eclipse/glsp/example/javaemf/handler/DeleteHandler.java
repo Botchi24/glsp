@@ -76,16 +76,23 @@ public class DeleteHandler extends EMFOperationHandler<DeleteOperation> {
       
       List<Command> commands = new ArrayList<>();
       for (String elementId : elementIds) {
-         Optional<EObject> semanticElement = index.get(elementId).flatMap(e -> index.getEObject(e));
-         Optional<NotationElement> notationElement = semanticElement.flatMap(e -> index.getNotation(e));
-         if (semanticElement.isEmpty()) {
-             System.err.println("[DeleteNodeHandler] Could not find semantic element for ID: " + elementId);
-             semanticElement = modelState.getSemanticModel().eContents().stream()
-                     //.filter(obj -> obj instanceof Transition)
-                     .map(obj -> (EObject) obj)
-                     .filter(obj -> idGenerator.getOrCreateId(obj).equals(elementId))
-                     .findFirst();
-         }
+//         Optional<EObject> semanticElement = index.get(elementId).flatMap(e -> index.getEObject(e));
+//         Optional<NotationElement> notationElement = semanticElement.flatMap(e -> index.getNotation(e));
+//         if (semanticElement.isEmpty()) {
+//             System.err.println("[DeleteNodeHandler] Could not find semantic element for ID: " + elementId);
+//             System.err.println("[DeleteNodeHandler] Could not find semantic element for ID in index: " + index.get(elementId));
+//             semanticElement = modelState.getSemanticModel().eContents().stream()
+//                     //.filter(obj -> obj instanceof Transition)
+//                     .map(obj -> (EObject) obj)
+//                     .filter(obj -> idGenerator.getOrCreateId(obj).equals(elementId))
+//                     .findFirst();
+//         }
+    	 Optional<EObject> semanticElement = modelState.getSemanticModel().eContents().stream()
+                //.filter(obj -> obj instanceof Transition)
+                .map(obj -> (EObject) obj)
+                .filter(obj -> idGenerator.getOrCreateId(obj).equals(elementId))
+                .findFirst();
+    	 Optional<NotationElement> notationElement = semanticElement.flatMap(e -> index.getNotation(e));
          semanticElement.map(this::createDependentRemoveCommand).ifPresent(commands::addAll);
          notationElement.map(this::createDependentRemoveCommand).ifPresent(commands::addAll);
       }

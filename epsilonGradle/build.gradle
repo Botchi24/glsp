@@ -1,0 +1,63 @@
+configurations {
+    epsilon
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    epsilon 'org.eclipse.epsilon:org.eclipse.epsilon.workflow:2.5.0'
+    epsilon 'org.eclipse.epsilon:org.eclipse.epsilon.workflow.emf:2.5.0'
+    epsilon 'org.eclipse.epsilon:org.eclipse.epsilon.eunit.cmp.emf:2.5.0'
+}
+
+task setupEpsilonTasks {
+    // Set up the core Epsilon tasks
+    ant.taskdef(resource: 'org/eclipse/epsilon/workflow/tasks/tasks.xml', 
+        classpath: configurations.epsilon.asPath, loaderref: 'epsilon')
+    // Set up the Epsilon EMF tasks
+    ant.taskdef(resource: 'org/eclipse/epsilon/workflow/tasks/emf/tasks.xml', 
+        classpath: configurations.epsilon.asPath, loaderref: 'epsilon')
+    // Set logging level to info so that EOL's println() is not suppressed
+    ant.lifecycleLogLevel = 'INFO'
+}
+
+task register_source {
+    dependsOn tasks.setupEpsilonTasks
+    // Load the EMF model
+    ant.'epsilon.emf.loadModel'( name:          'source', 
+                                 modelfile:     dir_model + 'garagedoor.statemachine', 
+                                 metamodelfile: dir_metamodel  + 'statemachine.ecore',
+                                 read:          "true",
+                                 store:         "false")
+
+}
+
+task register_target {
+    dependsOn tasks.setupEpsilonTasks
+    // Load the EMF model
+    ant.'epsilon.emf.loadModel'( name:          'target', 
+                                 modelfile:     dir_model + 'garagedoor.petrinet', 
+                                 metamodelfile: dir_metamodel  + 'petrinet.ecore',
+                                 read:          "false",
+                                 store:         "true")
+
+}
+
+task transform {
+    dependsOn register_source, register_target
+
+    doFirst{
+        ant.'epsilon.etl'(src: dir_script + "StatechartToPetrinets.etl"){ 
+                          model(ref: "source", alias: "source")
+                          model(ref: "target", alias: "target")
+            }
+    }
+
+    doLast{
+        ant.'epsilon.disposeModel'(model: "source")
+        ant.'epsilon.disposeModel'(model: "target")
+    }
+
+}

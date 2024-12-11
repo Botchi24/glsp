@@ -1,0 +1,129 @@
+
+// A normal Transformation Rule triggers ones per element in the source model.
+// this rule will create a Petri Net out of a State Machine and will fill it with transformed sub-elements from the source model.
+rule StateMachineToPerinet
+	transform s : source!StateMachine
+	to t : target!PetriNet {
+		
+		("Start transforming State Machine '"+ s.name +"' into a Petri Net!").println();
+		
+		t.name = s.name;
+		
+		t.elements.add(s.initialstate.equivalent());
+		
+		for (state in s.states) { 
+			t.elements.add(state.equivalent());
+		}
+		
+		for (state in s.finalstates) { 
+			t.elements.add(state.equivalent());
+		}
+		
+		for (transition in s.transitions) {
+			t.processTransition(transition);
+		}
+		
+		"Transformation finished!".println();
+		
+}
+
+
+// Lazy Transformation Rules will not automatically trigger a transformation per source model element.
+// They can be triggered by calling x.equivalent(). x must be an element of the source model datatype. (source!Datatype)
+// Note x.equivalent() will only trigger the transformation once and will after the first call only return a reference to the created element.
+// They are used for simple transformations.
+@lazy
+rule NormalStateToPlace 
+	transform s : source!NormalState
+	to t : target!Place {
+	    t.identifier = s.name;
+}
+
+@lazy
+rule InitialStateToPlace 
+	transform s : source!InitialState
+	to t : target!Place {
+	    t.identifier = s.name;
+	    t.token = new target!Token;
+}
+
+@lazy
+rule FinalStateToPlace 
+	transform s : source!FinalState
+	to t : target!Place {
+	    t.identifier = s.name;
+}
+
+@lazy
+rule TransitionToTransition 
+	transform s : source!Transition
+	to t : target!Transition {
+	if(s.trigger <> null){
+		t.identifier = s.trigger.content;
+	}else{
+		t.identifier = "default";
+	}
+}
+
+// If you need a complex transformation, you can define our own functions.
+// Please note that functions are not automatically called per source model element. You need to call them from a rule.
+// In this case, a State Machine Transition is transformed into multiple Petri Net elements (Transition and Arcs).
+function target!PetriNet processTransition(transition : source!Transition){
+	
+	// Process a State Machine Transition in a Petri Net Transition and two Arcs.
+	// Call the lazy rule to create the Transition
+	var pTransition = transition.equivalent();
+	self.elements.add(pTransition);
+	
+	// Add the arcs as completly new elements
+	var pIncomingArc = new target!IncomingArc;
+	pIncomingArc.target = pTransition;
+	pIncomingArc.source = transition._from.equivalent();
+	self.arcs.add(pIncomingArc);
+	
+	var pOutgoingArc = new target!OutgoingArc;
+	pOutgoingArc.target = transition._to.equivalent();
+	pOutgoingArc.source = pTransition;
+	self.arcs.add(pOutgoingArc);
+	
+	// Process the trigger statement to a Place and an Arc to the current Petri Net Transition.
+	// By later placing a Token in the Place the "guard" is active and the Transition can fire.
+	if(transition.trigger <> null){
+		var triggerPlace = new target!Place;
+		triggerPlace.identifier = transition.trigger.content;
+		self.elements.add(triggerPlace);
+		
+		var triggerIncomingArc = new target!IncomingArc;
+		triggerIncomingArc.target = pTransition;
+		triggerIncomingArc.source = triggerPlace;
+		self.arcs.add(triggerIncomingArc);	
+	}
+	
+	// Process a guard statement to a Place and an Arc to the current Petri Net Transition.
+	// By later placing a Token in the Place the "guard" is active and the Transition can fire.
+	if(transition._guard <> null){
+		var guardPlace = new target!Place;
+		guardPlace.identifier = transition._guard.content;
+		self.elements.add(guardPlace);
+		
+		var guardIncomingArc = new target!IncomingArc;
+		guardIncomingArc.target = pTransition;
+		guardIncomingArc.source = guardPlace;
+		self.arcs.add(guardIncomingArc);	
+	}
+	
+	// Process an action statement to a Place and an Arc from the current petri net Transition.
+	// If the Transition is fired a token is placed in the Place, symbolizing a done or pending action.
+	if(transition.action <> null){
+		var actionPlace = new target!Place;
+		actionPlace.identifier = transition.action.content;
+		self.elements.add(actionPlace);
+		
+		var actionOutgoingArc = new target!OutgoingArc;
+		actionOutgoingArc.target = actionPlace;
+		actionOutgoingArc.source = pTransition;
+		self.arcs.add(actionOutgoingArc);	
+	}
+	
+	
+}
