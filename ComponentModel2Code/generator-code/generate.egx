@@ -5,9 +5,9 @@ pre {
 	var metamodelPackageName = "swt.most";
 	var metamodelPrefix = "Statemachine";
 	var metamodelElements = metamodel!EClassifier.all.select(c|not c.abstract).collect(c|c.name);
-	var root = metamodelSpecificSettings!t_root.all.first.a_name;
-	var nodes = metamodelSpecificSettings!t_node.all.collect(n|n.a_name);
-	var edges = metamodelSpecificSettings!t_edge.all.collect(n|n.a_name);
+	var root = viewpointModel!Root.all.first.name;
+	var nodes = viewpointModel!Node.all.collect(n|n.name);
+	var edges = viewpointModel!Edge.all.collect(e|e.name);
 	var components = source!ComponentModel.all.first.components.collect(c|c.eClass().getName());
 	var serverPath = "glsp-server";
 	var clientPath = "glsp-client";
@@ -114,11 +114,7 @@ rule CreateEdgeHandler
 		"_metamodelPrefix" = metamodelPrefix,
 		"_root" = root,
 		"_nodes" = nodes,
-		"_edges" = edges,
-		"_sourceType" = metamodelSpecificSettings!t_root.all.first.children.select(c|c.a_name == createEdgeHandler.elementName).first.a_sourceType,
-		"_targetType" = metamodelSpecificSettings!t_root.all.first.children.select(c|c.a_name == createEdgeHandler.elementName).first.a_targetType,
-		"_sourceReference" = metamodelSpecificSettings!t_root.all.first.children.select(c|c.a_name == createEdgeHandler.elementName).first.a_sourceReference,
-		"_targetReference" = metamodelSpecificSettings!t_root.all.first.children.select(c|c.a_name == createEdgeHandler.elementName).first.a_targetReference
+		"_edges" = edges
 	}
 	
 	template : "./server/src/template-createEdgeHandler.egl"
