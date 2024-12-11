@@ -12,13 +12,8 @@
     <size width="100.0" height="60.0"/>
   </elements>
   <elements xsi:type="notation:Shape">
-    <semanticElement elementId="NewNormalState1"/>
-    <position x="193.47612915776733" y="31.30067229338426"/>
-    <size width="60.0" height="25.0"/>
-  </elements>
-  <elements xsi:type="notation:Shape">
-    <semanticElement elementId="NewNormalState2"/>
-    <position x="399.42359450728486" y="143.9050418370054"/>
+    <semanticElement elementId="NewNormalState3"/>
+    <position x="217.1823122195823" y="139.4601325129151"/>
     <size width="60.0" height="25.0"/>
   </elements>
 </notation:Diagram>

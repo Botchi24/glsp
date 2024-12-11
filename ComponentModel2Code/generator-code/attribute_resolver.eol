@@ -33,10 +33,11 @@ operation resolveNamingReference(part : viewpointModel!Part) : String {
 	
 	returnString = "((" + part.eContainer().eContainer().name + ")element)"
 					+ getter
-					+ ".eGet("
-					+ "((" + part.eContainer().eContainer().name + ")element)"
-					+ getter
-					+ ".eClass().getEStructuralFeature(\"" + reference + "\")).toString()";
+					//+ ".eGet("
+					//+ "((" + part.eContainer().eContainer().name + ")element)"
+					//+ getter
+					//+ ".eClass().getEStructuralFeature(\"" + reference + "\")).toString()";
+					+ ".get" + reference.firstToUpperCase() + "()";
 	
 	return returnString;
 }
@@ -47,9 +48,11 @@ operation generateOrder(elementName : String) : String {
 
 operation isStorable(elementName : String) : Boolean {
 	return getIdAttributeRecursive(elementName).isDefined();
-	//return false;
 }
 
+//----------------------------
+//--- search for iD="true" ---
+//----------------------------
 operation getIdAttributeRecursive(elementName: String) : String {
 	var classifier = metamodel!EClassifier.all.selectOne(c|c.name.matches(elementName));
 	var id = classifier.eStructuralFeatures.selectOne(f|f.iD.equals(true));

@@ -80,6 +80,7 @@ public class DeleteHandler extends EMFOperationHandler<DeleteOperation> {
          Optional<NotationElement> notationElement = semanticElement.flatMap(e -> index.getNotation(e));
          if (semanticElement.isEmpty()) {
              System.err.println("[DeleteNodeHandler] Could not find semantic element for ID: " + elementId);
+             System.err.println("[DeleteNodeHandler] Could not find semantic element for ID in index: " + index.get(elementId));
              semanticElement = modelState.getSemanticModel().eContents().stream()
                      //.filter(obj -> obj instanceof Transition)
                      .map(obj -> (EObject) obj)
