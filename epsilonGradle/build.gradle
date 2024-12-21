@@ -23,41 +23,59 @@ task setupEpsilonTasks {
     ant.lifecycleLogLevel = 'INFO'
 }
 
-task register_source {
+task register_metamodel {
+	dependsOn tasks.setupEpsilonTasks
+	ant.'epsilon.emf.loadModel'( name:          'metamodel', 
+                                 modelfile:     dir_metamodel + 'statemachine.ecore',
+                                 metamodelfile:	dir_metamodel + 'ecore.ecore',
+                                 read:          "true",
+                                 store:         "false")
+}
+
+task register_viewpointModel {
+	dependsOn tasks.setupEpsilonTasks
+	ant.'epsilon.emf.loadModel'( name:          'viewpointModel', 
+                                 modelfile:     dir_model + 'viewpointModel.viewpointModel',
+                                 metamodelfile:	dir_metamodel + 'viewpointModel.ecore',
+                                 read:          "true",
+                                 store:         "false")
+}
+
+task register_glspFeatureTree {
     dependsOn tasks.setupEpsilonTasks
-    // Load the EMF model
-    ant.'epsilon.emf.loadModel'( name:          'source', 
-                                 modelfile:     dir_model + 'garagedoor.statemachine', 
-                                 metamodelfile: dir_metamodel  + 'statemachine.ecore',
+    ant.'epsilon.xml.loadModel'( name:          'glspFeatureTree', 
+                                 file:     		dir_model + 'GLSPFeatureTree2MetamodelSpecificFeatureTree/' + dir_source + 'GLSPFeatureTree.xml',
                                  read:          "true",
                                  store:         "false")
 
 }
 
-task register_target {
+task register_metamodelSpecificFeatureTree {
     dependsOn tasks.setupEpsilonTasks
-    // Load the EMF model
-    ant.'epsilon.emf.loadModel'( name:          'target', 
-                                 modelfile:     dir_model + 'garagedoor.petrinet', 
-                                 metamodelfile: dir_metamodel  + 'petrinet.ecore',
+    ant.'epsilon.xml.loadModel'( name:          'metamodelSpecificFeatureTree', 
+                                 file:     		dir_model + 'GLSPFeatureTree2MetamodelSpecificFeatureTree/' + dir_target + 'MetamodelSpecificFeatureTree.xml',
                                  read:          "false",
                                  store:         "true")
 
 }
 
-task transform {
-    dependsOn register_source, register_target
+task transformFeatureTree {
+    dependsOn register_metamodel, register_viewpointModel, register_glspFeatureTree, register_metamodelSpecificFeatureTree
 
     doFirst{
-        ant.'epsilon.etl'(src: dir_script + "StatechartToPetrinets.etl"){ 
-                          model(ref: "source", alias: "source")
-                          model(ref: "target", alias: "target")
+        ant.'epsilon.etl'(src: dir_script + "GLSPFeatureTree2MetamodelSpecificFeatureTree/GLSPFeatureTree2MetamodelSpecificFeatureTree.etl"){ 
+		                  model(ref: "metamodel", alias: "metamodel")
+		                  model(ref: "viewpointModel", alias: "viewpointModel")
+                          model(ref: "glspFeatureTree", alias: "source")
+                          model(ref: "metamodelSpecificFeatureTree", alias: "target")
             }
     }
 
     doLast{
-        ant.'epsilon.disposeModel'(model: "source")
-        ant.'epsilon.disposeModel'(model: "target")
+		ant.'epsilon.disposeModel'(model: "metamodel")
+		ant.'epsilon.disposeModel'(model: "viewpointModel")
+        ant.'epsilon.disposeModel'(model: "glspFeatureTree")
+        ant.'epsilon.disposeModel'(model: "metamodelSpecificFeatureTree")
     }
 
 }

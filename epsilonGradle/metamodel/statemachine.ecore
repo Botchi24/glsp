@@ -18,11 +18,11 @@
         iD="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Transition">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="_from" lowerBound="1" eType="#//State"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="_to" lowerBound="1" eType="#//State"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="from" lowerBound="1" eType="#//State"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="to" lowerBound="1" eType="#//State"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="trigger" eType="#//Trigger"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="_guard" eType="#//Guard"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="guard" eType="#//Guard"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="#//Action"
         containment="true"/>
