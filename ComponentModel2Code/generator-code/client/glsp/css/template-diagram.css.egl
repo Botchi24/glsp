@@ -25,6 +25,8 @@ svg {
     fill: inherit;
 }
 
-.[%=_metamodelName%]-node {
+[%for ( n in _nodes){%]
+.[%=_metamodelName%]-[%=n%]-node {
     fill: #f1bd6c;
 }
+[%}%]

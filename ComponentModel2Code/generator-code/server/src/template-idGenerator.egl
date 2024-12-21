@@ -19,6 +19,7 @@ package [%=_packageName%];
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.glsp.server.emf.EMFIdGenerator;
 import org.eclipse.glsp.server.emf.notation.EMFNotationModelState;
+import java.util.stream.Collectors;
 import com.google.inject.Inject;
 
 [%for ( n in _nodes){%]
@@ -37,12 +38,6 @@ public class [%=_metamodelName.firstToUpperCase()%]IdGenerator implements EMFIdG
 	@Override
 	public String getOrCreateId(final EObject element) {
 	
-//		semanticElement = modelState.getSemanticModel().eContents().stream()
-//                //.filter(obj -> obj instanceof Transition)
-//                .map(obj -> (EObject) obj)
-//                .filter(obj -> idGenerator.getOrCreateId(obj).equals(elementId))
-//                .findFirst();	
-	
 	[%for ( n in _nodes){%]
 		if (element instanceof [%=n%]) {
 			return [%=resolvedId(n)%];
@@ -55,4 +50,20 @@ public class [%=_metamodelName.firstToUpperCase()%]IdGenerator implements EMFIdG
 	[%}%]
 		return "";
 	}
+	
+//	private String buildID(NormalState element){
+//		return ((NormalState)element).getName();
+//	}
+//	
+//	private String buildID(FinalState element){
+//		return ((FinalState)element).getName();
+//	}
+//	
+//	private String buildID(Transition element){
+//		int order = modelState.getSemanticModel().eContents().stream()
+//				.filter(obj -> obj instanceof Transition)
+//				.collect(Collectors.toList())
+//				.indexOf(element);
+//		return ((Transition)element).getFrom().getName() + "_" + ((Transition)element).getTo().getName() + "_" + order;
+//	}
 }

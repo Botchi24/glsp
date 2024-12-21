@@ -43,7 +43,7 @@ operation resolveNamingReference(part : viewpointModel!Part) : String {
 }
 
 operation generateOrder(elementName : String) : String {
-	return "";
+	return "modelState.getSemanticModel().eContents().stream().filter(obj -> obj instanceof " + elementName + ").collect(Collectors.toList()).indexOf(element)";
 }
 
 operation isStorable(elementName : String) : Boolean {

@@ -590,7 +590,9 @@ rule ClientDiagrammCss
 	transform file : source!ProjectComponent {
 	
 	parameters : Map {
-		"_metamodelName" = metamodelName
+		"_metamodelName" = metamodelName,
+		"_nodes" = nodes,
+		"_edges" = edges
 	}
 	
 	template : "./client/glsp/css/template-diagram.css.egl"

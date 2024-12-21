@@ -3,6 +3,9 @@ pre {
 	//var metamodelName = ecoreModel!EPackage.all.first.name.println();
 	var nodes = viewpointModel!Node.all.collect(n|n.name);
 	var edges = viewpointModel!Edge.all.collect(e|e.name);
+	
+	//var root = new t_featureModel;
+	//metamodelSpecificFeatureTree.root = new t_featureModel; //root;
 }
 
 rule FeatureModel
@@ -11,11 +14,14 @@ rule FeatureModel
 	
 		("Start transforming GLSPFeatureTree into a metamodel specific feature tree!").println();
 		
-		target.root = t;
+		//target!root = t;
+		//target.root = root;
+		metamodelSpecificFeatureTree.root = t;
 		
 		for (c in s.children) {
 			//c.equivalent().println();
 			t.appendChild(c.equivalent());
+			//root.appendChild(c.equivalent());
 		}
 		
 		"Transformation finished!".println();
