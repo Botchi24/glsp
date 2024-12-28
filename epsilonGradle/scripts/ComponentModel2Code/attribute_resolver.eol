@@ -1,0 +1,75 @@
+operation resolvedId(elementName : String) : String {
+	var returnString = "";
+	
+	var viewpointElement = viewpointModel!ViewpointModel.all.first.modelelement.selectOne(e|e.name.matches(elementName));
+	
+	for (part in viewpointElement.id.part) {
+		switch (part.eClass.getName()) {
+			case "Container" : returnString += resolvedId(container.name);
+			case "Reference" : returnString += resolveNamingReference(part);
+			case "Static"    : returnString += "\"" + part.value + "\"";
+			case "Order"     : returnString += generateOrder(elementName);
+			default			 : throw "The TET config file includes a part type that is not supported: config/" + elementName +"/element(type=+'" + self.eClass.getName() + "')/part(type='" + part.a_type + "')";
+		}
+		returnString += " + ";
+	}
+	
+	while (returnString.endsWith(" + ")) {
+		returnString = returnString.substring(0, returnString.length() - 3);
+	}
+	
+	return returnString;
+}
+
+operation resolveNamingReference(part : viewpointModel!Part) : String {
+	var returnString = "";
+	var reference = part.value;
+	var getter = "";
+	
+	while (reference.contains(".")) {
+		getter += ".get" + reference.substring(0, reference.indexOf(".")).firstToUpperCase() + "()";
+		reference = reference.substring(reference.indexOf(".") + 1, reference.length());
+	}
+	
+	returnString = "((" + part.eContainer().eContainer().name + ")element)"
+					+ getter
+					//+ ".eGet("
+					//+ "((" + part.eContainer().eContainer().name + ")element)"
+					//+ getter
+					//+ ".eClass().getEStructuralFeature(\"" + reference + "\")).toString()";
+					+ ".get" + reference.firstToUpperCase() + "()";
+	
+	return returnString;
+}
+
+operation generateOrder(elementName : String) : String {
+	return "modelState.getSemanticModel().eContents().stream().filter(obj -> obj instanceof " + elementName + ").collect(Collectors.toList()).indexOf(element)";
+}
+
+operation isStorable(elementName : String) : Boolean {
+	return getIdAttributeRecursive(elementName).isDefined();
+}
+
+//----------------------------
+//--- search for iD="true" ---
+//----------------------------
+operation getIdAttributeRecursive(elementName: String) : String {
+	var classifier = metamodel!EClassifier.all.selectOne(c|c.name.matches(elementName));
+	var id = classifier.eStructuralFeatures.selectOne(f|f.iD.equals(true));
+	var idAttribute;
+	
+	if (id.isDefined()) idAttribute = id.name;
+	
+	if (idAttribute.isDefined()) return idAttribute;
+	
+	for (s in classifier.eSuperTypes) {
+		idAttribute = getIdAttributeRecursive(s.name);
+		if(idAttribute.isDefined()) return idAttribute;
+	}
+	
+	return null;
+}
+
+operation getStyleValue(elementName : String, styleName : String) : String {
+	return viewpointModel!ModelElement.all.selectOne(e|e.name.matches(elementName)).style.styleelement.selectOne(s|s.name.matches(styleName)).value;
+}
