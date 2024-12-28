@@ -59,6 +59,35 @@ task register_metamodelSpecificFeatureTree {
 
 }
 
+task register_glspFeatureTreeConfiguration {
+    dependsOn tasks.setupEpsilonTasks
+    ant.'epsilon.xml.loadModel'( name:          'glspFeatureTreeConfiguration', 
+                                 file:     		dir_model + 'GLSPFeatureTree2MetamodelSpecificFeatureTree/' + dir_target + 'configs/default.xml',
+                                 read:          "true",
+                                 store:         "false")
+
+}
+
+task register_componentModel_store {
+    dependsOn tasks.setupEpsilonTasks
+    ant.'epsilon.emf.loadModel'( name:          'componentModel_store', 
+                                 modelfile:     dir_model + 'MetamodelSpecificFeatureTree2ComponentModel/' + dir_target + 'componentModel.glspComponentModel',
+                                 metamodelfile:	dir_metamodel + 'glspComponentModel.ecore',
+                                 read:          "false",
+                                 store:         "true")
+
+}
+
+task register_componentModel_read {
+    dependsOn tasks.setupEpsilonTasks
+    ant.'epsilon.emf.loadModel'( name:          'componentModel_read', 
+                                 modelfile:     dir_model + 'MetamodelSpecificFeatureTree2ComponentModel/' + dir_target + 'componentModel.glspComponentModel',
+                                 metamodelfile:	dir_metamodel + 'glspComponentModel.ecore',
+                                 read:          "true",
+                                 store:         "false")
+
+}
+
 task transformFeatureTree {
     dependsOn register_metamodel, register_viewpointModel, register_glspFeatureTree, register_metamodelSpecificFeatureTree
 
@@ -78,4 +107,39 @@ task transformFeatureTree {
         ant.'epsilon.disposeModel'(model: "metamodelSpecificFeatureTree")
     }
 
+}
+
+task transformMetamodelSpecificFeatureTree {
+	dependsOn register_glspFeatureTreeConfiguration, register_componentModel_store
+	
+	doFirst{
+		ant.'epsilon.etl'(src: dir_script + "MetamodelSpecificFeatureTree2ComponentModel/MetamodelSpecificFeatureTree2ComponentModel.etl"){ 
+						  model(ref: "glspFeatureTreeConfiguration", alias: "source")
+                          model(ref: "componentModel_store", alias: "target")
+		}
+	}
+	
+	doLast{
+		ant.'epsilon.disposeModel'(model: "glspFeatureTreeConfiguration")
+		ant.'epsilon.disposeModel'(model: "componentModel_store")
+    }
+    
+}
+
+task transformComponentModel {
+	dependsOn register_metamodel, register_viewpointModel, register_componentModel_read
+	
+	doFirst{
+		ant.'epsilon.egl'(src: dir_script + "ComponentModel2Code/generate.egx"){
+						  model(ref: "componentModel_read", alias: "source")
+						  model(ref: "metamodel", alias: "metamodel")
+		                  model(ref: "viewpointModel", alias: "viewpointModel")
+		}
+	}
+	
+	doLast{
+		ant.'epsilon.disposeModel'(model: "metamodel")
+		ant.'epsilon.disposeModel'(model: "viewpointModel")
+        ant.'epsilon.disposeModel'(model: "componentModel_read")
+    }
 }

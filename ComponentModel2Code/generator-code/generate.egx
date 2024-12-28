@@ -2,6 +2,7 @@ pre {
 	var metamodelName = metamodel!EPackage.all.first.name;
 	var metamodelNsUri = metamodel!EPackage.all.first.nsURI;
 	var packageName = "org.eclipse.glsp.example.javaemf";
+	var folderStructure = packageName.replaceAll('\\.', '/') + "/";
 	var metamodelPackageName = "swt.most";
 	var metamodelPrefix = "Statemachine";
 	var metamodelElements = metamodel!EClassifier.all.select(c|not c.abstract).collect(c|c.name);
@@ -9,8 +10,9 @@ pre {
 	var nodes = viewpointModel!Node.all.collect(n|n.name);
 	var edges = viewpointModel!Edge.all.collect(e|e.name);
 	var components = source!ComponentModel.all.first.components.collect(c|c.eClass().getName());
-	var serverPath = "glsp-server";
-	var clientPath = "glsp-client";
+	var relativeServerPath = "glsp-server";
+	var relativeClientPath = "glsp-client";
+	var targetPath = "../src-gen/";
 }
 
 
@@ -27,7 +29,7 @@ rule ServerLauncher
 	
 	template : "./server/src/template-serverLauncher.egl"
 
-	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/launch/" + metamodelName.firstToUpperCase() + "ServerLauncher.java"
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "launch/" + metamodelName.firstToUpperCase() + "ServerLauncher.java"
 	
 }
 
@@ -45,7 +47,7 @@ rule DiagramModule
 	
 	template : "./server/src/template-diagramModule.egl"
 
-	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/" + metamodelName.firstToUpperCase() + "DiagramModule.java"
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "" + metamodelName.firstToUpperCase() + "DiagramModule.java"
 	
 }
 
@@ -62,7 +64,7 @@ rule DiagramConfiguration
 	
 	template : "./server/src/template-diagramConfiguration.egl"
 
-	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/" + metamodelName.firstToUpperCase() + "DiagramConfiguration.java"
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "" + metamodelName.firstToUpperCase() + "DiagramConfiguration.java"
 	
 }
 
@@ -79,7 +81,7 @@ rule ModelTypes
 	
 	template : "./server/src/template-modelTypes.egl"
 
-	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/" + metamodelName.firstToUpperCase() + "ModelTypes.java"
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "" + metamodelName.firstToUpperCase() + "ModelTypes.java"
 	
 }
 
@@ -99,7 +101,7 @@ rule CreateNodeHandler
 	
 	template : "./server/src/template-createNodeHandler.egl"
 
-	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/handler/Create" + createNodeHandler.elementName + "NodeHandler.java"
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "handler/Create" + createNodeHandler.elementName + "NodeHandler.java"
 	
 }
 
@@ -119,7 +121,7 @@ rule CreateEdgeHandler
 	
 	template : "./server/src/template-createEdgeHandler.egl"
 
-	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/handler/Create" + createEdgeHandler.elementName + "EdgeHandler.java"
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "handler/Create" + createEdgeHandler.elementName + "EdgeHandler.java"
 	
 }
 
@@ -133,7 +135,7 @@ rule DeleteHandler
 	
 	template : "./server/src/template-deleteHandler.egl"
 
-	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/handler/DeleteHandler.java"
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "handler/DeleteHandler.java"
 	
 }
 
@@ -150,7 +152,7 @@ rule ToolPaletteItemProvider
 	
 	template : "./server/src/template-toolPaletteItemProvider.egl"
 
-	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/palette/" + metamodelName.firstToUpperCase() + "ToolPaletteItemProvider.java"
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "palette/" + metamodelName.firstToUpperCase() + "ToolPaletteItemProvider.java"
 	
 }
 
@@ -167,7 +169,7 @@ rule EMFSourceModelStorage
 	
 	template : "./server/src/template-emfSourceModelStorage.egl"
 
-	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/model/" + metamodelName.firstToUpperCase() + "SourceModelStorage.java"
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "model/" + metamodelName.firstToUpperCase() + "SourceModelStorage.java"
 	
 }
 
@@ -187,7 +189,7 @@ rule GModelFactory
 	
 	template : "./server/src/template-gModelFactory.egl"
 
-	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/model/" + metamodelName.firstToUpperCase() + "GModelFactory.java"
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "model/" + metamodelName.firstToUpperCase() + "GModelFactory.java"
 	
 }
 
@@ -206,7 +208,7 @@ rule IdGenerator
 	
 	template : "./server/src/template-idGenerator.egl"
 
-	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/" + metamodelName.firstToUpperCase() + "IdGenerator.java"
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "" + metamodelName.firstToUpperCase() + "IdGenerator.java"
 	
 }
 
@@ -225,7 +227,7 @@ rule IdGenerator
 //	
 //	template : "./server/src/template-modelTypes.egl"
 //
-//	target : "../src-gen/glsp/glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/" + metamodelName.firstToUpperCase() + "ModelTypes.java"
+//	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "" + metamodelName.firstToUpperCase() + "ModelTypes.java"
 //	
 //}
 
@@ -241,7 +243,7 @@ rule ClientDiagrammModuleTs
 	
 	template : "./client/glsp/src/template-diagram-module.ts.egl"
 	
-	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-glsp/src/" + metamodelName + "-diagram-module.ts"
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-glsp/src/" + metamodelName + "-diagram-module.ts"
 	
 }
 
@@ -254,13 +256,13 @@ rule JavaEmfTheiaExampleCodeWorkspace
 	
 	parameters : Map {
 		"_metamodelName" = metamodelName,
-		"_serverPath" = serverPath,
-		"_clientPath" = clientPath
+		"_relativeServerPath" = relativeServerPath,
+		"_relativeClientPath" = relativeClientPath
 	}
 	
 	template : "./project/template-java-emf-theia-example.code-workspace.egl"
 	
-	target : "../src-gen/glsp/java-emf-theia-example.code-workspace"
+	target : targetPath + "glsp/java-emf-theia-example.code-workspace"
 	
 }
 
@@ -269,13 +271,13 @@ rule PackageJson
 	transform file : source!ProjectComponent {
 	
 	parameters : Map {
-		"_serverPath" = serverPath,
-		"_clientPath" = clientPath
+		"_relativeServerPath" = relativeServerPath,
+		"_relativeClientPath" = relativeClientPath
 	}
 	
 	template : "./project/template-package.json.egl"
 	
-	target : "../src-gen/glsp/package.json"
+	target : targetPath + "glsp/package.json"
 	
 }
 
@@ -285,7 +287,7 @@ rule YarnLock
 	
 	template : "./project/template-yarn.lock.egl"
 	
-	target : "../src-gen/glsp/yarn.lock"
+	target : targetPath + "glsp/yarn.lock"
 	
 }
 
@@ -295,7 +297,7 @@ rule ReadmeMd
 	
 	template : "./project/template-README.md.egl"
 	
-	target : "../src-gen/glsp/README.md"
+	target : targetPath + "glsp/README.md"
 	
 }
 
@@ -306,7 +308,7 @@ rule ServerOrgEclipseCoreResourcesPrefs
 	
 	template : "./server/settings/template-org.eclipse.core.resources.prefs.egl"
 	
-	target : "../src-gen/glsp/glsp-server/.settings/org.eclipse.core.resources.prefs"
+	target : targetPath + "glsp/" + relativeServerPath + "/.settings/org.eclipse.core.resources.prefs"
 	
 }
 
@@ -316,7 +318,7 @@ rule ServerOrgEclipseJdtAptCorePrefs
 	
 	template : "./server/settings/template-org.eclipse.jdt.apt.core.prefs.egl"
 	
-	target : "../src-gen/glsp/glsp-server/.settings/org.eclipse.jdt.apt.core.prefs"
+	target : targetPath + "glsp/" + relativeServerPath + "/.settings/org.eclipse.jdt.apt.core.prefs"
 	
 }
 
@@ -326,7 +328,7 @@ rule ServerOrgEclipseJdtCorePrefs
 	
 	template : "./server/settings/template-org.eclipse.jdt.core.prefs.egl"
 	
-	target : "../src-gen/glsp/glsp-server/.settings/org.eclipse.jdt.core.prefs"
+	target : targetPath + "glsp/" + relativeServerPath + "/.settings/org.eclipse.jdt.core.prefs"
 	
 }
 
@@ -336,7 +338,7 @@ rule ServerOrgEclipseJdtLaunchingPrefs
 	
 	template : "./server/settings/template-org.eclipse.jdt.launching.prefs.egl"
 	
-	target : "../src-gen/glsp/glsp-server/.settings/org.eclipse.jdt.launching.prefs"
+	target : targetPath + "glsp/" + relativeServerPath + "/.settings/org.eclipse.jdt.launching.prefs"
 	
 }
 
@@ -346,7 +348,7 @@ rule ServerOrgEclipseJdtUiPrefs
 	
 	template : "./server/settings/template-org.eclipse.jdt.ui.prefs.egl"
 	
-	target : "../src-gen/glsp/glsp-server/.settings/org.eclipse.jdt.ui.prefs"
+	target : targetPath + "glsp/" + relativeServerPath + "/.settings/org.eclipse.jdt.ui.prefs"
 	
 }
 
@@ -356,7 +358,7 @@ rule ServerOrgEclipseM2eCorePrefs
 	
 	template : "./server/settings/template-org.eclipse.m2e.core.prefs.egl"
 	
-	target : "../src-gen/glsp/glsp-server/.settings/org.eclipse.m2e.core.prefs"
+	target : targetPath + "glsp/" + relativeServerPath + "/.settings/org.eclipse.m2e.core.prefs"
 	
 }
 
@@ -366,7 +368,7 @@ rule ServerExtensionsJson
 	
 	template : "./server/vscode/template-extensions.json.egl"
 	
-	target : "../src-gen/glsp/glsp-server/.vscode/extensions.json"
+	target : targetPath + "glsp/" + relativeServerPath + "/.vscode/extensions.json"
 	
 }
 
@@ -381,7 +383,7 @@ rule ServerLaunchJson
 	
 	template : "./server/vscode/template-launch.json.egl"
 	
-	target : "../src-gen/glsp/glsp-server/.vscode/launch.json"
+	target : targetPath + "glsp/" + relativeServerPath + "/.vscode/launch.json"
 	
 }
 
@@ -391,7 +393,7 @@ rule ServerSettingsJson
 	
 	template : "./server/vscode/template-settings.json.egl"
 	
-	target : "../src-gen/glsp/glsp-server/.vscode/settings.json"
+	target : targetPath + "glsp/" + relativeServerPath + "/.vscode/settings.json"
 	
 }
 
@@ -406,7 +408,7 @@ rule ServerTasksJson
 	
 	template : "./server/vscode/template-tasks.json.egl"
 	
-	target : "../src-gen/glsp/glsp-server/.vscode/tasks.json"
+	target : targetPath + "glsp/" + relativeServerPath + "/.vscode/tasks.json"
 	
 }
 
@@ -416,7 +418,7 @@ rule ServerBuildProperties
 	
 	template : "./server/project/template-build.properties.egl"
 	
-	target : "../src-gen/glsp/glsp-server/build.properties"
+	target : targetPath + "glsp/" + relativeServerPath + "/build.properties"
 	
 }
 
@@ -426,7 +428,7 @@ rule ServerCheckstyle
 	
 	template : "./server/project/template-checkstyle.egl"
 	
-	target : "../src-gen/glsp/glsp-server/.checkstyle"
+	target : targetPath + "glsp/" + relativeServerPath + "/.checkstyle"
 	
 }
 
@@ -436,7 +438,7 @@ rule ServerClasspath
 	
 	template : "./server/project/template-classpath.egl"
 	
-	target : "../src-gen/glsp/glsp-server/.classpath"
+	target : targetPath + "glsp/" + relativeServerPath + "/.classpath"
 	
 }
 
@@ -450,7 +452,7 @@ rule ServerPluginProperties
 	
 	template : "./server/project/template-plugin.properties.egl"
 	
-	target : "../src-gen/glsp/glsp-server/plugin.properties"
+	target : targetPath + "glsp/" + relativeServerPath + "/plugin.properties"
 	
 }
 
@@ -464,7 +466,7 @@ rule ServerPluginXml
 	
 	template : "./server/project/template-plugin.xml.egl"
 	
-	target : "../src-gen/glsp/glsp-server/plugin.xml"
+	target : targetPath + "glsp/" + relativeServerPath + "/plugin.xml"
 	
 }
 
@@ -479,7 +481,7 @@ rule ServerPomXml
 	
 	template : "./server/project/template-pom.xml.egl"
 	
-	target : "../src-gen/glsp/glsp-server/pom.xml"
+	target : targetPath + "glsp/" + relativeServerPath + "/pom.xml"
 	
 }
 
@@ -493,7 +495,7 @@ rule ServerProject
 	
 	template : "./server/project/template-project.egl"
 	
-	target : "../src-gen/glsp/glsp-server/.project"
+	target : targetPath + "glsp/" + relativeServerPath + "/.project"
 	
 }
 
@@ -503,7 +505,7 @@ rule ServerReadmeMd
 	
 	template : "./server/project/template-README.md.egl"
 	
-	target : "../src-gen/glsp/glsp-server/README.md"
+	target : targetPath + "glsp/" + relativeServerPath + "/README.md"
 	
 }
 
@@ -518,7 +520,7 @@ rule ServerServerLauncherLaunch
 	
 	template : "./server/project/template-ServerLauncher.launch.egl"
 	
-	target : "../src-gen/glsp/glsp-server/ServerLauncher.launch"
+	target : targetPath + "glsp/" + relativeServerPath + "/ServerLauncher.launch"
 	
 }
 
@@ -529,7 +531,7 @@ rule ClientExtensionsJson
 	
 	template : "./client/vscode/template-extensions.json.egl"
 	
-	target : "../src-gen/glsp/glsp-client/.vscode/extensions.json"
+	target : targetPath + "glsp/" + relativeClientPath + "/.vscode/extensions.json"
 	
 }
 
@@ -543,7 +545,7 @@ rule ClientLaunchJson
 	
 	template : "./client/vscode/template-launch.json.egl"
 	
-	target : "../src-gen/glsp/glsp-client/.vscode/launch.json"
+	target : targetPath + "glsp/" + relativeClientPath + "/.vscode/launch.json"
 	
 }
 
@@ -553,7 +555,7 @@ rule ClientSettingsJson
 	
 	template : "./client/vscode/template-settings.json.egl"
 	
-	target : "../src-gen/glsp/glsp-client/.vscode/settings.json"
+	target : targetPath + "glsp/" + relativeClientPath + "/.vscode/settings.json"
 	
 }
 
@@ -567,7 +569,7 @@ rule ClientTasksJson
 	
 	template : "./client/vscode/template-tasks.json.egl"
 	
-	target : "../src-gen/glsp/glsp-client/.vscode/tasks.json"
+	target : targetPath + "glsp/" + relativeClientPath + "/.vscode/tasks.json"
 	
 }
 
@@ -581,7 +583,7 @@ rule ClientPackageJson
 	
 	template : "./client/browser-app/template-package.json.egl"
 	
-	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-browser-app/package.json"
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-browser-app/package.json"
 	
 }
 
@@ -597,7 +599,7 @@ rule ClientDiagrammCss
 	
 	template : "./client/glsp/css/template-diagram.css.egl"
 	
-	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-glsp/css/diagram.css"
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-glsp/css/diagram.css"
 	
 }
 
@@ -611,7 +613,7 @@ rule ClientIndexTs
 	
 	template : "./client/glsp/src/template-index.ts.egl"
 	
-	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-glsp/src/index.ts"
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-glsp/src/index.ts"
 	
 }
 
@@ -625,7 +627,7 @@ rule ClientGlspPackageJson
 	
 	template : "./client/glsp/template-package.json.egl"
 	
-	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-glsp/package.json"
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-glsp/package.json"
 	
 }
 
@@ -635,7 +637,7 @@ rule ClientGlspTsconfigJson
 	
 	template : "./client/glsp/template-tsconfig.json.egl"
 	
-	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-glsp/tsconfig.json"
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-glsp/tsconfig.json"
 	
 }
 
@@ -645,7 +647,7 @@ rule ClientGitkeep
 	
 	template : "./client/theia/logs/template-gitkeep.egl"
 	
-	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-theia/logs/.gitkeep"
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-theia/logs/.gitkeep"
 	
 }
 
@@ -659,7 +661,7 @@ rule ClientDiagramConfigurationTs
 	
 	template : "./client/theia/src/browser/diagram/template-diagram-configuration.ts.egl"
 	
-	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-theia/src/browser/diagram/" + metamodelName + "-diagram-configuration.ts"
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-theia/src/browser/diagram/" + metamodelName + "-diagram-configuration.ts"
 	
 }
 
@@ -673,7 +675,7 @@ rule ClientFrontendModuleTs
 	
 	template : "./client/theia/src/browser/template-frontend-module.ts.egl"
 	
-	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-theia/src/browser/frontend-module.ts"
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-theia/src/browser/frontend-module.ts"
 	
 }
 
@@ -687,7 +689,7 @@ rule ClientLanguageTs
 	
 	template : "./client/theia/src/common/template-language.ts.egl"
 	
-	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-theia/src/common/" + metamodelName + "-language.ts"
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-theia/src/common/" + metamodelName + "-language.ts"
 	
 }
 
@@ -701,7 +703,7 @@ rule ClientBackendModuleTs
 	
 	template : "./client/theia/src/node/template-backend-module.ts.egl"
 	
-	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-theia/src/node/backend-module.ts"
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-theia/src/node/backend-module.ts"
 	
 }
 
@@ -716,7 +718,7 @@ rule ClientGlspServerContribution
 	
 	template : "./client/theia/src/node/template-glsp-server-contribution.ts.egl"
 	
-	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-theia/src/node/glsp-server-contribution.ts"
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-theia/src/node/glsp-server-contribution.ts"
 	
 }
 
@@ -730,7 +732,7 @@ rule ClientTheiaPackageJson
 	
 	template : "./client/theia/template-package.json.egl"
 	
-	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-theia/package.json"
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-theia/package.json"
 	
 }
 
@@ -744,7 +746,7 @@ rule ClientTheiaTsconfigJson
 	
 	template : "./client/theia/template-tsconfig.json.egl"
 	
-	target : "../src-gen/glsp/glsp-client/" + metamodelName + "-theia/tsconfig.json"
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-theia/tsconfig.json"
 	
 }
 
@@ -754,7 +756,7 @@ rule ClientWorkspaceSettingsJson
 	
 	template : "./client/workspace/theia/template-settings.json.egl"
 	
-	target : "../src-gen/glsp/glsp-client/workspace/theia/settings.json"
+	target : targetPath + "glsp/" + relativeClientPath + "/workspace/theia/settings.json"
 	
 }
 
@@ -772,7 +774,7 @@ rule ClientExample
 	
 	template : "./client/workspace/template-example.egl"
 	
-	target : "../src-gen/glsp/glsp-client/workspace/example." + metamodelName
+	target : targetPath + "glsp/" + relativeClientPath + "/workspace/example." + metamodelName
 	
 }
 
@@ -788,7 +790,7 @@ rule ClientExampleNotation
 	
 	template : "./client/workspace/template-example.notation.egl"
 	
-	target : "../src-gen/glsp/glsp-client/workspace/example.notation"
+	target : targetPath + "glsp/" + relativeClientPath + "/workspace/example.notation"
 	
 }
 
@@ -798,7 +800,7 @@ rule ClientEslintrcJs
 	
 	template : "./client/project/template-eslintrc.js.egl"
 	
-	target : "../src-gen/glsp/glsp-client/.eslintrc.js"
+	target : targetPath + "glsp/" + relativeClientPath + "/.eslintrc.js"
 	
 }
 
@@ -808,7 +810,7 @@ rule ClientLernaJson
 	
 	template : "./client/project/template-lerna.json.egl"
 	
-	target : "../src-gen/glsp/glsp-client/lerna.json"
+	target : targetPath + "glsp/" + relativeClientPath + "/lerna.json"
 	
 }
 
@@ -822,7 +824,7 @@ rule ClientProjectPackageJson
 	
 	template : "./client/project/template-package.json.egl"
 	
-	target : "../src-gen/glsp/glsp-client/package.json"
+	target : targetPath + "glsp/" + relativeClientPath + "/package.json"
 	
 }
 
@@ -832,7 +834,7 @@ rule ClientPrettierrc
 	
 	template : "./client/project/template-prettierrc.egl"
 	
-	target : "../src-gen/glsp/glsp-client/.prettierrc"
+	target : targetPath + "glsp/" + relativeClientPath + "/.prettierrc"
 	
 }
 
@@ -842,7 +844,7 @@ rule ClientReadmeMd
 	
 	template : "./client/project/template-README.md.egl"
 	
-	target : "../src-gen/glsp/glsp-client/README.md"
+	target : targetPath + "glsp/" + relativeClientPath + "/README.md"
 	
 }
 
@@ -856,7 +858,7 @@ rule ClientTsconfigEslintJson
 	
 	template : "./client/project/template-tsconfig.eslint.json.egl"
 	
-	target : "../src-gen/glsp/glsp-client/tsconfig.eslint.json"
+	target : targetPath + "glsp/" + relativeClientPath + "/tsconfig.eslint.json"
 	
 }
 
@@ -870,7 +872,7 @@ rule ClientProjectTsconfigJson
 	
 	template : "./client/project/template-tsconfig.json.egl"
 	
-	target : "../src-gen/glsp/glsp-client/tsconfig.json"
+	target : targetPath + "glsp/" + relativeClientPath + "/tsconfig.json"
 	
 }
 
@@ -880,6 +882,6 @@ rule ClientProjectTsconfigJson
 //	
 //	template : "./client/project/template-yarn.lock.egl"
 //	
-//	target : "../src-gen/glsp/glsp-client/yarn.lock"
+//	target : targetPath + "glsp/" + relativeClientPath + "/yarn.lock"
 //	
 //}

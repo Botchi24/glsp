@@ -1,0 +1,887 @@
+pre {
+	var metamodelName = metamodel!EPackage.all.first.name;
+	var metamodelNsUri = metamodel!EPackage.all.first.nsURI;
+	var packageName = "org.eclipse.glsp.example.javaemf";
+	var folderStructure = packageName.replaceAll('\\.', '/') + "/";
+	var metamodelPackageName = "swt.most";
+	var metamodelPrefix = "Statemachine";
+	var metamodelElements = metamodel!EClassifier.all.select(c|not c.abstract).collect(c|c.name);
+	var root = viewpointModel!Root.all.first.name;
+	var nodes = viewpointModel!Node.all.collect(n|n.name);
+	var edges = viewpointModel!Edge.all.collect(e|e.name);
+	var components = source!ComponentModel.all.first.components.collect(c|c.eClass().getName());
+	var relativeServerPath = "glsp-server";
+	var relativeClientPath = "glsp-client";
+	var targetPath = "../../model/ComponentModel2Code/target/";
+}
+
+
+//--------------------------SERVER--------------------------------
+
+
+rule ServerLauncher
+	transform serverLauncher : source!ServerLauncher {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName
+	}
+	
+	template : "./server/src/template-serverLauncher.egl"
+
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "launch/" + metamodelName.firstToUpperCase() + "ServerLauncher.java"
+	
+}
+
+
+rule DiagramModule
+	transform diagramModule : source!DiagramModule {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName,
+		"_nodes" = nodes,
+		"_edges" = edges,
+		"_components" = components
+	}
+	
+	template : "./server/src/template-diagramModule.egl"
+
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "" + metamodelName.firstToUpperCase() + "DiagramModule.java"
+	
+}
+
+
+rule DiagramConfiguration
+	transform diagramConfiguration : source!DiagramConfiguration {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName,
+		"_nodes" = nodes,
+		"_edges" = edges
+	}
+	
+	template : "./server/src/template-diagramConfiguration.egl"
+
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "" + metamodelName.firstToUpperCase() + "DiagramConfiguration.java"
+	
+}
+
+
+rule ModelTypes
+	transform modelTypes : source!ModelTypes {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName,
+		"_nodes" = nodes,
+		"_edges" = edges
+	}
+	
+	template : "./server/src/template-modelTypes.egl"
+
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "" + metamodelName.firstToUpperCase() + "ModelTypes.java"
+	
+}
+
+
+rule CreateNodeHandler
+	transform createNodeHandler : source!CreateNodeHandler {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName,
+		"_metamodelPackageName" = metamodelPackageName,
+		"_metamodelPrefix" = metamodelPrefix,
+		"_root" = root,
+		"_nodes" = nodes,
+		"_edges" = edges
+	}
+	
+	template : "./server/src/template-createNodeHandler.egl"
+
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "handler/Create" + createNodeHandler.elementName + "NodeHandler.java"
+	
+}
+
+
+rule CreateEdgeHandler
+	transform createEdgeHandler : source!CreateEdgeHandler {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName,
+		"_metamodelPackageName" = metamodelPackageName,
+		"_metamodelPrefix" = metamodelPrefix,
+		"_root" = root,
+		"_nodes" = nodes,
+		"_edges" = edges
+	}
+	
+	template : "./server/src/template-createEdgeHandler.egl"
+
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "handler/Create" + createEdgeHandler.elementName + "EdgeHandler.java"
+	
+}
+
+
+rule DeleteHandler
+	transform deleteHandler : source!DeleteHandler {
+	
+	parameters : Map {
+		"_packageName" = packageName
+	}
+	
+	template : "./server/src/template-deleteHandler.egl"
+
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "handler/DeleteHandler.java"
+	
+}
+
+
+rule ToolPaletteItemProvider
+	transform toolPaletteItemProvider : source!ToolPaletteItemProvider {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName,
+		"_nodes" = nodes,
+		"_edges" = edges
+	}
+	
+	template : "./server/src/template-toolPaletteItemProvider.egl"
+
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "palette/" + metamodelName.firstToUpperCase() + "ToolPaletteItemProvider.java"
+	
+}
+
+
+rule EMFSourceModelStorage
+	transform emfSourceModelStorage : source!EMFSourceModelStorage {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName,
+		"_metamodelPackageName" = metamodelPackageName,
+		"_metamodelPrefix" = metamodelPrefix
+	}
+	
+	template : "./server/src/template-emfSourceModelStorage.egl"
+
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "model/" + metamodelName.firstToUpperCase() + "SourceModelStorage.java"
+	
+}
+
+
+rule GModelFactory
+	transform gModelFactory : source!GModelFactory {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName,
+		"_metamodelPackageName" = metamodelPackageName,
+		"_metamodelPrefix" = metamodelPrefix,
+		"_root" = root,
+		"_nodes" = nodes,
+		"_edges" = edges
+	}
+	
+	template : "./server/src/template-gModelFactory.egl"
+
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "model/" + metamodelName.firstToUpperCase() + "GModelFactory.java"
+	
+}
+
+
+rule IdGenerator
+	transform idGenerator : source!IdGenerator {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName,
+		"_metamodelPackageName" = metamodelPackageName,
+		"_metamodelPrefix" = metamodelPrefix,
+		"_nodes" = nodes,
+		"_edges" = edges
+	}
+	
+	template : "./server/src/template-idGenerator.egl"
+
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "" + metamodelName.firstToUpperCase() + "IdGenerator.java"
+	
+}
+
+//-------------------------CLIENT---------------------------------
+
+
+//rule CLientModelTypes
+//	transform clientModelTypes : source!ClientModelTypes {
+//	
+//	parameters : Map {
+//		"_metamodelName" = metamodelName,
+//		"_packageName" = packageName,
+//		"_nodes" = nodes,
+//		"_edges" = edges
+//	}
+//	
+//	template : "./server/src/template-modelTypes.egl"
+//
+//	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "" + metamodelName.firstToUpperCase() + "ModelTypes.java"
+//	
+//}
+
+
+rule ClientDiagrammModuleTs
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_nodes" = nodes,
+		"_edges" = edges
+	}
+	
+	template : "./client/glsp/src/template-diagram-module.ts.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-glsp/src/" + metamodelName + "-diagram-module.ts"
+	
+}
+
+
+//---------------------PROJECT-FILES--------------------------------
+
+
+rule JavaEmfTheiaExampleCodeWorkspace
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_relativeServerPath" = relativeServerPath,
+		"_relativeClientPath" = relativeClientPath
+	}
+	
+	template : "./project/template-java-emf-theia-example.code-workspace.egl"
+	
+	target : targetPath + "glsp/java-emf-theia-example.code-workspace"
+	
+}
+
+
+rule PackageJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_relativeServerPath" = relativeServerPath,
+		"_relativeClientPath" = relativeClientPath
+	}
+	
+	template : "./project/template-package.json.egl"
+	
+	target : targetPath + "glsp/package.json"
+	
+}
+
+
+rule YarnLock
+	transform file : source!ProjectComponent {
+	
+	template : "./project/template-yarn.lock.egl"
+	
+	target : targetPath + "glsp/yarn.lock"
+	
+}
+
+
+rule ReadmeMd
+	transform file : source!ProjectComponent {
+	
+	template : "./project/template-README.md.egl"
+	
+	target : targetPath + "glsp/README.md"
+	
+}
+
+//------------------------PROJECT-FILES-SERVER---------------------------------
+
+rule ServerOrgEclipseCoreResourcesPrefs
+	transform file : source!ProjectComponent {
+	
+	template : "./server/settings/template-org.eclipse.core.resources.prefs.egl"
+	
+	target : targetPath + "glsp/" + relativeServerPath + "/.settings/org.eclipse.core.resources.prefs"
+	
+}
+
+
+rule ServerOrgEclipseJdtAptCorePrefs
+	transform file : source!ProjectComponent {
+	
+	template : "./server/settings/template-org.eclipse.jdt.apt.core.prefs.egl"
+	
+	target : targetPath + "glsp/" + relativeServerPath + "/.settings/org.eclipse.jdt.apt.core.prefs"
+	
+}
+
+
+rule ServerOrgEclipseJdtCorePrefs
+	transform file : source!ProjectComponent {
+	
+	template : "./server/settings/template-org.eclipse.jdt.core.prefs.egl"
+	
+	target : targetPath + "glsp/" + relativeServerPath + "/.settings/org.eclipse.jdt.core.prefs"
+	
+}
+
+
+rule ServerOrgEclipseJdtLaunchingPrefs
+	transform file : source!ProjectComponent {
+	
+	template : "./server/settings/template-org.eclipse.jdt.launching.prefs.egl"
+	
+	target : targetPath + "glsp/" + relativeServerPath + "/.settings/org.eclipse.jdt.launching.prefs"
+	
+}
+
+
+rule ServerOrgEclipseJdtUiPrefs
+	transform file : source!ProjectComponent {
+	
+	template : "./server/settings/template-org.eclipse.jdt.ui.prefs.egl"
+	
+	target : targetPath + "glsp/" + relativeServerPath + "/.settings/org.eclipse.jdt.ui.prefs"
+	
+}
+
+
+rule ServerOrgEclipseM2eCorePrefs
+	transform file : source!ProjectComponent {
+	
+	template : "./server/settings/template-org.eclipse.m2e.core.prefs.egl"
+	
+	target : targetPath + "glsp/" + relativeServerPath + "/.settings/org.eclipse.m2e.core.prefs"
+	
+}
+
+
+rule ServerExtensionsJson
+	transform file : source!ProjectComponent {
+	
+	template : "./server/vscode/template-extensions.json.egl"
+	
+	target : targetPath + "glsp/" + relativeServerPath + "/.vscode/extensions.json"
+	
+}
+
+
+rule ServerLaunchJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName
+	}
+	
+	template : "./server/vscode/template-launch.json.egl"
+	
+	target : targetPath + "glsp/" + relativeServerPath + "/.vscode/launch.json"
+	
+}
+
+
+rule ServerSettingsJson
+	transform file : source!ProjectComponent {
+	
+	template : "./server/vscode/template-settings.json.egl"
+	
+	target : targetPath + "glsp/" + relativeServerPath + "/.vscode/settings.json"
+	
+}
+
+
+rule ServerTasksJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName
+	}
+	
+	template : "./server/vscode/template-tasks.json.egl"
+	
+	target : targetPath + "glsp/" + relativeServerPath + "/.vscode/tasks.json"
+	
+}
+
+
+rule ServerBuildProperties
+	transform file : source!ProjectComponent {
+	
+	template : "./server/project/template-build.properties.egl"
+	
+	target : targetPath + "glsp/" + relativeServerPath + "/build.properties"
+	
+}
+
+
+rule ServerCheckstyle
+	transform file : source!ProjectComponent {
+	
+	template : "./server/project/template-checkstyle.egl"
+	
+	target : targetPath + "glsp/" + relativeServerPath + "/.checkstyle"
+	
+}
+
+
+rule ServerClasspath
+	transform file : source!ProjectComponent {
+	
+	template : "./server/project/template-classpath.egl"
+	
+	target : targetPath + "glsp/" + relativeServerPath + "/.classpath"
+	
+}
+
+
+rule ServerPluginProperties
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./server/project/template-plugin.properties.egl"
+	
+	target : targetPath + "glsp/" + relativeServerPath + "/plugin.properties"
+	
+}
+
+
+rule ServerPluginXml
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./server/project/template-plugin.xml.egl"
+	
+	target : targetPath + "glsp/" + relativeServerPath + "/plugin.xml"
+	
+}
+
+
+rule ServerPomXml
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName
+	}
+	
+	template : "./server/project/template-pom.xml.egl"
+	
+	target : targetPath + "glsp/" + relativeServerPath + "/pom.xml"
+	
+}
+
+
+rule ServerProject
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_packageName" = packageName
+	}
+	
+	template : "./server/project/template-project.egl"
+	
+	target : targetPath + "glsp/" + relativeServerPath + "/.project"
+	
+}
+
+
+rule ServerReadmeMd
+	transform file : source!ProjectComponent {
+	
+	template : "./server/project/template-README.md.egl"
+	
+	target : targetPath + "glsp/" + relativeServerPath + "/README.md"
+	
+}
+
+
+rule ServerServerLauncherLaunch
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName
+	}
+	
+	template : "./server/project/template-ServerLauncher.launch.egl"
+	
+	target : targetPath + "glsp/" + relativeServerPath + "/ServerLauncher.launch"
+	
+}
+
+//-------------------------PROJECT-FILES-CLIENT--------------------------------
+
+rule ClientExtensionsJson
+	transform file : source!ProjectComponent {
+	
+	template : "./client/vscode/template-extensions.json.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/.vscode/extensions.json"
+	
+}
+
+
+rule ClientLaunchJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/vscode/template-launch.json.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/.vscode/launch.json"
+	
+}
+
+
+rule ClientSettingsJson
+	transform file : source!ProjectComponent {
+	
+	template : "./client/vscode/template-settings.json.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/.vscode/settings.json"
+	
+}
+
+
+rule ClientTasksJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/vscode/template-tasks.json.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/.vscode/tasks.json"
+	
+}
+
+
+rule ClientPackageJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/browser-app/template-package.json.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-browser-app/package.json"
+	
+}
+
+
+rule ClientDiagrammCss
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_nodes" = nodes,
+		"_edges" = edges
+	}
+	
+	template : "./client/glsp/css/template-diagram.css.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-glsp/css/diagram.css"
+	
+}
+
+
+rule ClientIndexTs
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/glsp/src/template-index.ts.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-glsp/src/index.ts"
+	
+}
+
+
+rule ClientGlspPackageJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/glsp/template-package.json.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-glsp/package.json"
+	
+}
+
+
+rule ClientGlspTsconfigJson
+	transform file : source!ProjectComponent {
+	
+	template : "./client/glsp/template-tsconfig.json.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-glsp/tsconfig.json"
+	
+}
+
+
+rule ClientGitkeep
+	transform file : source!ProjectComponent {
+	
+	template : "./client/theia/logs/template-gitkeep.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-theia/logs/.gitkeep"
+	
+}
+
+
+rule ClientDiagramConfigurationTs
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/theia/src/browser/diagram/template-diagram-configuration.ts.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-theia/src/browser/diagram/" + metamodelName + "-diagram-configuration.ts"
+	
+}
+
+
+rule ClientFrontendModuleTs
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/theia/src/browser/template-frontend-module.ts.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-theia/src/browser/frontend-module.ts"
+	
+}
+
+
+rule ClientLanguageTs
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/theia/src/common/template-language.ts.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-theia/src/common/" + metamodelName + "-language.ts"
+	
+}
+
+
+rule ClientBackendModuleTs
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/theia/src/node/template-backend-module.ts.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-theia/src/node/backend-module.ts"
+	
+}
+
+
+rule ClientGlspServerContribution
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_packageName" = packageName
+	}
+	
+	template : "./client/theia/src/node/template-glsp-server-contribution.ts.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-theia/src/node/glsp-server-contribution.ts"
+	
+}
+
+
+rule ClientTheiaPackageJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/theia/template-package.json.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-theia/package.json"
+	
+}
+
+
+rule ClientTheiaTsconfigJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/theia/template-tsconfig.json.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/" + metamodelName + "-theia/tsconfig.json"
+	
+}
+
+
+rule ClientWorkspaceSettingsJson
+	transform file : source!ProjectComponent {
+	
+	template : "./client/workspace/theia/template-settings.json.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/workspace/theia/settings.json"
+	
+}
+
+
+rule ClientExample
+	transform file : source!ProjectComponent {
+	
+	overwrite : false
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName,
+		"_metamodelNsUri" = metamodelNsUri,
+		"_root" = root
+	}
+	
+	template : "./client/workspace/template-example.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/workspace/example." + metamodelName
+	
+}
+
+
+rule ClientExampleNotation
+	transform file : source!ProjectComponent {
+	
+	overwrite : false
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/workspace/template-example.notation.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/workspace/example.notation"
+	
+}
+
+
+rule ClientEslintrcJs
+	transform file : source!ProjectComponent {
+	
+	template : "./client/project/template-eslintrc.js.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/.eslintrc.js"
+	
+}
+
+
+rule ClientLernaJson
+	transform file : source!ProjectComponent {
+	
+	template : "./client/project/template-lerna.json.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/lerna.json"
+	
+}
+
+
+rule ClientProjectPackageJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/project/template-package.json.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/package.json"
+	
+}
+
+
+rule ClientPrettierrc
+	transform file : source!ProjectComponent {
+	
+	template : "./client/project/template-prettierrc.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/.prettierrc"
+	
+}
+
+
+rule ClientReadmeMd
+	transform file : source!ProjectComponent {
+	
+	template : "./client/project/template-README.md.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/README.md"
+	
+}
+
+
+rule ClientTsconfigEslintJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/project/template-tsconfig.eslint.json.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/tsconfig.eslint.json"
+	
+}
+
+
+rule ClientProjectTsconfigJson
+	transform file : source!ProjectComponent {
+	
+	parameters : Map {
+		"_metamodelName" = metamodelName
+	}
+	
+	template : "./client/project/template-tsconfig.json.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/tsconfig.json"
+	
+}
+
+
+//rule ClientProjectYarnLock
+//	transform file : source!ProjectComponent {
+//	
+//	template : "./client/project/template-yarn.lock.egl"
+//	
+//	target : targetPath + "glsp/" + relativeClientPath + "/yarn.lock"
+//	
+//}

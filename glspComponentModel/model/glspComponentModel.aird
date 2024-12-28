@@ -5,7 +5,7 @@
     <semanticResources>glspComponentModel.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_DYLUkFlIEe-PFsHE79tvvg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_DchCAFlIEe-PFsHE79tvvg" name="glspComponentModel" repPath="#_DbHT0FlIEe-PFsHE79tvvg" changeId="1732985537225">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_DchCAFlIEe-PFsHE79tvvg" name="glspComponentModel" repPath="#_DbHT0FlIEe-PFsHE79tvvg" changeId="1734797525212">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="glspComponentModel.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -83,10 +83,6 @@
             <children xmi:type="notation:Node" xmi:id="_yK0SMGkVEe-qbuYuD0qftA" type="3010" element="_yJrCsGkVEe-qbuYuD0qftA">
               <styles xmi:type="notation:FontStyle" xmi:id="_yK0SMWkVEe-qbuYuD0qftA" fontColor="2697711" fontName="Segoe UI" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_yK0SMmkVEe-qbuYuD0qftA"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_acK58H6-Ee-lFPaAo-4LeQ" type="3010" element="_abMCgH6-Ee-lFPaAo-4LeQ">
-              <styles xmi:type="notation:FontStyle" xmi:id="_acK58X6-Ee-lFPaAo-4LeQ" fontColor="2697711" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_acK58n6-Ee-lFPaAo-4LeQ"/>
             </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_JQFi8mVYEe-5CphihqpBbw"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_JQFi82VYEe-5CphihqpBbw"/>
@@ -199,10 +195,6 @@
             <children xmi:type="notation:Node" xmi:id="_n61KsJ98Ee-RrYlyShfrUA" type="3010" element="_n6fMcJ98Ee-RrYlyShfrUA">
               <styles xmi:type="notation:FontStyle" xmi:id="_n61KsZ98Ee-RrYlyShfrUA" fontColor="2697711" fontName="Segoe UI" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_n61Ksp98Ee-RrYlyShfrUA"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_vAnhoJ98Ee-RrYlyShfrUA" type="3010" element="_vAUmsJ98Ee-RrYlyShfrUA">
-              <styles xmi:type="notation:FontStyle" xmi:id="_vAnhoZ98Ee-RrYlyShfrUA" fontColor="2697711" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_vAnhop98Ee-RrYlyShfrUA"/>
             </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_meJmwZ97Ee-RrYlyShfrUA"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_meJmwp97Ee-RrYlyShfrUA"/>
@@ -736,14 +728,6 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_abMCgH6-Ee-lFPaAo-4LeQ" name="referenceName : EString" tooltipText="">
-        <target xmi:type="ecore:EAttribute" href="glspComponentModel.ecore#//CreateNodeHandler/referenceName"/>
-        <semanticElements xmi:type="ecore:EAttribute" href="glspComponentModel.ecore#//CreateNodeHandler/referenceName"/>
-        <ownedStyle xmi:type="diagram:BundledImage" uid="_cEPD8X6-Ee-lFPaAo-4LeQ" labelAlignment="LEFT">
-          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
-      </ownedElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_LLijAGVYEe-5CphihqpBbw" name="DeleteHandler" tooltipText="" outgoingEdges="_tSv48mVYEe-5CphihqpBbw" width="12" height="10">
       <target xmi:type="ecore:EClass" href="glspComponentModel.ecore#//DeleteHandler"/>
@@ -997,14 +981,6 @@
         <target xmi:type="ecore:EAttribute" href="glspComponentModel.ecore#//CreateEdgeHandler/elementName"/>
         <semanticElements xmi:type="ecore:EAttribute" href="glspComponentModel.ecore#//CreateEdgeHandler/elementName"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_uCo2cJ98Ee-RrYlyShfrUA" labelAlignment="LEFT">
-          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
-      </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_vAUmsJ98Ee-RrYlyShfrUA" name="referenceName : EString" tooltipText="">
-        <target xmi:type="ecore:EAttribute" href="glspComponentModel.ecore#//CreateEdgeHandler/referenceName"/>
-        <semanticElements xmi:type="ecore:EAttribute" href="glspComponentModel.ecore#//CreateEdgeHandler/referenceName"/>
-        <ownedStyle xmi:type="diagram:BundledImage" uid="_x1Sosp98Ee-RrYlyShfrUA" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
