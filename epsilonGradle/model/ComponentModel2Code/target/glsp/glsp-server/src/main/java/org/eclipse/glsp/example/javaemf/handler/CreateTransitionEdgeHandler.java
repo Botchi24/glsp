@@ -57,6 +57,8 @@ public class CreateTransitionEdgeHandler extends EMFCreateOperationHandler<Creat
 
     @Override
     public Optional<Command> createCommand(CreateEdgeOperation operation) {
+        if (!checkCondition()) return Optional.of(new CompoundCommand());
+    
         Transition newTransition = StatemachineFactory.eINSTANCE.createTransition();
         //newArc.setId(UUID.randomUUID().toString());
 
@@ -93,6 +95,12 @@ public class CreateTransitionEdgeHandler extends EMFCreateOperationHandler<Creat
         compoundCommand.append(setTarget);
 
         return compoundCommand;
+    }
+    
+    protected boolean checkCondition() {
+ 	   // INSERT CONDITION HERE
+ 	   
+ 	   return true;
     }
 
 }

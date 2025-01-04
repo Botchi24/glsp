@@ -2,8 +2,13 @@
 <notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/glsp/notation">
   <semanticElement elementId="Statemachine"/>
   <elements xsi:type="notation:Shape">
-    <semanticElement elementId="NewFinalState0"/>
-    <position x="446.5" y="144.0"/>
-    <size width="100.0" height="60.0"/>
+    <semanticElement elementId="NewNormalState0"/>
+    <position x="281.0" y="141.0"/>
+    <size width="60.0" height="25.0"/>
+  </elements>
+  <elements xsi:type="notation:Shape">
+    <semanticElement elementId="NewNormalState1"/>
+    <position x="306.0" y="217.0"/>
+    <size width="60.0" height="25.0"/>
   </elements>
 </notation:Diagram>
