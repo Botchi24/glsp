@@ -67,7 +67,7 @@ public class [%=_metamodelName.firstToUpperCase()%]GModelFactory extends EMFNota
    protected GNode create[%=n%]Node(final [%=n%] [%=n.firstToLowerCase()%]) {
       GNodeBuilder [%=n.firstToLowerCase()%]NodeBuilder = new GNodeBuilder([%=_metamodelName.firstToUpperCase()%]ModelTypes.[%=n.toUpperCase()%])
          .id(idGenerator.getOrCreateId([%=n.firstToLowerCase()%]))
-         .addCssClass("[%=_metamodelName%]-node")
+         .addCssClass("[%=_metamodelName%]-[%=n%]-node")
          .add(new GLabelBuilder(DefaultTypes.LABEL).text(idGenerator.getOrCreateId([%=n.firstToLowerCase()%])).id(idGenerator.getOrCreateId([%=n.firstToLowerCase()%]) + "_label").build())
          .layout([%=getStyleValue(n, "layout")%], Map.of(GLayoutOptions.KEY_PADDING_LEFT, 5));
 
@@ -81,7 +81,7 @@ public class [%=_metamodelName.firstToUpperCase()%]GModelFactory extends EMFNota
    protected GEdge create[%=e%]Edge(final [%=e%] [%=e.firstToLowerCase()%]) {
       GEdgeBuilder [%=e.firstToLowerCase()%]EdgeBuilder = new GEdgeBuilder([%=_metamodelName.firstToUpperCase()%]ModelTypes.[%=e.toUpperCase()%])
           .id(idGenerator.getOrCreateId([%=e.firstToLowerCase()%]))
-          .addCssClass("[%=_metamodelName%]-edge")
+          .addCssClass("[%=_metamodelName%]-[%=e%]-edge")
           .sourceId(idGenerator.getOrCreateId([%=e.firstToLowerCase()%].getFrom()))
           .targetId(idGenerator.getOrCreateId([%=e.firstToLowerCase()%].getTo()));
           
