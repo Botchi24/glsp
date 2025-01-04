@@ -71,6 +71,8 @@ public class CreateFinalStateNodeHandler extends EMFCreateOperationHandler<Creat
    public String getLabel() { return "FinalState"; }
 
    protected Command createFinalStateAndShape(final Optional<GPoint> relativeLocation) {
+      if (!checkCondition()) return new CompoundCommand();
+   
       StateMachine stateMachine = modelState.getSemanticModel(StateMachine.class).orElseThrow();
       Diagram diagram = modelState.getNotationModel();
       EditingDomain editingDomain = modelState.getEditingDomain();
@@ -110,5 +112,11 @@ public class CreateFinalStateNodeHandler extends EMFCreateOperationHandler<Creat
       reference.setElementId(elementId);
       newFinalState.setSemanticElement(reference);
       return newFinalState;
+   }
+   
+   protected boolean checkCondition() {
+	   // INSERT CONDITION HERE
+	   
+	   return true;
    }
 }

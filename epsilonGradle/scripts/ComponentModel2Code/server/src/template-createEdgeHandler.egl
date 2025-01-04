@@ -62,6 +62,8 @@ public class Create[%=createEdgeHandler.elementName%]EdgeHandler extends EMFCrea
 
     @Override
     public Optional<Command> createCommand(CreateEdgeOperation operation) {
+        if (!checkCondition()) return Optional.of(new CompoundCommand());
+    
         [%=createEdgeHandler.elementName%] new[%=createEdgeHandler.elementName%] = [%=_metamodelPrefix%]Factory.eINSTANCE.create[%=createEdgeHandler.elementName%]();
         //newArc.setId(UUID.randomUUID().toString());
         [%if (isStorable(createEdgeHandler.elementName)){%]
@@ -108,6 +110,12 @@ public class Create[%=createEdgeHandler.elementName%]EdgeHandler extends EMFCrea
         compoundCommand.append(setTarget);
 
         return compoundCommand;
+    }
+    
+    protected boolean checkCondition() {
+ 	   // INSERT CONDITION HERE
+ 	   
+ 	   return true;
     }
 
 }

@@ -73,6 +73,8 @@ public class Create[%=createNodeHandler.elementName%]NodeHandler extends EMFCrea
    public String getLabel() { return "[%=createNodeHandler.elementName%]"; }
 
    protected Command create[%=createNodeHandler.elementName%]AndShape(final Optional<GPoint> relativeLocation) {
+      if (!checkCondition()) return new CompoundCommand();
+   
       [%=_root%] [%=_root.firstToLowerCase()%] = modelState.getSemanticModel([%=_root%].class).orElseThrow();
       Diagram diagram = modelState.getNotationModel();
       EditingDomain editingDomain = modelState.getEditingDomain();
@@ -116,5 +118,11 @@ public class Create[%=createNodeHandler.elementName%]NodeHandler extends EMFCrea
       reference.setElementId(elementId);
       new[%=createNodeHandler.elementName%].setSemanticElement(reference);
       return new[%=createNodeHandler.elementName%];
+   }
+   
+   protected boolean checkCondition() {
+	   // INSERT CONDITION HERE
+	   
+	   return true;
    }
 }
