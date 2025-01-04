@@ -9,6 +9,7 @@
       <styleelement xsi:type="viewpointModel:StyleElement" name="layout" value="GConstants.Layout.HBOX"/>
       <styleelement xsi:type="viewpointModel:StyleElement" name="width" value="60"/>
       <styleelement xsi:type="viewpointModel:StyleElement" name="height" value="25"/>
+      <styleelement xsi:type="viewpointModel:StyleElement" name="css" value="fill: #f1bd6c;"/>
     </style>
   </modelelement>
   <modelelement xsi:type="viewpointModel:Node" name="FinalState">
@@ -19,6 +20,7 @@
       <styleelement xsi:type="viewpointModel:StyleElement" name="layout" value="GConstants.Layout.HBOX"/>
       <styleelement xsi:type="viewpointModel:StyleElement" name="width" value="100"/>
       <styleelement xsi:type="viewpointModel:StyleElement" name="height" value="60"/>
+      <styleelement xsi:type="viewpointModel:StyleElement" name="css" value="fill: #f1bd6c;"/>
     </style>
   </modelelement>
   <modelelement xsi:type="viewpointModel:Edge" name="Transition" source="from" target="to">

@@ -60,7 +60,7 @@ public class StatemachineGModelFactory extends EMFNotationGModelFactory {
    protected GNode createNormalStateNode(final NormalState normalState) {
       GNodeBuilder normalStateNodeBuilder = new GNodeBuilder(StatemachineModelTypes.NORMALSTATE)
          .id(idGenerator.getOrCreateId(normalState))
-         .addCssClass("statemachine-node")
+         .addCssClass("statemachine-NormalState-node")
          .add(new GLabelBuilder(DefaultTypes.LABEL).text(idGenerator.getOrCreateId(normalState)).id(idGenerator.getOrCreateId(normalState) + "_label").build())
          .layout(GConstants.Layout.HBOX, Map.of(GLayoutOptions.KEY_PADDING_LEFT, 5));
 
@@ -71,7 +71,7 @@ public class StatemachineGModelFactory extends EMFNotationGModelFactory {
    protected GNode createFinalStateNode(final FinalState finalState) {
       GNodeBuilder finalStateNodeBuilder = new GNodeBuilder(StatemachineModelTypes.FINALSTATE)
          .id(idGenerator.getOrCreateId(finalState))
-         .addCssClass("statemachine-node")
+         .addCssClass("statemachine-FinalState-node")
          .add(new GLabelBuilder(DefaultTypes.LABEL).text(idGenerator.getOrCreateId(finalState)).id(idGenerator.getOrCreateId(finalState) + "_label").build())
          .layout(GConstants.Layout.HBOX, Map.of(GLayoutOptions.KEY_PADDING_LEFT, 5));
 
@@ -83,7 +83,7 @@ public class StatemachineGModelFactory extends EMFNotationGModelFactory {
    protected GEdge createTransitionEdge(final Transition transition) {
       GEdgeBuilder transitionEdgeBuilder = new GEdgeBuilder(StatemachineModelTypes.TRANSITION)
           .id(idGenerator.getOrCreateId(transition))
-          .addCssClass("statemachine-edge")
+          .addCssClass("statemachine-Transition-edge")
           .sourceId(idGenerator.getOrCreateId(transition.getFrom()))
           .targetId(idGenerator.getOrCreateId(transition.getTo()));
           

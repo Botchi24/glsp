@@ -1,3 +1,4 @@
+[%import "../../../attribute_resolver.eol";%]
 /********************************************************************************
  * Copyright (c) 2022 EclipseSource and others.
  *
@@ -27,6 +28,12 @@ svg {
 
 [%for ( n in _nodes){%]
 .[%=_metamodelName%]-[%=n%]-node {
-    fill: #f1bd6c;
+    [%=getStyleValue(n, "css")%]
+}
+[%}%]
+
+[%for ( e in _edges){%]
+.[%=_metamodelName%]-[%=e%]-edge {
+    
 }
 [%}%]

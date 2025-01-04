@@ -877,11 +877,13 @@ rule ClientProjectTsconfigJson
 }
 
 
-//rule ClientProjectYarnLock
-//	transform file : source!ProjectComponent {
-//	
-//	template : "./client/project/template-yarn.lock.egl"
-//	
-//	target : targetPath + "glsp/" + relativeClientPath + "/yarn.lock"
-//	
-//}
+rule ClientProjectYarnLock
+	transform file : source!ProjectComponent {
+	
+	overwrite : false
+	
+	template : "./client/project/template-yarn.lock.egl"
+	
+	target : targetPath + "glsp/" + relativeClientPath + "/yarn.lock"
+	
+}
