@@ -25,6 +25,9 @@ svg {
     fill: inherit;
 }
 
+.statemachine-InitialState-node {
+    fill: #f1bd6c;
+}
 .statemachine-NormalState-node {
     fill: #f1bd6c;
 }

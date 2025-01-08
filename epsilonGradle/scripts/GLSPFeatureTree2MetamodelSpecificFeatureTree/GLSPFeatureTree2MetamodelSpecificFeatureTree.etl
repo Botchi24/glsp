@@ -9,13 +9,13 @@ pre {
 }
 
 rule FeatureModel
-	transform s : source!t_featureModel
-	to t : target!t_featureModel {
+	transform s : glspFeatureTree!t_featureModel
+	to t : metamodelSpecificFeatureTree!t_featureModel {
 	
 		("Start transforming GLSPFeatureTree into a metamodel specific feature tree!").println();
 		
-		//target!root = t;
-		//target.root = root;
+		//metamodelSpecificFeatureTree!root = t;
+		//metamodelSpecificFeatureTree.root = root;
 		metamodelSpecificFeatureTree.root = t;
 		
 		for (c in s.children) {
@@ -30,8 +30,8 @@ rule FeatureModel
 
 @lazy
 rule Properties
-	transform s : source!t_properties
-	to t : target!t_properties {
+	transform s : glspFeatureTree!t_properties
+	to t : metamodelSpecificFeatureTree!t_properties {
 		
 		for (c in s.children) {
 			//c.equivalent().println();
@@ -42,8 +42,8 @@ rule Properties
 
 @lazy
 rule Struct
-	transform s : source!t_struct
-	to t : target!t_struct {
+	transform s : glspFeatureTree!t_struct
+	to t : metamodelSpecificFeatureTree!t_struct {
 	
 		for (c in s.children) {
 			//c.equivalent().println();
@@ -54,8 +54,8 @@ rule Struct
 
 @lazy
 rule Constraints
-	transform s : source!t_constraints
-	to t : target!t_constraints {
+	transform s : glspFeatureTree!t_constraints
+	to t : metamodelSpecificFeatureTree!t_constraints {
 	
 		for (c in s.children) {
 			//c.equivalent().println();
@@ -66,8 +66,8 @@ rule Constraints
 
 @lazy
 rule Graphics
-	transform s : source!t_graphics
-	to t : target!t_graphics {
+	transform s : glspFeatureTree!t_graphics
+	to t : metamodelSpecificFeatureTree!t_graphics {
 	
 		t.a_key = s.a_key;
 		t.a_value = s.a_value;
@@ -76,8 +76,8 @@ rule Graphics
 
 @lazy
 rule And
-	transform s : source!t_and
-	to t : target!t_and {
+	transform s : glspFeatureTree!t_and
+	to t : metamodelSpecificFeatureTree!t_and {
 	
 		t.a_abstract = s.a_abstract;
 		t.a_mandatory = s.a_mandatory;
@@ -85,7 +85,7 @@ rule And
 		t.a_hidden = s.a_hidden;
 		
 		for (c in s.children) {
-			if (c.isTypeOf(source!t_feature)){
+			if (c.isTypeOf(glspFeatureTree!t_feature)){
 				t.processAndFeature(c);
 			} else {
 				t.appendChild(c.equivalent());
@@ -96,8 +96,8 @@ rule And
 
 @lazy
 rule Alt
-	transform s : source!t_alt
-	to t : target!t_alt {
+	transform s : glspFeatureTree!t_alt
+	to t : metamodelSpecificFeatureTree!t_alt {
 	
 		t.a_abstract = s.a_abstract;
 		t.a_mandatory = s.a_mandatory;
@@ -105,7 +105,7 @@ rule Alt
 		t.a_hidden = s.a_hidden;
 		
 		for (c in s.children) {
-			if (c.isTypeOf(source!t_feature)){
+			if (c.isTypeOf(glspFeatureTree!t_feature)){
 				t.processAltFeature(c);
 			} else {
 				t.appendChild(c.equivalent());
@@ -116,8 +116,8 @@ rule Alt
 
 @lazy
 rule Feature
-	transform s : source!t_feature
-	to t : target!t_feature {
+	transform s : glspFeatureTree!t_feature
+	to t : metamodelSpecificFeatureTree!t_feature {
 	
 		t.a_abstract = s.a_abstract;
 		t.a_mandatory = s.a_mandatory;
@@ -128,8 +128,8 @@ rule Feature
 
 @lazy
 rule Rule
-	transform s : source!t_rule
-	to t : target!t_rule {
+	transform s : glspFeatureTree!t_rule
+	to t : metamodelSpecificFeatureTree!t_rule {
 	
 		for (c in s.children) {
 			//c.equivalent().println();
@@ -140,8 +140,8 @@ rule Rule
 
 @lazy
 rule Eq
-	transform s : source!t_eq
-	to t : target!t_eq {
+	transform s : glspFeatureTree!t_eq
+	to t : metamodelSpecificFeatureTree!t_eq {
 	
 		for (c in s.children) {
 			//c.equivalent().println();
@@ -152,18 +152,18 @@ rule Eq
 
 @lazy
 rule Var
-	transform s : source!t_var
-	to t : target!t_var {
+	transform s : glspFeatureTree!t_var
+	to t : metamodelSpecificFeatureTree!t_var {
 	
 		t.text = s.text;
 		
 }
 
-function target!t_and processAndFeature(oldFeature : source!t_feature){
+function metamodelSpecificFeatureTree!t_and processAndFeature(oldFeature : glspFeatureTree!t_feature){
 
 	if (oldFeature.a_name.startsWith("E_")) {
 		for (e in nodes) { //metamodelelements
-			var feature = new target!t_feature;
+			var feature = new metamodelSpecificFeatureTree!t_feature;
 			feature.a_abstract = oldFeature.a_abstract;
 			feature.a_mandatory = oldFeature.a_mandatory;
 			feature.a_name = oldFeature.a_name.replaceFirst("E", "N") + "_" + e;
@@ -171,7 +171,7 @@ function target!t_and processAndFeature(oldFeature : source!t_feature){
 			self.appendChild(feature);
 		}
 		for (e in edges) { //metamodelelements
-			var feature = new target!t_feature;
+			var feature = new metamodelSpecificFeatureTree!t_feature;
 			feature.a_abstract = oldFeature.a_abstract;
 			feature.a_mandatory = oldFeature.a_mandatory;
 			feature.a_name = oldFeature.a_name + "_" + e;
@@ -184,11 +184,11 @@ function target!t_and processAndFeature(oldFeature : source!t_feature){
 
 }
 
-function target!t_alt processAltFeature(oldFeature : source!t_feature){
+function metamodelSpecificFeatureTree!t_alt processAltFeature(oldFeature : glspFeatureTree!t_feature){
 
 	if (oldFeature.a_name.startsWith("E_")) {
 		for (e in nodes) { //metamodelelements
-			var feature = new target!t_feature;
+			var feature = new metamodelSpecificFeatureTree!t_feature;
 			feature.a_abstract = oldFeature.a_abstract;
 			feature.a_mandatory = oldFeature.a_mandatory;
 			feature.a_name = oldFeature.a_name.replaceFirst("E", "N") + "_" + e;
@@ -196,7 +196,7 @@ function target!t_alt processAltFeature(oldFeature : source!t_feature){
 			self.appendChild(feature);
 		}
 		for (e in edges) { //metamodelelements
-			var feature = new target!t_feature;
+			var feature = new metamodelSpecificFeatureTree!t_feature;
 			feature.a_abstract = oldFeature.a_abstract;
 			feature.a_mandatory = oldFeature.a_mandatory;
 			feature.a_name = oldFeature.a_name + "_" + e;

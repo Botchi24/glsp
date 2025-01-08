@@ -20,6 +20,7 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.glsp.example.javaemf.StatemachineModelTypes;
+import swt.most.statemachine.InitialState;
 import swt.most.statemachine.NormalState;
 import swt.most.statemachine.FinalState;
 import swt.most.statemachine.Transition;
@@ -43,20 +44,29 @@ public class StatemachineGModelFactory extends EMFNotationGModelFactory {
    protected void fillRootElement(final EObject semanticModel, final Diagram notationModel, final GModelRoot newRoot) {
       StateMachine stateMachine = StateMachine.class.cast(semanticModel);
       GGraph graph = GGraph.class.cast(newRoot);
-      //if (notationModel.getSemanticElement() != null
-         //&& notationModel.getSemanticElement().getResolvedSemanticElement() != null) {
-         stateMachine.getStates().stream()
-            .map(this::createNormalStateNode)
-            .forEachOrdered(graph.getChildren()::add);
-         stateMachine.getFinalstates().stream()
-            .map(this::createFinalStateNode)
-            .forEachOrdered(graph.getChildren()::add);
-         stateMachine.getTransitions().stream()
-            .map(this::createTransitionEdge)
-            .forEachOrdered(graph.getChildren()::add);
-      //}
+      if (stateMachine.getInitialstate() != null)
+      	graph.getChildren().add(createInitialStateNode(stateMachine.getInitialstate()));
+      stateMachine.getStates().stream()
+      	.map(this::createNormalStateNode)
+      	.forEachOrdered(graph.getChildren()::add);
+      stateMachine.getFinalstates().stream()
+      	.map(this::createFinalStateNode)
+      	.forEachOrdered(graph.getChildren()::add);
+      stateMachine.getTransitions().stream()
+      	.map(this::createTransitionEdge)
+      	.forEachOrdered(graph.getChildren()::add);
    }
 
+   protected GNode createInitialStateNode(final InitialState initialState) {
+      GNodeBuilder initialStateNodeBuilder = new GNodeBuilder(StatemachineModelTypes.INITIALSTATE)
+         .id(idGenerator.getOrCreateId(initialState))
+         .addCssClass("statemachine-InitialState-node")
+         .add(new GLabelBuilder(DefaultTypes.LABEL).text(idGenerator.getOrCreateId(initialState)).id(idGenerator.getOrCreateId(initialState) + "_label").build())
+         .layout(GConstants.Layout.HBOX, Map.of(GLayoutOptions.KEY_PADDING_LEFT, 5));
+
+      applyShapeData(initialState, initialStateNodeBuilder);
+      return initialStateNodeBuilder.build();
+   }
    protected GNode createNormalStateNode(final NormalState normalState) {
       GNodeBuilder normalStateNodeBuilder = new GNodeBuilder(StatemachineModelTypes.NORMALSTATE)
          .id(idGenerator.getOrCreateId(normalState))
@@ -67,7 +77,6 @@ public class StatemachineGModelFactory extends EMFNotationGModelFactory {
       applyShapeData(normalState, normalStateNodeBuilder);
       return normalStateNodeBuilder.build();
    }
-   
    protected GNode createFinalStateNode(final FinalState finalState) {
       GNodeBuilder finalStateNodeBuilder = new GNodeBuilder(StatemachineModelTypes.FINALSTATE)
          .id(idGenerator.getOrCreateId(finalState))
@@ -79,7 +88,6 @@ public class StatemachineGModelFactory extends EMFNotationGModelFactory {
       return finalStateNodeBuilder.build();
    }
    
-   
    protected GEdge createTransitionEdge(final Transition transition) {
       GEdgeBuilder transitionEdgeBuilder = new GEdgeBuilder(StatemachineModelTypes.TRANSITION)
           .id(idGenerator.getOrCreateId(transition))
@@ -89,7 +97,6 @@ public class StatemachineGModelFactory extends EMFNotationGModelFactory {
           
       applyEdgeData(transition, transitionEdgeBuilder);
       return transitionEdgeBuilder.build();
-   }
-   
+   }   
 
 }

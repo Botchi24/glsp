@@ -88,15 +88,15 @@ task register_componentModel_read {
 
 }
 
-task transformFeatureTree {
+task prepareMetamodelSpecificFeatureTree {
     dependsOn register_metamodel, register_viewpointModel, register_glspFeatureTree, register_metamodelSpecificFeatureTree
 
     doFirst{
         ant.'epsilon.etl'(src: dir_script + "GLSPFeatureTree2MetamodelSpecificFeatureTree/GLSPFeatureTree2MetamodelSpecificFeatureTree.etl"){ 
-		                  model(ref: "metamodel", alias: "metamodel")
-		                  model(ref: "viewpointModel", alias: "viewpointModel")
-                          model(ref: "glspFeatureTree", alias: "source")
-                          model(ref: "metamodelSpecificFeatureTree", alias: "target")
+		                  model(ref: "metamodel")
+		                  model(ref: "viewpointModel")
+                          model(ref: "glspFeatureTree")
+                          model(ref: "metamodelSpecificFeatureTree")
             }
     }
 
@@ -109,31 +109,31 @@ task transformFeatureTree {
 
 }
 
-task transformMetamodelSpecificFeatureTree {
+task createComponentModel {
 	dependsOn register_glspFeatureTreeConfiguration, register_componentModel_store
 	
 	doFirst{
 		ant.'epsilon.etl'(src: dir_script + "MetamodelSpecificFeatureTree2ComponentModel/MetamodelSpecificFeatureTree2ComponentModel.etl"){ 
-						  model(ref: "glspFeatureTreeConfiguration", alias: "source")
-                          model(ref: "componentModel_store", alias: "target")
+						  model(ref: "glspFeatureTreeConfiguration")
+                          model(ref: "componentModel_store")
 		}
 	}
 	
 	doLast{
-		ant.'epsilon.disposeModel'(model: "glspFeatureTreeConfiguration")
+		//ant.'epsilon.disposeModel'(model: "glspFeatureTreeConfiguration")
 		ant.'epsilon.disposeModel'(model: "componentModel_store")
     }
     
 }
 
-task transformComponentModel {
+task createEditor {
 	dependsOn register_metamodel, register_viewpointModel, register_componentModel_read
 	
 	doFirst{
 		ant.'epsilon.egl'(src: dir_script + "ComponentModel2Code/generate.egx"){
-						  model(ref: "componentModel_read", alias: "source")
-						  model(ref: "metamodel", alias: "metamodel")
-		                  model(ref: "viewpointModel", alias: "viewpointModel")
+						  model(ref: "componentModel_read")
+						  model(ref: "metamodel")
+		                  model(ref: "viewpointModel")
 		}
 	}
 	

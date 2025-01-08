@@ -4,20 +4,21 @@ pre {
 
 
 rule Root
-	transform s : source!t_configuration
-	to t : target!ComponentModel {
+	transform s : glspFeatureTreeConfiguration!t_configuration
+	to t : componentModel_store!ComponentModel {
 		
-		t.components.add(new target!ProjectComponent());
+		//componentModel_store.root = t;
+		t.components.add(new componentModel_store!ProjectComponent());
 	
 }
 
 
 rule MinimumComponents
-	transform s : source!t_feature
-	to t1 : target!ServerLauncher,
-	t2 : target!DiagramModule,
-	t3 : target!DiagramConfiguration,
-	t4 : target!IdGenerator {
+	transform s : glspFeatureTreeConfiguration!t_feature
+	to t1 : componentModel_store!ServerLauncher,
+	t2 : componentModel_store!DiagramModule,
+	t3 : componentModel_store!DiagramConfiguration,
+	t4 : componentModel_store!IdGenerator {
 	
 		guard : s.a_name == "S"
 		
@@ -26,7 +27,7 @@ rule MinimumComponents
 		"DiagramConfiguration".println();
 		"IdGenerator".println();
 		
-		var root = target!ComponentModel.all.first;
+		var root = componentModel_store!ComponentModel.all.first;
 		root.components.add(t1);
 		root.components.add(t2);
 		root.components.add(t3);
@@ -35,21 +36,21 @@ rule MinimumComponents
 
 
 rule ModelTypes
-	transform s : source!t_feature
-	to t : target!ModelTypes {
+	transform s : glspFeatureTreeConfiguration!t_feature
+	to t : componentModel_store!ModelTypes {
 	
 		guard : s.a_name == "S121 DefaultTypes"
 		
 		"ModelTypes".println();
 		
-		target!ComponentModel.all.first.components.add(t);
+		componentModel_store!ComponentModel.all.first.components.add(t);
 	
 }
 
 
 rule CreateNodeHandler
-	transform s : source!t_feature
-	to t : target!CreateNodeHandler {
+	transform s : glspFeatureTreeConfiguration!t_feature
+	to t : componentModel_store!CreateNodeHandler {
 	
 		guard : s.a_name.startsWith("N_S31 use Command_")
 		
@@ -57,14 +58,14 @@ rule CreateNodeHandler
 		
 		t.elementName = s.a_name.substring("N_S31 use Command_".length(), s.a_name.length());
 		
-		target!ComponentModel.all.first.components.add(t);
+		componentModel_store!ComponentModel.all.first.components.add(t);
 	
 }
 
 
 rule CreateEdgeHandler
-	transform s : source!t_feature
-	to t : target!CreateEdgeHandler {
+	transform s : glspFeatureTreeConfiguration!t_feature
+	to t : componentModel_store!CreateEdgeHandler {
 	
 		guard : s.a_name.startsWith("E_S31 use Command_")
 		
@@ -72,59 +73,59 @@ rule CreateEdgeHandler
 		
 		t.elementName = s.a_name.substring("E_S31 use Command_".length(), s.a_name.length());
 
-		target!ComponentModel.all.first.components.add(t);
+		componentModel_store!ComponentModel.all.first.components.add(t);
 	
 }
 
 
 rule DeleteHandler
-	transform s : source!t_feature
-	to t : target!DeleteHandler {
+	transform s : glspFeatureTreeConfiguration!t_feature
+	to t : componentModel_store!DeleteHandler {
 	
 		guard : s.a_name == "S4 Element Deletion"
 		
 		"DeleteHandler".println();
 		
-		target!ComponentModel.all.first.components.add(t);
+		componentModel_store!ComponentModel.all.first.components.add(t);
 	
 }
 
 
 rule ToolPaletteItemProvider
-	transform s : source!t_feature
-	to t : target!ToolPaletteItemProvider {
+	transform s : glspFeatureTreeConfiguration!t_feature
+	to t : componentModel_store!ToolPaletteItemProvider {
 	
 		guard : s.a_name == "S83 Tool Palette"
 		
 		"ToolPaletteItemProvider".println();
 		
-		target!ComponentModel.all.first.components.add(t);
+		componentModel_store!ComponentModel.all.first.components.add(t);
 	
 }
 
 
 rule EMFSourceModelStorage
-	transform s : source!t_feature
-	to t : target!EMFSourceModelStorage {
+	transform s : glspFeatureTreeConfiguration!t_feature
+	to t : componentModel_store!EMFSourceModelStorage {
 	
 		guard : s.a_name == "S1111 EMFNotationSourceModelStorage"
 		
 		"EMFSourceModelStorage".println();
 		
-		target!ComponentModel.all.first.components.add(t);
+		componentModel_store!ComponentModel.all.first.components.add(t);
 	
 }
 
 
 rule GModelFactory
-	transform s : source!t_feature
-	to t : target!GModelFactory {
+	transform s : glspFeatureTreeConfiguration!t_feature
+	to t : componentModel_store!GModelFactory {
 	
 		guard : s.a_name == "S131 transform SourceModel"
 		
 		"GModelFactory".println();
 		
-		target!ComponentModel.all.first.components.add(t);
+		componentModel_store!ComponentModel.all.first.components.add(t);
 	
 }
 
@@ -133,13 +134,13 @@ rule GModelFactory
 
 
 rule ClientModelTypes
-	transform s : source!t_feature
-	to t : target!ClientModelTypes {
+	transform s : glspFeatureTreeConfiguration!t_feature
+	to t : componentModel_store!ClientModelTypes {
 	
 		guard : s.a_name == "C121 Definition"
 		
 		"ClientModelTypes".println();
 		
-		target!ComponentModel.all.first.components.add(t);
+		componentModel_store!ComponentModel.all.first.components.add(t);
 	
 }

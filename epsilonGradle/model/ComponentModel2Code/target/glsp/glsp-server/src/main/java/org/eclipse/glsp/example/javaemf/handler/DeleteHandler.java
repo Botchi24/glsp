@@ -54,6 +54,8 @@ public class DeleteHandler extends EMFOperationHandler<DeleteOperation> {
 
    @Override
    public Optional<Command> createCommand(final DeleteOperation operation) {
+      if (!constraintSatisfied()) return Optional.empty();
+   
       List<String> elementIds = operation.getElementIds();
       if (elementIds == null || elementIds.size() == 0) {
          System.err.println("[DeleteNodeHandler] Elements to delete are not specified: elementIds = " + elementIds);
@@ -175,5 +177,11 @@ public class DeleteHandler extends EMFOperationHandler<DeleteOperation> {
 
 	      return commands;
 	   }
+	   
+   protected boolean constraintSatisfied() {
+	   // USER INSERTS CONSTRAINT FOR DELETION HERE
+	   
+	   return true;
+   }
 
 }

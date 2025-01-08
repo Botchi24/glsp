@@ -71,7 +71,7 @@ public class CreateNormalStateNodeHandler extends EMFCreateOperationHandler<Crea
    public String getLabel() { return "NormalState"; }
 
    protected Command createNormalStateAndShape(final Optional<GPoint> relativeLocation) {
-      if (!checkCondition()) return new CompoundCommand();
+      if (!constraintSatisfied()) return new CompoundCommand();
    
       StateMachine stateMachine = modelState.getSemanticModel(StateMachine.class).orElseThrow();
       Diagram diagram = modelState.getNotationModel();
@@ -114,8 +114,8 @@ public class CreateNormalStateNodeHandler extends EMFCreateOperationHandler<Crea
       return newNormalState;
    }
    
-   protected boolean checkCondition() {
-	   // INSERT CONDITION HERE
+   protected boolean constraintSatisfied() {
+	   // USER INSERTS CONSTRAINT FOR NODE CREATION HERE
 	   
 	   return true;
    }

@@ -28,6 +28,7 @@ public class StatemachineDiagramConfiguration extends BaseDiagramConfiguration {
    public List<ShapeTypeHint> getShapeTypeHints() {
       // tasks can be moved, deleted and resized
       return List.of(
+      	new ShapeTypeHint(StatemachineModelTypes.INITIALSTATE, true, true, true, false),
       	new ShapeTypeHint(StatemachineModelTypes.NORMALSTATE, true, true, true, false),
       	new ShapeTypeHint(StatemachineModelTypes.FINALSTATE, true, true, true, false)      	
       );

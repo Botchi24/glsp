@@ -16,6 +16,7 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.javaemf;
 
+import org.eclipse.glsp.example.javaemf.handler.CreateInitialStateNodeHandler;
 import org.eclipse.glsp.example.javaemf.handler.CreateNormalStateNodeHandler;
 import org.eclipse.glsp.example.javaemf.handler.CreateFinalStateNodeHandler;
 import org.eclipse.glsp.example.javaemf.handler.CreateTransitionEdgeHandler;
@@ -69,6 +70,7 @@ public class StatemachineDiagramModule extends EMFNotationDiagramModule {
    protected void configureOperationHandlers(final MultiBinding<OperationHandler<?>> binding) {
       super.configureOperationHandlers(binding);
       //binding.add(ChangeRoutingPointsOperationHandler.class);
+      binding.add(CreateInitialStateNodeHandler.class);
       binding.add(CreateNormalStateNodeHandler.class);
       binding.add(CreateFinalStateNodeHandler.class);
       binding.add(CreateTransitionEdgeHandler.class);
