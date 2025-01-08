@@ -1,17 +1,71 @@
 <?xml version="1.0" encoding="ASCII"?>
-<glspComponentModel:ComponentModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:glspComponentModel="http://www.example.org/glspComponentModel" xsi:schemaLocation="http://www.example.org/glspComponentModel ../../../metamodel/glspComponentModel.ecore">
-  <components xsi:type="glspComponentModel:ProjectComponent"/>
-  <components xsi:type="glspComponentModel:ServerLauncher"/>
-  <components xsi:type="glspComponentModel:DiagramModule"/>
-  <components xsi:type="glspComponentModel:DiagramConfiguration"/>
-  <components xsi:type="glspComponentModel:IdGenerator"/>
-  <components xsi:type="glspComponentModel:ModelTypes"/>
-  <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="NormalState"/>
-  <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="FinalState"/>
-  <components xsi:type="glspComponentModel:CreateEdgeHandler" elementName="Transition"/>
-  <components xsi:type="glspComponentModel:DeleteHandler"/>
-  <components xsi:type="glspComponentModel:ToolPaletteItemProvider"/>
-  <components xsi:type="glspComponentModel:EMFSourceModelStorage"/>
-  <components xsi:type="glspComponentModel:GModelFactory"/>
-  <components xsi:type="glspComponentModel:ClientModelTypes"/>
-</glspComponentModel:ComponentModel>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:glspComponentModel="http://www.example.org/glspComponentModel" xsi:schemaLocation="http://www.example.org/glspComponentModel ../../../metamodel/glspComponentModel.ecore">
+  <glspComponentModel:ComponentModel>
+    <components xsi:type="glspComponentModel:ProjectComponent"/>
+    <components xsi:type="glspComponentModel:ServerLauncher"/>
+    <components xsi:type="glspComponentModel:DiagramModule"/>
+    <components xsi:type="glspComponentModel:DiagramConfiguration"/>
+    <components xsi:type="glspComponentModel:IdGenerator"/>
+    <components xsi:type="glspComponentModel:ModelTypes"/>
+    <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="InitialState"/>
+    <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="NormalState"/>
+    <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="FinalState"/>
+    <components xsi:type="glspComponentModel:CreateEdgeHandler" elementName="Transition"/>
+    <components xsi:type="glspComponentModel:DeleteHandler"/>
+    <components xsi:type="glspComponentModel:ToolPaletteItemProvider"/>
+    <components xsi:type="glspComponentModel:EMFSourceModelStorage"/>
+    <components xsi:type="glspComponentModel:GModelFactory"/>
+    <components xsi:type="glspComponentModel:ClientModelTypes"/>
+    <components xsi:type="glspComponentModel:ServerLauncher"/>
+    <components xsi:type="glspComponentModel:DiagramModule"/>
+    <components xsi:type="glspComponentModel:DiagramConfiguration"/>
+    <components xsi:type="glspComponentModel:IdGenerator"/>
+    <components xsi:type="glspComponentModel:ModelTypes"/>
+    <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="InitialState"/>
+    <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="NormalState"/>
+    <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="FinalState"/>
+    <components xsi:type="glspComponentModel:CreateEdgeHandler" elementName="Transition"/>
+    <components xsi:type="glspComponentModel:DeleteHandler"/>
+    <components xsi:type="glspComponentModel:ToolPaletteItemProvider"/>
+    <components xsi:type="glspComponentModel:EMFSourceModelStorage"/>
+    <components xsi:type="glspComponentModel:GModelFactory"/>
+    <components xsi:type="glspComponentModel:ClientModelTypes"/>
+    <components xsi:type="glspComponentModel:ServerLauncher"/>
+    <components xsi:type="glspComponentModel:DiagramModule"/>
+    <components xsi:type="glspComponentModel:DiagramConfiguration"/>
+    <components xsi:type="glspComponentModel:IdGenerator"/>
+    <components xsi:type="glspComponentModel:ModelTypes"/>
+    <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="InitialState"/>
+    <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="NormalState"/>
+    <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="FinalState"/>
+    <components xsi:type="glspComponentModel:CreateEdgeHandler" elementName="Transition"/>
+    <components xsi:type="glspComponentModel:DeleteHandler"/>
+    <components xsi:type="glspComponentModel:ToolPaletteItemProvider"/>
+    <components xsi:type="glspComponentModel:EMFSourceModelStorage"/>
+    <components xsi:type="glspComponentModel:GModelFactory"/>
+    <components xsi:type="glspComponentModel:ClientModelTypes"/>
+    <components xsi:type="glspComponentModel:ServerLauncher"/>
+    <components xsi:type="glspComponentModel:DiagramModule"/>
+    <components xsi:type="glspComponentModel:DiagramConfiguration"/>
+    <components xsi:type="glspComponentModel:IdGenerator"/>
+    <components xsi:type="glspComponentModel:ModelTypes"/>
+    <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="InitialState"/>
+    <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="NormalState"/>
+    <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="FinalState"/>
+    <components xsi:type="glspComponentModel:CreateEdgeHandler" elementName="Transition"/>
+    <components xsi:type="glspComponentModel:DeleteHandler"/>
+    <components xsi:type="glspComponentModel:ToolPaletteItemProvider"/>
+    <components xsi:type="glspComponentModel:EMFSourceModelStorage"/>
+    <components xsi:type="glspComponentModel:GModelFactory"/>
+    <components xsi:type="glspComponentModel:ClientModelTypes"/>
+  </glspComponentModel:ComponentModel>
+  <glspComponentModel:ComponentModel>
+    <components xsi:type="glspComponentModel:ProjectComponent"/>
+  </glspComponentModel:ComponentModel>
+  <glspComponentModel:ComponentModel>
+    <components xsi:type="glspComponentModel:ProjectComponent"/>
+  </glspComponentModel:ComponentModel>
+  <glspComponentModel:ComponentModel>
+    <components xsi:type="glspComponentModel:ProjectComponent"/>
+  </glspComponentModel:ComponentModel>
+</xmi:XMI>

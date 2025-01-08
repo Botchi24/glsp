@@ -38,6 +38,7 @@ const statemachineDiagramModule = new ContainerModule((bind, unbind, isBound, re
     configureDefaultModelElements(context);
     
     //configureModelElement(context, DefaultTypes.EDGE, GEdge, GEdgeView);
+	configureModelElement(context, 'initialState', GNode, RectangularNodeView);
 	configureModelElement(context, 'normalState', GNode, RectangularNodeView);
 	configureModelElement(context, 'finalState', GNode, RectangularNodeView);
 	configureModelElement(context, 'transition', GEdge, GEdgeView);

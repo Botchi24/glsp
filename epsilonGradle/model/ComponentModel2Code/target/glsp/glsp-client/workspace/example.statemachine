@@ -2,4 +2,6 @@
 <statemachine:StateMachine xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:statemachine="http://www.swt.org/most/statemachine" name="Statemachine">
   <states name="NewNormalState0"/>
   <states name="NewNormalState1"/>
+  <states name="NewNormalState2"/>
+  <finalstates name="NewFinalState1"/>
 </statemachine:StateMachine>

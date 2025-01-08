@@ -24,16 +24,20 @@
 	<feature automatic="selected" name="S21 XMI"/>
 	<feature automatic="unselected" name="S22 JSON"/>
 	<feature automatic="selected" name="S3 Element Creation"/>
-	<feature manual="selected" name="N_S31 use Command_NormalState"/>
+	<feature manual="selected" name="N_S31 use Command_InitialState"/>
+	<feature automatic="unselected" name="N_S31 use Command_NormalState"/>
 	<feature automatic="unselected" name="N_S31 use Command_FinalState"/>
 	<feature automatic="unselected" name="E_S31 use Command_Transition"/>
+	<feature automatic="unselected" name="N_S32 use Builder_InitialState"/>
 	<feature automatic="unselected" name="N_S32 use Builder_NormalState"/>
 	<feature automatic="unselected" name="N_S32 use Builder_FinalState"/>
 	<feature automatic="unselected" name="E_S32 use Builder_Transition"/>
 	<feature manual="selected" name="S4 Element Deletion"/>
+	<feature name="N_S5 Element Editing_InitialState"/>
 	<feature name="N_S5 Element Editing_NormalState"/>
 	<feature name="N_S5 Element Editing_FinalState"/>
 	<feature name="E_S5 Element Editing_Transition"/>
+	<feature name="N_S6 Element Validation_InitialState"/>
 	<feature name="N_S6 Element Validation_NormalState"/>
 	<feature name="N_S6 Element Validation_FinalState"/>
 	<feature name="E_S6 Element Validation_Transition"/>
@@ -54,6 +58,7 @@
 	<feature name="C1222 extended Elements"/>
 	<feature name="C123 Mapping to ShapeModel Views"/>
 	<feature name="C1231 Default Views"/>
+	<feature name="N_C1232 extended Views_InitialState"/>
 	<feature name="N_C1232 extended Views_NormalState"/>
 	<feature name="N_C1232 extended Views_FinalState"/>
 	<feature name="E_C1232 extended Views_Transition"/>
@@ -61,9 +66,11 @@
 	<feature name="Center"/>
 	<feature name="Fit to Screen"/>
 	<feature name="C3 Client Status Notification"/>
+	<feature name="N_C4 Element Editing_InitialState"/>
 	<feature name="N_C4 Element Editing_NormalState"/>
 	<feature name="N_C4 Element Editing_FinalState"/>
 	<feature name="E_C4 Element Editing_Transition"/>
+	<feature name="N_C5 Element Validation_InitialState"/>
 	<feature name="N_C5 Element Validation_NormalState"/>
 	<feature name="N_C5 Element Validation_FinalState"/>
 	<feature name="E_C5 Element Validation_Transition"/>

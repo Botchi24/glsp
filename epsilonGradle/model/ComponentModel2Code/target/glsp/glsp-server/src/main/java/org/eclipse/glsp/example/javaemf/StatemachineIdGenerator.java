@@ -21,6 +21,7 @@ import org.eclipse.glsp.server.emf.notation.EMFNotationModelState;
 import java.util.stream.Collectors;
 import com.google.inject.Inject;
 
+import swt.most.statemachine.InitialState;
 import swt.most.statemachine.NormalState;
 import swt.most.statemachine.FinalState;
 import swt.most.statemachine.Transition;
@@ -34,6 +35,9 @@ public class StatemachineIdGenerator implements EMFIdGenerator {
 	@Override
 	public String getOrCreateId(final EObject element) {
 	
+		if (element instanceof InitialState) {
+			return ((InitialState)element).getName();
+		}
 		if (element instanceof NormalState) {
 			return ((NormalState)element).getName();
 		}

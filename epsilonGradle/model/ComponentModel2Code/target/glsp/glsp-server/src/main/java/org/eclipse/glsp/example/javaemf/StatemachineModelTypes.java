@@ -21,6 +21,7 @@ import org.eclipse.glsp.graph.DefaultTypes;
 public final class StatemachineModelTypes {
    private StatemachineModelTypes() {}
 
+   public static final String INITIALSTATE = "initialState";
    public static final String NORMALSTATE = "normalState";
    public static final String FINALSTATE = "finalState";
    public static final String TRANSITION = "transition";

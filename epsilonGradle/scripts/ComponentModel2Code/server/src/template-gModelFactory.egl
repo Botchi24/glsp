@@ -48,19 +48,21 @@ public class [%=_metamodelName.firstToUpperCase()%]GModelFactory extends EMFNota
    protected void fillRootElement(final EObject semanticModel, final Diagram notationModel, final GModelRoot newRoot) {
       [%=_root%] [%=_root.firstToLowerCase()%] = [%=_root%].class.cast(semanticModel);
       GGraph graph = GGraph.class.cast(newRoot);
-      //if (notationModel.getSemanticElement() != null
-         //&& notationModel.getSemanticElement().getResolvedSemanticElement() != null) {
-         [%for ( n in _nodes){%]
-         [%=_root.firstToLowerCase()%].get[%=getReferenceName(n, _root).firstToUpperCase()%]().stream()
-            .map(this::create[%=n%]Node)
-            .forEachOrdered(graph.getChildren()::add);
-         [%}%]
-         [%for ( e in _edges){%]
-         [%=_root.firstToLowerCase()%].get[%=getReferenceName(e, _root).firstToUpperCase()%]().stream()
-            .map(this::create[%=e%]Edge)
-            .forEachOrdered(graph.getChildren()::add);
-         [%}%]
-      //}
+      [%for ( n in _nodes){%]
+      	[%if (getUpperBound(n, _root).isDefined() and getUpperBound(n, _root) == 1){%]
+      if ([%=_root.firstToLowerCase()%].get[%=getReferenceName(n, _root).firstToUpperCase()%]() != null)
+      	graph.getChildren().add(create[%=n%]Node([%=_root.firstToLowerCase()%].get[%=getReferenceName(n, _root).firstToUpperCase()%]()));
+      	[%}else{%]
+      [%=_root.firstToLowerCase()%].get[%=getReferenceName(n, _root).firstToUpperCase()%]().stream()
+      	.map(this::create[%=n%]Node)
+      	.forEachOrdered(graph.getChildren()::add);
+      	[%}%]
+      [%}%]
+      [%for ( e in _edges){%]
+      [%=_root.firstToLowerCase()%].get[%=getReferenceName(e, _root).firstToUpperCase()%]().stream()
+      	.map(this::create[%=e%]Edge)
+      	.forEachOrdered(graph.getChildren()::add);
+      [%}%]
    }
 
    [%for ( n in _nodes){%]
@@ -74,7 +76,6 @@ public class [%=_metamodelName.firstToUpperCase()%]GModelFactory extends EMFNota
       applyShapeData([%=n.firstToLowerCase()%], [%=n.firstToLowerCase()%]NodeBuilder);
       return [%=n.firstToLowerCase()%]NodeBuilder.build();
    }
-   
    [%}%]
    
    [%for ( e in _edges){%]
@@ -87,8 +88,7 @@ public class [%=_metamodelName.firstToUpperCase()%]GModelFactory extends EMFNota
           
       applyEdgeData([%=e.firstToLowerCase()%], [%=e.firstToLowerCase()%]EdgeBuilder);
       return [%=e.firstToLowerCase()%]EdgeBuilder.build();
-   }
-   
+   }   
    [%}%]
 
 }

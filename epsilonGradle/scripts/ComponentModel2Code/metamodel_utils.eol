@@ -1,21 +1,41 @@
 operation getReferenceName(elementName : String, container : String) : String {
 	var _container = metamodel!EClassifier.all.selectOne(c|c.name == container); //viewpointModel!Root.all.first.name);
 	
-	for (reference in _container.eStructuralFeatures.select(f|f.containment == true)) {
-		if (reference.eType.name == elementName) {
-			return reference.name;
+	for (feature in _container.eStructuralFeatures.select(f|f.containment == true)) {
+		if (feature.eType.name == elementName) {
+			return feature.name;
 		}
 	}
 	
 	// TODO: test recursive call
-	for (reference in _container.eStructuralFeatures.select(f|f.containment == true)) {
-		var referenceName = getReferenceName(elementName, reference.eType.name);
+	for (feature in _container.eStructuralFeatures.select(f|f.containment == true)) {
+		var referenceName = getReferenceName(elementName, feature.eType.name);
 		if (referenceName.isDefined()) {
 			return referenceName;
 		}
 	}
 	
 	//return metamodelSpecificSettings!t_root.all.first.children.select(c|c.a_name == elementName).first.a_referenceName;
+	return null;
+}
+
+operation getUpperBound(elementName : String, container : String) : Integer {
+	var _container = metamodel!EClassifier.all.selectOne(c|c.name == container);
+	
+	for (feature in _container.eStructuralFeatures.select(f|f.containment == true)) {
+		if (feature.eType.name == elementName) {
+			return feature.upperbound;
+		}
+	}
+	
+	// TODO: test recursive call
+	for (feature in _container.eStructuralFeatures.select(f|f.containment == true)) {
+		var upperBound = getUpperBound(elementName, feature.eType.name);
+		if (upperBound.isDefined()) {
+			return upperBound;
+		}
+	}
+	
 	return null;
 }
 
