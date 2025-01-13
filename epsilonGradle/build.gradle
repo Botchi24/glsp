@@ -35,6 +35,17 @@ task register_metamodel {
     }
 }
 
+task register_genmodel {
+	dependsOn tasks.setupEpsilonTasks
+	
+	doFirst{
+		ant.'epsilon.xml.loadModel'( name:          'genmodel', 
+    	                             file:     		dir_metamodel + 'statemachine.genmodel',
+    	                             read:          "true",
+    	                             store:         "false")
+    }
+}
+
 task register_viewpointModel {
 	dependsOn tasks.setupEpsilonTasks
 	
@@ -145,18 +156,20 @@ task createComponentModel {
 }
 
 task createEditor {
-	dependsOn register_metamodel, register_viewpointModel, register_componentModel_read
+	dependsOn register_metamodel, register_genmodel, register_viewpointModel, register_componentModel_read
 	
 	doFirst{
 		ant.'epsilon.egl'(src: dir_script + "ComponentModel2Code/generate.egx"){
 						  model(ref: "componentModel_read")
 						  model(ref: "metamodel")
+						  model(ref: "genmodel")
 		                  model(ref: "viewpointModel")
 		}
 	}
 	
 	doLast{
 		ant.'epsilon.disposeModel'(model: "metamodel")
+		ant.'epsilon.disposeModel'(model: "genmodel")
 		ant.'epsilon.disposeModel'(model: "viewpointModel")
         ant.'epsilon.disposeModel'(model: "componentModel_read")
     }

@@ -1,10 +1,10 @@
 pre {
+	var packageName = "org.eclipse.glsp.example.javaemf";
 	var metamodelName = metamodel!EPackage.all.first.name;
 	var metamodelNsUri = metamodel!EPackage.all.first.nsURI;
-	var packageName = "org.eclipse.glsp.example.javaemf";
 	var folderStructure = packageName.replaceAll('\\.', '/') + "/";
-	var metamodelPackageName = "swt.most";
-	var metamodelPrefix = "Statemachine";
+	var metamodelPackageName = genmodel!t_genPackages.all.first.a_basePackage;
+	var metamodelPrefix = genmodel!t_genPackages.all.first.a_prefix;
 	var metamodelElements = metamodel!EClassifier.all.select(c|not c.abstract).collect(c|c.name);
 	var root = viewpointModel!Root.all.first.name;
 	var nodes = viewpointModel!Node.all.collect(n|n.name);
