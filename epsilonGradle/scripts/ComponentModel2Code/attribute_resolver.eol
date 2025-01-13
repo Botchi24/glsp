@@ -71,6 +71,9 @@ operation getIdAttributeRecursive(elementName: String) : String {
 }
 
 operation getStyleValue(elementName : String, styleName : String) : String {
-	// if
-	return viewpointModel!ModelElement.all.selectOne(e|e.name.matches(elementName)).style.styleelement.selectOne(s|s.name.matches(styleName)).value;
+	var style = viewpointModel!ModelElement.all.selectOne(e|e.name.matches(elementName)).style; 
+	if (style.isUndefined()) return "";
+	var value = style.styleelement.selectOne(s|s.name.matches(styleName)).value;
+	if (value.isUndefined()) return "";
+	return value;
 }

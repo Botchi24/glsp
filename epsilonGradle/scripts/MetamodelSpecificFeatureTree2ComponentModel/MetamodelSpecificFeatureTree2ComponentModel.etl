@@ -1,5 +1,6 @@
 pre {
-
+	var nodes = viewpointModel!Node.all.collect(n|n.name);
+	var edges = viewpointModel!Edge.all.collect(e|e.name);
 }
 
 
@@ -52,14 +53,17 @@ rule CreateNodeHandler
 	transform s : glspFeatureTreeConfiguration!t_feature
 	to t : componentModel_store!CreateNodeHandler {
 	
-		guard : s.a_name.startsWith("N_S31 use Command_")
+		guard : s.a_name.startsWith("E_S31 use Command_")
 		
-		("CreateNodeHandler_" + s.a_name.substring("N_S31 use Command_".length(), s.a_name.length())).println();
+		for (n in nodes) {
+			if (s.a_name.contains(n)) {
+				("CreateNodeHandler_" + s.a_name.substring("E_S31 use Command_".length(), s.a_name.length())).println();
 		
-		t.elementName = s.a_name.substring("N_S31 use Command_".length(), s.a_name.length());
+				t.elementName = s.a_name.substring("E_S31 use Command_".length(), s.a_name.length());
 		
-		componentModel_store!ComponentModel.all.first.components.add(t);
-	
+				componentModel_store!ComponentModel.all.first.components.add(t);
+			}
+		}
 }
 
 
@@ -69,12 +73,15 @@ rule CreateEdgeHandler
 	
 		guard : s.a_name.startsWith("E_S31 use Command_")
 		
-		("CreateEdgeHandler_" + s.a_name.substring("E_S31 use Command_".length(), s.a_name.length())).println();
+		for (e in edges) {
+			if (s.a_name.contains(e)) {
+				("CreateEdgeHandler_" + s.a_name.substring("E_S31 use Command_".length(), s.a_name.length())).println();
 		
-		t.elementName = s.a_name.substring("E_S31 use Command_".length(), s.a_name.length());
+				t.elementName = s.a_name.substring("E_S31 use Command_".length(), s.a_name.length());
 
-		componentModel_store!ComponentModel.all.first.components.add(t);
-	
+				componentModel_store!ComponentModel.all.first.components.add(t);
+			}
+		}
 }
 
 

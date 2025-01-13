@@ -34,6 +34,6 @@ svg {
 
 [%for ( e in _edges){%]
 .[%=_metamodelName%]-[%=e%]-edge {
-    
+    [%=getStyleValue(e, "css")%]
 }
 [%}%]

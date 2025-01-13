@@ -3,5 +3,8 @@
   <states name="NewNormalState0"/>
   <states name="NewNormalState1"/>
   <states name="NewNormalState2"/>
+  <states name="NewNormalState3"/>
   <finalstates name="NewFinalState1"/>
+  <finalstates name="NewFinalState0"/>
+  <finalstates name="NewFinalState2"/>
 </statemachine:StateMachine>

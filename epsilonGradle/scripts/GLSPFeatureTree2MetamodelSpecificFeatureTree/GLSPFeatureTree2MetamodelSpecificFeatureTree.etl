@@ -166,7 +166,8 @@ function metamodelSpecificFeatureTree!t_and processAndFeature(oldFeature : glspF
 			var feature = new metamodelSpecificFeatureTree!t_feature;
 			feature.a_abstract = oldFeature.a_abstract;
 			feature.a_mandatory = oldFeature.a_mandatory;
-			feature.a_name = oldFeature.a_name.replaceFirst("E", "N") + "_" + e;
+			//feature.a_name = oldFeature.a_name.replaceFirst("E", "N") + "_" + e;
+			feature.a_name = oldFeature.a_name + "_" + e;
 			feature.a_hidden = oldFeature.a_hidden;
 			self.appendChild(feature);
 		}
@@ -178,6 +179,14 @@ function metamodelSpecificFeatureTree!t_and processAndFeature(oldFeature : glspF
 			feature.a_hidden = oldFeature.a_hidden;
 			self.appendChild(feature);
 		}
+//		for (e in metamodelelements) { //metamodelelements
+//			var feature = new metamodelSpecificFeatureTree!t_feature;
+//			feature.a_abstract = oldFeature.a_abstract;
+//			feature.a_mandatory = oldFeature.a_mandatory;
+//			feature.a_name = oldFeature.a_name + "_" + e;
+//			feature.a_hidden = oldFeature.a_hidden;
+//			self.appendChild(feature);
+//		}
 	} else {
 		self.appendChild(oldFeature.equivalent());
 	}
@@ -191,7 +200,8 @@ function metamodelSpecificFeatureTree!t_alt processAltFeature(oldFeature : glspF
 			var feature = new metamodelSpecificFeatureTree!t_feature;
 			feature.a_abstract = oldFeature.a_abstract;
 			feature.a_mandatory = oldFeature.a_mandatory;
-			feature.a_name = oldFeature.a_name.replaceFirst("E", "N") + "_" + e;
+			//feature.a_name = oldFeature.a_name.replaceFirst("E", "N") + "_" + e;
+			feature.a_name = oldFeature.a_name + "_" + e;
 			feature.a_hidden = oldFeature.a_hidden;
 			self.appendChild(feature);
 		}
@@ -203,6 +213,14 @@ function metamodelSpecificFeatureTree!t_alt processAltFeature(oldFeature : glspF
 			feature.a_hidden = oldFeature.a_hidden;
 			self.appendChild(feature);
 		}
+//		for (e in metamodelelements) { //metamodelelements
+//			var feature = new metamodelSpecificFeatureTree!t_feature;
+//			feature.a_abstract = oldFeature.a_abstract;
+//			feature.a_mandatory = oldFeature.a_mandatory;
+//			feature.a_name = oldFeature.a_name + "_" + e;
+//			feature.a_hidden = oldFeature.a_hidden;
+//			self.appendChild(feature);
+//		}
 	} else {
 		self.appendChild(oldFeature.equivalent());
 	}

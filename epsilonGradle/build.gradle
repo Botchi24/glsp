@@ -25,67 +25,83 @@ task setupEpsilonTasks {
 
 task register_metamodel {
 	dependsOn tasks.setupEpsilonTasks
-	ant.'epsilon.emf.loadModel'( name:          'metamodel', 
-                                 modelfile:     dir_metamodel + 'statemachine.ecore',
-                                 metamodelfile:	dir_metamodel + 'ecore.ecore',
-                                 read:          "true",
-                                 store:         "false")
+	
+	doFirst{
+		ant.'epsilon.emf.loadModel'( name:          'metamodel', 
+    	                             modelfile:     dir_metamodel + 'statemachine.ecore',
+    	                             metamodelfile:	dir_metamodel + 'ecore.ecore',
+    	                             read:          "true",
+    	                             store:         "false")
+    }
 }
 
 task register_viewpointModel {
 	dependsOn tasks.setupEpsilonTasks
-	ant.'epsilon.emf.loadModel'( name:          'viewpointModel', 
-                                 modelfile:     dir_model + 'viewpointModel.viewpointModel',
-                                 metamodelfile:	dir_metamodel + 'viewpointModel.ecore',
-                                 read:          "true",
-                                 store:         "false")
+	
+	doFirst{
+		ant.'epsilon.emf.loadModel'( name:          'viewpointModel', 
+    	                             modelfile:     dir_model + 'viewpointModel.viewpointModel',
+    	                             metamodelfile:	dir_metamodel + 'viewpointModel.ecore',
+    	                             read:          "true",
+    	                             store:         "false")
+	}
 }
 
 task register_glspFeatureTree {
     dependsOn tasks.setupEpsilonTasks
-    ant.'epsilon.xml.loadModel'( name:          'glspFeatureTree', 
-                                 file:     		dir_model + 'GLSPFeatureTree2MetamodelSpecificFeatureTree/' + dir_source + 'GLSPFeatureTree.xml',
-                                 read:          "true",
-                                 store:         "false")
-
+    
+    doFirst{
+    	ant.'epsilon.xml.loadModel'( name:          'glspFeatureTree', 
+    	                             file:     		dir_model + 'GLSPFeatureTree2MetamodelSpecificFeatureTree/' + dir_source + 'GLSPFeatureTree.xml',
+    	                             read:          "true",
+    	                             store:         "false")
+	}
 }
 
 task register_metamodelSpecificFeatureTree {
     dependsOn tasks.setupEpsilonTasks
-    ant.'epsilon.xml.loadModel'( name:          'metamodelSpecificFeatureTree', 
-                                 file:     		dir_model + 'GLSPFeatureTree2MetamodelSpecificFeatureTree/' + dir_target + 'MetamodelSpecificFeatureTree.xml',
-                                 read:          "false",
-                                 store:         "true")
-
+    
+    doFirst{
+    	ant.'epsilon.xml.loadModel'( name:          'metamodelSpecificFeatureTree', 
+    	                             file:     		dir_model + 'GLSPFeatureTree2MetamodelSpecificFeatureTree/' + dir_target + 'MetamodelSpecificFeatureTree.xml',
+    	                             read:          "false",
+    	                             store:         "true")
+	}
 }
 
 task register_glspFeatureTreeConfiguration {
     dependsOn tasks.setupEpsilonTasks
-    ant.'epsilon.xml.loadModel'( name:          'glspFeatureTreeConfiguration', 
-                                 file:     		dir_model + 'GLSPFeatureTree2MetamodelSpecificFeatureTree/' + dir_target + 'configs/default.xml',
-                                 read:          "true",
-                                 store:         "false")
-
+    
+    doFirst{
+    	ant.'epsilon.xml.loadModel'( name:          'glspFeatureTreeConfiguration', 
+    	                             file:     		dir_model + 'GLSPFeatureTree2MetamodelSpecificFeatureTree/' + dir_target + 'configs/default.xml',
+    	                             read:          "true",
+    	                             store:         "false")
+	}
 }
 
 task register_componentModel_store {
     dependsOn tasks.setupEpsilonTasks
-    ant.'epsilon.emf.loadModel'( name:          'componentModel_store', 
-                                 modelfile:     dir_model + 'MetamodelSpecificFeatureTree2ComponentModel/' + dir_target + 'componentModel.glspComponentModel',
-                                 metamodelfile:	dir_metamodel + 'glspComponentModel.ecore',
-                                 read:          "false",
-                                 store:         "true")
-
+    
+    doFirst{
+    	ant.'epsilon.emf.loadModel'( name:          'componentModel_store', 
+    	                             modelfile:     dir_model + 'MetamodelSpecificFeatureTree2ComponentModel/' + dir_target + 'componentModel.glspComponentModel',
+    	                             metamodelfile:	dir_metamodel + 'glspComponentModel.ecore',
+    	                             read:          "false",
+    	                             store:         "true")
+	}
 }
 
 task register_componentModel_read {
     dependsOn tasks.setupEpsilonTasks
-    ant.'epsilon.emf.loadModel'( name:          'componentModel_read', 
-                                 modelfile:     dir_model + 'MetamodelSpecificFeatureTree2ComponentModel/' + dir_target + 'componentModel.glspComponentModel',
-                                 metamodelfile:	dir_metamodel + 'glspComponentModel.ecore',
-                                 read:          "true",
-                                 store:         "false")
-
+    
+    doFirst{
+    	ant.'epsilon.emf.loadModel'( name:          'componentModel_read', 
+    	                             modelfile:     dir_model + 'MetamodelSpecificFeatureTree2ComponentModel/' + dir_target + 'componentModel.glspComponentModel',
+    	                             metamodelfile:	dir_metamodel + 'glspComponentModel.ecore',
+    	                             read:          "true",
+    	                             store:         "false")
+	}
 }
 
 task prepareMetamodelSpecificFeatureTree {
@@ -97,7 +113,7 @@ task prepareMetamodelSpecificFeatureTree {
 		                  model(ref: "viewpointModel")
                           model(ref: "glspFeatureTree")
                           model(ref: "metamodelSpecificFeatureTree")
-            }
+        }
     }
 
     doLast{
@@ -110,17 +126,19 @@ task prepareMetamodelSpecificFeatureTree {
 }
 
 task createComponentModel {
-	dependsOn register_glspFeatureTreeConfiguration, register_componentModel_store
+	dependsOn register_glspFeatureTreeConfiguration, register_viewpointModel, register_componentModel_store
 	
 	doFirst{
 		ant.'epsilon.etl'(src: dir_script + "MetamodelSpecificFeatureTree2ComponentModel/MetamodelSpecificFeatureTree2ComponentModel.etl"){ 
 						  model(ref: "glspFeatureTreeConfiguration")
+						  model(ref: "viewpointModel")
                           model(ref: "componentModel_store")
 		}
 	}
 	
 	doLast{
-		//ant.'epsilon.disposeModel'(model: "glspFeatureTreeConfiguration")
+		ant.'epsilon.disposeModel'(model: "glspFeatureTreeConfiguration")
+		ant.'epsilon.disposeModel'(model: "viewpointModel")
 		ant.'epsilon.disposeModel'(model: "componentModel_store")
     }
     
