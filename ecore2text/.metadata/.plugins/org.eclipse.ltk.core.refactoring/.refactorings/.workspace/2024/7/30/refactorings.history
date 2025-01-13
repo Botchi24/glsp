@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;featuretree2metamodelspecificfeaturetree&apos; to &apos;ecore2text&apos;" description="Rename resource &apos;featuretree2metamodelspecificfeaturetree&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/featuretree2metamodelspecificfeaturetree" name="ecore2text" stamp="1721725726847" updateReferences="true"/>
-</session>
