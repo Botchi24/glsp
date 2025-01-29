@@ -19,6 +19,7 @@ package [%=_packageName%];
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.glsp.server.emf.EMFIdGenerator;
 import org.eclipse.glsp.server.emf.notation.EMFNotationModelState;
+import org.eclipse.glsp.server.emf.model.notation.Shape;
 import java.util.stream.Collectors;
 import com.google.inject.Inject;
 
@@ -38,6 +39,9 @@ public class [%=_metamodelName.firstToUpperCase()%]IdGenerator implements EMFIdG
 	@Override
 	public String getOrCreateId(final EObject element) {
 	
+		if (element instanceof Shape) {
+			return ((Shape)element).getSemanticElement().getElementId();
+		}
 	[%for ( n in _nodes){%]
 		if (element instanceof [%=n%]) {
 			return [%=resolvedId(n)%];

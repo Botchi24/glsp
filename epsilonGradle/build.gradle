@@ -115,6 +115,21 @@ task register_componentModel_read {
 	}
 }
 
+task prepareSettings {
+	dependsOn register_metamodel
+	
+	doFirst{
+		ant.'epsilon.egl'(src: dir_script + "Metamodel2ViewpointModel/Metamodel2ViewpointModel.egx"){ 
+						  model(ref: "metamodel")
+		}
+	}
+	
+	doLast{
+		ant.'epsilon.disposeModel'(model: "metamodel")
+    }
+    
+}
+
 task prepareMetamodelSpecificFeatureTree {
     dependsOn register_metamodel, register_viewpointModel, register_glspFeatureTree, register_metamodelSpecificFeatureTree
 

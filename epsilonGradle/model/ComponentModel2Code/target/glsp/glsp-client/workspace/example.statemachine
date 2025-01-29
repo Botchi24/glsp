@@ -1,10 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<statemachine:StateMachine xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:statemachine="http://www.swt.org/most/statemachine" name="Statemachine">
-  <states name="NewNormalState0"/>
-  <states name="NewNormalState1"/>
-  <states name="NewNormalState2"/>
-  <states name="NewNormalState3"/>
-  <finalstates name="NewFinalState1"/>
-  <finalstates name="NewFinalState0"/>
-  <finalstates name="NewFinalState2"/>
-</statemachine:StateMachine>
+<statemachine:StateMachine xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:statemachine="http://www.swt.org/most/statemachine" name="Statemachine"/>
