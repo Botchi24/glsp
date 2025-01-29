@@ -23,6 +23,7 @@ import java.util.function.Function;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.glsp.example.javaemf.StatemachineModelTypes;
 import swt.most.statemachine.StatemachineFactory;

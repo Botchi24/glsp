@@ -130,7 +130,12 @@ rule DeleteHandler
 	transform deleteHandler : componentModel_read!DeleteHandler {
 	
 	parameters : Map {
-		"_packageName" = packageName
+		"_packageName" = packageName,
+		"_metamodelPackageName" = metamodelPackageName,
+		"_metamodelPrefix" = metamodelPrefix,
+		"_root" = root,
+		"_nodes" = nodes,
+		"_edges" = edges
 	}
 	
 	template : "./server/src/template-deleteHandler.egl"

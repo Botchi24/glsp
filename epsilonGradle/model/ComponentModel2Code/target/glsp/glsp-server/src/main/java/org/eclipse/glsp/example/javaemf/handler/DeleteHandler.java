@@ -27,18 +27,22 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.glsp.server.emf.EMFOperationHandler;
 import org.eclipse.glsp.server.emf.model.notation.NotationElement;
-import org.eclipse.glsp.server.emf.notation.EMFNotationModelIndex;
+//import org.eclipse.glsp.server.emf.notation.EMFNotationModelIndex;
 import org.eclipse.glsp.server.emf.notation.EMFNotationModelState;
 import org.eclipse.glsp.server.emf.EMFIdGenerator;
 import org.eclipse.glsp.server.emf.model.notation.NotationElement;
+import org.eclipse.glsp.server.emf.model.notation.Shape;
 import org.eclipse.glsp.server.operations.DeleteOperation;
 import swt.most.statemachine.StatemachinePackage;
+import swt.most.statemachine.InitialState;
+import swt.most.statemachine.NormalState;
+import swt.most.statemachine.FinalState;
 import swt.most.statemachine.Transition;
 import swt.most.statemachine.StateMachine;
-import swt.most.statemachine.State;
 
 import com.google.inject.Inject;
 
@@ -62,7 +66,7 @@ public class DeleteHandler extends EMFOperationHandler<DeleteOperation> {
          return Optional.empty();
       }
 
-      System.err.println("[DeleteNodeHandler] Starting deletion for elements: " + elementIds);
+      //System.err.println("[DeleteNodeHandler] Starting deletion for elements: " + elementIds);
       
       List<Command> commands = createDeleteCommands(elementIds);
       if (commands.isEmpty()) {
@@ -73,21 +77,27 @@ public class DeleteHandler extends EMFOperationHandler<DeleteOperation> {
    }
 
    private List<Command> createDeleteCommands(final List<String> elementIds) {
-      EMFNotationModelIndex index = modelState.getIndex();
+      //EMFNotationModelIndex index = modelState.getIndex();
       alreadyDeletedEdges = new HashSet<>();
       
       List<Command> commands = new ArrayList<>();
       for (String elementId : elementIds) {
-         Optional<EObject> semanticElement = index.get(elementId).flatMap(e -> index.getEObject(e));
-         Optional<NotationElement> notationElement = semanticElement.flatMap(e -> index.getNotation(e));
+         //Optional<EObject> semanticElement = index.get(elementId).flatMap(e -> index.getEObject(e));
+         Optional<EObject> semanticElement = modelState.getSemanticModel().eContents().stream()
+                 .map(obj -> (EObject) obj)
+                 .filter(obj -> idGenerator.getOrCreateId(obj).equals(elementId))
+                 .findFirst();
+         //Optional<NotationElement> notationElement = semanticElement.flatMap(e -> index.getNotation(e));
+         Optional<NotationElement> notationElement = modelState.getNotationModel().eContents().stream()
+                 .filter(obj -> obj instanceof Shape)
+                 .map(obj -> (NotationElement) obj)
+                 .filter(obj -> idGenerator.getOrCreateId(obj).equals(elementId))
+                 .findFirst();
+                 
+         //System.err.println("[DeleteNodeHandler] Semantic element ID: " + elementId);
          if (semanticElement.isEmpty()) {
              System.err.println("[DeleteNodeHandler] Could not find semantic element for ID: " + elementId);
-             System.err.println("[DeleteNodeHandler] Could not find semantic element for ID in index: " + index.get(elementId));
-             semanticElement = modelState.getSemanticModel().eContents().stream()
-                     //.filter(obj -> obj instanceof Transition)
-                     .map(obj -> (EObject) obj)
-                     .filter(obj -> idGenerator.getOrCreateId(obj).equals(elementId))
-                     .findFirst();
+             //System.err.println("[DeleteNodeHandler] Could not find semantic element for ID in index: " + index.get(elementId));    
          }
          semanticElement.map(this::createDependentRemoveCommand).ifPresent(commands::addAll);
          notationElement.map(this::createDependentRemoveCommand).ifPresent(commands::addAll);
@@ -98,51 +108,106 @@ public class DeleteHandler extends EMFOperationHandler<DeleteOperation> {
    private List<Command> createDependentRemoveCommand(final EObject element) {
 	  EObject semanticModel = modelState.getSemanticModel();
 	  StateMachine stateMachine = StateMachine.class.cast(semanticModel);
-	  EMFNotationModelIndex index = modelState.getIndex();
+	  //EMFNotationModelIndex index = modelState.getIndex();
       EditingDomain editingDomain = modelState.getEditingDomain();
       List<Command> commands = new ArrayList<>();
       
       
-      String elementClassName = element.eClass().getName();
-      System.err.println("createDependentRemoveCommand: Processing element of class - " + elementClassName);
+      //String elementClassName = element.eClass().getName();
+      //System.err.println("createDependentRemoveCommand: Processing element of class - " + elementClassName);
       
-      if (element instanceof State state) {
+      if (element instanceof InitialState initialState) {
+    	  String initialStateId = idGenerator.getOrCreateId(initialState);
+          //System.err.println("Processing InitialState with ID: " + initialStateId);
     	  
-    	  String stateId = idGenerator.getOrCreateId(state);
-          System.err.println("Processing State with ID: " + stateId);
-    	  
-                   
           stateMachine.getTransitions().stream()
-          .filter(edge -> edge.getFrom() == state || edge.getTo() == state)
+          .filter(edge -> edge.getFrom() == initialState || edge.getTo() == initialState)
           .collect(Collectors.toList())
     	  .forEach(
           edge -> {
-              System.err.println("Removing Transition with ID(" + idGenerator.getOrCreateId(edge) + ") connected to State ID: " + stateId);
+              //System.err.println("Removing Transition with ID(" + idGenerator.getOrCreateId(edge) + ") connected to InitialState ID: " + initialStateId);
               commands.addAll(createRemoveEdgeCommand(edge));
           });
           
     	  //state.getOutArcs().forEach(arc -> commands.addAll(createRemoveEdgeCommand(arc)));
           //state.getInArcs().forEach(arc -> commands.addAll(createRemoveEdgeCommand(arc)));
-      } else if (element instanceof Transition transition) {
-    	  String transitionId = idGenerator.getOrCreateId(transition);
-          System.err.println("Processing Transition with ID: " + transitionId);
+          
+          
+          //String elementId = idGenerator.getOrCreateId(element);
+          //System.err.println("Removing element with ID: " + elementId);
+          
+          commands.add(
+              SetCommand.create(editingDomain, element.eContainer(), element.eContainingFeature(), SetCommand.UNSET_VALUE)
+          );
+          return commands;
+      }
+      
+      if (element instanceof NormalState normalState) {
+    	  String normalStateId = idGenerator.getOrCreateId(normalState);
+          //System.err.println("Processing NormalState with ID: " + normalStateId);
     	  
-          // remove out and in arcs
+          stateMachine.getTransitions().stream()
+          .filter(edge -> edge.getFrom() == normalState || edge.getTo() == normalState)
+          .collect(Collectors.toList())
+    	  .forEach(
+          edge -> {
+              //System.err.println("Removing Transition with ID(" + idGenerator.getOrCreateId(edge) + ") connected to NormalState ID: " + normalStateId);
+              commands.addAll(createRemoveEdgeCommand(edge));
+          });
+          
+    	  //state.getOutArcs().forEach(arc -> commands.addAll(createRemoveEdgeCommand(arc)));
+          //state.getInArcs().forEach(arc -> commands.addAll(createRemoveEdgeCommand(arc)));
+          
+          
+          //String elementId = idGenerator.getOrCreateId(element);
+          //System.err.println("Removing element with ID: " + elementId);
+          
+          commands.add(
+              RemoveCommand.create(editingDomain, element.eContainer(), element.eContainingFeature(), element)
+          );
+          return commands;
+      }
+      
+      if (element instanceof FinalState finalState) {
+    	  String finalStateId = idGenerator.getOrCreateId(finalState);
+          //System.err.println("Processing FinalState with ID: " + finalStateId);
+    	  
+          stateMachine.getTransitions().stream()
+          .filter(edge -> edge.getFrom() == finalState || edge.getTo() == finalState)
+          .collect(Collectors.toList())
+    	  .forEach(
+          edge -> {
+              //System.err.println("Removing Transition with ID(" + idGenerator.getOrCreateId(edge) + ") connected to FinalState ID: " + finalStateId);
+              commands.addAll(createRemoveEdgeCommand(edge));
+          });
+          
+    	  //state.getOutArcs().forEach(arc -> commands.addAll(createRemoveEdgeCommand(arc)));
+          //state.getInArcs().forEach(arc -> commands.addAll(createRemoveEdgeCommand(arc)));
+          
+          
+          //String elementId = idGenerator.getOrCreateId(element);
+          //System.err.println("Removing element with ID: " + elementId);
+          
+          commands.add(
+              RemoveCommand.create(editingDomain, element.eContainer(), element.eContainingFeature(), element)
+          );
+          return commands;
+      }
+      
+      
+      if (element instanceof Transition transition) {
+    	  //String transitionId = idGenerator.getOrCreateId(transition);
+          //System.err.println("Processing Transition with ID: " + transitionId);
+    	  
           commands.addAll(createRemoveEdgeCommand(transition));
           return commands;
       }
       
-      String elementId = idGenerator.getOrCreateId(element);
-      System.err.println("Removing element with ID: " + elementId);
-      
+
       commands.add(
               RemoveCommand.create(editingDomain, element.eContainer(), element.eContainingFeature(), element)
       );
-
       return commands;
-      
-      //return RemoveCommand.create(editingDomain, element.eContainer(), element.eContainingFeature(), element);
-   
    }
    
    protected List<Command> createRemoveEdgeCommand(Transition transition){
@@ -150,7 +215,7 @@ public class DeleteHandler extends EMFOperationHandler<DeleteOperation> {
 	      List<Command> commands = new ArrayList<>();
 
 	      String transitionId = idGenerator.getOrCreateId(transition);
-	      System.err.println("createRemoveEdgeCommand - Transition ID to delete: " + transitionId);
+	      //System.err.println("createRemoveEdgeCommand - Transition ID to delete: " + transitionId);
 	      //System.err.println("createRemoveEdgeCommand - EditingDomain: " + editingDomain.getCommandStack().toString());
 	      
 	      // prevents duplicate remove commands for arcs since they can also be removed as a consequence
@@ -177,6 +242,7 @@ public class DeleteHandler extends EMFOperationHandler<DeleteOperation> {
 
 	      return commands;
 	   }
+
 	   
    protected boolean constraintSatisfied() {
 	   // USER INSERTS CONSTRAINT FOR DELETION HERE

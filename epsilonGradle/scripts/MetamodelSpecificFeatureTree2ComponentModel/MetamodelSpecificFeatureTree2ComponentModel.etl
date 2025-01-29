@@ -55,6 +55,8 @@ rule CreateNodeHandler
 	
 		guard : s.a_name.startsWith("E_S31 use Command_")
 		
+		var deleteHandler = true;
+		
 		for (n in nodes) {
 			if (s.a_name.contains(n)) {
 				("CreateNodeHandler_" + s.a_name.substring("E_S31 use Command_".length(), s.a_name.length())).println();
@@ -62,8 +64,12 @@ rule CreateNodeHandler
 				t.elementName = s.a_name.substring("E_S31 use Command_".length(), s.a_name.length());
 		
 				componentModel_store!ComponentModel.all.first.components.add(t);
+				
+				deleteHandler = false;
 			}
 		}
+		
+		if (deleteHandler) delete t;
 }
 
 
@@ -73,6 +79,8 @@ rule CreateEdgeHandler
 	
 		guard : s.a_name.startsWith("E_S31 use Command_")
 		
+		var deleteHandler = true;
+		
 		for (e in edges) {
 			if (s.a_name.contains(e)) {
 				("CreateEdgeHandler_" + s.a_name.substring("E_S31 use Command_".length(), s.a_name.length())).println();
@@ -80,8 +88,12 @@ rule CreateEdgeHandler
 				t.elementName = s.a_name.substring("E_S31 use Command_".length(), s.a_name.length());
 
 				componentModel_store!ComponentModel.all.first.components.add(t);
+				
+				deleteHandler = false;
 			}
 		}
+		
+		if (deleteHandler) delete t;
 }
 
 

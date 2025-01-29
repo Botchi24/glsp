@@ -18,6 +18,7 @@ package org.eclipse.glsp.example.javaemf;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.glsp.server.emf.EMFIdGenerator;
 import org.eclipse.glsp.server.emf.notation.EMFNotationModelState;
+import org.eclipse.glsp.server.emf.model.notation.Shape;
 import java.util.stream.Collectors;
 import com.google.inject.Inject;
 
@@ -35,6 +36,9 @@ public class StatemachineIdGenerator implements EMFIdGenerator {
 	@Override
 	public String getOrCreateId(final EObject element) {
 	
+		if (element instanceof Shape) {
+			return ((Shape)element).getSemanticElement().getElementId();
+		}
 		if (element instanceof InitialState) {
 			return ((InitialState)element).getName();
 		}

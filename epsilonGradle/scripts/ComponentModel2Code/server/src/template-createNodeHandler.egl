@@ -25,6 +25,7 @@ import java.util.function.Function;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import [%=_packageName%].[%=_metamodelName.firstToUpperCase()%]ModelTypes;
 import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=_metamodelPrefix%]Factory;
@@ -80,8 +81,13 @@ public class Create[%=createNodeHandler.elementName%]NodeHandler extends EMFCrea
       EditingDomain editingDomain = modelState.getEditingDomain();
 
       [%=createNodeHandler.elementName%] new[%=createNodeHandler.elementName%] = create[%=createNodeHandler.elementName%]();
+      [%if (getUpperBound(createNodeHandler.elementName, _root).isDefined() and getUpperBound(createNodeHandler.elementName, _root) == 1){%]
+      Command [%=createNodeHandler.elementName.firstToLowerCase()%]Command = SetCommand.create(editingDomain, [%=_root.firstToLowerCase()%],
+         [%=_metamodelPrefix%]Package.Literals.[%=_root.charAt(0)%][%for (i in Sequence{1.._root.length()-1}){%][%if(_root.substring(i,i+1).matches("[A-Z]")){%]_[%}%][%=_root.substring(i,i+1).toUpperCase()%][%}%]__[%=getReferenceName(createNodeHandler.elementName, _root).toUpperCase()%], new[%=createNodeHandler.elementName%]);
+      [%}else{%]
       Command [%=createNodeHandler.elementName.firstToLowerCase()%]Command = AddCommand.create(editingDomain, [%=_root.firstToLowerCase()%],
          [%=_metamodelPrefix%]Package.Literals.[%=_root.charAt(0)%][%for (i in Sequence{1.._root.length()-1}){%][%if(_root.substring(i,i+1).matches("[A-Z]")){%]_[%}%][%=_root.substring(i,i+1).toUpperCase()%][%}%]__[%=getReferenceName(createNodeHandler.elementName, _root).toUpperCase()%], new[%=createNodeHandler.elementName%]);
+      [%}%]
 
       Shape shape = createShape(idGenerator.getOrCreateId(new[%=createNodeHandler.elementName%]), relativeLocation);
       Command shapeCommand = AddCommand.create(editingDomain, diagram,

@@ -34,7 +34,10 @@
     <genClasses ecoreClass="viewpointModel.ecore#//Container"/>
     <genClasses ecoreClass="viewpointModel.ecore#//Static"/>
     <genClasses ecoreClass="viewpointModel.ecore#//Order"/>
-    <genClasses ecoreClass="viewpointModel.ecore#//Node"/>
+    <genClasses ecoreClass="viewpointModel.ecore#//Node">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpointModel.ecore#//Node/in"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpointModel.ecore#//Node/out"/>
+    </genClasses>
     <genClasses ecoreClass="viewpointModel.ecore#//Edge">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpointModel.ecore#//Edge/source"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpointModel.ecore#//Edge/target"/>
