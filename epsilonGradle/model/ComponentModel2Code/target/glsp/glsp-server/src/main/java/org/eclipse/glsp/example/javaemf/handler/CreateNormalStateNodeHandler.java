@@ -77,6 +77,7 @@ public class CreateNormalStateNodeHandler extends EMFCreateOperationHandler<Crea
       StateMachine stateMachine = modelState.getSemanticModel(StateMachine.class).orElseThrow();
       Diagram diagram = modelState.getNotationModel();
       EditingDomain editingDomain = modelState.getEditingDomain();
+      
 
       NormalState newNormalState = createNormalState();
       Command normalStateCommand = AddCommand.create(editingDomain, stateMachine,
@@ -116,8 +117,8 @@ public class CreateNormalStateNodeHandler extends EMFCreateOperationHandler<Crea
    }
    
    protected boolean constraintSatisfied() {
-	   // USER INSERTS CONSTRAINT FOR NODE CREATION HERE
+      // USER INSERTS CONSTRAINT FOR NODE CREATION HERE
 	   
-	   return true;
+      return true;
    }
 }

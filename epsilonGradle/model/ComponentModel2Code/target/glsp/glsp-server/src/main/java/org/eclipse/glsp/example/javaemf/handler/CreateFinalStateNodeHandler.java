@@ -77,6 +77,7 @@ public class CreateFinalStateNodeHandler extends EMFCreateOperationHandler<Creat
       StateMachine stateMachine = modelState.getSemanticModel(StateMachine.class).orElseThrow();
       Diagram diagram = modelState.getNotationModel();
       EditingDomain editingDomain = modelState.getEditingDomain();
+      
 
       FinalState newFinalState = createFinalState();
       Command finalStateCommand = AddCommand.create(editingDomain, stateMachine,
@@ -116,8 +117,8 @@ public class CreateFinalStateNodeHandler extends EMFCreateOperationHandler<Creat
    }
    
    protected boolean constraintSatisfied() {
-	   // USER INSERTS CONSTRAINT FOR NODE CREATION HERE
+      // USER INSERTS CONSTRAINT FOR NODE CREATION HERE
 	   
-	   return true;
+      return true;
    }
 }

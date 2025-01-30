@@ -79,6 +79,10 @@ public class Create[%=createNodeHandler.elementName%]NodeHandler extends EMFCrea
       [%=_root%] [%=_root.firstToLowerCase()%] = modelState.getSemanticModel([%=_root%].class).orElseThrow();
       Diagram diagram = modelState.getNotationModel();
       EditingDomain editingDomain = modelState.getEditingDomain();
+      
+      [%if (getUpperBound(createNodeHandler.elementName, _root).isDefined() and getUpperBound(createNodeHandler.elementName, _root) == 1){%]
+      if ([%=_root.firstToLowerCase()%].get[%=getReferenceName(createNodeHandler.elementName, _root).firstToUpperCase()%]() != null) return new CompoundCommand();      
+      [%}%]
 
       [%=createNodeHandler.elementName%] new[%=createNodeHandler.elementName%] = create[%=createNodeHandler.elementName%]();
       [%if (getUpperBound(createNodeHandler.elementName, _root).isDefined() and getUpperBound(createNodeHandler.elementName, _root) == 1){%]
@@ -127,8 +131,8 @@ public class Create[%=createNodeHandler.elementName%]NodeHandler extends EMFCrea
    }
    
    protected boolean constraintSatisfied() {
-	   // USER INSERTS CONSTRAINT FOR NODE CREATION HERE
+      // USER INSERTS CONSTRAINT FOR NODE CREATION HERE
 	   
-	   return true;
+      return true;
    }
 }
