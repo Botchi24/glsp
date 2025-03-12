@@ -1,0 +1,15 @@
+operation getId(elementName : String) : String {
+	var element = metamodel!EClassifier.all.selectOne(e|e.name == elementName);
+	
+	for (f in element.getEStructuralFeatures()) {
+		if (f.name.toLowerCase() == "id" or f.name.toLowerCase() == "identifier" or f.name.toLowerCase() == "name") return f.name;
+	}
+	
+	var parents = element.getESuperTypes();
+	
+	for (p in parents) {
+		return getId(p.name);
+	}
+	
+	return null;
+}

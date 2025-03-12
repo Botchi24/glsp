@@ -1,3 +1,5 @@
+// TODO add comments!!
+// returns name of containment reference between element and its container
 operation getReferenceName(elementName : String, container : String) : String {
 	var _container = metamodel!EClassifier.all.selectOne(c|c.name == container); //viewpointModel!Root.all.first.name);
 	
@@ -56,3 +58,49 @@ operation getSourceReference(elementName : String) : String {
 operation getTargetReference(elementName : String) : String {
 	return viewpointModel!Edge.all.selectOne(e|e.name == elementName).target;
 }
+
+operation getEmfReferenceName(elementName : String) : String {
+	var result = "";
+	var metamodelPrefix = config!t_settings.all.first.c_metamodelPrefix.a_value.get(0);
+	var root = viewpointModel!Root.all.first.name;
+	
+	result += metamodelPrefix;
+	result += "Package.Literals.";
+	result += root.charAt(0);
+	for (i in Sequence{1..root.length()-1}){
+		if(root.substring(i,i+1).matches("[A-Z]")){
+			result += "_";
+		}
+		
+		result += root.substring(i,i+1).toUpperCase();
+	}
+	result +=  "__";
+	result += getReferenceName(createNodeHandler.elementName, root).toUpperCase();
+
+	return result;
+}
+
+operation getEmfIdName(elementName : String) : String {
+	// StatemachinePackage.Literals.STATE__NAME
+	// -> viewmodel
+	// set[%=getIdAttributeRecursive(createNodeHandler.elementName).firstToUpperCase()%]
+	
+	var result = "";
+	var metamodelPrefix = config!t_settings.all.first.c_metamodelPrefix.a_value.get(0);
+	var classifier = metamodel!EClassifier.all.selectOne(c|c.name.matches(elementName));
+	
+	result += metamodelPrefix;
+	result += "Package.Literals.";
+	
+	
+	
+	result +=  "__";
+	
+	
+	for (s in classifier.eSuperTypes) {
+	
+	}
+	
+	return result;
+}
+

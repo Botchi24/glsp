@@ -21,7 +21,7 @@ import org.eclipse.glsp.example.javaemf.handler.CreateNormalStateNodeHandler;
 import org.eclipse.glsp.example.javaemf.handler.CreateFinalStateNodeHandler;
 import org.eclipse.glsp.example.javaemf.handler.CreateTransitionEdgeHandler;
 import org.eclipse.glsp.example.javaemf.handler.DeleteHandler;
-//import org.eclipse.glsp.example.javaemf.handler.ChangeRoutingPointsOperationHandler;
+import org.eclipse.glsp.example.javaemf.labeledit.LabelEditOperationHandler;
 import org.eclipse.glsp.example.javaemf.model.StatemachineGModelFactory;
 import org.eclipse.glsp.example.javaemf.model.StatemachineSourceModelStorage;
 import org.eclipse.glsp.example.javaemf.palette.StatemachineToolPaletteItemProvider;
@@ -29,7 +29,6 @@ import org.eclipse.glsp.server.di.MultiBinding;
 import org.eclipse.glsp.server.diagram.DiagramConfiguration;
 import org.eclipse.glsp.server.emf.EMFIdGenerator;
 import org.eclipse.glsp.server.emf.EMFSourceModelStorage;
-//import org.eclipse.glsp.server.emf.idgen.FragmentIdGenerator;
 import org.eclipse.glsp.server.emf.notation.EMFNotationDiagramModule;
 import org.eclipse.glsp.server.features.core.model.GModelFactory;
 import org.eclipse.glsp.server.features.toolpalette.ToolPaletteItemProvider;
@@ -66,15 +65,20 @@ public class StatemachineDiagramModule extends EMFNotationDiagramModule {
       return StatemachineToolPaletteItemProvider.class;
    }
 
+   //@Override
+   //protected Class<? extends LabelEditValidator> bindLabelEditValidator() {
+   //   return StatemachineLabelEditValidator.class;
+   //}
+
    @Override
    protected void configureOperationHandlers(final MultiBinding<OperationHandler<?>> binding) {
       super.configureOperationHandlers(binding);
-      //binding.add(ChangeRoutingPointsOperationHandler.class);
       binding.add(CreateInitialStateNodeHandler.class);
       binding.add(CreateNormalStateNodeHandler.class);
       binding.add(CreateFinalStateNodeHandler.class);
       binding.add(CreateTransitionEdgeHandler.class);
       binding.add(DeleteHandler.class);
+      binding.add(LabelEditOperationHandler.class);
    }
 
    @Override

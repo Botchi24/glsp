@@ -70,7 +70,7 @@ public class [%=_metamodelName.firstToUpperCase()%]GModelFactory extends EMFNota
       GNodeBuilder [%=n.firstToLowerCase()%]NodeBuilder = new GNodeBuilder([%=_metamodelName.firstToUpperCase()%]ModelTypes.[%=n.toUpperCase()%])
          .id(idGenerator.getOrCreateId([%=n.firstToLowerCase()%]))
          .addCssClass("[%=_metamodelName%]-[%=n%]-node")
-         .add(new GLabelBuilder(DefaultTypes.LABEL).text(idGenerator.getOrCreateId([%=n.firstToLowerCase()%])).id(idGenerator.getOrCreateId([%=n.firstToLowerCase()%]) + "_label").build())
+         .add(new GLabelBuilder([%=_metamodelName.firstToUpperCase()%]ModelTypes.LABEL).text(idGenerator.getOrCreateId([%=n.firstToLowerCase()%])).id(idGenerator.getOrCreateId([%=n.firstToLowerCase()%]) + "_label").build())
          .layout([%=getStyleValue(n, "layout")%], Map.of(GLayoutOptions.KEY_PADDING_LEFT, 5));
 
       applyShapeData([%=n.firstToLowerCase()%], [%=n.firstToLowerCase()%]NodeBuilder);

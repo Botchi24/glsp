@@ -23,6 +23,9 @@ import {
 	GEdge,
 	GEdgeView,
 	GNode,
+	GLabel,
+	GLabelView,
+	editLabelFeature,
     initializeDiagramContainer,
     LogLevel,
     RectangularNodeView,
@@ -35,6 +38,8 @@ const statemachineDiagramModule = new ContainerModule((bind, unbind, isBound, re
     rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope();
     rebind(TYPES.LogLevel).toConstantValue(LogLevel.warn);
     const context = { bind, unbind, isBound, rebind };
+    
+    
     configureDefaultModelElements(context);
     
     //configureModelElement(context, DefaultTypes.EDGE, GEdge, GEdgeView);
@@ -42,6 +47,7 @@ const statemachineDiagramModule = new ContainerModule((bind, unbind, isBound, re
 	configureModelElement(context, 'normalState', GNode, RectangularNodeView);
 	configureModelElement(context, 'finalState', GNode, RectangularNodeView);
 	configureModelElement(context, 'transition', GEdge, GEdgeView);
+	configureModelElement(context, 'label', GLabel, GLabelView, { enable: [editLabelFeature] });
 });
 
 export function initializeStatemachineDiagramContainer(container: Container, ...containerConfiguration: ContainerConfiguration): Container {

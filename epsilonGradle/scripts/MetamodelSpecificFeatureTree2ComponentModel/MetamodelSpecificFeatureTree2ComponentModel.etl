@@ -1,6 +1,7 @@
 pre {
 	var nodes = viewpointModel!Node.all.collect(n|n.name);
 	var edges = viewpointModel!Edge.all.collect(e|e.name);
+	var LabelEditOperationHandlerCreated = false;
 }
 
 
@@ -55,7 +56,7 @@ rule CreateNodeHandler
 	
 		guard : s.a_name.startsWith("E_S31 use Command_")
 		
-		var deleteHandler = true;
+		var removeEmptyHandler = true;
 		
 		for (n in nodes) {
 			if (s.a_name.contains(n)) {
@@ -65,11 +66,11 @@ rule CreateNodeHandler
 		
 				componentModel_store!ComponentModel.all.first.components.add(t);
 				
-				deleteHandler = false;
+				removeEmptyHandler = false;
 			}
 		}
 		
-		if (deleteHandler) delete t;
+		if (removeEmptyHandler) delete t;
 }
 
 
@@ -79,7 +80,7 @@ rule CreateEdgeHandler
 	
 		guard : s.a_name.startsWith("E_S31 use Command_")
 		
-		var deleteHandler = true;
+		var removeEmptyHandler = true;
 		
 		for (e in edges) {
 			if (s.a_name.contains(e)) {
@@ -89,11 +90,29 @@ rule CreateEdgeHandler
 
 				componentModel_store!ComponentModel.all.first.components.add(t);
 				
-				deleteHandler = false;
+				removeEmptyHandler = false;
 			}
 		}
 		
-		if (deleteHandler) delete t;
+		if (removeEmptyHandler) delete t;
+}
+
+
+rule LabelEditOperationHandler
+	transform s : glspFeatureTreeConfiguration!t_feature
+	to t : componentModel_store!LabelEditOperationHandler {
+	
+		guard : s.a_name.startsWith("E_S5 Element Editing_")
+		
+		if (not LabelEditOperationHandlerCreated) {
+		
+			"LabelEditOperationHandler".println();
+		
+			componentModel_store!ComponentModel.all.first.components.add(t);
+			
+			LabelEditOperationHandlerCreated = true;
+		
+		}
 }
 
 
@@ -104,6 +123,19 @@ rule DeleteHandler
 		guard : s.a_name == "S4 Element Deletion"
 		
 		"DeleteHandler".println();
+		
+		componentModel_store!ComponentModel.all.first.components.add(t);
+	
+}
+
+
+rule LabelEditOperationHandler
+	transform s : glspFeatureTreeConfiguration!t_feature
+	to t : componentModel_store!LabelEditOperationHandler {
+	
+		guard : s.a_name == "S4 Element Deletion"
+		
+		"LabelEditOperationHandler".println();
 		
 		componentModel_store!ComponentModel.all.first.components.add(t);
 	

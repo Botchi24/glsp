@@ -27,5 +27,6 @@ public final class [%=_metamodelName.firstToUpperCase()%]ModelTypes {
    [%for ( e in _edges){%]
    public static final String [%=e.toUpperCase()%] = "[%=e.firstToLowerCase()%]";
    [%}%]
+   public static final String LABEL = "label";
 
 }

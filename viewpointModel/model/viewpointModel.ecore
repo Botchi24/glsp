@@ -19,6 +19,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Id">
     <eStructuralFeatures xsi:type="ecore:EReference" name="part" upperBound="-1" eType="#//Part"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="emfIdAttribute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Part" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
