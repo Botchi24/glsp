@@ -61,7 +61,7 @@ public class StatemachineGModelFactory extends EMFNotationGModelFactory {
       GNodeBuilder initialStateNodeBuilder = new GNodeBuilder(StatemachineModelTypes.INITIALSTATE)
          .id(idGenerator.getOrCreateId(initialState))
          .addCssClass("statemachine-InitialState-node")
-         .add(new GLabelBuilder(DefaultTypes.LABEL).text(idGenerator.getOrCreateId(initialState)).id(idGenerator.getOrCreateId(initialState) + "_label").build())
+         .add(new GLabelBuilder(StatemachineModelTypes.LABEL).text(idGenerator.getOrCreateId(initialState)).id(idGenerator.getOrCreateId(initialState) + "_label").build())
          .layout(GConstants.Layout.HBOX, Map.of(GLayoutOptions.KEY_PADDING_LEFT, 5));
 
       applyShapeData(initialState, initialStateNodeBuilder);
@@ -71,7 +71,7 @@ public class StatemachineGModelFactory extends EMFNotationGModelFactory {
       GNodeBuilder normalStateNodeBuilder = new GNodeBuilder(StatemachineModelTypes.NORMALSTATE)
          .id(idGenerator.getOrCreateId(normalState))
          .addCssClass("statemachine-NormalState-node")
-         .add(new GLabelBuilder(DefaultTypes.LABEL).text(idGenerator.getOrCreateId(normalState)).id(idGenerator.getOrCreateId(normalState) + "_label").build())
+         .add(new GLabelBuilder(StatemachineModelTypes.LABEL).text(idGenerator.getOrCreateId(normalState)).id(idGenerator.getOrCreateId(normalState) + "_label").build())
          .layout(GConstants.Layout.HBOX, Map.of(GLayoutOptions.KEY_PADDING_LEFT, 5));
 
       applyShapeData(normalState, normalStateNodeBuilder);
@@ -81,7 +81,7 @@ public class StatemachineGModelFactory extends EMFNotationGModelFactory {
       GNodeBuilder finalStateNodeBuilder = new GNodeBuilder(StatemachineModelTypes.FINALSTATE)
          .id(idGenerator.getOrCreateId(finalState))
          .addCssClass("statemachine-FinalState-node")
-         .add(new GLabelBuilder(DefaultTypes.LABEL).text(idGenerator.getOrCreateId(finalState)).id(idGenerator.getOrCreateId(finalState) + "_label").build())
+         .add(new GLabelBuilder(StatemachineModelTypes.LABEL).text(idGenerator.getOrCreateId(finalState)).id(idGenerator.getOrCreateId(finalState) + "_label").build())
          .layout(GConstants.Layout.HBOX, Map.of(GLayoutOptions.KEY_PADDING_LEFT, 5));
 
       applyShapeData(finalState, finalStateNodeBuilder);

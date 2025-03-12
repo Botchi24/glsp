@@ -31,7 +31,6 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.glsp.server.emf.EMFOperationHandler;
 import org.eclipse.glsp.server.emf.model.notation.NotationElement;
-//import org.eclipse.glsp.server.emf.notation.EMFNotationModelIndex;
 import org.eclipse.glsp.server.emf.notation.EMFNotationModelState;
 import org.eclipse.glsp.server.emf.EMFIdGenerator;
 import org.eclipse.glsp.server.emf.model.notation.NotationElement;
@@ -65,8 +64,6 @@ public class DeleteHandler extends EMFOperationHandler<DeleteOperation> {
          System.err.println("[DeleteNodeHandler] Elements to delete are not specified: elementIds = " + elementIds);
          return Optional.empty();
       }
-
-      //System.err.println("[DeleteNodeHandler] Starting deletion for elements: " + elementIds);
       
       List<Command> commands = createDeleteCommands(elementIds);
       if (commands.isEmpty()) {
@@ -77,27 +74,23 @@ public class DeleteHandler extends EMFOperationHandler<DeleteOperation> {
    }
 
    private List<Command> createDeleteCommands(final List<String> elementIds) {
-      //EMFNotationModelIndex index = modelState.getIndex();
       alreadyDeletedEdges = new HashSet<>();
       
       List<Command> commands = new ArrayList<>();
       for (String elementId : elementIds) {
-         //Optional<EObject> semanticElement = index.get(elementId).flatMap(e -> index.getEObject(e));
          Optional<EObject> semanticElement = modelState.getSemanticModel().eContents().stream()
                  .map(obj -> (EObject) obj)
                  .filter(obj -> idGenerator.getOrCreateId(obj).equals(elementId))
                  .findFirst();
-         //Optional<NotationElement> notationElement = semanticElement.flatMap(e -> index.getNotation(e));
+
          Optional<NotationElement> notationElement = modelState.getNotationModel().eContents().stream()
                  .filter(obj -> obj instanceof Shape)
                  .map(obj -> (NotationElement) obj)
                  .filter(obj -> idGenerator.getOrCreateId(obj).equals(elementId))
                  .findFirst();
                  
-         //System.err.println("[DeleteNodeHandler] Semantic element ID: " + elementId);
          if (semanticElement.isEmpty()) {
-             System.err.println("[DeleteNodeHandler] Could not find semantic element for ID: " + elementId);
-             //System.err.println("[DeleteNodeHandler] Could not find semantic element for ID in index: " + index.get(elementId));    
+             System.err.println("[DeleteNodeHandler] Could not find semantic element for ID: " + elementId);   
          }
          semanticElement.map(this::createDependentRemoveCommand).ifPresent(commands::addAll);
          notationElement.map(this::createDependentRemoveCommand).ifPresent(commands::addAll);
@@ -108,13 +101,8 @@ public class DeleteHandler extends EMFOperationHandler<DeleteOperation> {
    private List<Command> createDependentRemoveCommand(final EObject element) {
 	  EObject semanticModel = modelState.getSemanticModel();
 	  StateMachine stateMachine = StateMachine.class.cast(semanticModel);
-	  //EMFNotationModelIndex index = modelState.getIndex();
       EditingDomain editingDomain = modelState.getEditingDomain();
       List<Command> commands = new ArrayList<>();
-      
-      
-      //String elementClassName = element.eClass().getName();
-      //System.err.println("createDependentRemoveCommand: Processing element of class - " + elementClassName);
       
       if (element instanceof InitialState initialState) {
     	  String initialStateId = idGenerator.getOrCreateId(initialState);
@@ -132,9 +120,6 @@ public class DeleteHandler extends EMFOperationHandler<DeleteOperation> {
     	  //state.getOutArcs().forEach(arc -> commands.addAll(createRemoveEdgeCommand(arc)));
           //state.getInArcs().forEach(arc -> commands.addAll(createRemoveEdgeCommand(arc)));
           
-          
-          //String elementId = idGenerator.getOrCreateId(element);
-          //System.err.println("Removing element with ID: " + elementId);
           
           commands.add(
               SetCommand.create(editingDomain, element.eContainer(), element.eContainingFeature(), SetCommand.UNSET_VALUE)
@@ -159,9 +144,6 @@ public class DeleteHandler extends EMFOperationHandler<DeleteOperation> {
           //state.getInArcs().forEach(arc -> commands.addAll(createRemoveEdgeCommand(arc)));
           
           
-          //String elementId = idGenerator.getOrCreateId(element);
-          //System.err.println("Removing element with ID: " + elementId);
-          
           commands.add(
               RemoveCommand.create(editingDomain, element.eContainer(), element.eContainingFeature(), element)
           );
@@ -184,9 +166,6 @@ public class DeleteHandler extends EMFOperationHandler<DeleteOperation> {
     	  //state.getOutArcs().forEach(arc -> commands.addAll(createRemoveEdgeCommand(arc)));
           //state.getInArcs().forEach(arc -> commands.addAll(createRemoveEdgeCommand(arc)));
           
-          
-          //String elementId = idGenerator.getOrCreateId(element);
-          //System.err.println("Removing element with ID: " + elementId);
           
           commands.add(
               RemoveCommand.create(editingDomain, element.eContainer(), element.eContainingFeature(), element)
@@ -215,8 +194,6 @@ public class DeleteHandler extends EMFOperationHandler<DeleteOperation> {
 	      List<Command> commands = new ArrayList<>();
 
 	      String transitionId = idGenerator.getOrCreateId(transition);
-	      //System.err.println("createRemoveEdgeCommand - Transition ID to delete: " + transitionId);
-	      //System.err.println("createRemoveEdgeCommand - EditingDomain: " + editingDomain.getCommandStack().toString());
 	      
 	      // prevents duplicate remove commands for arcs since they can also be removed as a consequence
 	      // of removing their source/target node

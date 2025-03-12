@@ -23,7 +23,7 @@ import [%=_packageName%].handler.Create[%=n%]NodeHandler;
 import [%=_packageName%].handler.Create[%=e%]EdgeHandler;
 [%}%]
 import [%=_packageName%].handler.DeleteHandler;
-//import [%=_packageName%].handler.ChangeRoutingPointsOperationHandler;
+import [%=_packageName%].labeledit.LabelEditOperationHandler;
 import [%=_packageName%].model.[%=_metamodelName.firstToUpperCase()%]GModelFactory;
 import [%=_packageName%].model.[%=_metamodelName.firstToUpperCase()%]SourceModelStorage;
 import [%=_packageName%].palette.[%=_metamodelName.firstToUpperCase()%]ToolPaletteItemProvider;
@@ -31,7 +31,6 @@ import org.eclipse.glsp.server.di.MultiBinding;
 import org.eclipse.glsp.server.diagram.DiagramConfiguration;
 import org.eclipse.glsp.server.emf.EMFIdGenerator;
 import org.eclipse.glsp.server.emf.EMFSourceModelStorage;
-//import org.eclipse.glsp.server.emf.idgen.FragmentIdGenerator;
 import org.eclipse.glsp.server.emf.notation.EMFNotationDiagramModule;
 import org.eclipse.glsp.server.features.core.model.GModelFactory;
 import org.eclipse.glsp.server.features.toolpalette.ToolPaletteItemProvider;
@@ -78,10 +77,14 @@ public class [%=_metamodelName.firstToUpperCase()%]DiagramModule extends EMFNota
    }
    [%}%]
 
+   //@Override
+   //protected Class<? extends LabelEditValidator> bindLabelEditValidator() {
+   //   return StatemachineLabelEditValidator.class;
+   //}
+
    @Override
    protected void configureOperationHandlers(final MultiBinding<OperationHandler<?>> binding) {
       super.configureOperationHandlers(binding);
-      //binding.add(ChangeRoutingPointsOperationHandler.class);
       [%for ( n in _nodes){%]
       binding.add(Create[%=n%]NodeHandler.class);
       [%}%]
@@ -91,6 +94,7 @@ public class [%=_metamodelName.firstToUpperCase()%]DiagramModule extends EMFNota
       [%if (_components.contains("DeleteHandler")) {%]
       binding.add(DeleteHandler.class);
       [%}%]
+      binding.add(LabelEditOperationHandler.class);
    }
 
    @Override

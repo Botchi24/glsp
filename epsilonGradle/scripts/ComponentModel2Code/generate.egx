@@ -1,10 +1,10 @@
 pre {
-	var packageName = "org.eclipse.glsp.example.javaemf";
+	var packageName = config!t_settings.all.first.c_packageName.a_value.get(0); //"org.eclipse.glsp.example.javaemf";
 	var metamodelName = metamodel!EPackage.all.first.name;
 	var metamodelNsUri = metamodel!EPackage.all.first.nsURI;
 	var folderStructure = packageName.replaceAll('\\.', '/') + "/";
-	var metamodelPackageName = genmodel!t_genPackages.all.first.a_basePackage;
-	var metamodelPrefix = genmodel!t_genPackages.all.first.a_prefix;
+	var metamodelPackageName = config!t_settings.all.first.c_metamodelPackageName.a_value.get(0);
+	var metamodelPrefix = config!t_settings.all.first.c_metamodelPrefix.a_value.get(0);
 	var metamodelElements = metamodel!EClassifier.all.select(c|not c.abstract).collect(c|c.name);
 	var root = viewpointModel!Root.all.first.name;
 	var nodes = viewpointModel!Node.all.collect(n|n.name);
@@ -141,6 +141,25 @@ rule DeleteHandler
 	template : "./server/src/template-deleteHandler.egl"
 
 	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "handler/DeleteHandler.java"
+	
+}
+
+
+rule LabelEditOperationHandler
+	transform labelEditOperationHandler : componentModel_read!LabelEditOperationHandler {
+	
+	parameters : Map {
+		"_packageName" = packageName,
+		"_metamodelPackageName" = metamodelPackageName,
+		"_metamodelPrefix" = metamodelPrefix,
+		"_root" = root,
+		"_nodes" = nodes,
+		"_edges" = edges
+	}
+	
+	template : "./server/src/template-labelEditOperationHandler.egl"
+
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "labeledit/LabelEditOperationHandler.java"
 	
 }
 

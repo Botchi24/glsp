@@ -1,0 +1,8 @@
+rule Generate
+	transform generate : metamodel!EPackage {
+	
+	template : "Metamodel2ViewpointModel.egl"
+
+	target : "viewpointModel.viewpointModel"
+	
+}

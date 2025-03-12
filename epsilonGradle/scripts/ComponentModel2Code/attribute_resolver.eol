@@ -1,28 +1,28 @@
 operation resolvedId(elementName : String) : String {
-	var returnString = "";
+	var result = "";
 	
 	var viewpointElement = viewpointModel!ViewpointModel.all.first.modelelement.selectOne(e|e.name.matches(elementName));
 	
 	for (part in viewpointElement.id.part) {
 		switch (part.eClass.getName()) {
-			case "Container" : returnString += resolvedId(container.name);
-			case "Reference" : returnString += resolveNamingReference(part);
-			case "Static"    : returnString += "\"" + part.value + "\"";
-			case "Order"     : returnString += generateOrder(elementName);
+			case "Container" : result += resolvedId(container.name);
+			case "Reference" : result += resolveNamingReference(part);
+			case "Static"    : result += "\"" + part.value + "\"";
+			case "Order"     : result += generateOrder(elementName);
 			default			 : throw "The TET config file includes a part type that is not supported: config/" + elementName +"/element(type=+'" + self.eClass.getName() + "')/part(type='" + part.a_type + "')";
 		}
-		returnString += " + ";
+		result += " + ";
 	}
 	
-	while (returnString.endsWith(" + ")) {
-		returnString = returnString.substring(0, returnString.length() - 3);
+	while (result.endsWith(" + ")) {
+		result = result.substring(0, result.length() - 3);
 	}
 	
-	return returnString;
+	return result;
 }
 
 operation resolveNamingReference(part : viewpointModel!Part) : String {
-	var returnString = "";
+	var result = "";
 	var reference = part.value;
 	var getter = "";
 	
@@ -31,7 +31,7 @@ operation resolveNamingReference(part : viewpointModel!Part) : String {
 		reference = reference.substring(reference.indexOf(".") + 1, reference.length());
 	}
 	
-	returnString = "((" + part.eContainer().eContainer().name + ")element)"
+	result = "((" + part.eContainer().eContainer().name + ")element)"
 					+ getter
 					//+ ".eGet("
 					//+ "((" + part.eContainer().eContainer().name + ")element)"
@@ -39,7 +39,7 @@ operation resolveNamingReference(part : viewpointModel!Part) : String {
 					//+ ".eClass().getEStructuralFeature(\"" + reference + "\")).toString()";
 					+ ".get" + reference.firstToUpperCase() + "()";
 	
-	return returnString;
+	return result;
 }
 
 operation generateOrder(elementName : String) : String {
@@ -50,16 +50,13 @@ operation isStorable(elementName : String) : Boolean {
 	return getIdAttributeRecursive(elementName).isDefined();
 }
 
-//----------------------------
-//--- search for iD="true" ---
-//----------------------------
+// search for iD="true"
 operation getIdAttributeRecursive(elementName: String) : String {
 	var classifier = metamodel!EClassifier.all.selectOne(c|c.name.matches(elementName));
 	var id = classifier.eStructuralFeatures.selectOne(f|f.iD.equals(true));
 	var idAttribute;
 	
 	if (id.isDefined()) idAttribute = id.name;
-	
 	if (idAttribute.isDefined()) return idAttribute;
 	
 	for (s in classifier.eSuperTypes) {
@@ -76,4 +73,9 @@ operation getStyleValue(elementName : String, styleName : String) : String {
 	var value = style.styleelement.selectOne(s|s.name.matches(styleName)).value;
 	if (value.isUndefined()) return "";
 	return value;
+}
+
+operation getEmfIdAttribute(elementName: String) : String {
+	var viewpointElement = viewpointModel!ViewpointModel.all.first.modelelement.selectOne(e|e.name.matches(elementName));
+	return viewpointElement.id.emfIdAttribute;
 }

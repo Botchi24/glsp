@@ -1,0 +1,20 @@
+[%import "utils.eol";%]
+<?xml version="1.0" encoding="ASCII"?>
+<viewpointModel:ViewpointModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:viewpointModel="http://www.example.org/viewpointModel" xsi:schemaLocation="http://www.example.org/viewpointModel ../../viewpointModel/model/viewpointModel.ecore">
+[%for (e in metamodel!EClassifier.all.select(c|c.abstract).collect(c|c.name)){%]
+	<modelelement xsi:type="viewpointModel:Root" name="[%=e%]"/>
+[%}%]
+[%for (e in metamodel!EClassifier.all.select(c|not c.abstract).collect(c|c.name)){%]
+	<modelelement xsi:type="viewpointModel:Node" name="[%=e%]">
+		<id xsi:type="viewpointModel:Id">
+			<part xsi:type="viewpointModel:Reference" value="[%if (getId(e).isDefined()){%][%=getId(e)%][%}%]"/>
+		</id>
+		<style xsi:type="viewpointModel:Style">
+			<styleelement xsi:type="viewpointModel:StyleElement" name="layout" value="GConstants.Layout.HBOX"/>
+			<styleelement xsi:type="viewpointModel:StyleElement" name="width" value="60"/>
+			<styleelement xsi:type="viewpointModel:StyleElement" name="height" value="25"/>
+			<styleelement xsi:type="viewpointModel:StyleElement" name="css" value="fill: #f1bd6c;"/>
+		</style>
+	</modelelement>
+[%}%]
+</viewpointModel:ViewpointModel>

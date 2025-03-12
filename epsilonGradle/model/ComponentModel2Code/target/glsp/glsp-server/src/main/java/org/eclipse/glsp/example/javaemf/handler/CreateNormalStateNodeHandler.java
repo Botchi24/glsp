@@ -17,7 +17,6 @@
 package org.eclipse.glsp.example.javaemf.handler;
 
 import java.util.Optional;
-import java.util.UUID;
 import java.util.function.Function;
 
 import org.eclipse.emf.common.command.Command;
@@ -95,7 +94,6 @@ public class CreateNormalStateNodeHandler extends EMFCreateOperationHandler<Crea
 
    protected NormalState createNormalState() {
       NormalState newNormalState = StatemachineFactory.eINSTANCE.createNormalState();
-      //newNormalState.setId(UUID.randomUUID().toString());
       setInitialName(newNormalState);
       return newNormalState;
    }

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ASCII"?>
+<settings>
+<packageName value="org.eclipse.glsp.example.javaemf"/>
+<metamodelPackageName value="swt.most"/>
+<metamodelPrefix value="Statemachine"/>
+</settings>

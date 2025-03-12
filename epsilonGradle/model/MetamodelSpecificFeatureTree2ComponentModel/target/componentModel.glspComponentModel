@@ -11,6 +11,7 @@
   <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="FinalState"/>
   <components xsi:type="glspComponentModel:CreateEdgeHandler" elementName="Transition"/>
   <components xsi:type="glspComponentModel:DeleteHandler"/>
+  <components xsi:type="glspComponentModel:LabelEditOperationHandler"/>
   <components xsi:type="glspComponentModel:ToolPaletteItemProvider"/>
   <components xsi:type="glspComponentModel:EMFSourceModelStorage"/>
   <components xsi:type="glspComponentModel:GModelFactory"/>

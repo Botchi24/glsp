@@ -39,5 +39,6 @@
     </genClasses>
     <genClasses ecoreClass="glspComponentModel.ecore#//NodeView"/>
     <genClasses ecoreClass="glspComponentModel.ecore#//IdGenerator"/>
+    <genClasses ecoreClass="glspComponentModel.ecore#//LabelEditOperationHandler"/>
   </genPackages>
 </genmodel:GenModel>
