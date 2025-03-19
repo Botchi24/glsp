@@ -7,13 +7,13 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Statemachine Theia Backend (Embedded GLSP Server)",
-      "program": "${workspaceRoot}/statemachine-browser-app/src-gen/backend/main.js",
+      "name": "Launch Model Theia Backend (Embedded GLSP Server)",
+      "program": "${workspaceRoot}/model-browser-app/src-gen/backend/main.js",
       "args": [
         "--port=3000",
         "--no-cluster",
-        "--STATEMACHINE_GLSP=5007",
-        "--app-project-path=${workspaceRoot}/statemachine-browser-app",
+        "--MODEL_GLSP=5007",
+        "--app-project-path=${workspaceRoot}/model-browser-app",
         "--root-dir=${workspaceRoot}/workspace"
       ],
       "env": {
@@ -23,10 +23,10 @@
       "outFiles": [
         "${workspaceRoot}/node_modules/@theia/*/lib/**/*.js",
         "${workspaceRoot}/node_modules/@eclipse-glsp/*/lib/**/*.js",
-        "${workspaceRoot}/statemachine-browser-app/lib/**/*.js",
-        "${workspaceRoot}/statemachine-theia/lib/**/*.js",
-        "${workspaceRoot}/statemachine-glsp/lib/**/*.js",
-        "${workspaceRoot}/statemachine-browser-app/src-gen/**/*.js"
+        "${workspaceRoot}/model-browser-app/lib/**/*.js",
+        "${workspaceRoot}/model-theia/lib/**/*.js",
+        "${workspaceRoot}/model-glsp/lib/**/*.js",
+        "${workspaceRoot}/model-browser-app/src-gen/**/*.js"
       ],
       "smartStep": true,
       "internalConsoleOptions": "openOnSessionStart",
@@ -35,14 +35,14 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Statemachine Theia Backend (External GLSP Server)",
-      "program": "${workspaceRoot}/statemachine-browser-app/src-gen/backend/main.js",
+      "name": "Launch Model Theia Backend (External GLSP Server)",
+      "program": "${workspaceRoot}/model-browser-app/src-gen/backend/main.js",
       "args": [
         "--port=3000",
         "--no-cluster",
-        "--STATEMACHINE_GLSP=5007",
+        "--MODEL_GLSP=5007",
         "--glspDebug",
-        "--app-project-path=${workspaceRoot}/statemachine-browser-app",
+        "--app-project-path=${workspaceRoot}/model-browser-app",
         "--root-dir=${workspaceRoot}/workspace"
       ],
       "env": {
@@ -52,10 +52,10 @@
       "outFiles": [
         "${workspaceRoot}/node_modules/@theia/*/lib/**/*.js",
         "${workspaceRoot}/node_modules/@eclipse-glsp/*/lib/**/*.js",
-        "${workspaceRoot}/statemachine-browser-app/lib/**/*.js",
-        "${workspaceRoot}/statemachine-theia/lib/**/*.js",
-        "${workspaceRoot}/statemachine-glsp/lib/**/*.js",
-        "${workspaceRoot}/statemachine-browser-app/src-gen/**/*.js"
+        "${workspaceRoot}/model-browser-app/lib/**/*.js",
+        "${workspaceRoot}/model-theia/lib/**/*.js",
+        "${workspaceRoot}/model-glsp/lib/**/*.js",
+        "${workspaceRoot}/model-browser-app/src-gen/**/*.js"
       ],
       "smartStep": true,
       "internalConsoleOptions": "openOnSessionStart",
@@ -67,7 +67,7 @@
       "request": "launch",
       "url": "http://localhost:3000/",
       "sourceMaps": true,
-      "webRoot": "${workspaceRoot}/statemachine-browser-app"
+      "webRoot": "${workspaceRoot}/model-browser-app"
     }
   ]
 }

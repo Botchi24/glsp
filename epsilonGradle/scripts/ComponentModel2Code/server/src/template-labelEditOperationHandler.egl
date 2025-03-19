@@ -24,9 +24,9 @@ import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.command.SetCommand;
-import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=_metamodelPrefix%]Package;
+import [%=_metamodelPackageName%].[%=_metamodelName.toLowerCase()%].[%=_metamodelName.firstToUpperCase()%]Package;
 [%for ( n in _nodes){%]
-import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=n%];
+import [%=_metamodelPackageName%].[%=_metamodelName.toLowerCase()%].[%=n%];
 [%}%]
 import org.eclipse.glsp.server.operations.GModelOperationHandler;
 import org.eclipse.glsp.server.emf.notation.EMFNotationModelState;
@@ -72,7 +72,7 @@ public class LabelEditOperationHandler extends EMFOperationHandler<ApplyLabelEdi
 	   EditingDomain editingDomain = modelState.getEditingDomain();
 	   
 	   command.append(SetCommand.create(editingDomain, [%=n.firstToLowerCase()%],
-			   [%=_metamodelPrefix%]Package.Literals.[%=getEmfIdAttribute(n)%], labelText));
+			   [%=_metamodelName.firstToUpperCase()%]Package.Literals.[%=getEmfIdAttribute(n)%], labelText));
 	   
 	   Optional<Shape> shape = modelState.getNotationModel().getElements().stream()
 			   .map(obj -> (Shape) obj)

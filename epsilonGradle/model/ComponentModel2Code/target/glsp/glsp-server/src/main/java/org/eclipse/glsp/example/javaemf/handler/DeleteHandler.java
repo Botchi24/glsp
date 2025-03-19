@@ -36,12 +36,10 @@ import org.eclipse.glsp.server.emf.EMFIdGenerator;
 import org.eclipse.glsp.server.emf.model.notation.NotationElement;
 import org.eclipse.glsp.server.emf.model.notation.Shape;
 import org.eclipse.glsp.server.operations.DeleteOperation;
-import swt.most.statemachine.StatemachinePackage;
-import swt.most.statemachine.InitialState;
-import swt.most.statemachine.NormalState;
-import swt.most.statemachine.FinalState;
-import swt.most.statemachine.Transition;
-import swt.most.statemachine.StateMachine;
+import org.eclipse.glsp.example.tasklist.model.ModelPackage;
+import org.eclipse.glsp.example.tasklist.model.Task;
+import org.eclipse.glsp.example.tasklist.model.Transition;
+import org.eclipse.glsp.example.tasklist.model.TaskList;
 
 import com.google.inject.Inject;
 
@@ -100,66 +98,20 @@ public class DeleteHandler extends EMFOperationHandler<DeleteOperation> {
 
    private List<Command> createDependentRemoveCommand(final EObject element) {
 	  EObject semanticModel = modelState.getSemanticModel();
-	  StateMachine stateMachine = StateMachine.class.cast(semanticModel);
+	  TaskList taskList = TaskList.class.cast(semanticModel);
       EditingDomain editingDomain = modelState.getEditingDomain();
       List<Command> commands = new ArrayList<>();
       
-      if (element instanceof InitialState initialState) {
-    	  String initialStateId = idGenerator.getOrCreateId(initialState);
-          //System.err.println("Processing InitialState with ID: " + initialStateId);
+      if (element instanceof Task task) {
+    	  String taskId = idGenerator.getOrCreateId(task);
+          //System.err.println("Processing Task with ID: " + taskId);
     	  
-          stateMachine.getTransitions().stream()
-          .filter(edge -> edge.getFrom() == initialState || edge.getTo() == initialState)
+          taskList.getTransitions().stream()
+          .filter(edge -> edge.getSource() == task || edge.getTarget() == task)
           .collect(Collectors.toList())
     	  .forEach(
           edge -> {
-              //System.err.println("Removing Transition with ID(" + idGenerator.getOrCreateId(edge) + ") connected to InitialState ID: " + initialStateId);
-              commands.addAll(createRemoveEdgeCommand(edge));
-          });
-          
-    	  //state.getOutArcs().forEach(arc -> commands.addAll(createRemoveEdgeCommand(arc)));
-          //state.getInArcs().forEach(arc -> commands.addAll(createRemoveEdgeCommand(arc)));
-          
-          
-          commands.add(
-              SetCommand.create(editingDomain, element.eContainer(), element.eContainingFeature(), SetCommand.UNSET_VALUE)
-          );
-          return commands;
-      }
-      
-      if (element instanceof NormalState normalState) {
-    	  String normalStateId = idGenerator.getOrCreateId(normalState);
-          //System.err.println("Processing NormalState with ID: " + normalStateId);
-    	  
-          stateMachine.getTransitions().stream()
-          .filter(edge -> edge.getFrom() == normalState || edge.getTo() == normalState)
-          .collect(Collectors.toList())
-    	  .forEach(
-          edge -> {
-              //System.err.println("Removing Transition with ID(" + idGenerator.getOrCreateId(edge) + ") connected to NormalState ID: " + normalStateId);
-              commands.addAll(createRemoveEdgeCommand(edge));
-          });
-          
-    	  //state.getOutArcs().forEach(arc -> commands.addAll(createRemoveEdgeCommand(arc)));
-          //state.getInArcs().forEach(arc -> commands.addAll(createRemoveEdgeCommand(arc)));
-          
-          
-          commands.add(
-              RemoveCommand.create(editingDomain, element.eContainer(), element.eContainingFeature(), element)
-          );
-          return commands;
-      }
-      
-      if (element instanceof FinalState finalState) {
-    	  String finalStateId = idGenerator.getOrCreateId(finalState);
-          //System.err.println("Processing FinalState with ID: " + finalStateId);
-    	  
-          stateMachine.getTransitions().stream()
-          .filter(edge -> edge.getFrom() == finalState || edge.getTo() == finalState)
-          .collect(Collectors.toList())
-    	  .forEach(
-          edge -> {
-              //System.err.println("Removing Transition with ID(" + idGenerator.getOrCreateId(edge) + ") connected to FinalState ID: " + finalStateId);
+              //System.err.println("Removing Transition with ID(" + idGenerator.getOrCreateId(edge) + ") connected to Task ID: " + taskId);
               commands.addAll(createRemoveEdgeCommand(edge));
           });
           

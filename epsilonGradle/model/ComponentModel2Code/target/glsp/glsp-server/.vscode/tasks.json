@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Build Statemachine GLSP Server",
+      "label": "Build Model GLSP Server",
       "type": "shell",
       "group": {
         "kind": "build",
@@ -18,7 +18,7 @@
       "problemMatcher": []
     },
     {
-      "label": "Start Statemachine GLSP Server",
+      "label": "Start Model GLSP Server",
       "type": "shell",
       "group": "test",
       "command": "java -jar target/org.eclipse.glsp.example.javaemf-1.0.0-glsp.jar",

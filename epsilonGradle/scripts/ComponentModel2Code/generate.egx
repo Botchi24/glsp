@@ -1,10 +1,10 @@
 pre {
-	var packageName = config!t_settings.all.first.c_packageName.a_value.get(0); //"org.eclipse.glsp.example.javaemf";
-	var metamodelName = metamodel!EPackage.all.first.name;
+	var packageName = config!t_settings.all.first.c_packageName.a_value.get(0);
+	var metamodelName = metamodel!EPackage.all.first.name; //<ecore:EPackage name="[metamodelName]">
 	var metamodelNsUri = metamodel!EPackage.all.first.nsURI;
 	var folderStructure = packageName.replaceAll('\\.', '/') + "/";
 	var metamodelPackageName = config!t_settings.all.first.c_metamodelPackageName.a_value.get(0);
-	var metamodelPrefix = config!t_settings.all.first.c_metamodelPrefix.a_value.get(0);
+	var metamodelClassName = config!t_settings.all.first.c_metamodelClassName.a_value.get(0); // TODO
 	var metamodelElements = metamodel!EClassifier.all.select(c|not c.abstract).collect(c|c.name);
 	var root = viewpointModel!Root.all.first.name;
 	var nodes = viewpointModel!Node.all.collect(n|n.name);
@@ -93,7 +93,6 @@ rule CreateNodeHandler
 		"_metamodelName" = metamodelName,
 		"_packageName" = packageName,
 		"_metamodelPackageName" = metamodelPackageName,
-		"_metamodelPrefix" = metamodelPrefix,
 		"_root" = root,
 		"_nodes" = nodes,
 		"_edges" = edges
@@ -113,7 +112,6 @@ rule CreateEdgeHandler
 		"_metamodelName" = metamodelName,
 		"_packageName" = packageName,
 		"_metamodelPackageName" = metamodelPackageName,
-		"_metamodelPrefix" = metamodelPrefix,
 		"_root" = root,
 		"_nodes" = nodes,
 		"_edges" = edges
@@ -132,7 +130,6 @@ rule DeleteHandler
 	parameters : Map {
 		"_packageName" = packageName,
 		"_metamodelPackageName" = metamodelPackageName,
-		"_metamodelPrefix" = metamodelPrefix,
 		"_root" = root,
 		"_nodes" = nodes,
 		"_edges" = edges
@@ -151,7 +148,6 @@ rule LabelEditOperationHandler
 	parameters : Map {
 		"_packageName" = packageName,
 		"_metamodelPackageName" = metamodelPackageName,
-		"_metamodelPrefix" = metamodelPrefix,
 		"_root" = root,
 		"_nodes" = nodes,
 		"_edges" = edges
@@ -187,8 +183,7 @@ rule EMFSourceModelStorage
 	parameters : Map {
 		"_metamodelName" = metamodelName,
 		"_packageName" = packageName,
-		"_metamodelPackageName" = metamodelPackageName,
-		"_metamodelPrefix" = metamodelPrefix
+		"_metamodelPackageName" = metamodelPackageName
 	}
 	
 	template : "./server/src/template-emfSourceModelStorage.egl"
@@ -205,7 +200,6 @@ rule GModelFactory
 		"_metamodelName" = metamodelName,
 		"_packageName" = packageName,
 		"_metamodelPackageName" = metamodelPackageName,
-		"_metamodelPrefix" = metamodelPrefix,
 		"_root" = root,
 		"_nodes" = nodes,
 		"_edges" = edges
@@ -225,7 +219,6 @@ rule IdGenerator
 		"_metamodelName" = metamodelName,
 		"_packageName" = packageName,
 		"_metamodelPackageName" = metamodelPackageName,
-		"_metamodelPrefix" = metamodelPrefix,
 		"_nodes" = nodes,
 		"_edges" = edges
 	}

@@ -28,8 +28,7 @@ task register_metamodel {
 	
 	doFirst{
 		ant.'epsilon.emf.loadModel'( name:          'metamodel', 
-    	                             modelfile:     dir_metamodel + 'statemachine.ecore',
-    	                             metamodelfile:	dir_metamodel + 'ecore.ecore',
+    	                             modelfile:     dir_metamodel + metamodel_file,
     	                             read:          "true",
     	                             store:         "false")
     }

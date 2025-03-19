@@ -1,0 +1,82 @@
+/********************************************************************************
+ * Copyright (c) 2020-2023 EclipseSource and others.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License v. 2.0 which is available at
+ * https://www.eclipse.org/legal/epl-2.0.
+ *
+ * This Source Code may also be made available under the following Secondary
+ * Licenses when the conditions for such availability set forth in the Eclipse
+ * Public License v. 2.0 are satisfied: GNU General Public License, version 2
+ * with the GNU Classpath Exception which is available at
+ * https://www.gnu.org/software/classpath/license.html.
+ *
+ * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+ ********************************************************************************/
+package org.eclipse.glsp.example.javaemf.labeledit;
+
+import java.util.Objects;
+import java.util.Optional;
+
+import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.command.SetCommand;
+import org.eclipse.glsp.example.tasklist.model.ModelPackage;
+import org.eclipse.glsp.example.tasklist.model.Task;
+import org.eclipse.glsp.server.operations.GModelOperationHandler;
+import org.eclipse.glsp.server.emf.notation.EMFNotationModelState;
+import org.eclipse.glsp.server.emf.EMFIdGenerator;
+import org.eclipse.glsp.server.emf.EMFOperationHandler;
+import org.eclipse.glsp.server.emf.model.notation.NotationPackage;
+import org.eclipse.glsp.server.emf.model.notation.Shape;
+import org.eclipse.glsp.server.features.directediting.ApplyLabelEditOperation;
+
+
+import com.google.inject.Inject;
+
+public class LabelEditOperationHandler extends EMFOperationHandler<ApplyLabelEditOperation> {
+	
+   @Inject
+   protected EMFNotationModelState modelState;
+   
+   @Inject
+   protected EMFIdGenerator idGenerator;
+
+   @Override
+   public Optional<Command> createCommand(final ApplyLabelEditOperation operation) {
+	   final String labelId = operation.getLabelId().replace("_label", "");
+       String labelText = operation.getText();
+	   
+	   Optional<EObject> element = modelState.getSemanticModel().eContents().stream()
+               .map(obj -> (EObject) obj)
+               .filter(obj -> idGenerator.getOrCreateId(obj).equals(labelId))
+               .findFirst();
+	   
+	   if (element.get() instanceof Task task) {
+		   return editTaskLabel(task, labelId, labelText);
+	   }
+	   
+	   return Optional.empty();
+   }
+   
+   protected Optional<Command> editTaskLabel(Task task, final String labelId, String labelText) {
+	   CompoundCommand command = new CompoundCommand();
+	   EditingDomain editingDomain = modelState.getEditingDomain();
+	   
+	   command.append(SetCommand.create(editingDomain, task,
+			   ModelPackage.Literals.IDENTIFIABLE__ID, labelText));
+	   
+	   Optional<Shape> shape = modelState.getNotationModel().getElements().stream()
+			   .map(obj -> (Shape) obj)
+               .filter(obj -> idGenerator.getOrCreateId(obj).equals(labelId))
+               .findFirst();
+	   
+	   command.append(SetCommand.create(editingDomain, shape.get().getSemanticElement(),
+			   NotationPackage.Literals.SEMANTIC_ELEMENT_REFERENCE__ELEMENT_ID, labelText));
+	   
+	   return Optional.of(command);
+   }
+   
+}

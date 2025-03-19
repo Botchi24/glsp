@@ -6,10 +6,10 @@
   },
   "references": [
     {
-      "path": "./statemachine-glsp"
+      "path": "./model-glsp"
     },
     {
-      "path": "./statemachine-theia"
+      "path": "./model-theia"
     }
   ]
 }

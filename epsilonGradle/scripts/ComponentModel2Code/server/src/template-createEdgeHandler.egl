@@ -28,13 +28,13 @@ import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import [%=_packageName%].[%=_metamodelName.firstToUpperCase()%]ModelTypes;
-import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=_metamodelPrefix%]Factory;
-import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=_metamodelPrefix%]Package;
-import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=createEdgeHandler.elementName%];
-import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=_root%];
-import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=getSourceType(createEdgeHandler.elementName)%];
+import [%=_metamodelPackageName%].[%=_metamodelName.toLowerCase()%].[%=_metamodelName.firstToUpperCase()%]Factory;
+import [%=_metamodelPackageName%].[%=_metamodelName.toLowerCase()%].[%=_metamodelName.firstToUpperCase()%]Package;
+import [%=_metamodelPackageName%].[%=_metamodelName.toLowerCase()%].[%=createEdgeHandler.elementName%];
+import [%=_metamodelPackageName%].[%=_metamodelName.toLowerCase()%].[%=_root%];
+import [%=_metamodelPackageName%].[%=_metamodelName.toLowerCase()%].[%=getSourceType(createEdgeHandler.elementName)%];
 [%if(getSourceType(createEdgeHandler.elementName) != getTargetType(createEdgeHandler.elementName)){%]
-import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=getTargetType(createEdgeHandler.elementName)%];
+import [%=_metamodelPackageName%].[%=_metamodelName.toLowerCase()%].[%=getTargetType(createEdgeHandler.elementName)%];
 [%}%]
 import org.eclipse.glsp.graph.GraphPackage;
 import org.eclipse.glsp.server.emf.EMFCreateOperationHandler;
@@ -64,7 +64,7 @@ public class Create[%=createEdgeHandler.elementName%]EdgeHandler extends EMFCrea
     public Optional<Command> createCommand(CreateEdgeOperation operation) {
         if (!constraintSatisfied()) return Optional.of(new CompoundCommand());
     
-        [%=createEdgeHandler.elementName%] new[%=createEdgeHandler.elementName%] = [%=_metamodelPrefix%]Factory.eINSTANCE.create[%=createEdgeHandler.elementName%]();
+        [%=createEdgeHandler.elementName%] new[%=createEdgeHandler.elementName%] = [%=_metamodelName.firstToUpperCase()%]Factory.eINSTANCE.create[%=createEdgeHandler.elementName%]();
         //newArc.setId(UUID.randomUUID().toString());
         [%if (isStorable(createEdgeHandler.elementName)){%]
         setInitialName(newTransition);
@@ -82,8 +82,8 @@ public class Create[%=createEdgeHandler.elementName%]EdgeHandler extends EMFCrea
 	[%if (isStorable(createEdgeHandler.elementName)){%]
     protected void setInitialName(final [%=createEdgeHandler.elementName%] [%=createEdgeHandler.elementName.firstToLowerCase()%]) {
         Function<Integer, String> nameProvider = i -> "New" + [%=createEdgeHandler.elementName.firstToLowerCase()%].eClass().getName() + i;
-        int edgeCounter = modelState.getIndex().getCounter([%=_metamodelPrefix%]Package.Literals.[%=createEdgeHandler.elementName.charAt(0)%][%for (i in Sequence{1..createEdgeHandler.elementName.length()-1}){%][%if(createEdgeHandler.elementName.substring(i,i+1).matches("[A-Z]")){%]_[%}%][%=createEdgeHandler.elementName.substring(i,i+1).toUpperCase()%][%}%], nameProvider);
-        [%=createEdgeHandler.elementName.firstToLowerCase()%].set[%=getIdAttributeRecursive(createEdgeHandler.elementName).firstToUpperCase()%](nameProvider.apply(nodeCounter));
+        int edgeCounter = modelState.getIndex().getCounter([%=_metamodelName.firstToUpperCase()%]Package.Literals.[%=createEdgeHandler.elementName.charAt(0)%][%for (i in Sequence{1..createEdgeHandler.elementName.length()-1}){%][%if(createEdgeHandler.elementName.substring(i,i+1).matches("[A-Z]")){%]_[%}%][%=createEdgeHandler.elementName.substring(i,i+1).toUpperCase()%][%}%], nameProvider);
+        [%=createEdgeHandler.elementName.firstToLowerCase()%].set[%=getIdAttributeRecursive(createEdgeHandler.elementName).firstToUpperCase()%](nameProvider.apply(edgeCounter));
     }
     [%}%]
 
@@ -95,13 +95,13 @@ public class Create[%=createEdgeHandler.elementName%]EdgeHandler extends EMFCrea
         // and can be undone. Otherwise, the reference would not be removed from the nodes.
 
         Command [%=createEdgeHandler.elementName.firstToLowerCase()%]Command = AddCommand.create(editingDomain, [%=_root.firstToLowerCase()%],
-            [%=_metamodelPrefix%]Package.Literals.[%=_root.charAt(0)%][%for (i in Sequence{1.._root.length()-1}){%][%if(_root.substring(i,i+1).matches("[A-Z]")){%]_[%}%][%=_root.substring(i,i+1).toUpperCase()%][%}%]__[%=getReferenceName(createEdgeHandler.elementName, _root).toUpperCase()%], new[%=createEdgeHandler.elementName%]);
+            [%=_metamodelName.firstToUpperCase()%]Package.Literals.[%=_root.charAt(0)%][%for (i in Sequence{1.._root.length()-1}){%][%if(_root.substring(i,i+1).matches("[A-Z]")){%]_[%}%][%=_root.substring(i,i+1).toUpperCase()%][%}%]__[%=getReferenceName(createEdgeHandler.elementName, _root).toUpperCase()%], new[%=createEdgeHandler.elementName%]);
 
         Command setSource = SetCommand.create(editingDomain, new[%=createEdgeHandler.elementName%],
-        	[%=_metamodelPrefix%]Package.Literals.[%=createEdgeHandler.elementName.toUpperCase()%]__[%=getSourceReference(createEdgeHandler.elementName).toUpperCase()%], source);
+        	[%=_metamodelName.firstToUpperCase()%]Package.Literals.[%=createEdgeHandler.elementName.toUpperCase()%]__[%=getSourceReference(createEdgeHandler.elementName).toUpperCase()%], source);
 
         Command setTarget = SetCommand.create(editingDomain, new[%=createEdgeHandler.elementName%],
-        	[%=_metamodelPrefix%]Package.Literals.[%=createEdgeHandler.elementName.toUpperCase()%]__[%=getTargetReference(createEdgeHandler.elementName).toUpperCase()%], target);
+        	[%=_metamodelName.firstToUpperCase()%]Package.Literals.[%=createEdgeHandler.elementName.toUpperCase()%]__[%=getTargetReference(createEdgeHandler.elementName).toUpperCase()%], target);
 
         CompoundCommand compoundCommand = new CompoundCommand();
 

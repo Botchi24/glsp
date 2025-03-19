@@ -25,12 +25,12 @@ import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.glsp.example.javaemf.StatemachineModelTypes;
-import swt.most.statemachine.StatemachineFactory;
-import swt.most.statemachine.StatemachinePackage;
-import swt.most.statemachine.Transition;
-import swt.most.statemachine.StateMachine;
-import swt.most.statemachine.State;
+import org.eclipse.glsp.example.javaemf.ModelModelTypes;
+import org.eclipse.glsp.example.tasklist.model.ModelFactory;
+import org.eclipse.glsp.example.tasklist.model.ModelPackage;
+import org.eclipse.glsp.example.tasklist.model.Transition;
+import org.eclipse.glsp.example.tasklist.model.TaskList;
+import org.eclipse.glsp.example.tasklist.model.Task;
 import org.eclipse.glsp.graph.GraphPackage;
 import org.eclipse.glsp.server.emf.EMFCreateOperationHandler;
 import org.eclipse.glsp.server.emf.EMFIdGenerator;
@@ -49,7 +49,7 @@ public class CreateTransitionEdgeHandler extends EMFCreateOperationHandler<Creat
     protected EMFIdGenerator idGenerator;
 
     public CreateTransitionEdgeHandler() {
-        super(StatemachineModelTypes.TRANSITION);
+        super(ModelModelTypes.TRANSITION);
     }
 
     @Override
@@ -59,34 +59,40 @@ public class CreateTransitionEdgeHandler extends EMFCreateOperationHandler<Creat
     public Optional<Command> createCommand(CreateEdgeOperation operation) {
         if (!constraintSatisfied()) return Optional.of(new CompoundCommand());
     
-        Transition newTransition = StatemachineFactory.eINSTANCE.createTransition();
+        Transition newTransition = ModelFactory.eINSTANCE.createTransition();
         //newArc.setId(UUID.randomUUID().toString());
+        setInitialName(newTransition);
 
         String sourceId = operation.getSourceElementId();
         String targetId = operation.getTargetElementId();
 
-        State source = modelState.getIndex().getEObject(sourceId, State.class).orElseThrow();
-        State target = modelState.getIndex().getEObject(targetId, State.class).orElseThrow();
+        Task source = modelState.getIndex().getEObject(sourceId, Task.class).orElseThrow();
+        Task target = modelState.getIndex().getEObject(targetId, Task.class).orElseThrow();
 
         return Optional.of(createTransition(newTransition, source, target));
     }
 
+    protected void setInitialName(final Transition transition) {
+        Function<Integer, String> nameProvider = i -> "New" + transition.eClass().getName() + i;
+        int edgeCounter = modelState.getIndex().getCounter(ModelPackage.Literals.TRANSITION, nameProvider);
+        transition.setId(nameProvider.apply(edgeCounter));
+    }
 
-    protected Command createTransition(Transition newTransition, State source, State target) {
-    	StateMachine stateMachine = modelState.getSemanticModel(StateMachine.class).orElseThrow();
+    protected Command createTransition(Transition newTransition, Task source, Task target) {
+    	TaskList taskList = modelState.getSemanticModel(TaskList.class).orElseThrow();
         EditingDomain editingDomain = modelState.getEditingDomain();
 
         //explicitly set the arcs to the nodes (source / target) so the operation is added to the command stack
         // and can be undone. Otherwise, the reference would not be removed from the nodes.
 
-        Command transitionCommand = AddCommand.create(editingDomain, stateMachine,
-            StatemachinePackage.Literals.STATE_MACHINE__TRANSITIONS, newTransition);
+        Command transitionCommand = AddCommand.create(editingDomain, taskList,
+            ModelPackage.Literals.TASK_LIST__TRANSITIONS, newTransition);
 
         Command setSource = SetCommand.create(editingDomain, newTransition,
-        	StatemachinePackage.Literals.TRANSITION__FROM, source);
+        	ModelPackage.Literals.TRANSITION__SOURCE, source);
 
         Command setTarget = SetCommand.create(editingDomain, newTransition,
-        	StatemachinePackage.Literals.TRANSITION__TO, target);
+        	ModelPackage.Literals.TRANSITION__TARGET, target);
 
         CompoundCommand compoundCommand = new CompoundCommand();
 

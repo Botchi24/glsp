@@ -6,9 +6,9 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Launch Statemachine GLSP Server",
+      "name": "Launch Model GLSP Server",
       "request": "launch",
-      "mainClass": "org.eclipse.glsp.example.javaemf.launch.StatemachineServerLauncher",
+      "mainClass": "org.eclipse.glsp.example.javaemf.launch.ModelServerLauncher",
       "projectName": "org.eclipse.glsp.example.javaemf",
       "args": ["--port", "5007"]
     }

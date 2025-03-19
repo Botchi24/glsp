@@ -24,10 +24,10 @@ import java.util.stream.Collectors;
 import com.google.inject.Inject;
 
 [%for ( n in _nodes){%]
-import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=n%];
+import [%=_metamodelPackageName%].[%=_metamodelName.toLowerCase()%].[%=n%];
 [%}%]
 [%for ( e in _edges){%]
-import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=e%];
+import [%=_metamodelPackageName%].[%=_metamodelName.toLowerCase()%].[%=e%];
 [%}%]
 
 

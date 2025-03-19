@@ -5,5 +5,5 @@
     "noEmit": true
   },
   "exclude": ["**/node_modules", "**/.eslintrc.js"],
-  "include": ["statemachine-glsp/src", "statemachine-theia/src"]
+  "include": ["model-glsp/src", "model-theia/src"]
 }

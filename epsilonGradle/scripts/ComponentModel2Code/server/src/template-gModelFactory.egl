@@ -23,12 +23,12 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import [%=_packageName%].[%=_metamodelName.firstToUpperCase()%]ModelTypes;
 [%for ( n in _nodes){%]
-import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=n%];
+import [%=_metamodelPackageName%].[%=_metamodelName.toLowerCase()%].[%=n%];
 [%}%]
 [%for ( e in _edges){%]
-import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=e%];
+import [%=_metamodelPackageName%].[%=_metamodelName.toLowerCase()%].[%=e%];
 [%}%]
-import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=_root%];
+import [%=_metamodelPackageName%].[%=_metamodelName.toLowerCase()%].[%=_root%];
 import org.eclipse.glsp.graph.DefaultTypes;
 import org.eclipse.glsp.graph.GGraph;
 import org.eclipse.glsp.graph.GModelRoot;
@@ -83,8 +83,8 @@ public class [%=_metamodelName.firstToUpperCase()%]GModelFactory extends EMFNota
       GEdgeBuilder [%=e.firstToLowerCase()%]EdgeBuilder = new GEdgeBuilder([%=_metamodelName.firstToUpperCase()%]ModelTypes.[%=e.toUpperCase()%])
           .id(idGenerator.getOrCreateId([%=e.firstToLowerCase()%]))
           .addCssClass("[%=_metamodelName%]-[%=e%]-edge")
-          .sourceId(idGenerator.getOrCreateId([%=e.firstToLowerCase()%].getFrom()))
-          .targetId(idGenerator.getOrCreateId([%=e.firstToLowerCase()%].getTo()));
+          .sourceId(idGenerator.getOrCreateId([%=e.firstToLowerCase()%].get[%=getSourceReference(e).firstToUpperCase()%]()))
+          .targetId(idGenerator.getOrCreateId([%=e.firstToLowerCase()%].get[%=getTargetReference(e).firstToUpperCase()%]()));
           
       applyEdgeData([%=e.firstToLowerCase()%], [%=e.firstToLowerCase()%]EdgeBuilder);
       return [%=e.firstToLowerCase()%]EdgeBuilder.build();

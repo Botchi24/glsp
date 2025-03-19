@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.44">
+<file name="C:\Users\Botchi\eclipse-workspace2\glspFeatures\epsilonGradle\model\ComponentModel2Code\target\glsp\glsp-server\src\main\java\org\eclipse\glsp\example\javaemf\handler\CreateTaskNodeHandler.java">
+<error line="25" column="8" severity="warning" message="Nicht verwendeter Import - org.eclipse.emf.edit.command.SetCommand." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="34" column="8" severity="warning" message="Nicht verwendeter Import - org.eclipse.glsp.graph.GraphPackage." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="74" column="7" severity="warning" message="Das Konstrukt &apos;if&apos; muss geschweifte Klammern &apos;{}&apos; verwenden." source="com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck"/>
+</file>
+<file name="C:\Users\Botchi\eclipse-workspace2\glspFeatures\epsilonGradle\model\ComponentModel2Code\target\glsp\glsp-server\src\main\java\org\eclipse\glsp\example\javaemf\handler\CreateTransitionEdgeHandler.java">
+<error line="20" column="8" severity="warning" message="Nicht verwendeter Import - java.util.UUID." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="34" column="8" severity="warning" message="Nicht verwendeter Import - org.eclipse.glsp.graph.GraphPackage." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="60" column="9" severity="warning" message="Das Konstrukt &apos;if&apos; muss geschweifte Klammern &apos;{}&apos; verwenden." source="com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck"/>
+</file>
+<file name="C:\Users\Botchi\eclipse-workspace2\glspFeatures\epsilonGradle\model\ComponentModel2Code\target\glsp\glsp-server\src\main\java\org\eclipse\glsp\example\javaemf\handler\DeleteHandler.java">
+<error line="30" column="8" severity="warning" message="Nicht verwendeter Import - org.eclipse.emf.edit.command.SetCommand." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="36" column="1" severity="warning" message="Der Import stimmt mit dem Import in Zeile 33 überein - org.eclipse.glsp.server.emf.model.notation.NotationElement." source="com.puppycrawl.tools.checkstyle.checks.imports.RedundantImportCheck"/>
+<error line="39" column="8" severity="warning" message="Nicht verwendeter Import - org.eclipse.glsp.example.tasklist.model.ModelPackage." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="58" column="7" severity="warning" message="Das Konstrukt &apos;if&apos; muss geschweifte Klammern &apos;{}&apos; verwenden." source="com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck"/>
+</file>
+<file name="C:\Users\Botchi\eclipse-workspace2\glspFeatures\epsilonGradle\model\ComponentModel2Code\target\glsp\glsp-server\src\main\java\org\eclipse\glsp\example\javaemf\labeledit\LabelEditOperationHandler.java">
+<error line="18" column="8" severity="warning" message="Nicht verwendeter Import - java.util.Objects." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="28" column="8" severity="warning" message="Nicht verwendeter Import - org.eclipse.glsp.server.operations.GModelOperationHandler." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+</file>
+<file name="C:\Users\Botchi\eclipse-workspace2\glspFeatures\epsilonGradle\model\ComponentModel2Code\target\glsp\glsp-server\src\main\java\org\eclipse\glsp\example\javaemf\launch\ModelServerLauncher.java">
+</file>
+<file name="C:\Users\Botchi\eclipse-workspace2\glspFeatures\epsilonGradle\model\ComponentModel2Code\target\glsp\glsp-server\src\main\java\org\eclipse\glsp\example\javaemf\model\ModelGModelFactory.java">
+<error line="26" column="8" severity="warning" message="Nicht verwendeter Import - org.eclipse.glsp.graph.DefaultTypes." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+</file>
+<file name="C:\Users\Botchi\eclipse-workspace2\glspFeatures\epsilonGradle\model\ComponentModel2Code\target\glsp\glsp-server\src\main\java\org\eclipse\glsp\example\javaemf\model\ModelSourceModelStorage.java">
+</file>
+<file name="C:\Users\Botchi\eclipse-workspace2\glspFeatures\epsilonGradle\model\ComponentModel2Code\target\glsp\glsp-server\src\main\java\org\eclipse\glsp\example\javaemf\ModelDiagramConfiguration.java">
+</file>
+<file name="C:\Users\Botchi\eclipse-workspace2\glspFeatures\epsilonGradle\model\ComponentModel2Code\target\glsp\glsp-server\src\main\java\org\eclipse\glsp\example\javaemf\ModelDiagramModule.java">
+</file>
+<file name="C:\Users\Botchi\eclipse-workspace2\glspFeatures\epsilonGradle\model\ComponentModel2Code\target\glsp\glsp-server\src\main\java\org\eclipse\glsp\example\javaemf\ModelIdGenerator.java">
+<error line="22" column="8" severity="warning" message="Nicht verwendeter Import - java.util.stream.Collectors." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+</file>
+<file name="C:\Users\Botchi\eclipse-workspace2\glspFeatures\epsilonGradle\model\ComponentModel2Code\target\glsp\glsp-server\src\main\java\org\eclipse\glsp\example\javaemf\ModelModelTypes.java">
+<error line="19" column="8" severity="warning" message="Nicht verwendeter Import - org.eclipse.glsp.graph.DefaultTypes." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+</file>
+<file name="C:\Users\Botchi\eclipse-workspace2\glspFeatures\epsilonGradle\model\ComponentModel2Code\target\glsp\glsp-server\src\main\java\org\eclipse\glsp\example\javaemf\palette\ModelToolPaletteItemProvider.java">
+</file>
+</checkstyle>

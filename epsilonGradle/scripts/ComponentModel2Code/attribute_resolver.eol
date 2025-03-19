@@ -75,7 +75,14 @@ operation getStyleValue(elementName : String, styleName : String) : String {
 	return value;
 }
 
+// emf attribute from emf package serving as id
 operation getEmfIdAttribute(elementName: String) : String {
 	var viewpointElement = viewpointModel!ViewpointModel.all.first.modelelement.selectOne(e|e.name.matches(elementName));
 	return viewpointElement.id.emfIdAttribute;
+}
+
+// id attribute of root element
+operation getRootId() : String {
+	var viewpointElement = viewpointModel!ViewpointModel.all.first.modelelement.selectOne(e|e.type.matches(Root));
+	return viewpointElement.id.part.first.value;
 }

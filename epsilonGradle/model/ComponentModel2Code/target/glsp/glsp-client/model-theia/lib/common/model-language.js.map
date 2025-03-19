@@ -1,0 +1,1 @@
+{"version":3,"file":"model-language.js","sourceRoot":"","sources":["../../src/common/model-language.ts"],"names":[],"mappings":";;;AAkBa,QAAA,aAAa,GAAwB;IAC9C,cAAc,EAAE,OAAO;IACvB,KAAK,EAAE,eAAe;IACtB,WAAW,EAAE,eAAe;IAC5B,SAAS,EAAE,uBAAuB;IAClC,cAAc,EAAE,CAAC,QAAQ,CAAC;CAC7B,CAAC"}

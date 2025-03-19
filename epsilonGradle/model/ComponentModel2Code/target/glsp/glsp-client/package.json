@@ -20,13 +20,13 @@
     }
   ],
   "workspaces": [
-    "statemachine-glsp",
-    "statemachine-theia",
-    "statemachine-browser-app"
+    "model-glsp",
+    "model-theia",
+    "model-browser-app"
   ],
   "scripts": {
     "all": "yyarn clean && yarn install && yarn lint",
-    "browser": " yarn --cwd statemachine-browser-app",
+    "browser": " yarn --cwd model-browser-app",
     "build": "yarn compile && yarn browser bundle",
     "check:theia-version": "theia check:theia-version",
     "clean": "lerna run clean",

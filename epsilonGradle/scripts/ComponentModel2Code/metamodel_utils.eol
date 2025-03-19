@@ -61,10 +61,10 @@ operation getTargetReference(elementName : String) : String {
 
 operation getEmfReferenceName(elementName : String) : String {
 	var result = "";
-	var metamodelPrefix = config!t_settings.all.first.c_metamodelPrefix.a_value.get(0);
+	var metamodelName = metamodel!EPackage.all.first.name;
 	var root = viewpointModel!Root.all.first.name;
 	
-	result += metamodelPrefix;
+	result += metamodelName.firstToUpperCase();
 	result += "Package.Literals.";
 	result += root.charAt(0);
 	for (i in Sequence{1..root.length()-1}){
@@ -86,10 +86,10 @@ operation getEmfIdName(elementName : String) : String {
 	// set[%=getIdAttributeRecursive(createNodeHandler.elementName).firstToUpperCase()%]
 	
 	var result = "";
-	var metamodelPrefix = config!t_settings.all.first.c_metamodelPrefix.a_value.get(0);
+	var metamodelName = metamodel!EPackage.all.first.name;
 	var classifier = metamodel!EClassifier.all.selectOne(c|c.name.matches(elementName));
 	
-	result += metamodelPrefix;
+	result += metamodelName.firstToUpperCase();
 	result += "Package.Literals.";
 	
 	

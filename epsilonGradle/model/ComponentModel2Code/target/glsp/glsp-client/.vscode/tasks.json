@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Build Statemachine GLSP Client example",
+      "label": "Build Model GLSP Client example",
       "type": "shell",
       "group": {
         "kind": "build",
@@ -18,7 +18,7 @@
       "problemMatcher": []
     },
     {
-      "label": "Watch Statemachine GLSP Client example",
+      "label": "Watch Model GLSP Client example",
       "type": "shell",
       "group": "build",
       "command": "yarn watch",
@@ -29,7 +29,7 @@
       "problemMatcher": []
     },
     {
-      "label": "Start Statemachine Example Theia Backend (Embedded GLSP Server)",
+      "label": "Start Model Example Theia Backend (Embedded GLSP Server)",
       "type": "shell",
       "group": "test",
       "command": "yarn start",
@@ -40,7 +40,7 @@
       "problemMatcher": []
     },
     {
-      "label": "Start Statemachine Example Backend (External GLSP Server)",
+      "label": "Start Model Example Backend (External GLSP Server)",
       "type": "shell",
       "group": "test",
       "command": "yarn start:external",

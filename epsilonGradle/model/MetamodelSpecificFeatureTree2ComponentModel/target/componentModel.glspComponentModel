@@ -6,9 +6,7 @@
   <components xsi:type="glspComponentModel:DiagramConfiguration"/>
   <components xsi:type="glspComponentModel:IdGenerator"/>
   <components xsi:type="glspComponentModel:ModelTypes"/>
-  <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="InitialState"/>
-  <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="NormalState"/>
-  <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="FinalState"/>
+  <components xsi:type="glspComponentModel:CreateNodeHandler" elementName="Task"/>
   <components xsi:type="glspComponentModel:CreateEdgeHandler" elementName="Transition"/>
   <components xsi:type="glspComponentModel:DeleteHandler"/>
   <components xsi:type="glspComponentModel:LabelEditOperationHandler"/>

@@ -14,7 +14,7 @@
 
 <plugin
       name="%pluginName"
-      id="org.eclipse.glsp.example.statemachine"
+      id="org.eclipse.glsp.example.model"
       version="1.0.0"
       provider-name="%providerName">
 
@@ -33,16 +33,16 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated model -->
       <package
-            uri="http://www.eclipse.org/glsp/examples/statemachine"
-            class="org.eclipse.glsp.example.statemachine.model.ModelPackage"
+            uri="http://www.eclipse.org/glsp/examples/model"
+            class="org.eclipse.glsp.example.model.ModelPackage"
             genModel="model/model.genmodel"/>
    </extension>
-
+   <!--
    <extension point="org.eclipse.emf.ecore.extension_parser">
       <!-- @generated model -->
       <parser
             type="model"
-            class="org.eclipse.glsp.example.statemachine.model.util.ModelResourceFactoryImpl"/>
+            class="org.eclipse.glsp.example.model.model.util.ModelResourceFactoryImpl"/>
    </extension>
-
+   -->
 </plugin>

@@ -73,8 +73,8 @@
     "launch": {
         "compounds": [
             {
-                "name": "Launch Statemachine Theia backend with external GLSP Server",
-                "configurations": ["Launch Statemachine GLSP Server", "Launch Statemachine Theia Backend (External GLSP Server)"]
+                "name": "Launch Model Theia backend with external GLSP Server",
+                "configurations": ["Launch Model GLSP Server", "Launch Model Theia Backend (External GLSP Server)"]
             }
         ]
     }

@@ -37,14 +37,14 @@ import org.eclipse.glsp.server.emf.EMFIdGenerator;
 import org.eclipse.glsp.server.emf.model.notation.NotationElement;
 import org.eclipse.glsp.server.emf.model.notation.Shape;
 import org.eclipse.glsp.server.operations.DeleteOperation;
-import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=_metamodelPrefix%]Package;
+import [%=_metamodelPackageName%].[%=_metamodelName.toLowerCase()%].[%=_metamodelName.firstToUpperCase()%]Package;
 [%for ( n in _nodes){%]
-import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=n%];
+import [%=_metamodelPackageName%].[%=_metamodelName.toLowerCase()%].[%=n%];
 [%}%]
 [%for ( e in _edges){%]
-import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=e%];
+import [%=_metamodelPackageName%].[%=_metamodelName.toLowerCase()%].[%=e%];
 [%}%]
-import [%=_metamodelPackageName%].[%=_metamodelPrefix.toLowerCase()%].[%=_root%];
+import [%=_metamodelPackageName%].[%=_metamodelName.toLowerCase()%].[%=_root%];
 
 import com.google.inject.Inject;
 
@@ -114,7 +114,7 @@ public class DeleteHandler extends EMFOperationHandler<DeleteOperation> {
     	  
     	  [%for ( e in _edges){%]
           [%=_root.firstToLowerCase()%].get[%=getReferenceName(e, _root).firstToUpperCase()%]().stream()
-          .filter(edge -> edge.getFrom() == [%=n.firstToLowerCase()%] || edge.getTo() == [%=n.firstToLowerCase()%])
+          .filter(edge -> edge.get[%=getSourceReference(e).firstToUpperCase()%]() == [%=n.firstToLowerCase()%] || edge.get[%=getTargetReference(e).firstToUpperCase()%]() == [%=n.firstToLowerCase()%])
           .collect(Collectors.toList())
     	  .forEach(
           edge -> {

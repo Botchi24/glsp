@@ -1,0 +1,64 @@
+/********************************************************************************
+ * Copyright (c) 2022 EclipseSource and others.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License v. 2.0 which is available at
+ * https://www.eclipse.org/legal/epl-2.0.
+ *
+ * This Source Code may also be made available under the following Secondary
+ * Licenses when the conditions for such availability set forth in the Eclipse
+ * Public License v. 2.0 are satisfied: GNU General Public License, version 2
+ * with the GNU Classpath Exception which is available at
+ * https://www.gnu.org/software/classpath/license.html.
+ *
+ * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+ ********************************************************************************/
+package org.eclipse.glsp.example.javaemf;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.glsp.server.emf.EMFIdGenerator;
+import org.eclipse.glsp.server.emf.notation.EMFNotationModelState;
+import org.eclipse.glsp.server.emf.model.notation.Shape;
+import java.util.stream.Collectors;
+import com.google.inject.Inject;
+
+import org.eclipse.glsp.example.tasklist.model.Task;
+import org.eclipse.glsp.example.tasklist.model.Transition;
+
+
+public class ModelIdGenerator implements EMFIdGenerator {
+	
+	@Inject
+	protected EMFNotationModelState modelState;
+	
+	@Override
+	public String getOrCreateId(final EObject element) {
+	
+		if (element instanceof Shape) {
+			return ((Shape)element).getSemanticElement().getElementId();
+		}
+		if (element instanceof Task) {
+			return ((Task)element).getId();
+		}
+		if (element instanceof Transition) {
+			return ((Transition)element).getId();
+		}
+		return "";
+	}
+	
+//	private String buildID(NormalState element){
+//		return ((NormalState)element).getName();
+//	}
+//	
+//	private String buildID(FinalState element){
+//		return ((FinalState)element).getName();
+//	}
+//	
+//	private String buildID(Transition element){
+//		int order = modelState.getSemanticModel().eContents().stream()
+//				.filter(obj -> obj instanceof Transition)
+//				.collect(Collectors.toList())
+//				.indexOf(element);
+//		return ((Transition)element).getFrom().getName() + "_" + ((Transition)element).getTo().getName() + "_" + order;
+//	}
+}

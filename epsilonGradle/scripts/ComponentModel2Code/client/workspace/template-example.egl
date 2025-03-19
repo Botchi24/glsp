@@ -1,3 +1,4 @@
+[%import "../../attribute_resolver.eol";%]
 <?xml version="1.0" encoding="UTF-8"?>
-<example-model:[%=_root%] xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:example-model="[%=_metamodelNsUri%]" name="[%=_metamodelName.firstToUpperCase()%]">
+<example-model:[%=_root%] xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:example-model="[%=_metamodelNsUri%]" [%=getRootId()%]="[%=_metamodelName.firstToUpperCase()%]">
 </example-model:[%=_root%]>

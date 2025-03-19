@@ -1,46 +1,24 @@
 <?xml version="1.0" encoding="ASCII"?>
 <viewpointModel:ViewpointModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:viewpointModel="http://www.example.org/viewpointModel" xsi:schemaLocation="http://www.example.org/viewpointModel ../../viewpointModel/model/viewpointModel.ecore">
-  <modelelement xsi:type="viewpointModel:Root" name="StateMachine"/>
-  <modelelement xsi:type="viewpointModel:Node" name="InitialState">
-    <id xsi:type="viewpointModel:Id" emfIdAttribute="STATE__NAME">
-      <part xsi:type="viewpointModel:Reference" value="name"/>
-    </id>
-    <style xsi:type="viewpointModel:Style">
-      <styleelement xsi:type="viewpointModel:StyleElement" name="layout" value="GConstants.Layout.HBOX"/>
-      <styleelement xsi:type="viewpointModel:StyleElement" name="width" value="60"/>
-      <styleelement xsi:type="viewpointModel:StyleElement" name="height" value="60"/>
-      <styleelement xsi:type="viewpointModel:StyleElement" name="css" value="fill: #f1bd6c;"/>
-    </style>
-  </modelelement>
-  <modelelement xsi:type="viewpointModel:Node" name="NormalState">
-    <id xsi:type="viewpointModel:Id" emfIdAttribute="STATE__NAME">
-      <part xsi:type="viewpointModel:Reference" value="name"/>
-    </id>
-    <style xsi:type="viewpointModel:Style">
-      <styleelement xsi:type="viewpointModel:StyleElement" name="layout" value="GConstants.Layout.HBOX"/>
-      <styleelement xsi:type="viewpointModel:StyleElement" name="width" value="60"/>
-      <styleelement xsi:type="viewpointModel:StyleElement" name="height" value="25"/>
-      <styleelement xsi:type="viewpointModel:StyleElement" name="css" value="fill: #f1bd6c;"/>
-    </style>
-  </modelelement>
-  <modelelement xsi:type="viewpointModel:Node" name="FinalState">
-    <id xsi:type="viewpointModel:Id" emfIdAttribute="STATE__NAME">
-      <part xsi:type="viewpointModel:Reference" value="name"/>
-    </id>
-    <style xsi:type="viewpointModel:Style">
-      <styleelement xsi:type="viewpointModel:StyleElement" name="layout" value="GConstants.Layout.HBOX"/>
-      <styleelement xsi:type="viewpointModel:StyleElement" name="width" value="100"/>
-      <styleelement xsi:type="viewpointModel:StyleElement" name="height" value="60"/>
-      <styleelement xsi:type="viewpointModel:StyleElement" name="css" value="fill: #f1bd6c;"/>
-    </style>
-  </modelelement>
-  <modelelement xsi:type="viewpointModel:Edge" name="Transition" source="from" target="to">
-    <id xsi:type="viewpointModel:Id">
-      <part xsi:type="viewpointModel:Reference" value="from.name"/>
-      <part xsi:type="viewpointModel:Static" value="_"/>
-      <part xsi:type="viewpointModel:Reference" value="to.name"/>
-      <part xsi:type="viewpointModel:Static" value="_"/>
-      <part xsi:type="viewpointModel:Order"/>
-    </id>
-  </modelelement>
+	<modelelement xsi:type="viewpointModel:Root" name="TaskList">
+		<id xsi:type="viewpointModel:Id">
+			<part xsi:type="viewpointModel:Reference" value="id"/>
+		</id>
+	</modelelement>
+	<modelelement xsi:type="viewpointModel:Node" name="Task">
+		<id xsi:type="viewpointModel:Id" emfIdAttribute="IDENTIFIABLE__ID">
+			<part xsi:type="viewpointModel:Reference" value="id"/>
+		</id>
+		<style xsi:type="viewpointModel:Style">
+			<styleelement xsi:type="viewpointModel:StyleElement" name="layout" value="GConstants.Layout.HBOX"/>
+			<styleelement xsi:type="viewpointModel:StyleElement" name="width" value="60"/>
+			<styleelement xsi:type="viewpointModel:StyleElement" name="height" value="25"/>
+			<styleelement xsi:type="viewpointModel:StyleElement" name="css" value="fill: #f1bd6c;"/>
+		</style>
+	</modelelement>
+	<modelelement xsi:type="viewpointModel:Edge" name="Transition" source="source" target="target">
+		<id xsi:type="viewpointModel:Id" emfIdAttribute="IDENTIFIABLE__ID">
+			<part xsi:type="viewpointModel:Reference" value="id"/>
+		</id>
+	</modelelement>
 </viewpointModel:ViewpointModel>
