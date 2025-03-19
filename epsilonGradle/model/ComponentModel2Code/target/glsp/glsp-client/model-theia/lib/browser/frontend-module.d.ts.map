@@ -1,1 +1,0 @@
-{"version":3,"file":"frontend-module.d.ts","sourceRoot":"","sources":["../../src/browser/frontend-module.ts"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;;;kFAekF;AAClF,OAAO,EAAE,gBAAgB,EAAwB,uBAAuB,EAAE,MAAM,iCAAiC,CAAC;AAIlH,qBAAa,wBAAyB,SAAQ,uBAAuB;IACjE,QAAQ,CAAC,eAAe,2EAAiB;IAEzC,wBAAwB,CAAC,OAAO,EAAE,gBAAgB,GAAG,IAAI;CAG5D;;AAED,wBAA8C"}
