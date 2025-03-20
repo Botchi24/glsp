@@ -83,6 +83,6 @@ operation getEmfIdAttribute(elementName: String) : String {
 
 // id attribute of root element
 operation getRootId() : String {
-	var viewpointElement = viewpointModel!ViewpointModel.all.first.modelelement.selectOne(e|e.type.matches(Root));
+	var viewpointElement = viewpointModel!ViewpointModel.all.first.modelelement.selectOne(e|e.type.name.matches('Root'));
 	return viewpointElement.id.part.first.value;
 }

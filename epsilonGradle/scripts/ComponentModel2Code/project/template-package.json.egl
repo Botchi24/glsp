@@ -6,7 +6,7 @@
         "prepare": "yarn build",
         "build": "yarn build:server && yarn build:client",
         "build:client": "yarn --cwd [%=_relativeClientPath%] install",
-        "build:server": "cd [%=_relativeServerPath%] && mvn -DskipTests=true --batch-mode verify",
+        "build:server": "cd [%=_relativeServerPath%] && mvn --batch-mode clean verify",
         "build:fast": "yarn build:fast-server && yarn build:fast-client",
         "build:fast-client": "yarn --offline --cwd glsp-client install --prefer-offline",
         "build:fast-server": "cd glsp-server && mvn -DskipTests=true --batch-mode verify",

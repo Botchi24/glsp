@@ -128,6 +128,7 @@ rule DeleteHandler
 	transform deleteHandler : componentModel_read!DeleteHandler {
 	
 	parameters : Map {
+		"_metamodelName" = metamodelName,
 		"_packageName" = packageName,
 		"_metamodelPackageName" = metamodelPackageName,
 		"_root" = root,
@@ -146,6 +147,7 @@ rule LabelEditOperationHandler
 	transform labelEditOperationHandler : componentModel_read!LabelEditOperationHandler {
 	
 	parameters : Map {
+		"_metamodelName" = metamodelName,
 		"_packageName" = packageName,
 		"_metamodelPackageName" = metamodelPackageName,
 		"_root" = root,

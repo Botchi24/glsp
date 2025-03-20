@@ -1,14 +1,4 @@
 <?xml version="1.0" encoding="ASCII"?>
-<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/glsp/notation">
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/glsp/notation">
   <semanticElement elementId="Model"/>
-  <elements xsi:type="notation:Shape">
-    <semanticElement elementId="NewTask0"/>
-    <position x="393.0" y="154.0"/>
-    <size width="60.0" height="25.0"/>
-  </elements>
-  <elements xsi:type="notation:Shape">
-    <semanticElement elementId="dsgsd"/>
-    <position x="634.0" y="246.0"/>
-    <size width="60.0" height="25.0"/>
-  </elements>
 </notation:Diagram>
