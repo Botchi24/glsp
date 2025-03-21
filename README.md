@@ -1,6 +1,25 @@
 # glsp
 
 
+## start tasklist example (tasklist branch)
+
+  1.) clone tasklist branch
+  ``git clone -b tasklist https://github.com/Botchi24/glsp.git``
+  
+  2.) generate editor code
+  ``cd glsp\epsilonGradle``
+  ``.\gradlew createEditor``
+  
+  3.) build server + client
+  ``cd glsp\epsilonGradle\model\ComponentModel2Code\target\glsp``
+  ``yarn build``
+  
+  4.) start server + client
+  ``cd glsp\epsilonGradle\model\ComponentModel2Code\target\glsp\glsp-client``
+  ``yarn start``
+
+  5.) open http://127.0.0.1:3000/ in browser
+
 ## Pipeline
 
   Model (A): glspFeatures - GLSP feature tree <br>
