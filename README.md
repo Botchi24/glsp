@@ -1,6 +1,12 @@
 # glsp
 
 
+## Prerequisites
+
+  - Java = 17
+  - Node.js = 20 (20.19 used)
+  - Yarn >=1.7.0 < 2.x.x (1.22 used)
+
 ## start tasklist example (tasklist branch)
 
   1.) clone tasklist branch
