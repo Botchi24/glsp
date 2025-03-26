@@ -6,6 +6,9 @@
   - Java = 17
   - Node.js = 20 (20.19 used)
   - Yarn >=1.7.0 < 2.x.x (1.22 used)
+  
+  - theia prerequisites
+  https://github.com/eclipse-theia/theia/blob/master/doc/Developing.md#prerequisites
 
 ## start tasklist example (tasklist branch)
 
