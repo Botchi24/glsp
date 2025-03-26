@@ -231,6 +231,16 @@ rule IdGenerator
 	
 }
 
+
+rule ChangeRoutingPoints
+	transform idGenerator : componentModel_read!ChangeRoutingPoints {
+	
+	template : "./server/src/template-changeRoutingPointsOperationHandler.egl"
+
+	target : targetPath + "glsp/" + relativeServerPath + "/src/main/java/" + folderStructure + "handler/ChangeRoutingPointsOperationHandler.java"
+	
+}
+
 //-------------------------CLIENT---------------------------------
 
 

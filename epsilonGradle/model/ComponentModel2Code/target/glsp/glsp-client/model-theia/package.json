@@ -32,7 +32,8 @@
     "build": "tsc -b",
     "clean": "rimraf lib tsconfig.tsbuildinfo",
     "lint": "eslint --ext .ts,.tsx ./src",
-    "watch": "tsc -w"
+    "watch": "tsc -w",
+    "postinstall": "electron-rebuild"
   },
   "dependencies": {
     "@eclipse-glsp/theia-integration": "2.2.1",

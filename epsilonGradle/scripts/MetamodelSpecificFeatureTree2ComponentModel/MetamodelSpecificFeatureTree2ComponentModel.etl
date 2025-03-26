@@ -20,7 +20,8 @@ rule MinimumComponents
 	to t1 : componentModel_store!ServerLauncher,
 	t2 : componentModel_store!DiagramModule,
 	t3 : componentModel_store!DiagramConfiguration,
-	t4 : componentModel_store!IdGenerator {
+	t4 : componentModel_store!IdGenerator,
+	t5 : componentModel_store!ChangeRoutingPoints {
 	
 		guard : s.a_name == "S"
 		
@@ -28,12 +29,14 @@ rule MinimumComponents
 		"DiagramModule".println();
 		"DiagramConfiguration".println();
 		"IdGenerator".println();
+		"ChangeRoutingPoints".println();
 		
 		var root = componentModel_store!ComponentModel.all.first;
 		root.components.add(t1);
 		root.components.add(t2);
 		root.components.add(t3);
 		root.components.add(t4);
+		root.components.add(t5);
 }
 
 

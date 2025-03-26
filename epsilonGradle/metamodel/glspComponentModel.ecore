@@ -35,4 +35,5 @@
   <eClassifiers xsi:type="ecore:EClass" name="NodeView" eSuperTypes="#//LeafComponent"/>
   <eClassifiers xsi:type="ecore:EClass" name="IdGenerator" eSuperTypes="#//LeafComponent"/>
   <eClassifiers xsi:type="ecore:EClass" name="LabelEditOperationHandler" eSuperTypes="#//Package"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ChangeRoutingPoints" eSuperTypes="#//LeafComponent"/>
 </ecore:EPackage>

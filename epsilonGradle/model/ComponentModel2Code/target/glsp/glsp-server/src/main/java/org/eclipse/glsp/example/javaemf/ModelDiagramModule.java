@@ -19,6 +19,7 @@ package org.eclipse.glsp.example.javaemf;
 import org.eclipse.glsp.example.javaemf.handler.CreateTaskNodeHandler;
 import org.eclipse.glsp.example.javaemf.handler.CreateTransitionEdgeHandler;
 import org.eclipse.glsp.example.javaemf.handler.DeleteHandler;
+import org.eclipse.glsp.example.javaemf.handler.ChangeRoutingPointsOperationHandler;
 import org.eclipse.glsp.example.javaemf.labeledit.LabelEditOperationHandler;
 import org.eclipse.glsp.example.javaemf.model.ModelGModelFactory;
 import org.eclipse.glsp.example.javaemf.model.ModelSourceModelStorage;
@@ -71,6 +72,7 @@ public class ModelDiagramModule extends EMFNotationDiagramModule {
    @Override
    protected void configureOperationHandlers(final MultiBinding<OperationHandler<?>> binding) {
       super.configureOperationHandlers(binding);
+      binding.add(ChangeRoutingPointsOperationHandler.class);
       binding.add(CreateTaskNodeHandler.class);
       binding.add(CreateTransitionEdgeHandler.class);
       binding.add(DeleteHandler.class);

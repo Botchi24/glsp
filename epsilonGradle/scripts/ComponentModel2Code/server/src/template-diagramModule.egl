@@ -23,6 +23,7 @@ import [%=_packageName%].handler.Create[%=n%]NodeHandler;
 import [%=_packageName%].handler.Create[%=e%]EdgeHandler;
 [%}%]
 import [%=_packageName%].handler.DeleteHandler;
+import [%=_packageName%].handler.ChangeRoutingPointsOperationHandler;
 import [%=_packageName%].labeledit.LabelEditOperationHandler;
 import [%=_packageName%].model.[%=_metamodelName.firstToUpperCase()%]GModelFactory;
 import [%=_packageName%].model.[%=_metamodelName.firstToUpperCase()%]SourceModelStorage;
@@ -85,6 +86,7 @@ public class [%=_metamodelName.firstToUpperCase()%]DiagramModule extends EMFNota
    @Override
    protected void configureOperationHandlers(final MultiBinding<OperationHandler<?>> binding) {
       super.configureOperationHandlers(binding);
+      binding.add(ChangeRoutingPointsOperationHandler.class);
       [%for ( n in _nodes){%]
       binding.add(Create[%=n%]NodeHandler.class);
       [%}%]
