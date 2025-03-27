@@ -3,59 +3,60 @@
 
 ## Prerequisites
 
-  - Java = 17
+  - Java >= 17 (17 used)
   - Node.js = 20 (20.19 used)
   - Yarn >=1.7.0 < 2.x.x (1.22 used)
   
-  - theia prerequisites
+  - Theia prerequisites: 
   https://github.com/eclipse-theia/theia/blob/master/doc/Developing.md#prerequisites
+  
+  in Linux:
+  - Python3 < 3.12 OR 3.12 with python3-setuptools
+  - libsecret-1-dev
+  - gnupg
+
 
 ## start tasklist example (tasklist branch)
 
   1.) clone tasklist branch
   ``git clone -b tasklist https://github.com/Botchi24/glsp.git``
   
-  2.) generate editor code
-  ``cd glsp\epsilonGradle``
-  ``.\gradlew createEditor``
-  
-  3.) build server + client
+  2.) build server + client
   ``cd glsp\epsilonGradle\model\ComponentModel2Code\target\glsp``
   ``yarn build``
   
-  4.) start server + client
+  3.) start server + client
   ``cd glsp\epsilonGradle\model\ComponentModel2Code\target\glsp\glsp-client``
   ``yarn start``
 
-  5.) open http://127.0.0.1:3000/ in browser
-
-## Pipeline
-
-  Model (A): glspFeatures - GLSP feature tree <br>
-  User's Metamodel (B) <br>
-  Model (C): viewpointModel - user configures meta information <br>
-  Model (D): metamodel specific feature tree (D1) + empty metamodel specific feature tree configuration (D2) <br>
-  Transformation I (A + B + C -> D): GLSPFeatureTree2MetamodelSpecificFeatureTree <br>
-  <br>
-  <br>
-  User's Feature Selection -> metamodel specific feature tree configuration (D2) <br>
-  <br>
-  <br>
-  Model(E): glspComponentModel - GLSP component model <br>
-  Transformation II (D2 -> E): MetamodelSpecificFeatureTree2ComponentModel <br>
-  <br>
-  <br>
-  Transformation III (E + B + C -> Java Code) ComponentModel2Code <br>
+  4.) open http://127.0.0.1:3000/ in browser
 
 
-## Gradle Usage
+## Pipeline Usage with Gradle
 
-  copy metamodel src-gen folder into /epsilonGradle/model/ComponentModel2Code/target/glsp/glsp-server <br>
+  
+  Transformation 0 : <br>
+  delete /epsilonGradle/scripts/Metamodel2ViewpointModel/viewpointModel.viewpointModel <br>
+  execute in /epsilonGradle : .\gradlew prepareSettings <br>
+  revise viewpointModel.viewpointModel <br>
+  copy viewpointModel.viewpointModel into /epsilonGradle/model <br>
   <br>
+  
+  Transformation I : <br>
+  delete /epsilonGradle/model/GLSPFeatureTree2MetamodelSpecificFeatureTree/target/MetamodelSpecificFeatureTree.xml <br>
+  execute in /epsilonGradle : .\gradlew prepareMetamodelSpecificFeatureTree <br>
+  open /epsilonGradle/model/GLSPFeatureTree2MetamodelSpecificFeatureTree/target/configs/default.xml <br>
+  select your features until a valid configuration and save file <br>
   <br>
-  start commands in /epsilonGradle: <br>
+  
+  Transformation II : <br>
+  delete /epsilonGradle/model/MetamodelSpecificFeatureTree2ComponentModel/target/componentModel.componentModel <br>
+  execute in /epsilonGradle : .\gradlew createComponentModel <br>
   <br>
-  Transformation I : .\gradlew transformFeatureTree <br>
-  (user selects features) <br>
-  Transformation II : .\gradlew transformMetamodelSpecificFeatureTree <br>
-  Transformation III : .\gradlew transformComponentModel <br>
+  
+  Transformation III : <br>
+  delete /epsilonGradle/model/ComponentModel2Code/target/glsp folder <br>
+  create empty /epsilonGradle/model/ComponentModel2Code/target/glsp/glsp-server folder <br>
+  copy /epsilonGradle/metamodel/tasklist/src-gen folder into /epsilonGradle/model/ComponentModel2Code/target/glsp/glsp-server <br>
+  execute in /epsilonGradle : .\gradlew createEditor <br>
+  

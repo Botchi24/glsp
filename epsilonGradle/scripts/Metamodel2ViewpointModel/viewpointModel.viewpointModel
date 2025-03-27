@@ -38,15 +38,4 @@
 			<styleelement xsi:type="viewpointModel:StyleElement" name="css" value="fill: #f1bd6c;"/>
 		</style>
 	</modelelement>
-	<modelelement xsi:type="viewpointModel:Node" name="State">
-		<id xsi:type="viewpointModel:Id" emfIdAttribute="">
-			<part xsi:type="viewpointModel:Reference" value="id"/>
-		</id>
-		<style xsi:type="viewpointModel:Style">
-			<styleelement xsi:type="viewpointModel:StyleElement" name="layout" value="GConstants.Layout.HBOX"/>
-			<styleelement xsi:type="viewpointModel:StyleElement" name="width" value="60"/>
-			<styleelement xsi:type="viewpointModel:StyleElement" name="height" value="25"/>
-			<styleelement xsi:type="viewpointModel:StyleElement" name="css" value="fill: #f1bd6c;"/>
-		</style>
-	</modelelement>
 </viewpointModel:ViewpointModel>
